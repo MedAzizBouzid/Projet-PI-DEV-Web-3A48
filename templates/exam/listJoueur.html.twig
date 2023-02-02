@@ -1,0 +1,26 @@
+<table border="2">
+<tr>
+
+<td> nom</td>
+<td>equipe</td>
+
+<td>Action</td> 
+</tr>
+<tr>
+{% for j in joueurs%}
+
+
+
+<td>{{j.nom | upper}}</td>
+<td>{{j.equipe}}</td>
+
+
+<td>
+
+{# <a href="{{path('app_vote_byjoueur',{'id':j.id})}}"> Détails vote</a> #}
+
+
+</td>
+</tr>
+{% endfor %}
+Ajouter joueurs
