@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Entity;
-
+use Symfony\Component\Validator\Constraints as Assert;
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -15,31 +15,49 @@ class User
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nom = null;
+    #[Assert\NotBlank(  message :'Name is required')]
+        private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(  message :'Lastname is required')]
+
     private ?string $prenom = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(  message :'Username is required')]
+
     private ?string $userName = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(  message :'Email is required')]
+    #[Assert\Email(
+        message: 'The email {{ value }} is not a valid email.',
+    )]
     private ?string $email = null;
 
     #[ORM\Column]
+    #[Assert\NotBlank(  message :'tel is required')]
+    #[Assert\Length(min:8,max:8, minMessage:"numTel must be 8 numbers",maxMessage:"numTel must be 8 numbers")]
+   
     private ?int $numTel = null;
 
-    #[ORM\Column(length: 255)]
-    private ?string $role = null;
+   
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(  message :'password is required')]
+
     private ?string $pwd = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $etat = null;
+    private ?int $etat = null;
 
     #[ORM\Column(length: 255, nullable: true)]
+    #[Assert\NotBlank(  message :'image is required')]
+
     private ?string $img = null;
+
+    #[ORM\ManyToOne(inversedBy: 'users')]
+    private ?Role $role = null;
 
     public function getId(): ?int
     {
@@ -106,18 +124,6 @@ class User
         return $this;
     }
 
-    public function getRole(): ?string
-    {
-        return $this->role;
-    }
-
-    public function setRole(string $role): self
-    {
-        $this->role = $role;
-
-        return $this;
-    }
-
     public function getPwd(): ?string
     {
         return $this->pwd;
@@ -130,12 +136,12 @@ class User
         return $this;
     }
 
-    public function getEtat(): ?string
+    public function getEtat(): ?int
     {
         return $this->etat;
     }
 
-    public function setEtat(string $etat): self
+    public function setEtat(int $etat): self
     {
         $this->etat = $etat;
 
@@ -150,6 +156,18 @@ class User
     public function setImg(?string $img): self
     {
         $this->img = $img;
+
+        return $this;
+    }
+
+    public function getRole(): ?Role
+    {
+        return $this->role;
+    }
+
+    public function setRole(?Role $role): self
+    {
+        $this->role = $role;
 
         return $this;
     }

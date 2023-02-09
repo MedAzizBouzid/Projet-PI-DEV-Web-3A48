@@ -67,11 +67,19 @@ class UserRepository extends ServiceEntityRepository
 public function RoleDiff($role)
    {
        return $this->createQueryBuilder('u')
-            ->where('u.role=:role')
+           ->select('u')
+            ->join('u.role','r')
+            ->where('r.nomR=:role')
             ->setParameter('role',$role)
            ->getQuery()
           ->getResult();
    }
+  
+     
+       
+   
+  
+    
 
 
 }
