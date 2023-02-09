@@ -69,6 +69,7 @@
     </parameter>
     <parameter key="kernel.charset">UTF-8</parameter>
     <parameter key="kernel.container_class">App_KernelDevDebugContainer</parameter>
+    <parameter key="produit_directory">C:\Users\Admin\Desktop\Projet-PI-DEV-Web-main/public/uploads</parameter>
     <parameter key="event_dispatcher.event_aliases" type="collection">
       <parameter key="Symfony\Component\Console\Event\ConsoleCommandEvent">console.command</parameter>
       <parameter key="Symfony\Component\Console\Event\ConsoleErrorEvent">console.error</parameter>
@@ -6423,6 +6424,13 @@
         <argument key="produitRepository" type="service_closure" id="App\Repository\ProduitRepository"/>
       </argument>
     </service>
+    <service id=".service_locator._eIqBF_" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="produitRepository" type="service_closure" id="App\Repository\ProduitRepository"/>
+        <argument key="slugger" type="service_closure" id="slugger"/>
+      </argument>
+    </service>
     <service id=".service_locator.ViXcClx" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6436,22 +6444,24 @@
         <argument key="produitRepository" type="service_closure" id="App\Repository\ProduitRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.igERDVi" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.e.uazbt" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="App\Controller\ProduitController::AffichageBack" type="service_closure" id=".service_locator.vRUAr7Q"/>
+        <argument key="App\Controller\ProduitController::AffichageFront" type="service_closure" id=".service_locator.vRUAr7Q"/>
         <argument key="App\Controller\ProduitController::delete" type="service_closure" id=".service_locator.KQfLtfZ"/>
         <argument key="App\Controller\ProduitController::edit" type="service_closure" id=".service_locator.KQfLtfZ"/>
-        <argument key="App\Controller\ProduitController::index" type="service_closure" id=".service_locator.vRUAr7Q"/>
-        <argument key="App\Controller\ProduitController::new" type="service_closure" id=".service_locator.vRUAr7Q"/>
+        <argument key="App\Controller\ProduitController::new" type="service_closure" id=".service_locator._eIqBF_"/>
         <argument key="App\Controller\ProduitController::show" type="service_closure" id=".service_locator.ViXcClx"/>
         <argument key="App\Kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="App\Kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel::registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
+        <argument key="App\Controller\ProduitController:AffichageBack" type="service_closure" id=".service_locator.vRUAr7Q"/>
+        <argument key="App\Controller\ProduitController:AffichageFront" type="service_closure" id=".service_locator.vRUAr7Q"/>
         <argument key="App\Controller\ProduitController:delete" type="service_closure" id=".service_locator.KQfLtfZ"/>
         <argument key="App\Controller\ProduitController:edit" type="service_closure" id=".service_locator.KQfLtfZ"/>
-        <argument key="App\Controller\ProduitController:index" type="service_closure" id=".service_locator.vRUAr7Q"/>
-        <argument key="App\Controller\ProduitController:new" type="service_closure" id=".service_locator.vRUAr7Q"/>
+        <argument key="App\Controller\ProduitController:new" type="service_closure" id=".service_locator._eIqBF_"/>
         <argument key="App\Controller\ProduitController:show" type="service_closure" id=".service_locator.ViXcClx"/>
         <argument key="kernel:loadRoutes" type="service_closure" id=".service_locator.y4_Zrx."/>
         <argument key="kernel:registerContainerConfiguration" type="service_closure" id=".service_locator.y4_Zrx."/>
@@ -7283,12 +7293,12 @@
     <service id="debug.argument_resolver.request.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver"/>
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver"/>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.igERDVi"/>
+      <argument type="service" id=".service_locator.e.uazbt"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.igERDVi"/>
+      <argument type="service" id=".service_locator.e.uazbt"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8255,7 +8265,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.igERDVi"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.e.uazbt"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8276,7 +8286,7 @@
     <service id=".service_locator.80edgLI" alias="messenger.receiver_locator"/>
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
-    <service id=".service_locator.oPRgGZL" alias=".service_locator.igERDVi"/>
+    <service id=".service_locator.V7VJ0g." alias=".service_locator.e.uazbt"/>
     <service id=".service_locator.9XMoc9I" alias=".service_locator.kzegaci"/>
     <service id=".service_locator.XH2xWYY" alias=".service_locator.Pgy1XDu"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
@@ -8328,6 +8338,7 @@
     <service id="doctrine.orm.default_metadata_driver" alias=".doctrine.orm.default_metadata_driver"/>
     <service id=".service_locator.gFlme_s" alias=".service_locator.y4_Zrx."/>
     <service id=".service_locator.6O1FQxc" alias=".service_locator.vRUAr7Q"/>
+    <service id=".service_locator.sRsQiLd" alias=".service_locator._eIqBF_"/>
     <service id=".service_locator.dMZ2O9f" alias=".service_locator.ViXcClx"/>
     <service id=".service_locator.D4l6yFN" alias=".service_locator.KQfLtfZ"/>
     <service id=".service_locator.Kyflpr1" alias=".service_locator.CshazM0"/>

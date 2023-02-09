@@ -17,7 +17,6 @@
                                             <th>Image</th>
                                             <th>Prix</th>
                                             <th>Stock</th>
-                                            
                                             <th>action</th>
                                         </tr>
                                     </thead>
@@ -27,7 +26,12 @@
                                     <tr>
                                         <td>{{ produit.id }}</td>
                                         <td>{{ produit.nom }}</td>
-                                        <td><img width="50" align="center" src={{ asset('assets/back/img/produits/{{ produit.image }}')}} alt=""></td>
+                                        <td>
+                                        <img src="{{ asset('uploads/'~ produit.image) }}" alt="" width="75"
+                                        >
+                                        </td>
+                                        
+                                          
                                         <td>{{ produit.prix }}</td>
                                         <td>{{ produit.stock }}</td>
                                         <td>
@@ -43,7 +47,8 @@
                                         <td colspan="6">no records found</td>
                                     </tr>
                                     {% endfor %}
-                                    
+                                    <img src="/public/assets/back/img/testimonial-1.jpg" alt="" 
+                                        >
                                     </tbody>
                                     </table>
                                 </div>
