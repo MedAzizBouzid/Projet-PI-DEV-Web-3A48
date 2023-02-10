@@ -5,6 +5,7 @@ namespace App\Entity;
 use App\Repository\CategorieRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
+use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
@@ -16,6 +17,9 @@ class Categorie
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Type doit etre non vide !")]
+    #[Assert\Regex(pattern: "/^[\p{L}]+$/u", message: "Type doit contenir que des alphabets")]
+
     private ?string $Type = null;
 
     #[ORM\OneToMany(mappedBy: 'Categorie', targetEntity: Produit::class)]

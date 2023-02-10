@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Produit;
 use App\Form\ProduitType;
+use App\Repository\CategorieRepository;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -15,18 +16,19 @@ use Symfony\Component\String\Slugger\SluggerInterface;
 #[Route('produit')]
 class ProduitController extends AbstractController
 {
-    #[Route('/show/back', name: 'app_produit_index', methods: ['GET'])]
+    #[Route('/show/back', name: 'app_produit_index_back', methods: ['GET'])]
     public function AffichageBack(ProduitRepository $produitRepository): Response
     {
-        return $this->render('back/table.html.twig', [
+        return $this->render('back/produit/table.html.twig', [
             'produits' => $produitRepository->findAll(),
         ]);
     }
-    #[Route('/show/front', name: 'app_produit_index', methods: ['GET'])]
-    public function AffichageFront(ProduitRepository $produitRepository): Response
+    #[Route('/show/front', name: 'app_produit_index_front', methods: ['GET'])]
+    public function AffichageFront(ProduitRepository $produitRepository,CategorieRepository $categorieRepository): Response
     {
         return $this->render('front/team.html.twig', [
             'produits' => $produitRepository->findAll(),
+            'categories' => $categorieRepository->findAll()
         ]);
     }
 
@@ -67,7 +69,7 @@ class ProduitController extends AbstractController
 
             $produitRepository->save($produit, true);
 
-            return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_produit_index_back', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back/produit/new.html.twig', [
@@ -93,7 +95,7 @@ class ProduitController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $produitRepository->save($produit, true);
 
-            return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_produit_index_back', [], Response::HTTP_SEE_OTHER);
         }
 
         return $this->renderForm('back/produit/edit.html.twig', [
@@ -109,6 +111,6 @@ class ProduitController extends AbstractController
             $produitRepository->remove($produit, true);
         }
 
-        return $this->redirectToRoute('app_produit_index', [], Response::HTTP_SEE_OTHER);
+        return $this->redirectToRoute('app_produit_index_back', [], Response::HTTP_SEE_OTHER);
     }
 }

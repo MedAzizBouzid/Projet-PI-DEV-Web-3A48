@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\ProduitRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit
@@ -14,19 +15,28 @@ class Produit
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Nom doit etre non vide !")]
+    #[Assert\Regex(pattern: "/^[\p{L}]+$/u", message: "Nom doit contenir que des alphabets")]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+
     private ?string $image = null;
 
+
     #[ORM\Column]
+    #[Assert\NotBlank(message: "Prix doit etre non vide !")]
+    #[Assert\GreaterThan(value: 0, message: "Prix doit supérieur strict à 0 !")]
     private ?float $prix = null;
 
     #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Stock doit etre non vide !")]
+    #[Assert\GreaterThan(value: 0, message: "Stock doit supérieur strict à 0 !")]
     private ?string $stock = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
     #[ORM\JoinColumn(nullable: false)]
+    #[Assert\NotBlank(message: "Catégorie doit etre non vide !")]
     private ?Categorie $categorie = null;
 
     public function getId(): ?int
@@ -51,7 +61,7 @@ class Produit
         return $this->image;
     }
 
-    public function setImage( $image) 
+    public function setImage($image)
     {
         $this->image = $image;
 
