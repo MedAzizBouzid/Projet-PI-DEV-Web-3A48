@@ -4,13 +4,14 @@ namespace App\Controller;
 
 use App\Entity\User;
 use App\Entity\Role;
-use App\Form\UserType;
+use App\Form\RegistrationFormType;
 use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
 #[Route('/user')]
 class UserController extends AbstractController
@@ -20,58 +21,66 @@ class UserController extends AbstractController
     public function admin(UserRepository $userRepository): Response
     {
         return $this->render('back/tableAdmin.html.twig', [
-            'users' => $userRepository->RoleDiff("admin"),
+            'users' => $userRepository->findAllUser('["ROLE_ADMIN"]'),
         ]);
     }
     #[Route('/client', name: 'app_user_client', methods: ['GET'])]
     public function client(UserRepository $userRepository): Response
     {
         return $this->render('back/tableClient.html.twig', [
-            'users' => $userRepository->RoleDiff("client"),
+            'users' => $userRepository->findAllUser('[]'),
         ]);
     }
     #[Route('/coach', name: 'app_user_coach', methods: ['GET'])]
     public function coach(UserRepository $userRepository): Response
     {
         return $this->render('back/tableCoach.html.twig', [
-            'users' => $userRepository->RoleDiff("coach"),
+            'users' => $userRepository->findAllUser('["ROLE_COACH"]'),
+
         ]);
     }
-    /**************ajout************ */
+    // /**************ajout************ */
 
-    #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, UserRepository $userRepository ,RoleRepository $roleRepository): Response
-    {
-        $user = new User();
-        $role=$roleRepository->find(2);
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+    // #[Route('/new', name: 'app_user_new', methods: ['GET', 'POST'])]
+    // public function new(Request $request, UserRepository $userRepository ,RoleRepository $roleRepository): Response
+    // {
+    //     $user = new User();
+    //     $role=$roleRepository->find(2);
+    //     $form = $this->createForm(UserType::class, $user);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $user->setRole($role);
-            $user->setEtat(0);
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $user->setRole($role);
+    //         $user->setEtat(0);
 
-            $userRepository->save($user, true);
+    //         $userRepository->save($user, true);
 
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
-        }
+    //         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    //     }
 
-        return $this->renderForm('front/signup.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
-    }
+    //     return $this->renderForm('front/signup.html.twig', [
+    //         'user' => $user,
+    //         'form' => $form,
+    //     ]);
+    // }
     #[Route('/newA', name: 'app_user_newA', methods: ['GET', 'POST'])]
-    public function newA(Request $request, UserRepository $userRepository ,RoleRepository $roleRepository): Response
+    public function newA(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository ,RoleRepository $roleRepository): Response
     {
         $user = new User();
-        $role=$roleRepository->find(1);
-        $form = $this->createForm(UserType::class, $user);
+        $role=[];
+        $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setRole($role);
-            $user->setEtat(0);
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+            $roles[] = 'ROLE_ADMIN';
+            $user->setRoles($roles);
+          
 
             $userRepository->save($user, true);
 
@@ -84,16 +93,24 @@ class UserController extends AbstractController
         ]);
     }
     #[Route('/newC', name: 'app_user_newC', methods: ['GET', 'POST'])]
-    public function newC(Request $request, UserRepository $userRepository ,RoleRepository $roleRepository): Response
+    public function newC(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository ,RoleRepository $roleRepository): Response
     {
         $user = new User();
-        $role=$roleRepository->find(3);
-        $form = $this->createForm(UserType::class, $user);
+        $role=[];
+        $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $user->setRole($role);
-            $user->setEtat(0);
+            $user->setPassword(
+                $userPasswordHasher->hashPassword(
+                    $user,
+                    $form->get('plainPassword')->getData()
+                )
+            );
+            $roles[] = 'ROLE_COACH';
+            $user->setRoles($roles);
+          
+
             $userRepository->save($user, true);
 
             return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
@@ -104,40 +121,40 @@ class UserController extends AbstractController
             'form' => $form,
         ]);
     }
-    /************************** */
+    // /************************** */
 
 
-    #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
-    public function show(User $user): Response
-    {
-        return $this->render('user/show.html.twig', [
-            'user' => $user,    
-        ]);
-    }
+    // #[Route('/{id}', name: 'app_user_show', methods: ['GET'])]
+    // public function show(User $user): Response
+    // {
+    //     return $this->render('user/show.html.twig', [
+    //         'user' => $user,    
+    //     ]);
+    // }
 
-    /**************modif************ */
+    // /**************modif************ */
 
-    #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, User $user, UserRepository $userRepository): Response
-    {
-        $form = $this->createForm(UserType::class, $user);
-        $form->handleRequest($request);
+    // #[Route('/{id}/edit', name: 'app_user_edit', methods: ['GET', 'POST'])]
+    // public function edit(Request $request, User $user, UserRepository $userRepository): Response
+    // {
+    //     $form = $this->createForm(UserType::class, $user);
+    //     $form->handleRequest($request);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $userRepository->save($user, true);
+    //     if ($form->isSubmitted() && $form->isValid()) {
+    //         $userRepository->save($user, true);
 
-            return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
-        }
+    //         return $this->redirectToRoute('app_user_index', [], Response::HTTP_SEE_OTHER);
+    //     }
 
-        return $this->renderForm('user/edit.html.twig', [
-            'user' => $user,
-            'form' => $form,
-        ]);
-    }
+    //     return $this->renderForm('user/edit.html.twig', [
+    //         'user' => $user,
+    //         'form' => $form,
+    //     ]);
+    // }
     #[Route('/{id}/editA', name: 'app_user_editA', methods: ['GET', 'POST'])]
     public function editA(Request $request, User $user, UserRepository $userRepository): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -148,13 +165,13 @@ class UserController extends AbstractController
 
         return $this->renderForm('back/FormAdmin.html.twig', [
             'user' => $user,
-            'form' => $form,
+            'form' => $form, 
         ]);
     }
     #[Route('/{id}/editC', name: 'app_user_editC', methods: ['GET', 'POST'])]
     public function editC(Request $request, User $user, UserRepository $userRepository): Response
     {
-        $form = $this->createForm(UserType::class, $user);
+        $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -168,7 +185,7 @@ class UserController extends AbstractController
             'form' => $form,
         ]);
     }
-    /**************supp************ */
+    // /**************supp************ */
 
     #[Route('/{id}', name: 'app_user_delete', methods: ['POST'])]
     public function delete(Request $request, User $user, UserRepository $userRepository): Response

@@ -13,7 +13,7 @@
                                 <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>Coach</h3>
                             </a>
                         </div>
-                        {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
+                       {{ form_start(form, {attr: {'novalidate': 'novalidate'}}) }}
                         <div class="form-floating mb-3">
                             {{form_errors(form.nom)}}
                             {{form_label(form.nom,"Name")}}
@@ -45,15 +45,15 @@
 
                         </div>
                         <div class="form-floating mb-3">
-                            {{form_errors(form.pwd)}}
-                            {{form_label(form.pwd,"password")}}
-                            {{form_widget(form.pwd)}}
+                            {{form_errors(form.plainPassword)}}
+                            {{form_label(form.plainPassword,"password")}}
+                            {{form_widget(form.plainPassword)}}
 
                         </div>
                         <div class="form-floating mb-3">
-                            {{form_errors(form.img)}}
-                            {{form_label(form.img,"image")}}
-                            {{form_widget(form.img)}}
+                            {{form_errors(form.image)}}
+                            {{form_label(form.image,"image")}}
+                            {{form_widget(form.image)}}
 
                         </div>
                         {# <div class="form-floating mb-3">
