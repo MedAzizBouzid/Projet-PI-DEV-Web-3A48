@@ -22,4 +22,11 @@ class TraitementController extends AbstractController
             'controller_name' => 'TraitementController',
         ]);
     }
+    #[Route('/home', name: 'app_home')]
+    public function home(): Response
+    {
+        return $this->render('front/index.html.twig', [
+            
+        ]);
+    }
 }
