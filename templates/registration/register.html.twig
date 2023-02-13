@@ -81,45 +81,45 @@
                         </div>
                         {{ form_start(registrationForm, {attr: {'novalidate': 'novalidate'}}) }}
                         <div class="form-floating mb-3">
+                            {{form_widget(registrationForm.nom)}}
                             {{form_errors(registrationForm.nom)}}
                             {{form_label(registrationForm.nom,"Name")}}
-                            {{form_widget(registrationForm.nom)}}
 
                         </div>
                         <div class="form-floating mb-3">
+                            {{form_widget(registrationForm.prenom)}}
                             {{form_errors(registrationForm.prenom)}}
                             {{form_label(registrationForm.prenom,"lastname")}}
-                            {{form_widget(registrationForm.prenom)}}
 
                         </div>
                         <div class="form-floating mb-3">
+                            {{form_widget(registrationForm.userName)}}
                             {{form_errors(registrationForm.userName)}}
                             {{form_label(registrationForm.userName,"userName")}}
-                            {{form_widget(registrationForm.userName)}}
 
                         </div>
                         <div class="form-floating mb-3">
+                            {{form_widget(registrationForm.email)}}
                             {{form_errors(registrationForm.email)}}
                             {{form_label(registrationForm.email,"email")}}
-                            {{form_widget(registrationForm.email)}}
 
                         </div>
                         <div class="form-floating mb-3">
+                            {{form_widget(registrationForm.numTel)}}
                             {{form_errors(registrationForm.numTel)}}
                             {{form_label(registrationForm.numTel,"Tel")}}
-                            {{form_widget(registrationForm.numTel)}}
 
                         </div>
                         <div class="form-floating mb-3">
+                            {{form_widget(registrationForm.plainPassword)}}
                             {{form_errors(registrationForm.plainPassword)}}
                             {{form_label(registrationForm.plainPassword,"password")}}
-                            {{form_widget(registrationForm.plainPassword)}}
 
                         </div>
                         <div class="form-floating mb-3">
+                            {{form_widget(registrationForm.image)}}
                             {{form_errors(registrationForm.image)}}
                             {{form_label(registrationForm.image,"image")}}
-                            {{form_widget(registrationForm.image)}}
 
                         </div>
                         {# <div class="form-floating mb-3">
@@ -138,6 +138,7 @@
                      <button type="submit" class="btn btn-primary py-3 w-100 mb-4">{{ button_label|default('Sign Up') }}</button>
                         <p class="text-center mb-0">Already have an Account? <a href="{{ path('app_login') }}">Sign in</a></p>
                     </div>
+                    
                         {{form_end(registrationForm)}}
 
                 </div>

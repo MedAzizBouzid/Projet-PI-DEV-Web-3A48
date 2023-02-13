@@ -13,11 +13,11 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 
-#[Route('/user')]
+#[Route('/admin')]
 class UserController extends AbstractController
 {
     /**************affichage************ */
-    #[Route('/admin', name: 'app_user_admin', methods: ['GET'])]
+    #[Route('/', name: 'app_user_admin', methods: ['GET'])]
     public function admin(UserRepository $userRepository): Response
     {
         return $this->render('back/tableAdmin.html.twig', [
@@ -214,5 +214,24 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
     }
-   
+    #[Route('/{id}/bann', name: 'app_user_bannA', methods: [ 'POST'])]
+    public function bannA(Request $request, User $user, UserRepository $userRepository): Response
+    {
+    
+            
+            $user->setEtat(1);
+            $userRepository->save($user, true);
+
+        return $this->redirectToRoute('app_user_admin', [], Response::HTTP_SEE_OTHER);
+    }
+    #[Route('/{id}/anbann', name: 'app_user_anbannA', methods: [ 'POST'])]
+    public function anbannA(Request $request, User $user, UserRepository $userRepository): Response
+    {
+    
+            
+            $user->setEtat(0);
+            $userRepository->save($user, true);
+
+        return $this->redirectToRoute('app_user_admin', [], Response::HTTP_SEE_OTHER);
+    }
 }

@@ -11,19 +11,105 @@ use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Validator\Constraints\IsTrue;
 use Symfony\Component\Validator\Constraints\Length;
 use Symfony\Component\Validator\Constraints\NotBlank;
+use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
+use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
+use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\TelType;
+use Symfony\Component\Form\Extension\Core\Type\TextType;
+use Symfony\Component\Form\Extension\Core\Type\UrlType;
+use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('email')
-            ->add('nom')
-            ->add('prenom')
-            ->add('userName')
-            ->add('numTel')
-            ->add('image')
+            ->add('email',EmailType::class, [
+                'attr'=>[
+                    'class'=>'form-control'  
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Email(),
+
+                ]
+                ])
+            ->add('nom',TextType::class, [
+                'attr'=>[
+                    'class'=>'form-control'  
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Regex([
+                        'pattern'=>'/^[a-zA-Z]+$/',
+                        'message'=>'the name must not have numbers'
+                    
+                ]),
+
+                ]
+                ])
+            ->add('prenom',TextType::class, [
+                'attr'=>[
+                    'class'=>'form-control'  
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Regex([
+                        'pattern'=>'/^[a-zA-Z]+$/',
+                        'message'=>'the lastname must not have numbers'
+                    
+                ]),
+
+                ]
+                ])
+            ->add('userName',TextType::class, [
+                'attr'=>[
+                    'class'=>'form-control'  
+                ],
+                'constraints' => [
+                    new NotBlank(),
+                    new Regex([
+                        'pattern'=>'/^[a-zA-Z]+$/',
+                        'message'=>'the username must not have numbers'
+                    
+                ]),
+
+                ]
+                ])
+            ->add('numTel',TelType::class,[
+                'attr'=>[
+                    'class'=>'form-control'  
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter a phone number',
+                    ]),
+                    new Length([
+                        'min' => 8,
+                        'minMessage' => 'Your phone number should be at least {{ limit }} characters',
+                        // max length allowed by Symfony for security reasons
+                        'max' => 8,
+                    ]),
+                    new Regex([
+                        'pattern'=>'/^[0-9]+$/',
+                        'message'=>'Your password should be at least 8 characters:upper lower and number'
+                    
+                ]),
+            ]])
+            
+            ->add('image',UrlType::class,[
+                'attr'=>[
+                    'class'=>'form-control'  
+                ],
+                'constraints' => [
+                    new NotBlank([
+                        'message' => 'Please enter image',
+                    ]),
+                 
+            ]])
             ->add('agreeTerms', CheckboxType::class, [
+                
                 'mapped' => false,
                 'constraints' => [
                     new IsTrue([
@@ -35,7 +121,10 @@ class RegistrationFormType extends AbstractType
                 // instead of being set onto the object directly,
                 // this is read and encoded in the controller
                 'mapped' => false,
-                'attr' => ['autocomplete' => 'new-password'],
+                'attr' => ['autocomplete' => 'new-password',
+                
+                    'class'=>'form-control'  
+                ],
                 'constraints' => [
                     new NotBlank([
                         'message' => 'Please enter a password',
@@ -44,10 +133,21 @@ class RegistrationFormType extends AbstractType
                         'min' => 6,
                         'minMessage' => 'Your password should be at least {{ limit }} characters',
                         // max length allowed by Symfony for security reasons
-                        'max' => 4096,
+                        'max' => 8,
                     ]),
+                    
+                    new Regex([
+                        'pattern'=>'/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/',
+                        'message'=>'Your password should be at least 6 characters:upper lower and number'
+                    
+                ]),
                 ],
             ])
+            // ->add('captcha', Recaptcha3Type::class, [
+            //     'constraints' => new Recaptcha3(),
+            //     'action_name' => 'homepage',
+                
+            // ])
         ;
     }
 
