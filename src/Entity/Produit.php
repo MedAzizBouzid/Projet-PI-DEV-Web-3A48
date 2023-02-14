@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -38,6 +40,8 @@ class Produit
     #[ORM\JoinColumn(nullable: false)]
     #[Assert\NotBlank(message: "Catégorie doit etre non vide !")]
     private ?Categorie $categorie = null;
+
+   
 
     public function getId(): ?int
     {
@@ -103,4 +107,5 @@ class Produit
 
         return $this;
     }
+
 }

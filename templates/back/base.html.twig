@@ -93,6 +93,7 @@
                         <div class="dropdown-menu bg-transparent border-0">
                             <a href="{{path ('app_produit_index_back')}}" class="dropdown-item {% block ProdActive %}{% endblock %}">Produits</a>
                             <a href="{{path ('app_categorie_index_back')}}" class="dropdown-item {% block CatActive %}{% endblock %}">Catégorie</a>
+                            <a href="#" class="dropdown-item {% block CommandeActive %}{% endblock %}">Commande</a>
                            
                         </div>
                     </div>
@@ -188,7 +189,7 @@
                         <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
                             <a href="#" class="dropdown-item">My Profile</a>
                             <a href="#" class="dropdown-item">Settings</a>
-                            <a href="#" class="dropdown-item">Log Out</a>
+                            <a href="{{path('app_produit_index_front')}}" class="dropdown-item">Log Out</a>
                         </div>
                     </div>
                 </div>

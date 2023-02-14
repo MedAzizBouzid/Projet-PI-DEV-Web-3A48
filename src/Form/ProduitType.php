@@ -9,7 +9,7 @@ use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
 use Symfony\Component\Form\Extension\Core\Type\SubmitType;
-
+use Symfony\Component\Validator\Constraints\NotBlank;
 
 class ProduitType extends AbstractType
 {
@@ -38,6 +38,9 @@ class ProduitType extends AbstractType
                             'image/jpg',
                         ],
                         'mimeTypesMessage' => 'Please upload a valid Image ',
+                    ]),
+                    new NotBlank([
+                        'message' => 'Veuillez télécharger une photo.'
                     ])
                 ],
             ])

@@ -14,6 +14,10 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
+        '/cart' => [[['_route' => 'app_cart', '_controller' => 'App\\Controller\\CartController::index'], null, null, null, false, false, null]],
+        '/delete' => [[['_route' => 'app_cart_delete_all', '_controller' => 'App\\Controller\\CartController::deleteAll'], null, null, null, false, false, null]],
+        '/addPanier' => [[['_route' => 'app_panier_add', '_controller' => 'App\\Controller\\CartController::addPanier'], null, null, null, false, false, null]],
+        '/panier' => [[['_route' => 'app_panier_show', '_controller' => 'App\\Controller\\CartController::panierShow'], null, null, null, false, false, null]],
         '/categorie/show/back' => [[['_route' => 'app_categorie_index_back', '_controller' => 'App\\Controller\\CategorieController::index'], null, ['GET' => 0], null, false, false, null]],
         '/categorie/new' => [[['_route' => 'app_categorie_new', '_controller' => 'App\\Controller\\CategorieController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/produit/show/back' => [[['_route' => 'app_produit_index_back', '_controller' => 'App\\Controller\\ProduitController::AffichageBack'], null, ['GET' => 0], null, false, false, null]],
@@ -39,15 +43,23 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
+                .'|/test/([^/]++)(*:183)'
+                .'|/update/([^/]++)(*:207)'
+                .'|/add/([^/]++)(*:228)'
+                .'|/remove/([^/]++)(*:252)'
+                .'|/delete(?'
+                    .'|/([^/]++)(*:279)'
+                    .'|Panier/([^/]++)(*:302)'
+                .')'
                 .'|/categorie/([^/]++)(?'
-                    .'|(*:191)'
-                    .'|/edit(*:204)'
-                    .'|(*:212)'
+                    .'|(*:333)'
+                    .'|/edit(*:346)'
+                    .'|(*:354)'
                 .')'
                 .'|/produit/([^/]++)(?'
-                    .'|(*:241)'
-                    .'|/edit(*:254)'
-                    .'|(*:262)'
+                    .'|(*:383)'
+                    .'|/edit(*:396)'
+                    .'|(*:404)'
                 .')'
             .')/?$}sDu',
     ],
@@ -59,12 +71,18 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        191 => [[['_route' => 'app_categorie_show', '_controller' => 'App\\Controller\\CategorieController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        204 => [[['_route' => 'app_categorie_edit', '_controller' => 'App\\Controller\\CategorieController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        212 => [[['_route' => 'app_categorie_delete', '_controller' => 'App\\Controller\\CategorieController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        241 => [[['_route' => 'app_produit_show', '_controller' => 'App\\Controller\\ProduitController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        254 => [[['_route' => 'app_produit_edit', '_controller' => 'App\\Controller\\ProduitController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        262 => [
+        183 => [[['_route' => 'app_cart_test', '_controller' => 'App\\Controller\\CartController::test'], ['id'], null, null, false, true, null]],
+        207 => [[['_route' => 'app_cart_update', '_controller' => 'App\\Controller\\CartController::update'], ['id'], null, null, false, true, null]],
+        228 => [[['_route' => 'app_cart_add', '_controller' => 'App\\Controller\\CartController::add'], ['id'], null, null, false, true, null]],
+        252 => [[['_route' => 'app_cart_remove', '_controller' => 'App\\Controller\\CartController::remove'], ['id'], null, null, false, true, null]],
+        279 => [[['_route' => 'app_cart_delete', '_controller' => 'App\\Controller\\CartController::delete'], ['id'], null, null, false, true, null]],
+        302 => [[['_route' => 'app_panier_delete', '_controller' => 'App\\Controller\\CartController::deletePanier'], ['id'], null, null, false, true, null]],
+        333 => [[['_route' => 'app_categorie_show', '_controller' => 'App\\Controller\\CategorieController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        346 => [[['_route' => 'app_categorie_edit', '_controller' => 'App\\Controller\\CategorieController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        354 => [[['_route' => 'app_categorie_delete', '_controller' => 'App\\Controller\\CategorieController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        383 => [[['_route' => 'app_produit_show', '_controller' => 'App\\Controller\\ProduitController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        396 => [[['_route' => 'app_produit_edit', '_controller' => 'App\\Controller\\ProduitController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        404 => [
             [['_route' => 'app_produit_delete', '_controller' => 'App\\Controller\\ProduitController::delete'], ['id'], ['POST' => 0], null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
