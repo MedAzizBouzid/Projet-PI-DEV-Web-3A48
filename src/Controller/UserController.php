@@ -8,10 +8,12 @@ use App\Form\RegistrationFormType;
 use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
+use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('/admin')]
 class UserController extends AbstractController
@@ -64,7 +66,7 @@ class UserController extends AbstractController
     //     ]);
     // }
     #[Route('/newA', name: 'app_user_newA', methods: ['GET', 'POST'])]
-    public function newA(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository ,RoleRepository $roleRepository): Response
+    public function newA(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository ,RoleRepository $roleRepository,SluggerInterface $slugger): Response
     {
         $user = new User();
         $role=[];
@@ -80,7 +82,30 @@ class UserController extends AbstractController
             );
             $roles[] = 'ROLE_ADMIN';
             $user->setRoles($roles);
-          
+            $image = $form->get('image')->getData();
+
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $image->move(
+                        $this->getParameter('user_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'image$photoname' property to store the PDF file name
+                // instead of its contents
+                $user->setImage($newFilename);
+            }
 
             $userRepository->save($user, true);
 
@@ -93,7 +118,7 @@ class UserController extends AbstractController
         ]);
     }
     #[Route('/newC', name: 'app_user_newC', methods: ['GET', 'POST'])]
-    public function newC(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository ,RoleRepository $roleRepository): Response
+    public function newC(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository ,RoleRepository $roleRepository,SluggerInterface $slugger): Response
     {
         $user = new User();
         $role=[];
@@ -109,7 +134,30 @@ class UserController extends AbstractController
             );
             $roles[] = 'ROLE_COACH';
             $user->setRoles($roles);
-          
+            $image = $form->get('image')->getData();
+
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $image->move(
+                        $this->getParameter('user_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'image$photoname' property to store the PDF file name
+                // instead of its contents
+                $user->setImage($newFilename);
+            }
 
             $userRepository->save($user, true);
 
@@ -152,12 +200,36 @@ class UserController extends AbstractController
     //     ]);
     // }
     #[Route('/{id}/editA', name: 'app_user_editA', methods: ['GET', 'POST'])]
-    public function editA(Request $request, User $user, UserRepository $userRepository): Response
+    public function editA(Request $request, User $user, UserRepository $userRepository,SluggerInterface $slugger): Response
     {
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $image->move(
+                        $this->getParameter('user_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'image$photoname' property to store the PDF file name
+                // instead of its contents
+                $user->setImage($newFilename);
+            }
             $userRepository->save($user, true);
 
             return $this->redirectToRoute('app_user_admin', [], Response::HTTP_SEE_OTHER);
@@ -169,12 +241,36 @@ class UserController extends AbstractController
         ]);
     }
     #[Route('/{id}/editC', name: 'app_user_editC', methods: ['GET', 'POST'])]
-    public function editC(Request $request, User $user, UserRepository $userRepository): Response
+    public function editC(Request $request, User $user, UserRepository $userRepository,SluggerInterface $slugger): Response
     {
         $form = $this->createForm(RegistrationFormType::class, $user);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+
+            // this condition is needed because the 'brochure' field is not required
+            // so the PDF file must be processed only when a file is uploaded
+            if ($image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $image->move(
+                        $this->getParameter('user_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'image$photoname' property to store the PDF file name
+                // instead of its contents
+                $user->setImage($newFilename);
+            }
             $userRepository->save($user, true);
 
             return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);

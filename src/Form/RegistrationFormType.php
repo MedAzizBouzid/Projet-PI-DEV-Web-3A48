@@ -14,10 +14,12 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Karser\Recaptcha3Bundle\Form\Recaptcha3Type;
 use Karser\Recaptcha3Bundle\Validator\Constraints\Recaptcha3;
 use Symfony\Component\Form\Extension\Core\Type\EmailType;
+use Symfony\Component\Form\Extension\Core\Type\FileType;
 use Symfony\Component\Form\Extension\Core\Type\TelType;
 use Symfony\Component\Form\Extension\Core\Type\TextType;
 use Symfony\Component\Form\Extension\Core\Type\UrlType;
 use Symfony\Component\Validator\Constraints\Email;
+use Symfony\Component\Validator\Constraints\File;
 use Symfony\Component\Validator\Constraints\Regex;
 
 class RegistrationFormType extends AbstractType
@@ -98,16 +100,33 @@ class RegistrationFormType extends AbstractType
                 ]),
             ]])
             
-            ->add('image',UrlType::class,[
+            ->add('image',FileType::class, [
                 'attr'=>[
                     'class'=>'form-control'  
                 ],
+                'label' => 'Image du Produit (Des fichiers images seulement)',
+
+                // unmapped means that this field is not associated to any entity property
+                'mapped' => false,
+
+                // make it optional so you don't have to re-upload the PDF file
+                // every time you edit the Product details
+                'required' => false,
+
+                // unmapped fields can't define their validation using annotations
+                // in the associated entity, so you can use the PHP constraint classes
                 'constraints' => [
-                    new NotBlank([
-                        'message' => 'Please enter image',
-                    ]),
-                 
-            ]])
+                    new File([
+                        'maxSize' => '1024k',
+                        'mimeTypes' => [
+                            'image/gif',
+                            'image/jpeg',
+                            'image/jpg',
+                        ],
+                        'mimeTypesMessage' => 'Please upload a valid Image ',
+                    ])
+                ],
+            ])
             ->add('agreeTerms', CheckboxType::class, [
                 
                 'mapped' => false,

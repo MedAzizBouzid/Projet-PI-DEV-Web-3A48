@@ -36,7 +36,7 @@
                                             <td>{{ user.numTel }}</td>
                                             <td>{{ user.password }}</td>
                                             <td>{{ user.etat }}</td>
-                                            <td>{{ user.image }}</td>
+                                            <td><img src="{{asset('uploads/'~ user.image )}}" alt="" class="img-thumbnail"></td>
                                             <td>
                                             {% if app.user.etat == 0 %}
                                                 
@@ -57,6 +57,7 @@
 
                                                 {% else %}
                                                     You don't have access to actions
+                                                    
                                                 {% endif %}
                                             </td>
                                         </tr>
