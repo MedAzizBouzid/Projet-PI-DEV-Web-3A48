@@ -14,6 +14,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Dompdf\Dompdf;
+use Dompdf\Options;
 
 #[Route('/admin')]
 class UserController extends AbstractController
@@ -329,5 +331,31 @@ class UserController extends AbstractController
             $userRepository->save($user, true);
 
         return $this->redirectToRoute('app_user_admin', [], Response::HTTP_SEE_OTHER);
+    }
+    /***************************PDF************************* */
+    #[Route('/coachPdf', name: 'app_user_coachPdf', methods: ['GET'])]
+    public function coachpDF(UserRepository $userRepository): Response
+    {
+        $options = new Options();
+        $options->set('defaultFont', 'Courier');
+        $dompdf = new Dompdf($options);
+        $html= $this->renderView('back/listCoachPdf.html.twig', [
+            'users' => $userRepository->findAllUser('["ROLE_COACH"]'),
+
+        ]);
+        $dompdf->loadHtml($html);
+
+        // (Optional) Setup the paper size and orientation
+        $dompdf->setPaper('A4', 'landscape');
+
+        // Render the HTML as PDF
+        $dompdf->render();
+
+        // Output the generated PDF to Browser
+        $dompdf->stream();
+        return $this->render('back/tableCoach.html.twig', [
+            'users' => $userRepository->findAllUser('["ROLE_COACH"]'),
+
+        ]);
     }
 }
