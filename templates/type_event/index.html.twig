@@ -1,0 +1,45 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}TypeEvent index{% endblock %}
+
+{% block body %}
+   
+        <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+            <div class="container-fluid pt-4 px-4" style="bottom:0;">
+                <h1>TypeEvent index</h1>
+
+    
+                <a href="{{ path('app_type_event_new') }}" class="btn-danger">Create new</a>
+                {# <div class="card-body"> #}
+                        <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>TypeE</th>
+                                            <th>actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                    {% for type_event in type_events %}
+                                        <tr>
+                                            <td>{{ type_event.id }}</td>
+                                            <td>{{ type_event.typeE }}</td>
+                                            <td>
+                                                <a href="{{ path('app_type_event_show', {'id': type_event.id}) }}">show</a>
+                                                <a href="{{ path('app_type_event_edit', {'id': type_event.id}) }}">edit</a>
+                                                {{ include('type_event/_delete_form.html.twig') }}
+                                            </td>
+                                        </tr>
+                                    {% else %}
+                                        <tr>
+                                            <td colspan="3">no records found</td>
+                                        </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                </table>
+                        </div>
+            </div>
+        </div>
+    
+{% endblock %}

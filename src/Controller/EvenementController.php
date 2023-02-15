@@ -21,6 +21,16 @@ class EvenementController extends AbstractController
         ]);
     }
 
+    // afficher event dans front
+    #[Route('/front', name: 'app_evenement_index_front', methods: ['GET'])]
+    public function showFront(EvenementRepository $evenementRepository): Response
+    {
+        return $this->render('front/services.html.twig', [
+            'evenements' => $evenementRepository->findAll(),
+        ]);
+    }
+
+
     #[Route('/new', name: 'app_evenement_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EvenementRepository $evenementRepository): Response
     {

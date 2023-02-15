@@ -24,10 +24,12 @@ class Sponsor
     private ?string $email = null;
 
     #[ORM\ManyToOne(inversedBy: 'sponsors')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?TypeContrat $type = null;
 
     #[ORM\ManyToOne(inversedBy: 'sponsors')]
-    private ?evenement $event = null;
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    private ?Evenement $event = null;
 
     public function getId(): ?int
     {
@@ -82,12 +84,12 @@ class Sponsor
         return $this;
     }
 
-    public function getEvent(): ?evenement
+    public function getEvent(): ?Evenement
     {
         return $this->event;
     }
 
-    public function setEvent(?evenement $event): self
+    public function setEvent(?Evenement $event): self
     {
         $this->event = $event;
 

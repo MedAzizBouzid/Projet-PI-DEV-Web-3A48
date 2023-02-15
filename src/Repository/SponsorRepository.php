@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Sponsor;
+use App\Entity\Evenement;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -63,4 +64,16 @@ class SponsorRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+
+   public function findSponsorsByEvent($eventId)
+{
+    $qb = $this->createQueryBuilder('s')
+        ->leftJoin('s.event', 'e')
+        ->andWhere('e.id = :eventId')
+        ->setParameter('eventId', $eventId)
+        ->getQuery();
+
+    return $qb->getResult();
+}
 }

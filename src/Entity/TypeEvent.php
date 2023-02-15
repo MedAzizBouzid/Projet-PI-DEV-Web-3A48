@@ -31,14 +31,14 @@ class TypeEvent
         return $this->id;
     }
 
-    public function getType(): ?string
+    public function getTypeE(): ?string
     {
         return $this->typeE;
     }
 
-    public function setType(string $type): self
+    public function setTypeE(string $typeE): self
     {
-        $this->typeE = $type;
+        $this->typeE = $typeE;
 
         return $this;
     }
