@@ -5,7 +5,23 @@
     --light: #6C7293;
     --dark: #000000;
 }
-
+.custom-form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+  }
+  
+  .custom-form .custom-input {
+    width: 100%;
+    margin-bottom: 10px;
+  }
+  
+  .custom-button {
+    background-color: #ff0000;
+    color: #fff;
+    border-color: #ff0000;
+  }
 .back-to-top {
     position: fixed;
     display: none;

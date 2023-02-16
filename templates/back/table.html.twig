@@ -2,59 +2,169 @@
 
 
 {% block body %}
-            <!-- Table Start -->
-            <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-            <div class="container-fluid pt-4 px-4" style="bottom:0;">
-            <button type="button" class="btn btn-light m-2">Add New</button>
-                {# <div class="card-body"> #}
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Products</th>
-                                            <th>Price</th>
-                                            <th>date</th>
-                                            <th>client</th>
-                                            <th>etat</th>
-                                            <th>action</th>
-                                        </tr>
-                                    </thead>
-                                   
-                                    <tbody>
-                                        <tr>
-                                            <th scope="row">1</th>
-                                            <td>John</td>
-                                            <td>Doe</td>
-                                            <td>jhon@email.com</td>
-                                            <td>USA</td>
-                                            <td>123</td>
-                                            <td>Member</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">2</th>
-                                            <td>Mark</td>
-                                            <td>Otto</td>
-                                            <td>mark@email.com</td>
-                                            <td>UK</td>
-                                            <td>456</td>
-                                            <td>Member</td>
-                                        </tr>
-                                        <tr>
-                                            <th scope="row">3</th>
-                                            <td>Jacob</td>
-                                            <td>Thornton</td>
-                                            <td>jacob@email.com</td>
-                                            <td>AU</td>
-                                            <td>789</td>
-                                            <td>Member</td>
-                                        </tr>
-                                    </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            </div>
-            <!-- Table End -->
-            {% endblock %}
+	<!-- Table Start -->
+	
+	<div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+		<form class="d-flex" action="chercher_salle" method="GET">
+			<input class="form-control me-2" name="dhia" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success" type="submit">Search</button>
+	    </form>
 
+		<div class="container-fluid pt-4 px-4" style="bottom:0;">
+ 
+
+    {#_________________________________ Partie pop-up ____________________________________________________#}
+<button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+  Ajouter une salle
+</button>
+
+    {#_________________________________ Partie pop-up ____________________________________________________#}
+
+
+    {#_________________________________ Partie pop-up ____________________________________________________#}
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une salle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+ 
+    				
+					<div class="form-group" style="position: center;">
+															
+																					{{ form_start(form) }}
+																					{{ form_widget(form) }}
+																					<button type="submit">Save</button>
+																					{{ form_end(form) }}
+															                </div>
+
+      </div>
+    </div>
+  </div>
+</div>
+ 
+
+    {#_________________________________ Partie pop-up ____________________________________________________#}
+
+
+
+
+
+
+
+	<div>
+							{# __________________________________________ #}
+{# 
+							<form action="find_Salle" method="GET">
+								<input type="text"  name="find" placeholder="Entrez un lieu...">
+								<button class="btn btn-light m-2" type="submit">Rechercher</button>
+							</form>
+						</div> #}
+
+{# 
+		<form  class="d-flex" action="find_Salle" method="GET">
+				<input class="form-control me-2" name="findbyname" type="search" placeholder="Search" aria-label="Search">
+				<button class="btn btn-outline-success" type="submit">Search</button>
+			</form> #}
+
+ 
+			<a href={{path('app_salle_new')}} <button style="width:25%;height:35%"
+			 type="button"   class="btn btn-light m-2"> Ajouter un une nouvelle salle
+			  </button> </a>  
+			 
+			{# _________PARTIE POP-UP__________________________________________________________ #}
+
+			<div class="table-responsive"> 
+			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
+			<thead>
+			  <tr>
+			  		<th style ="color:#FF0000">#</th>
+					<th style ="color:#FF0000">Nom</th>
+					<th style ="color:#FF0000">Lieu</th>
+					<th style ="color:#FF0000">Telephone</th>
+				    <th style ="color:#FF0000">Email</th>
+			  		<th style ="color:#FF0000">Superficie</th>
+			  		<th style ="color:#FF0000">Description</th>
+					{# <th style ="color:#FF0000">Image</th> #}
+
+					<th style ="color:#FF0000">action</th>
+
+			  </tr>
+			</thead>
+
+			{% for p in salles %}
+			<tbody>
+								
+			<tr>
+				{# <th scope="row">1</th> #}
+				<td style="font-family: Arial, sans-serif;" >{{p.id}}</td>
+				<td   >{{p.nom}}</td>
+				<td  >{{p.lieu}}</td>
+				<td  >{{p.telephone}}</td>
+				<td  >{{p.email}}</td>
+				<td  >{{p.superficie}}</td>
+				<td  >{{p.description}}</td>
+				{# <td> <img class="img-thumbnail" src="{{asset('uploads/'~ p.image)}}" alt="" ></td> #}
+
+				<td><a href="{{path('deleteevent',{'id':p.id})}}"><i class="bi bi-trash"></i></a></td>
+
+				<td><a href="{{path('app_salle_edit',{'id':p.id})}}"><span class="bi bi-cart-fill"></a></td>
+
+			</tr>
+										
+		</tbody>
+			{% endfor %} 
+			 
+
+ 
+				</table>
+				</div>
+		</div>
+</div>
+<!-- Table End -->
+{% endblock %}
+
+
+
+ {# <form action="ajouter_salle" method="GET">
             
+			<div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">nom</label>
+                <input name="nom" placeholder="Nom" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text"> 
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">lieu</label>
+                <input name="lieu" placeholder="lieu" type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+
+             <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">telephone</label>
+                <input name="telephone" placeholder="lieu" type="telephone" class="form-control" id="exampleInputPassword1">
+            </div>
+
+
+			 <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">email</label>
+                <input name="email"  placeholder="Email" type="email" class="form-control" id="exampleInputPassword1">
+            </div>
+
+			 <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">superficie</label>
+                <input name="superficie" placeholder="Superficie" type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+			 <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">description</label>
+                <input name="description" placeholder="Déscription" type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <button type="submit" href={{path('new1')}} class="btn btn-primary">Ajouter
+            </button>
+        </form>   #}
+ 											
