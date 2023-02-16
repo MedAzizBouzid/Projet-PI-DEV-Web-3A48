@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Categorie;
 use App\Form\CategorieType;
 use App\Repository\CategorieRepository;
+use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -16,7 +17,7 @@ class CategorieController extends AbstractController
     #[Route('/show/back', name: 'app_categorie_index_back', methods: ['GET'])]
     public function index(CategorieRepository $categorieRepository): Response
     {
-        return $this->render('back/categorie/table.html.twig', [
+        return $this->render('back/categorie/CategorieB.html.twig', [
             'categories' => $categorieRepository->findAll(),
         ]);
     }
@@ -67,9 +68,15 @@ class CategorieController extends AbstractController
         ]);
     }
 
-    #[Route('/{id}', name: 'app_categorie_delete', methods: ['POST'])]
-    public function delete(Request $request, Categorie $categorie, CategorieRepository $categorieRepository): Response
+    #[Route('/delete/{id}', name: 'app_categorie_delete', methods: ['GET', 'POST'])]
+    public function delete(Request $request, Categorie $categorie, ProduitRepository $PR, CategorieRepository $categorieRepository): Response
     {
+        $results = $categorie->getProduits();
+        for ($i = 0; $i < count($results); $i++) {
+            $results[$i]->setCategorie(null);
+            $PR->save($results[$i], true);
+        }
+
         if ($this->isCsrfTokenValid('delete' . $categorie->getId(), $request->request->get('_token'))) {
             $categorieRepository->remove($categorie, true);
         }

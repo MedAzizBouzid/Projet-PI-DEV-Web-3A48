@@ -19,7 +19,7 @@ class Commande
     #[ORM\Column]
     private ?float $TotalCommande = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'refresh'])]
+    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
     private ?Panier $Panier = null;
 
     #[ORM\Column(length: 255)]
@@ -27,7 +27,11 @@ class Commande
 
     #[ORM\Column(length: 255)]
     private ?string $NumTelClient = null;
-
+    // Register Magic Method to Print the name of the State e.g California
+    public function __toString()
+    {
+        return (string) $this->getPanier();
+    }
     public function getId(): ?int
     {
         return $this->id;

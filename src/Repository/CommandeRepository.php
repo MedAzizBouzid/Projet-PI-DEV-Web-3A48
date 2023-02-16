@@ -63,4 +63,8 @@ class CommandeRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function findCommandeById(int $id): ?Commande
+{
+    return $this->findOneBy(['id' => $id]);
+}
 }

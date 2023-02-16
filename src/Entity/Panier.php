@@ -31,6 +31,7 @@ class Panier
     {
         $this->lignesPanier = new ArrayCollection();
     }
+// Register Magic Method to Print the name of the State e.g California
 
     public function getId(): ?int
     {

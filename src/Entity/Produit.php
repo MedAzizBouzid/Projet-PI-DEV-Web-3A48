@@ -37,11 +37,11 @@ class Produit
     private ?string $stock = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: "categorie_id", referencedColumnName: "id", onDelete: "SET NULL")]
     #[Assert\NotBlank(message: "Catégorie doit etre non vide !")]
     private ?Categorie $categorie = null;
 
-   
+
 
     public function getId(): ?int
     {
@@ -107,5 +107,4 @@ class Produit
 
         return $this;
     }
-
 }

@@ -9,6 +9,8 @@ use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: CategorieRepository::class)]
+// #[ORM\EntityListeners(["App\EventListener\CategorieListener"])]
+
 class Categorie
 {
     #[ORM\Id]
@@ -22,8 +24,9 @@ class Categorie
 
     private ?string $Type = null;
 
-    #[ORM\OneToMany(mappedBy: 'Categorie', targetEntity: Produit::class)]
+    #[ORM\OneToMany(mappedBy: 'categorie', targetEntity: Produit::class)]
     private Collection $produits;
+
 
     public function __construct()
     {
