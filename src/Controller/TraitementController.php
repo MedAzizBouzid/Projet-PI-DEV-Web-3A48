@@ -11,8 +11,9 @@ class TraitementController extends AbstractController
     #[Route('/traitement', name: 'app_traitement')]
     public function index(): Response
     {
-        return $this->render('front/about-us.html.twig', [
+        return $this->render('back/form.html.twig', [
             'controller_name' => 'TraitementController',
         ]);
     }
 }
+
