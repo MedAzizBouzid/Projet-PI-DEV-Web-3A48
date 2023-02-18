@@ -27,6 +27,7 @@ return [
     'app_salle_index' => [[], ['_controller' => 'App\\Controller\\SalleController::index'], [], [['text', '/salle/']], [], [], []],
     'chercher_salle' => [[], ['_controller' => 'App\\Controller\\SalleController::chercher_student'], [], [['text', '/salle/chercher_salle']], [], [], []],
     'app_salle_new' => [[], ['_controller' => 'App\\Controller\\SalleController::new'], [], [['text', '/salle/new']], [], [], []],
+    'app_salle_new_ajax' => [[], ['_controller' => 'App\\Controller\\SalleController::new1'], [], [['text', '/salle/new1']], [], [], []],
     'app_salle_show' => [['id'], ['_controller' => 'App\\Controller\\SalleController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/salle']], [], [], []],
     'app_salle_edit' => [['id'], ['_controller' => 'App\\Controller\\SalleController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/salle']], [], [], []],
     'app_salle_delete' => [['id'], ['_controller' => 'App\\Controller\\SalleController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/salle']], [], [], []],
@@ -44,4 +45,5 @@ return [
     'go_button' => [[], ['_controller' => 'App\\Controller\\TraitementController::gobutton'], [], [['text', '/gobutton']], [], [], []],
     'show_activite_infront' => [[], ['_controller' => 'App\\Controller\\TraitementController::showSalleinfront'], [], [['text', '/showactiviteinfront']], [], [], []],
     'service' => [[], ['_controller' => 'App\\Controller\\TraitementController::Show_activitefront'], [], [['text', '/service']], [], [], []],
+    'app_salle_new_ajax1' => [[], ['_controller' => 'App\\Controller\\TraitementController::new1'], [], [['text', '/ajax']], [], [], []],
 ];

@@ -193,15 +193,30 @@ class __TwigTemplate_da4c5e80feef663a7f06c4f417aafcac extends Template
         echo "
 
 \t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"mb-3 form-check\" style=\"position:center;  \">
+\t\t\t\t\t\t\t";
+        // line 72
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 72, $this->source); })()), "cours", [], "any", false, false, false, 72), 'label');
+        echo "
+\t\t\t\t\t\t\t";
+        // line 73
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 73, $this->source); })()), "cours", [], "any", false, false, false, 73), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 500px; padding: 7px;"]]);
+        echo "
+\t\t\t\t\t\t\t";
+        // line 74
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 74, $this->source); })()), "cours", [], "any", false, false, false, 74), 'errors');
+        echo "
+
+\t\t\t\t\t\t</div>
 \t\t\t\t\t\t<button style=\"width: 90px;padding: 7px;\" class=\"btn btn-primary\">";
-        // line 71
-        echo twig_escape_filter($this->env, ((array_key_exists("button_label", $context)) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 71, $this->source); })()), "Save")) : ("Save")), "html", null, true);
+        // line 77
+        echo twig_escape_filter($this->env, ((array_key_exists("button_label", $context)) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 77, $this->source); })()), "Save")) : ("Save")), "html", null, true);
         echo "</button>
 
 
 \t\t\t\t\t\t";
-        // line 74
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 74, $this->source); })()), 'form_end');
+        // line 80
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 80, $this->source); })()), 'form_end');
         echo "
 
 \t\t\t\t\t</div>
@@ -209,9 +224,9 @@ class __TwigTemplate_da4c5e80feef663a7f06c4f417aafcac extends Template
 \t\t\t</div>
 
 \t\t\t";
-        // line 81
+        // line 87
         echo "\t\t\t";
-        // line 321
+        // line 327
         echo "\t\t</div>
 \t\t<!-- Form End -->
 \t";
@@ -235,7 +250,7 @@ class __TwigTemplate_da4c5e80feef663a7f06c4f417aafcac extends Template
 
     public function getDebugInfo()
     {
-        return array (  215 => 321,  213 => 81,  204 => 74,  198 => 71,  192 => 68,  188 => 67,  184 => 66,  177 => 62,  173 => 61,  169 => 60,  161 => 55,  157 => 54,  153 => 53,  144 => 47,  140 => 46,  136 => 45,  128 => 40,  124 => 39,  120 => 38,  113 => 34,  109 => 33,  105 => 32,  97 => 27,  93 => 26,  89 => 25,  85 => 23,  83 => 22,  79 => 20,  71 => 7,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  230 => 327,  228 => 87,  219 => 80,  213 => 77,  207 => 74,  203 => 73,  199 => 72,  192 => 68,  188 => 67,  184 => 66,  177 => 62,  173 => 61,  169 => 60,  161 => 55,  157 => 54,  153 => 53,  144 => 47,  140 => 46,  136 => 45,  128 => 40,  124 => 39,  120 => 38,  113 => 34,  109 => 33,  105 => 32,  97 => 27,  93 => 26,  89 => 25,  85 => 23,  83 => 22,  79 => 20,  71 => 7,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -308,6 +323,12 @@ class __TwigTemplate_da4c5e80feef663a7f06c4f417aafcac extends Template
 \t\t\t\t\t\t\t{{form_label(form.image)}}
 \t\t\t\t\t\t\t{{form_widget(form.image, {'attr': {'class': 'form-control', 'style': 'width: 500px; padding: 7px;'}})}}
 \t\t\t\t\t\t\t{{form_errors(form.image)}}
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"mb-3 form-check\" style=\"position:center;  \">
+\t\t\t\t\t\t\t{{form_label(form.cours)}}
+\t\t\t\t\t\t\t{{form_widget(form.cours, {'attr': {'class': 'form-control', 'style': 'width: 500px; padding: 7px;'}})}}
+\t\t\t\t\t\t\t{{form_errors(form.cours)}}
 
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<button style=\"width: 90px;padding: 7px;\" class=\"btn btn-primary\">{{ button_label|default('Save') }}</button>
@@ -563,6 +584,6 @@ class __TwigTemplate_da4c5e80feef663a7f06c4f417aafcac extends Template
 \t\t</div>
 \t\t<!-- Form End -->
 \t{% endblock %}
-", "back/form.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\back\\form.html.twig");
+", "back/form.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\back\\form.html.twig");
     }
 }

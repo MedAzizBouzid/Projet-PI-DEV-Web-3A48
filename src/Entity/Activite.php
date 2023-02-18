@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ActiviteRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 
 #[ORM\Entity(repositoryClass: ActiviteRepository::class)]
@@ -36,6 +38,14 @@ class Activite
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    #[ORM\ManyToMany(targetEntity: Salle::class, mappedBy: 'cours')]
+    private Collection $salles;
+
+    public function __construct()
+    {
+        $this->salles = new ArrayCollection();
+    }
 
    
 
@@ -136,6 +146,33 @@ class Activite
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Salle>
+     */
+    public function getSalles(): Collection
+    {
+        return $this->salles;
+    }
+
+    public function addSalle(Salle $salle): self
+    {
+        if (!$this->salles->contains($salle)) {
+            $this->salles->add($salle);
+            $salle->addCour($this);
+        }
+
+        return $this;
+    }
+
+    public function removeSalle(Salle $salle): self
+    {
+        if ($this->salles->removeElement($salle)) {
+            $salle->removeCour($this);
+        }
 
         return $this;
     }

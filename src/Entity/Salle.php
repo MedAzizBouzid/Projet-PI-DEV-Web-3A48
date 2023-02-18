@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\SalleRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -34,6 +36,14 @@ class Salle
 
     #[ORM\Column(length: 255)]
     private ?string $image = null;
+
+    #[ORM\ManyToMany(targetEntity: Activite::class, inversedBy: 'salles')]
+    private Collection $cours;
+
+    public function __construct()
+    {
+        $this->cours = new ArrayCollection();
+    }
 
     
 
@@ -122,6 +132,30 @@ class Salle
     public function setImage(string $image): self
     {
         $this->image = $image;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activite>
+     */
+    public function getCours(): Collection
+    {
+        return $this->cours;
+    }
+
+    public function addCour(Activite $cour): self
+    {
+        if (!$this->cours->contains($cour)) {
+            $this->cours->add($cour);
+        }
+
+        return $this;
+    }
+
+    public function removeCour(Activite $cour): self
+    {
+        $this->cours->removeElement($cour);
 
         return $this;
     }

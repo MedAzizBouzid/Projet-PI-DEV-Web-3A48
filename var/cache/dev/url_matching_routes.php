@@ -14,13 +14,14 @@ return [
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/xdebug' => [[['_route' => '_profiler_xdebug', '_controller' => 'web_profiler.controller.profiler::xdebugAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/activite' => [[['_route' => 'app_activite_index', '_controller' => 'App\\Controller\\ActiviteController::index'], null, ['GET' => 0], null, true, false, null]],
+        '/activite' => [[['_route' => 'app_activite_index', '_controller' => 'App\\Controller\\ActiviteController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
         '/activite/new' => [[['_route' => 'app_activite_new', '_controller' => 'App\\Controller\\ActiviteController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/activite/Show_activite_front' => [[['_route' => 'Show_activite_front', '_controller' => 'App\\Controller\\ActiviteController::Show_activitefront'], null, null, null, false, false, null]],
         '/activite/Show_activite' => [[['_route' => 'Show_activite', '_controller' => 'App\\Controller\\ActiviteController::Show_activite'], null, null, null, false, false, null]],
         '/salle' => [[['_route' => 'app_salle_index', '_controller' => 'App\\Controller\\SalleController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
         '/salle/chercher_salle' => [[['_route' => 'chercher_salle', '_controller' => 'App\\Controller\\SalleController::chercher_student'], null, null, null, false, false, null]],
         '/salle/new' => [[['_route' => 'app_salle_new', '_controller' => 'App\\Controller\\SalleController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/salle/new1' => [[['_route' => 'app_salle_new_ajax', '_controller' => 'App\\Controller\\SalleController::new1'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/Show_salle_front' => [[['_route' => 'Show_salle_front', '_controller' => 'App\\Controller\\TraitementController::Show_salle_front'], null, null, null, false, false, null]],
         '/back' => [[['_route' => 'back', '_controller' => 'App\\Controller\\TraitementController::index'], null, null, null, false, false, null]],
         '/front' => [[['_route' => 'app_front', '_controller' => 'App\\Controller\\TraitementController::index_front'], null, null, null, false, false, null]],
@@ -30,6 +31,7 @@ return [
         '/gobutton' => [[['_route' => 'go_button', '_controller' => 'App\\Controller\\TraitementController::gobutton'], null, null, null, false, false, null]],
         '/showactiviteinfront' => [[['_route' => 'show_activite_infront', '_controller' => 'App\\Controller\\TraitementController::showSalleinfront'], null, null, null, false, false, null]],
         '/service' => [[['_route' => 'service', '_controller' => 'App\\Controller\\TraitementController::Show_activitefront'], null, null, null, false, false, null]],
+        '/ajax' => [[['_route' => 'app_salle_new_ajax1', '_controller' => 'App\\Controller\\TraitementController::new1'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'

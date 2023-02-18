@@ -68,6 +68,12 @@
 							{{form_errors(form.image)}}
 
 						</div>
+						<div class="mb-3 form-check" style="position:center;  ">
+							{{form_label(form.cours)}}
+							{{form_widget(form.cours, {'attr': {'class': 'form-control', 'style': 'width: 500px; padding: 7px;'}})}}
+							{{form_errors(form.cours)}}
+
+						</div>
 						<button style="width: 90px;padding: 7px;" class="btn btn-primary">{{ button_label|default('Save') }}</button>
 
 

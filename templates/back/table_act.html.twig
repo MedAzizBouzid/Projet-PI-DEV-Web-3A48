@@ -2,21 +2,24 @@
 
 
 {% block body %}
+<style>
+
+</style>
 	<!-- Table Start -->
 	
-	<div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+	{# <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
 		<form class="d-flex" action="chercher_salle" method="GET">
 			<input class="form-control me-2" name="dhia" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success" type="submit">Search</button>
 	    </form>
 
 		<div class="container-fluid pt-4 px-4" style="bottom:0;">
- 
+  #}
 
     {#_________________________________ Partie pop-up ____________________________________________________#}
-<button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+{# <button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
   Ajouter une salle
-</button>
+</button> #}
 
     {#_________________________________ Partie pop-up ____________________________________________________#}
 
@@ -24,7 +27,7 @@
     {#_________________________________ Partie pop-up ____________________________________________________#}
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{# <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -42,10 +45,10 @@
 																					{{ form_end(form) }}
 															                </div> #}
 
-      </div>
+      {# </div>
     </div>
   </div>
-</div>
+</div> #} 
  
 
     {#_________________________________ Partie pop-up ____________________________________________________#}
@@ -72,33 +75,177 @@
 			</form> #}
 
  		 
-			<a href={{path('app_activite_new')}} <button style="width:25%;height:35%"
-			 type="button"   class="btn btn-light m-2"> Ajouter un une nouvelle activité
-			  </button> </a>  
+		
 			 
-			{# _________PARTIE POP-UP__________________________________________________________ #}
-
+ 
 			<div class="table-responsive"> 
 			 
-						{# {% for p in activite %}
+          <div class="bg-secondary text-center rounded p-4">
+					<a href={{path('app_activite_new')}} <button style="width:25%;height:35%"
+			 type="button"   class="btn btn-light m-2"> Ajouter une nouvelle activité
+			  </button> </a>  
 
+			  {# <button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter une salle</button> #}
 
-			<img src={{p.image}} alt="Une belle image">
-						{% endfor %} #}
+  {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
+<button id="openBtn"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter une nouvelle activité</button>
 
-		{# ________________________________________Test affiche d'image _________________________________________________________________ #}
-
-			
-{# 
-					{% for p in activite %}
-<ul>
-  <li><img src="chemin/vers/image1.jpg" alt="Description de l'image 1">{{p.image}}</li>
+<!-- La pop-up -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une salle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
  
-</ul>							{% endfor %}
- #}
+    				
+					<div class="form-group" style="position: center;">
+   {# --------------------------------------FORM START-------------------------------------- #}
+      {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}
+					) }}
 
+ 					<div class="row g-3 align-items-center ">
+
+						{{form_label(form.nom)}}
+						{{form_widget(form.nom, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.nom)}}
+
+					</div>
+
+					<div class="row g-3 align-items-center">
+						{{form_label(form.categorie)}}
+						{{form_widget(form.categorie, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.categorie)}}
+
+					</div>
+
+
+					<div class="row g-3 align-items-center">
+
+						{{form_label(form.materiel)}}
+						{{form_widget(form.materiel, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.materiel) }}
+
+					</div>
+
+
+					<div class="row g-3 align-items-center">
+
+						{{form_label(form.intensite)}}
+						{{form_widget(form.intensite, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.intensite) }}
+
+					</div>
+
+					<div class="row g-3 align-items-center">
+ 
+						{{form_label(form.GRPmusculaire)}}
+						{{form_widget(form.GRPmusculaire, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.GRPmusculaire) }}
+
+					</div>
+
+					<div class="row g-3 align-items-center">
+						{{form_label(form.tenue)}}
+						{{form_widget(form.tenue, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.tenue) }}
+
+					</div>
+
+					<div class="row g-3 align-items-center" ;>
+						{{form_label(form.recomendation)}}
+						{{form_widget(form.recomendation, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.recomendation)}}
+
+					</div>
+					<div class="row g-3 align-items-center ">
+						{{form_label(form.image)}}
+						{{form_widget(form.image, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.image)}}
+
+					</div>
+		 
+		    </div>
+<button style="width: 90px;padding: 5px;" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+
+						{{ form_end(form) }}
+               {# --------------------------------------FORM END-------------------------------------- #}
+
+      </div>
+    </div>
+  </div>
+</div>
+  {# <!-- Modal-----------------------------------FIN DU POP UP--------- ---------- #}
+
+                    <div class="d-flex align-items-center justify-content-between mb-4">
+                        {# <h6 class="mb-0">Salles</h6> #}
+                        <a href="">Show All</a>
+                    </div>
+                    <div class="table-responsive">
+								        <div class="btn-toggle">Go Nuit</div>
+
+                       	<div id="pagination">
+							<a href="#" class="previous">&laquo; Previous</a>
+							<a href="#" class="next">Next &raquo;</a>
+							</div>
+					    {# <table id="myTable" class="table text-start align-middle table-bordered table-hover mb-0"> #}
+                     <table id="myTable" class="light">
+
+							<thead>
+                                <tr class="text-white">
+                                    {# <th scope="col"><input class="form-check-input" type="checkbox"></th> #}
+                                     <th scope="col">#</th>
+								    <th scope="col">nom</th>
+								    <th scope="col">categorie</th>
+                                    <th scope="col">materiel</th>
+                                    <th scope="col">intensite</th>
+                                    <th scope="col">GRPmusculaire</th>
+                                    <th scope="col">tenue</th>
+									<th scope="col">recomendation</th>
+                                    <th scope="col">Salles</th>
+								    <th scope="col">Action</th>
+
+
+                                </tr>
+                            </thead>
+							 			{% for p in activite %}
+
+                            <tbody>
+                                <tr>
+					
+									<td >{{p.id}}</td>
+									<td>{{p.nom}}</td>
+									<td>{{p.categorie}}</td>
+									<td>{{p.materiel}}</td>
+									<td>{{p.intensite}}</td>
+									<td>{{p.GRPmusculaire}}</td>
+									<td>{{p.tenue}}</td>
+									<td>{{p.recomendation}}</td>
+									<td></ul>{% for c in p.salles %} <li>{{c.nom}}</li>{% endfor %} <ul></td>
+									<td>
+									<td><a href="{{path('app_activite_delete',{'id':p.id})}}"><i class="bi bi-trash"></i></a></td>
+
+									<td><a href="{{path('app_activite_edit',{'id':p.id})}}"><span class="bi bi-cart-fill"></span></a></td>
+									<td><a href="{{path('app_activite_show',{'id':p.id})}}"><i class="bi bi-book"></i></a></td>
+									</td>
+								
+								</tr>
+                             
+                            </tbody>
+						  {% endfor %} 
+
+                        </table>
+								{# Pagination code  #}
+					
+                    </div>
+                </div>
+            </div>
+            <!-- Recent Sales End -->
 		{# _________________________________________________________________________________________________________ #}
-			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
+			{# <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
 			<thead>
 			  <tr> 
 			  		<th style ="color:#FF0000">#id</th>
@@ -111,13 +258,14 @@
 
  			  		<th style ="color:#FF0000">tenu</th>
 					<th style ="color:#FF0000">Recomendation</th>
-					<th style ="color:#FF0000">image</th>
-					{# <th style ="color:#FF0000">action</th> #}
+ 					<th style ="color:#FF0000">Salle</th>
 
-			  </tr>
+ 				 
+					<th style ="color:#FF0000">action</th>
+
+			 </tr>
 			</thead>
-
-			{% for p in activite %}
+ 			{% for p in activite %}
 			<tbody>
 		 				
 			<tr>
@@ -129,16 +277,18 @@
 				<td>{{p.GRPmusculaire}}</td>
 				<td>{{p.tenue}}</td>
 				<td>{{p.recomendation}}</td>
+				<td></ul>{% for c in p.salles %} <li>{{c.nom}}</li>{% endfor %} <ul></td> #}
 				{# <td> <img class="img-thumbnail" src="{{asset('uploads/'~ p.image)}}" alt="" ></td> #}
 				{# <td>{{p.image}}</td> #}
 
      
  				{# <td><a href="{{path('app_activite_delete',{'id':p.id})}}"><img style="width:20%;height:10%;"src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSPiVlUmob19QYwhukJjI15xf3TGNxw8x9wOSssILAixg&s"></a></td> #}
-			 				<td><a href="{{path('app_activite_delete',{'id':p.id})}}"><i class="bi bi-trash"></i>
-</a></td>
+			{# <td>
+				<td><a href="{{path('app_activite_delete',{'id':p.id})}}"><i class="bi bi-trash"></i></a></td>
 
-			<td><a href="{{path('app_activite_edit',{'id':p.id})}}"><span class="bi bi-cart-fill"></span></a></td>
-				<td><a href="{{path('app_activite_show',{'id':p.id})}}">Details</a></td>
+				<td><a href="{{path('app_activite_edit',{'id':p.id})}}"><span class="bi bi-cart-fill"></span></a></td>
+				<td><a href="{{path('app_activite_show',{'id':p.id})}}"><i class="bi bi-book"></i></a></td>
+				</td>
  			</tr>
 										
 		</tbody> 
@@ -149,47 +299,80 @@
 				</table>
 				</div>
 		</div>
-</div>
+</div> #}
 <!-- Table End -->
+
+			<script>
+			{# script pagination #}
+let table = document.getElementById('myTable');
+let rowsPerPage = 5;
+let currentPage = 1;
+
+function showPage(page) {
+  let startIndex = (page - 1) * rowsPerPage;
+  let endIndex = startIndex + rowsPerPage;
+
+  let rows = table.rows;
+  for (let i = 1; i < rows.length; i++) {
+    let row = rows[i];
+    if (i < startIndex || i >= endIndex) {
+      row.style.display = 'none';
+    } else {
+      row.style.display = '';
+    }
+  }
+}
+
+function nextPage() {
+  if (currentPage < numPages()) {
+    currentPage++;
+    showPage(currentPage);
+  }
+}
+
+function previousPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    showPage(currentPage);
+  }
+}
+
+function numPages() {
+  return Math.ceil((table.rows.length - 1) / rowsPerPage);
+}
+
+document.querySelector('.previous').addEventListener('click', previousPage);
+document.querySelector('.next').addEventListener('click', nextPage);
+
+showPage(currentPage);
+
+
+
+
+			{# script theme claire/sombre  #}
+
+const btnToggle = document.querySelector('.btn-toggle');
+
+btnToggle.addEventListener('click', () => {
+
+    const body = document.body;
+
+    if(body.classList.contains('dark')){
+
+        body.classList.add('light')
+        body.classList.remove('dark')
+        btnToggle.innerHTML = "Go Dark"
+
+    } else if(body.classList.contains('light')){
+
+        body.classList.add('dark')
+        body.classList.remove('light')
+        btnToggle.innerHTML = "Go Light"
+
+    }
+
+})
+			</script>
 {% endblock %}
 
-
-
- {# <form action="ajouter_salle" method="GET">
-            
-			<div class="mb-3">
-                <label for="exampleInputEmail1" class="form-label">nom</label>
-                <input name="nom" placeholder="Nom" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
-                <div id="emailHelp" class="form-text"> 
-                </div>
-            </div>
-
-            <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">lieu</label>
-                <input name="lieu" placeholder="lieu" type="text" class="form-control" id="exampleInputPassword1">
-            </div>
-
-             <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">telephone</label>
-                <input name="telephone" placeholder="lieu" type="telephone" class="form-control" id="exampleInputPassword1">
-            </div>
-
-
-			 <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">email</label>
-                <input name="email"  placeholder="Email" type="email" class="form-control" id="exampleInputPassword1">
-            </div>
-
-			 <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">superficie</label>
-                <input name="superficie" placeholder="Superficie" type="text" class="form-control" id="exampleInputPassword1">
-            </div>
-			 <div class="mb-3">
-                <label for="exampleInputPassword1" class="form-label">description</label>
-                <input name="description" placeholder="Déscription" type="text" class="form-control" id="exampleInputPassword1">
-            </div>
-
-            <button type="submit" href={{path('new1')}} class="btn btn-primary">Ajouter
-            </button>
-        </form>   #}
- 											
+  

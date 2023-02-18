@@ -19,11 +19,47 @@ use Doctrine\Persistence\ManagerRegistry;
 #[Route('/activite')]
 class ActiviteController extends AbstractController
 {
-    #[Route('/', name: 'app_activite_index', methods: ['GET'])]
-    public function index(ActiviteRepository $activiteRepository): Response
+    #[Route('/', name: 'app_activite_index', methods:['GET', 'POST'])]
+    public function index(Request $request ,ActiviteRepository $activiteRepository,SluggerInterface $slugger): Response
     {
+        $activite = new Activite();
+        $form = $this->createForm(ActiviteType::class, $activite);
+        $form->handleRequest($request);
+
+        
+        if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $image->move(
+                        $this->getParameter('activite_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'photo$photoname' property to store the PDF file name
+                // instead of its contents
+                $activite->setImage($newFilename);
+            }
+
+            $activiteRepository->save($activite, true);
+
+            return $this->redirectToRoute('app_activite_index', [], Response::HTTP_SEE_OTHER);
+        }
+
         return $this->render('back/table_act.html.twig', [
             'activite' => $activiteRepository->findAll(),
+            'form' => $form,
+
         ]);
     }
 //_________________________________________________________AJOUT _____________________________________________________________

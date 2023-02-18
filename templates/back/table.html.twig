@@ -2,26 +2,102 @@
 
 
 {% block body %}
+
+
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+thead {
+  background-color: #D3D3D3;
+}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  
+}
+
+tr:nth-child(even) {
+  background-color: #D3D3D3;
+}
+
+tr:hover {
+  background-color: #D3D3D3;
+}
+Ce code crée un tableau avec trois colonnes et trois rangées, et chaque rangée a une couleur de fond différente. Lorsque l'utilisateur passe la souris sur une rangée, sa couleur de fond change pour une autre couleur.
+
+
+
+{# -------------------------------------------------------- #}
+
+		 
+body {
+    /* background: var(--fond); */
+}
+hr {
+    width: 200px;
+}
+h1 {
+    text-align: center;
+    padding-top: 70px;
+    /* color: var(--ecriture); */
+}
+.contenu {
+    padding: 50px 10%;
+    text-align: justify;
+    /* color: var(--ecriture); */
+
+}
+.btn-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    cursor: pointer;
+}
+
+body.dark {
+    color: #fff!important;
+    background: #333!important;
+}
+body.dark .btn-toggle {
+    background: #f1f1f1;
+    color: #333;
+}
+
+
+
+</style>
+ 
 	<!-- Table Start -->
-	
+ 
+	{# _______________________________________Partie ajax rechargement d'un page web______________________________ #}
+<body class="light">
+	  <div class="btn-toggle">Go Nuit</div>
+
+
 	<div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-		<form class="d-flex" action="chercher_salle" method="GET">
+		{# <form class="d-flex" action="chercher_salle" method="GET">
 			<input class="form-control me-2" name="dhia" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success" type="submit">Search</button>
-	    </form>
+	    </form> #}
 
 		<div class="container-fluid pt-4 px-4" style="bottom:0;">
  
 
     {#_________________________________ Partie pop-up ____________________________________________________#}
-<button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-  Ajouter une salle
-</button>
-
-    {#_________________________________ Partie pop-up ____________________________________________________#}
-
-
-    {#_________________________________ Partie pop-up ____________________________________________________#}
+<button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter une salle</button>
 
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
@@ -36,11 +112,11 @@
     				
 					<div class="form-group" style="position: center;">
 															
-																					{{ form_start(form) }}
-																					{{ form_widget(form) }}
-																					<button type="submit">Save</button>
-																					{{ form_end(form) }}
-															                </div>
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button type="submit">Save</button>
+			{{ form_end(form) }}
+		    </div>
 
       </div>
     </div>
@@ -57,19 +133,7 @@
 
 
 	<div>
-							{# __________________________________________ #}
-{# 
-							<form action="find_Salle" method="GET">
-								<input type="text"  name="find" placeholder="Entrez un lieu...">
-								<button class="btn btn-light m-2" type="submit">Rechercher</button>
-							</form>
-						</div> #}
-
-{# 
-		<form  class="d-flex" action="find_Salle" method="GET">
-				<input class="form-control me-2" name="findbyname" type="search" placeholder="Search" aria-label="Search">
-				<button class="btn btn-outline-success" type="submit">Search</button>
-			</form> #}
+	 
 
  
 			<a href={{path('app_salle_new')}} <button style="width:25%;height:35%"
@@ -89,9 +153,12 @@
 				    <th style ="color:#FF0000">Email</th>
 			  		<th style ="color:#FF0000">Superficie</th>
 			  		<th style ="color:#FF0000">Description</th>
+ 			  		<th style ="color:#FF0000">Activité</th>
+
 					{# <th style ="color:#FF0000">Image</th> #}
 
 					<th style ="color:#FF0000">action</th>
+
 
 			  </tr>
 			</thead>
@@ -108,11 +175,22 @@
 				<td  >{{p.email}}</td>
 				<td  >{{p.superficie}}</td>
 				<td  >{{p.description}}</td>
+				<td>
+				{% for c in p.cours %}
+				<ul>
+				<li>{{c.nom}}</li>
+				
+				</ul>
+			
+				{% endfor %}
+				</td> 
+
 				{# <td> <img class="img-thumbnail" src="{{asset('uploads/'~ p.image)}}" alt="" ></td> #}
 
 				<td><a href="{{path('deleteevent',{'id':p.id})}}"><i class="bi bi-trash"></i></a></td>
 
 				<td><a href="{{path('app_salle_edit',{'id':p.id})}}"><span class="bi bi-cart-fill"></a></td>
+				<td><a href="{{path('app_salle_show',{'id':p.id})}}"><i class="bi bi-book"></i></a></td>
 
 			</tr>
 										
@@ -122,10 +200,68 @@
 
  
 				</table>
+				 
 				</div>
+				
 		</div>
 </div>
+
 <!-- Table End -->
+{# <title>AJAX avec Symfony</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        // Lorsque l'utilisateur clique sur le bouton "Ajouter"
+        $("#btn-ajouter").click(function() {
+          // Envoie une requête AJAX pour récupérer la vue d'ajout
+          $.ajax({
+            url: "{{ path('app_salle_new_ajax') }}",
+            type: "GET",
+            success: function(data) {
+              // Affiche la vue d'ajout dans la div "zone-ajout"
+              $("#zone-ajout").html(data);
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Liste des éléments</h1>
+    <ul>
+      <li>Elément 1</li>
+      <li>Elément 2</li>
+      <li>Elément 3</li>
+    </ul>
+    <button id="btn-ajouter">Ajouter une salle</button>
+    <div id="zone-ajout"><h2>Liste des éléments</h2></div> #}
+	</div>
+
+</body>
+<script>
+
+const btnToggle = document.querySelector('.btn-toggle');
+
+btnToggle.addEventListener('click', () => {
+
+    const body = document.body;
+
+    if(body.classList.contains('dark')){
+
+        body.classList.add('light')
+        body.classList.remove('dark')
+        btnToggle.innerHTML = "Go Dark"
+
+    } else if(body.classList.contains('light')){
+
+        body.classList.add('dark')
+        body.classList.remove('light')
+        btnToggle.innerHTML = "Go Light"
+
+    }
+
+})
+</script>
 {% endblock %}
 
 

@@ -97,12 +97,55 @@ public function chercher_student(EntityManagerInterface $em,Request $request,Sal
             'form' => $form,
         ]);
     } 
+    // _______________________________________________________________________________
+
+    #[Route('/new1', name: 'app_salle_new_ajax', methods: ['GET', 'POST'])]
+    public function new1(Request $request, SalleRepository $salleRepository,SluggerInterface $slugger): Response
+    {
+        $salle = new Salle();
+        $form = $this->createForm(SalleType::class, $salle);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $image->move(
+                        $this->getParameter('activite_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'photo$photoname' property to store the PDF file name
+                // instead of its contents
+                $salle->setImage($newFilename);
+            }
+            $salleRepository->save($salle, true);
+
+            return $this->redirectToRoute('app_salle_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        // return $this->renderForm('salle/new.html.twig', [
+            return $this->renderForm('back/AjaxForm.html.twig', [
+            'salle' => $salle,
+            'form' => $form,
+        ]);
+    } 
   // _______________________________________________________________________________
 
     #[Route('/{id}', name: 'app_salle_show', methods: ['GET'])]
     public function show(Salle $salle): Response
     {
-        return $this->render('back/table.html.twig', [
+        return $this->render('back/show_salle.html.twig', [
             'salle' => $salle,
         ]);
     }

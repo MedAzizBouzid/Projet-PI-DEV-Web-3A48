@@ -48,7 +48,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
 \t<head>
 \t\t<meta charset=\"utf-8\">
-\t\t<title>DarkPan - Bootstrap 5 Admin Template</title>
+\t\t<title>Body Rock Back_end</title>
 \t\t<meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\">
 \t\t<meta content=\"\" name=\"keywords\">
 \t\t<meta
@@ -58,9 +58,11 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t";
         // line 13
         $this->displayBlock('stylesheets', $context, $blocks);
-        // line 53
+        // line 85
         echo "
-\t<body>
+\t<body class=\"light\">
+
+\t
 \t\t<div
 \t\t\tclass=\"container-fluid position-relative d-flex p-0\">
 \t\t\t<!-- Spinner Start -->
@@ -89,9 +91,18 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t\t\t<span>Admin</span>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
+
+
 \t\t\t\t\t<div class=\"navbar-nav w-100\">
-\t\t\t\t\t\t<a href=\"index.html\" class=\"nav-item nav-link\">
-\t\t\t\t\t\t\t<i class=\"fa fa-tachometer-alt me-2\"></i>Dashboard</a>
+ \t\t\t\t\t\t\t";
+        // line 121
+        echo "\t\t\t\t\t\t\t ";
+        // line 122
+        echo "\t\t\t\t\t\t\t\t\t\t\t    ";
+        // line 123
+        echo "\t\t\t\t\t\t";
+        // line 124
+        echo "
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-laptop me-2\"></i>Elements</a>
@@ -102,32 +113,32 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<a href=";
-        // line 95
+        // line 134
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("Show_salle_front");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-th me-2\"></i> Front_Office</a>
 
 
 \t\t\t\t\t\t<a href=";
-        // line 99
+        // line 138
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_new");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-keyboard me-2\"></i>Form Salle</a>
 
 \t\t\t\t\t\t<a href=";
-        // line 102
+        // line 141
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_new");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-keyboard me-2\"></i>Form Activité</a>
 
 \t\t\t\t\t\t<a href=";
-        // line 105
+        // line 144
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_index");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>Tables salles</a>
 
 \t\t\t\t\t\t<a href=";
-        // line 108
+        // line 147
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_index");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>Tables Activités</a>
@@ -164,17 +175,18 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t<a href=\"#\" class=\"sidebar-toggler flex-shrink-0\">
 \t\t\t\t\t\t<i class=\"fa fa-bars\"></i>
 \t\t\t\t\t</a>
+\t\t\t\t\t
 \t\t\t\t\t";
-        // line 144
+        // line 184
         echo "\t\t\t\t\t";
-        // line 150
+        // line 190
         echo "
 
 \t\t\t\t\t<div
 \t\t\t\t\t\tclass=\"navbar-nav align-items-center ms-auto\">
 
 \t\t\t\t\t\t";
-        // line 156
+        // line 196
         echo "
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
@@ -217,6 +229,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item text-center\">See all message</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
+\t\t\t\t\t
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-bell me-lg-2\"></i>
@@ -241,16 +254,17 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item text-center\">See all notifications</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
+\t\t\t\t\t\t
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<img class=\"rounded-circle me-lg-2\" src=\"img/user.jpg\" alt=\"\" style=\"width: 40px; height: 40px;\">
 \t\t\t\t\t\t\t\t<span class=\"d-none d-lg-inline-flex\">John Doe</span>
 \t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t{
 \t\t\t\t\t\t\t<div class=\"dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0\">
-\t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">My Profile</a>
-\t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">Settings</a>
-\t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">Log Out</a>
-\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t";
+        // line 274
+        echo "\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t</nav>
@@ -261,20 +275,22 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t<div
 \t\t\t\t\tclass=\"container-fluid pt-4 px-4\">
 \t\t\t\t\t";
-        // line 242
+        // line 285
         echo "\t\t\t\t\t";
         $this->displayBlock('body', $context, $blocks);
-        // line 243
+        // line 289
         echo "\t\t\t\t\t";
-        // line 244
+        // line 290
         echo "\t\t\t\t</div>
 \t\t\t\t<!-- Blank End -->
 
 
 \t\t\t\t<!-- Footer Start -->
 \t\t\t\t";
-        // line 267
+        // line 313
         echo "\t\t\t\t<!-- Footer End -->
+
+\t\t\t\t
 \t\t\t</div>
 \t\t\t<!-- Content End -->
 
@@ -283,12 +299,13 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t<a href=\"#\" class=\"btn btn-lg btn-primary btn-lg-square back-to-top\">
 \t\t\t\t<i class=\"bi bi-arrow-up\"></i>
 \t\t\t</a>
-\t\t</body>
+\t\t\t</div>
+ 
 \t</body>
-</html></div>";
-        // line 278
+</html>";
+        // line 327
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 307
+        // line 382
         echo "</body></html>
 ";
         
@@ -365,7 +382,39 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t<link href=\"https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css\" rel=\"stylesheet\" crossorigin=\"anonymous\"/>
 \t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js\" crossorigin=\"anonymous\"></script>
 \t\t\t<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-\t\t</head>
+
+ <style>
+
+.btn-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    cursor: pointer;
+}
+
+body.dark {
+    color: #fff!important;
+    background: #333!important;
+}
+body.dark .btn-toggle {
+    background: #f1f1f1;
+    color: #333;
+}
+
+</style>
+
+
+
+\t\t\t</head>
 \t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -375,7 +424,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
     }
 
-    // line 242
+    // line 285
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -385,6 +434,10 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
+        // line 286
+        echo "\t\t\t\t\t
+\t\t\t\t\t
+\t\t\t\t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -393,7 +446,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
     }
 
-    // line 278
+    // line 327
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -403,50 +456,76 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 279
+        // line 328
         echo "
 <!-- JavaScript Libraries -->
 <script src=\"https://code.jquery.com/jquery-3.4.1.min.js\"></script>
 <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js\"></script>
 <script src=\"";
-        // line 283
+        // line 332
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/chart/chart.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 284
+        // line 333
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/easing/easing.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 285
+        // line 334
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/waypoints/waypoints.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 286
+        // line 335
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/owlcarousel/owl.carousel.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 287
+        // line 336
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/js/moment.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 288
+        // line 337
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/js/moment-timezone.min.js"), "html", null, true);
         echo "\"></script>
 <script src=\"";
-        // line 289
+        // line 338
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"), "html", null, true);
         echo "\"></script>
 
+<script>
+
+
+const btnToggle = document.querySelector('.btn-toggle');
+
+btnToggle.addEventListener('click', () => {
+
+    const body = document.body;
+
+    if(body.classList.contains('dark')){
+
+        body.classList.add('light')
+        body.classList.remove('dark')
+        btnToggle.innerHTML = \"Go Dark\"
+
+    } else if(body.classList.contains('light')){
+
+        body.classList.add('dark')
+        body.classList.remove('light')
+        btnToggle.innerHTML = \"Go Light\"
+
+    }
+
+})
+
+</script>
 <!-- Template Javascript -->
 <script src=\"";
-        // line 292
+        // line 367
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/js/main.js"), "html", null, true);
         echo "\"></script>
 <!-- dataTable -->
 <script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\" crossorigin=\"anonymous\"></script>
 <script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\"></script>
 <script src=\"";
-        // line 296
+        // line 371
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/js/scripts.js"), "html", null, true);
         echo "\"></script>
 <script src=\"https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js\" crossorigin=\"anonymous\"></script>
@@ -480,7 +559,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
     public function getDebugInfo()
     {
-        return array (  450 => 296,  443 => 292,  437 => 289,  433 => 288,  429 => 287,  425 => 286,  421 => 285,  417 => 284,  413 => 283,  407 => 279,  397 => 278,  379 => 242,  359 => 43,  352 => 39,  345 => 35,  340 => 33,  335 => 31,  330 => 29,  313 => 14,  303 => 13,  292 => 307,  290 => 278,  277 => 267,  270 => 244,  268 => 243,  265 => 242,  178 => 156,  171 => 150,  169 => 144,  131 => 108,  125 => 105,  119 => 102,  113 => 99,  106 => 95,  62 => 53,  60 => 13,  46 => 1,);
+        return array (  529 => 371,  522 => 367,  490 => 338,  486 => 337,  482 => 336,  478 => 335,  474 => 334,  470 => 333,  466 => 332,  460 => 328,  450 => 327,  438 => 286,  428 => 285,  376 => 43,  369 => 39,  362 => 35,  357 => 33,  352 => 31,  347 => 29,  330 => 14,  320 => 13,  309 => 382,  307 => 327,  291 => 313,  284 => 290,  282 => 289,  279 => 285,  267 => 274,  190 => 196,  183 => 190,  181 => 184,  142 => 147,  136 => 144,  130 => 141,  124 => 138,  117 => 134,  105 => 124,  103 => 123,  101 => 122,  99 => 121,  62 => 85,  60 => 13,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -490,7 +569,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
 \t<head>
 \t\t<meta charset=\"utf-8\">
-\t\t<title>DarkPan - Bootstrap 5 Admin Template</title>
+\t\t<title>Body Rock Back_end</title>
 \t\t<meta content=\"width=device-width, initial-scale=1.0\" name=\"viewport\">
 \t\t<meta content=\"\" name=\"keywords\">
 \t\t<meta
@@ -535,10 +614,44 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t<link href=\"https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css\" rel=\"stylesheet\" crossorigin=\"anonymous\"/>
 \t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js\" crossorigin=\"anonymous\"></script>
 \t\t\t<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-\t\t</head>
+
+ <style>
+
+.btn-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    cursor: pointer;
+}
+
+body.dark {
+    color: #fff!important;
+    background: #333!important;
+}
+body.dark .btn-toggle {
+    background: #f1f1f1;
+    color: #333;
+}
+
+</style>
+
+
+
+\t\t\t</head>
 \t{% endblock %}
 
-\t<body>
+\t<body class=\"light\">
+
+\t
 \t\t<div
 \t\t\tclass=\"container-fluid position-relative d-flex p-0\">
 \t\t\t<!-- Spinner Start -->
@@ -567,9 +680,14 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t\t\t<span>Admin</span>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
+
+
 \t\t\t\t\t<div class=\"navbar-nav w-100\">
-\t\t\t\t\t\t<a href=\"index.html\" class=\"nav-item nav-link\">
-\t\t\t\t\t\t\t<i class=\"fa fa-tachometer-alt me-2\"></i>Dashboard</a>
+ \t\t\t\t\t\t\t{# <i class=\"fa fa-tachometer-alt me-2\"></i>Dashboard</a> #}
+\t\t\t\t\t\t\t {# changer le mode claire => sombre  #}
+\t\t\t\t\t\t\t\t\t\t\t    {# <div class=\"btn-toggle\">Go Nuit</div> #}
+\t\t\t\t\t\t{# changer le mode claire => sombre---------------------------------------- #}
+
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-laptop me-2\"></i>Elements</a>
@@ -627,6 +745,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t<a href=\"#\" class=\"sidebar-toggler flex-shrink-0\">
 \t\t\t\t\t\t<i class=\"fa fa-bars\"></i>
 \t\t\t\t\t</a>
+\t\t\t\t\t
 \t\t\t\t\t{# __________________________________________ #}
 \t\t\t\t\t{# <form action=\"find_Salle\" method=\"GET\" class=\"d-none d-md-flex ms-4\">
 \t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t
@@ -682,6 +801,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item text-center\">See all message</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
+\t\t\t\t\t
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-bell me-lg-2\"></i>
@@ -706,15 +826,17 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item text-center\">See all notifications</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
+\t\t\t\t\t\t
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<img class=\"rounded-circle me-lg-2\" src=\"img/user.jpg\" alt=\"\" style=\"width: 40px; height: 40px;\">
 \t\t\t\t\t\t\t\t<span class=\"d-none d-lg-inline-flex\">John Doe</span>
 \t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t{
 \t\t\t\t\t\t\t<div class=\"dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0\">
-\t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">My Profile</a>
+\t\t\t\t\t\t\t\t{# <a href=\"#\" class=\"dropdown-item\">My Profile</a>
 \t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">Settings</a>
-\t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">Log Out</a>
+\t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">Log Out</a> #}
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -726,7 +848,10 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t<div
 \t\t\t\t\tclass=\"container-fluid pt-4 px-4\">
 \t\t\t\t\t{# <div class=\"row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0\"> #}
-\t\t\t\t\t{% block body %}{% endblock %}
+\t\t\t\t\t{% block body %}
+\t\t\t\t\t
+\t\t\t\t\t
+\t\t\t\t\t{% endblock %}
 \t\t\t\t\t{# </div> #}
 \t\t\t\t</div>
 \t\t\t\t<!-- Blank End -->
@@ -752,6 +877,8 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t</div>
 \t\t\t\t</div> #}
 \t\t\t\t<!-- Footer End -->
+
+\t\t\t\t
 \t\t\t</div>
 \t\t\t<!-- Content End -->
 
@@ -760,9 +887,10 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t<a href=\"#\" class=\"btn btn-lg btn-primary btn-lg-square back-to-top\">
 \t\t\t\t<i class=\"bi bi-arrow-up\"></i>
 \t\t\t</a>
-\t\t</body>
+\t\t\t</div>
+ 
 \t</body>
-</html></div>{% block javascripts %}
+</html>{% block javascripts %}
 
 <!-- JavaScript Libraries -->
 <script src=\"https://code.jquery.com/jquery-3.4.1.min.js\"></script>
@@ -775,6 +903,32 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 <script src=\"{{ asset('assets/back/lib/tempusdominus/js/moment-timezone.min.js')}}\"></script>
 <script src=\"{{ asset('assets/back/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}\"></script>
 
+<script>
+
+
+const btnToggle = document.querySelector('.btn-toggle');
+
+btnToggle.addEventListener('click', () => {
+
+    const body = document.body;
+
+    if(body.classList.contains('dark')){
+
+        body.classList.add('light')
+        body.classList.remove('dark')
+        btnToggle.innerHTML = \"Go Dark\"
+
+    } else if(body.classList.contains('light')){
+
+        body.classList.add('dark')
+        body.classList.remove('light')
+        btnToggle.innerHTML = \"Go Light\"
+
+    }
+
+})
+
+</script>
 <!-- Template Javascript -->
 <script src=\"{{ asset('assets/back/js/main.js')}}\"></script>
 <!-- dataTable -->
@@ -792,6 +946,6 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \$(\"table\").DataTable();
 });
 </script>{% endblock %}</body></html>
-", "back/base.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\back\\base.html.twig");
+", "back/base.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\back\\base.html.twig");
     }
 }

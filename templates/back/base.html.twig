@@ -3,7 +3,7 @@
 
 	<head>
 		<meta charset="utf-8">
-		<title>DarkPan - Bootstrap 5 Admin Template</title>
+		<title>Body Rock Back_end</title>
 		<meta content="width=device-width, initial-scale=1.0" name="viewport">
 		<meta content="" name="keywords">
 		<meta
@@ -48,10 +48,44 @@
 			<link href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css" rel="stylesheet" crossorigin="anonymous"/>
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 			<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
-		</head>
+
+ <style>
+
+.btn-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    cursor: pointer;
+}
+
+body.dark {
+    color: #fff!important;
+    background: #333!important;
+}
+body.dark .btn-toggle {
+    background: #f1f1f1;
+    color: #333;
+}
+
+</style>
+
+
+
+			</head>
 	{% endblock %}
 
-	<body>
+	<body class="light">
+
+	
 		<div
 			class="container-fluid position-relative d-flex p-0">
 			<!-- Spinner Start -->
@@ -80,9 +114,14 @@
 							<span>Admin</span>
 						</div>
 					</div>
+
+
 					<div class="navbar-nav w-100">
-						<a href="index.html" class="nav-item nav-link">
-							<i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
+ 							{# <i class="fa fa-tachometer-alt me-2"></i>Dashboard</a> #}
+							 {# changer le mode claire => sombre  #}
+											    {# <div class="btn-toggle">Go Nuit</div> #}
+						{# changer le mode claire => sombre---------------------------------------- #}
+
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
 								<i class="fa fa-laptop me-2"></i>Elements</a>
@@ -140,6 +179,7 @@
 					<a href="#" class="sidebar-toggler flex-shrink-0">
 						<i class="fa fa-bars"></i>
 					</a>
+					
 					{# __________________________________________ #}
 					{# <form action="find_Salle" method="GET" class="d-none d-md-flex ms-4">
 																									
@@ -195,6 +235,7 @@
 								<a href="#" class="dropdown-item text-center">See all message</a>
 							</div>
 						</div>
+					
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
 								<i class="fa fa-bell me-lg-2"></i>
@@ -219,15 +260,17 @@
 								<a href="#" class="dropdown-item text-center">See all notifications</a>
 							</div>
 						</div>
+						
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
 								<img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
 								<span class="d-none d-lg-inline-flex">John Doe</span>
 							</a>
+								{
 							<div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-								<a href="#" class="dropdown-item">My Profile</a>
+								{# <a href="#" class="dropdown-item">My Profile</a>
 								<a href="#" class="dropdown-item">Settings</a>
-								<a href="#" class="dropdown-item">Log Out</a>
+								<a href="#" class="dropdown-item">Log Out</a> #}
 							</div>
 						</div>
 					</div>
@@ -239,7 +282,10 @@
 				<div
 					class="container-fluid pt-4 px-4">
 					{# <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0"> #}
-					{% block body %}{% endblock %}
+					{% block body %}
+					
+					
+					{% endblock %}
 					{# </div> #}
 				</div>
 				<!-- Blank End -->
@@ -265,6 +311,8 @@
 					</div>
 				</div> #}
 				<!-- Footer End -->
+
+				
 			</div>
 			<!-- Content End -->
 
@@ -273,9 +321,10 @@
 			<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
 				<i class="bi bi-arrow-up"></i>
 			</a>
-		</body>
+			</div>
+ 
 	</body>
-</html></div>{% block javascripts %}
+</html>{% block javascripts %}
 
 <!-- JavaScript Libraries -->
 <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
@@ -288,6 +337,32 @@
 <script src="{{ asset('assets/back/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
 <script src="{{ asset('assets/back/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 
+<script>
+
+
+const btnToggle = document.querySelector('.btn-toggle');
+
+btnToggle.addEventListener('click', () => {
+
+    const body = document.body;
+
+    if(body.classList.contains('dark')){
+
+        body.classList.add('light')
+        body.classList.remove('dark')
+        btnToggle.innerHTML = "Go Dark"
+
+    } else if(body.classList.contains('light')){
+
+        body.classList.add('dark')
+        body.classList.remove('light')
+        btnToggle.innerHTML = "Go Light"
+
+    }
+
+})
+
+</script>
 <!-- Template Javascript -->
 <script src="{{ asset('assets/back/js/main.js')}}"></script>
 <!-- dataTable -->

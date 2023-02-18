@@ -8,6 +8,12 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\Activite;
 use App\Entity\Salle;
+use Symfony\Component\HttpFoundation\File\Exception\FileException;
+use Symfony\Component\String\Slugger\SluggerInterface;
+
+ use App\Form\SalleType;
+use App\Repository\SalleRepository;
+ use Symfony\Component\HttpFoundation\Request;
 
 class TraitementController extends AbstractController
 {
@@ -29,7 +35,7 @@ class TraitementController extends AbstractController
     #[Route('/back', name: 'back')]
     public function index(): Response
     {
-        return $this->render('back/table.html.twig', [
+        return $this->render('back/base.html.twig', [
             'controller_name' => 'TraitementController',
         ]);
     }
@@ -88,4 +94,54 @@ class TraitementController extends AbstractController
         ]);
     }
 
+    // #[Route('/ajax', name: 'ajax')]
+    // public function ajax(): Response
+    // {
+    //     return $this->render('back/AjaxForm.html.twig', [
+    //         'controller_name' => 'TraitementController',
+    //         'form' => $form,
+
+    //     ]);
+    // }
+    #[Route('/ajax', name: 'app_salle_new_ajax1', methods: ['GET', 'POST'])]
+    public function new1(Request $request, SalleRepository $salleRepository,SluggerInterface $slugger): Response
+    {
+        $salle = new Salle();
+        $form = $this->createForm(SalleType::class, $salle);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $image->move(
+                        $this->getParameter('activite_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'photo$photoname' property to store the PDF file name
+                // instead of its contents
+                $salle->setImage($newFilename);
+            }
+            $salleRepository->save($salle, true);
+
+            return $this->redirectToRoute('app_salle_index', [], Response::HTTP_SEE_OTHER);
+        }
+
+        // return $this->renderForm('salle/new.html.twig', [
+            return $this->renderForm('back/AjaxForm.html.twig', [
+            'salle' => $salle,
+            'form' => $form,
+        ]);
+    } 
 }

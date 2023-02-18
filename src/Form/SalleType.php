@@ -2,6 +2,7 @@
 
 namespace App\Form;
 
+use App\Entity\Activite;
 use App\Entity\Salle;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,7 +18,10 @@ use Symfony\Component\Validator\Constraints\NotBlank;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
 use Symfony\Component\Form\Extension\Core\Type\NumberType;
 use Symfony\Component\Form\Extension\Core\Type\FileType;
+
 use Symfony\Component\Validator\Constraints\File;
+ use Symfony\Bridge\Doctrine\Form\Type\EntityType;
+
 
 class SalleType extends AbstractType
 {
@@ -83,6 +87,26 @@ class SalleType extends AbstractType
                 ]),
              ],
          ])
+         ->add('cours', EntityType::class, [
+            'class' => Activite::class,
+            'choice_label' => 'nom',
+            'label' => 'cours',
+            'multiple' => true,
+            'required' => true,
+        ])
+        //  ->add('cours',EntityType::class,['class' =>Activite::class,
+        //     'choice_label'=>'nom',
+        //     'label'=>'cours',
+        //     'multiple'=>true ,
+        //     'required' => true,
+        //     ])
+        //  ->add('cours', EntityType::class, array(
+        //     // query choices from this entity
+        //     'class' => cours::class,
+        //     'choice_label' => 'cours.nom',
+        //     'multiple' => true,
+        //     'expanded' => true,
+        //     ))
          ->add('image', FileType::class, [
             'label' => 'Image du Produit (Des fichiers images seulement)',
 
