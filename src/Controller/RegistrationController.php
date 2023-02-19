@@ -19,6 +19,8 @@ use Symfony\Component\Security\Http\Authentication\UserAuthenticatorInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Symfony\Contracts\Translation\TranslatorInterface;
 use SymfonyCasts\Bundle\VerifyEmail\Exception\VerifyEmailExceptionInterface;
+use Twilio\Rest\Client;
+
 class RegistrationController extends AbstractController
 {
     private EmailVerifier $emailVerifier;
@@ -26,6 +28,22 @@ class RegistrationController extends AbstractController
     public function __construct(EmailVerifier $emailVerifier)
     {
         $this->emailVerifier = $emailVerifier;
+    }
+    public function sendSmsAction()
+    {
+        $TWILIO_ACCOUNT_SID= 'AC41806a149ebbbac29e16f2d14d8a5e64';
+        $TWILIO_AUTH_TOKEN= 'd9e9f4901e96a2e3851bb30f3837d3d3';
+        $TWILIO_NUMBER= '+19036648231';
+        $client = new Client($TWILIO_ACCOUNT_SID,$TWILIO_AUTH_TOKEN);
+        $client->messages->create(
+            '+21692703351', // numéro de téléphone du destinataire
+            array(
+                'from' => $TWILIO_NUMBER,
+                'body' => 'Your Account has been verified'
+            )
+        );
+
+        return new Response('SMS envoyé !');
     }
     public function random(): string
     {
@@ -89,13 +107,13 @@ class RegistrationController extends AbstractController
                 $entityManager->flush();
     
                 // generate a signed url and email it to the user
-                // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                //     (new TemplatedEmail())
-                //         ->from(new Address('pidevsymfony8@gmail.com', 'BodyRock verification'))
-                //         ->to($user->getEmail())
-                //         ->subject('Please Confirm your Email')
-                //         ->htmlTemplate('registration/confirmation_email.html.twig')
-                // );
+                $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                    (new TemplatedEmail())
+                        ->from(new Address('pidevsymfony8@gmail.com', 'BodyRock verification'))
+                        ->to($user->getEmail())
+                        ->subject('Please Confirm your Email')
+                        ->htmlTemplate('registration/confirmation_email.html.twig')
+                );
                 // do anything else you need here, like send an email
     
                 return $userAuthenticator->authenticateUser(
@@ -123,6 +141,7 @@ class RegistrationController extends AbstractController
         // validate email confirmation link, sets User::isVerified=true and persists
         try {
             $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
+            $this->sendSmsAction();
         } catch (VerifyEmailExceptionInterface $exception) {
             $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
 
