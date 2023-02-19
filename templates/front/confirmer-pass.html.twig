@@ -1,0 +1,55 @@
+{% extends 'front/baseF.html.twig' %}
+
+
+
+{% block body %}
+ <!-- acheter pass Section Begin -->
+ <section class="contact-section spad">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <div class="section-title contact-title">
+                    <span>Our event</span>
+                    <h2>{{event.nom}}</h2>
+                </div>
+                <div class="contact-widget">
+                    <div class="cw-text">
+                       
+                        <p>{{event.lieu}}</p>
+                    </div>
+                    <div class="cw-text">
+                      
+                        <ul>
+                            <li>reserved at : </li>
+                            <li>{{ date ? date|date('Y-m-d H:i:s') : '' }}</li>
+                        </ul>
+                    </div>
+                    <div class="cw-text ">
+                        <ul>
+                            <li>email du client : </li>
+                            <li>{{client.email}}</li>
+                        </ul>
+                       
+                    </div>
+                    <div class="cw-text ">
+                        <ul>
+                            <li>phone : </li>
+                            <li>{{client.numTel}}</li>
+                        </ul>
+                       
+                    </div>
+                    
+                </div>
+                <a href="{{ path('app_pass_new_front', {'id_event': event.id, 'id_client': client.id , 'date': date|date('Y-m-d H:i:s')}) }}"><button class="btn btn-danger">confirmer</button></a>
+            </div>
+            
+        </div>
+
+    </div>
+</section>
+<!-- acheter pass Section End -->
+
+   
+
+    
+{% endblock %}

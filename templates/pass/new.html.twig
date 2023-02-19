@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Pass{% endblock %}
+
+{% block body %}
+    <h1>Create new Pass</h1>
+
+    {{ include('pass/_form.html.twig') }}
+
+    <a href="{{ path('app_pass_index') }}">back to list</a>
+{% endblock %}

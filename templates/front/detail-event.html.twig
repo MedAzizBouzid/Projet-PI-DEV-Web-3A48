@@ -5,6 +5,45 @@
 
    
 
+    <!-- acheter pass Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title contact-title">
+                        <span>Our event</span>
+                        <h2>{{event.nom}}</h2>
+                    </div>
+                    <div class="contact-widget">
+                        <div class="cw-text">
+                            <i class="fa fa-map-marker"></i>
+                            <p>{{event.lieu}}</p>
+                        </div>
+                        <div class="cw-text">
+                            <i class="fa fa-mobile"></i>
+                            <ul>
+                                <li>125-711-811</li>
+                                <li>125-668-886</li>
+                            </ul>
+                        </div>
+                        <div class="cw-text email">
+                            <i class="fa fa-envelope"></i>
+                            <p>Support.gymcenter@gmail.com</p>
+                        </div>
+                        {% if event.capacite > 0 %}
+                        <a href="{{ path('app_pass_reservation', {'id_event': event.id}) }}"><button class="btn btn-danger">reservez votre place</button></a>
+                        {% else %}
+                        <a href=""><button class="btn btn-danger">pas de places disponibles</button></a>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </section>
+    <!-- acheter pass Section End -->
 
 
     <!-- Testimonial Section Begin -->

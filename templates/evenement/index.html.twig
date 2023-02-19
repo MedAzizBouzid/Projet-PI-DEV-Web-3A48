@@ -298,7 +298,8 @@
                 <div class="owl-carousel testimonial-carousel">
                     <div class="testimonial-item text-center">
                         {# <img class="img-fluid rounded-circle mx-auto mb-4" src="img/testimonial-1.jpg" style="width: 100px; height: 100px;"> #}
-                        <h5 class="mb-1">{{ evenement.lieu }}</h5>
+                        <h5 class="mb-1">{{ evenement.nom }}</h5>
+                        <p>lieu :{{ evenement.lieu }}</p>
                         <p>begin at: {{ evenement.beginAt ? evenement.beginAt|date('Y-m-d H:i:s') : '' }}</p>
                         <p>finish at: {{ evenement.finishAt ? evenement.finishAt|date('Y-m-d H:i:s') : '' }}</p>
                         <p>{{ evenement.prix }} DT</p>

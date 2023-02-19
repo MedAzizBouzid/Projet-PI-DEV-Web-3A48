@@ -2,13 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Pass;
+use App\Entity\User;
+use App\Form\PassType;
+use App\Form\UserType;
+use DateTimeImmutable;
 use App\Entity\Sponsor;
 use App\Form\SponsorType;
+use App\Repository\PassRepository;
 use App\Repository\SponsorRepository;
-use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use App\Repository\EvenementRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 
 #[Route('/sponsor')]
 class SponsorController extends AbstractController
@@ -21,13 +28,34 @@ class SponsorController extends AbstractController
         ]);
     }
 
-    #[Route('/front/{id}', name: 'app_sponsor_index_front', methods: ['GET'])]
-    public function indexF(SponsorRepository $sponsorRepository,$id): Response
+    #[Route('/front/{id}', name: 'app_sponsor_index_front', methods: ['GET', 'POST'])]
+    public function indexF(SponsorRepository $sponsorRepository,$id,EvenementRepository $eventrepo, Request $request, PassRepository $passRepository): Response
     {
+        // $pass = new Pass();
+        // $form = $this->createForm(PassType::class, $pass);
+        // $form->handleRequest($request);
+
+        $event=$eventrepo->find($id);
         $sponsors=$sponsorRepository->findSponsorsByEvent($id);
+        
+        // if ($form->isSubmitted() && $form->isValid()) {
+        // dd($form);
+        // $currentDate = new DateTimeImmutable();
+        // dd($currentDate);
+        // $currentDate->format('Y-m-d H:i:s');
+        // $pass->setCreatedAt($currentDate);
+        //     $pass->setEvent($event);
+        //     $passRepository->save($pass, true);
+
+        //     return $this->redirectToRoute('app_pass_index', [], Response::HTTP_SEE_OTHER);
+        // }  
+
         return $this->render('front/detail-event.html.twig', [
             'sponsors' => $sponsors,
+            'event'=>$event,
+            // 'form'=>$form,
         ]);
+         
     }
   
     #[Route('/new', name: 'app_sponsor_new', methods: ['GET', 'POST'])]
