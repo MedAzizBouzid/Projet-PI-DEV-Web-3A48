@@ -312,7 +312,8 @@
                         <p class="mb-0">{{ evenement.description }}</p>
                         
 
-                        <p><a href="{{ path('app_evenement_show', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-info-circle"></i></button></a> &nbsp;
+                        <p>
+                            <a href="{{ path('app_evenement_show', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-info-circle"></i></button></a> &nbsp;
                             <a href="{{ path('app_evenement_edit', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-pen"></i></button></a> &nbsp;
                             {# <a href="{{ path('app_evenement_delete', {'id': evenement.id}) }}">delete</a> #}
                             {{ include('evenement/_delete_form.html.twig') }}</p>

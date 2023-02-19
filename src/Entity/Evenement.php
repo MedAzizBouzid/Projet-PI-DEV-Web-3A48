@@ -49,9 +49,16 @@ class Evenement
     #[ORM\Column(nullable: true)]
     private ?float $prix = null;
 
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: Pass::class)]
+    private Collection $passes;
+
+
+
     public function __construct()
     {
         $this->sponsors = new ArrayCollection();
+        $this->passes = new ArrayCollection();
+  
     }
 
     public function getId(): ?int
@@ -186,4 +193,36 @@ class Evenement
 
         return $this;
     }
+
+    /**
+     * @return Collection<int, Pass>
+     */
+    public function getPasses(): Collection
+    {
+        return $this->passes;
+    }
+
+    public function addPass(Pass $pass): self
+    {
+        if (!$this->passes->contains($pass)) {
+            $this->passes->add($pass);
+            $pass->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removePass(Pass $pass): self
+    {
+        if ($this->passes->removeElement($pass)) {
+            // set the owning side to null (unless already changed)
+            if ($pass->getEvent() === $this) {
+                $pass->setEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+   
 }
