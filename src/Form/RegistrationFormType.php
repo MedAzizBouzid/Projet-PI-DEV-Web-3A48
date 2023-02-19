@@ -167,6 +167,9 @@ class RegistrationFormType extends AbstractType
             //     'action_name' => 'homepage',
                 
             // ])
+            // ->add('captcha', TextType::class,[
+            //     'mapped' => false,
+            // ])
         ;
     }
 

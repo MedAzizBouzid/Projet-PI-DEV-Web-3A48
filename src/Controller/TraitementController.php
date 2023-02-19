@@ -22,6 +22,21 @@ class TraitementController extends AbstractController
             'controller_name' => 'TraitementController',
         ]);
     }
+    #[Route('/random', name: 'app_random')]
+    public function random(): Response
+    {
+        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $longueurMax = strlen($caracteres);
+        $chaineAleatoire = '';
+        for ($i = 0; $i < 6; $i++)
+        {
+        $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
+        }
+       
+        return $this->render('front/random.html.twig', [
+            'random' => $chaineAleatoire,
+        ]);
+    }
     #[Route('/administration', name: 'app_back_index')]
     public function indexB(): Response
     {
@@ -33,6 +48,13 @@ class TraitementController extends AbstractController
     public function home(): Response
     {
         return $this->render('front/index.html.twig', [
+            
+        ]);
+    }
+    #[Route('/404', name: 'app_err')]
+    public function err(): Response
+    {
+        return $this->render('back/404.html.twig', [
             
         ]);
     }

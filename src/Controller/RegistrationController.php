@@ -27,12 +27,27 @@ class RegistrationController extends AbstractController
     {
         $this->emailVerifier = $emailVerifier;
     }
+    public function random(): string
+    {
+        $caracteres = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
+        $longueurMax = strlen($caracteres);
+        $chaineAleatoire = '';
+        for ($i = 0; $i < 6; $i++)
+        {
+        $chaineAleatoire .= $caracteres[rand(0, $longueurMax - 1)];
+        }
+       
+        return  $chaineAleatoire;
+        
+    }
 
     #[Route('/register', name: 'app_register')]
     public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager,SluggerInterface $slugger): Response
     {
+        $err="";
         $user = new User();
         $form = $this->createForm(RegistrationFormType::class, $user);
+        $form->setData(['captcha'=>'test']);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -67,29 +82,36 @@ class RegistrationController extends AbstractController
                 // instead of its contents
                 $user->setImage($newFilename);
             }
+            if($request->get('captcha')==$request->get('captchaVerif'))
+            {
 
-            $entityManager->persist($user);
-            $entityManager->flush();
-
-            // generate a signed url and email it to the user
-            $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                (new TemplatedEmail())
-                    ->from(new Address('pidevsymfony8@gmail.com', 'BodyRock verification'))
-                    ->to($user->getEmail())
-                    ->subject('Please Confirm your Email')
-                    ->htmlTemplate('registration/confirmation_email.html.twig')
-            );
-            // do anything else you need here, like send an email
-
-            return $userAuthenticator->authenticateUser(
-                $user,
-                $authenticator,
-                $request
-            );
+                $entityManager->persist($user);
+                $entityManager->flush();
+    
+                // generate a signed url and email it to the user
+                // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+                //     (new TemplatedEmail())
+                //         ->from(new Address('pidevsymfony8@gmail.com', 'BodyRock verification'))
+                //         ->to($user->getEmail())
+                //         ->subject('Please Confirm your Email')
+                //         ->htmlTemplate('registration/confirmation_email.html.twig')
+                // );
+                // do anything else you need here, like send an email
+    
+                return $userAuthenticator->authenticateUser(
+                    $user,
+                    $authenticator,
+                    $request
+                );
+            }else{
+                $err="captcha invalid";
+            }
         }
 
         return $this->render('registration/register.html.twig', [
             'registrationForm' => $form->createView(),
+            'random'=>$this->random(),
+            'err'=>$err
         ]);
     }
 
