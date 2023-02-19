@@ -20,80 +20,140 @@ Your Cart
             </div>
         </div>
     </section>
+  
     
-    
-  <section class="team-section team-page spad">
-  <section class="h-100 h-custom">
-  <div class="container h-100 py-5">
+
+<section class="h-100 h-custom" style="background-color: #eee; background-repeat: no-repeat;
+background-size: cover;
+ background-image: url('https://images.unsplash.com/photo-1571902943202-507ec2618e8f?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxzZWFyY2h8Mnx8Z3ltJTIwYmFja2dyb3VuZHxlbnwwfHwwfHw%3D&w=1000&q=80');
+">
+
+  <div class="container py-5 h-100">
     <div class="row d-flex justify-content-center align-items-center h-100">
       <div class="col">
-           <a href="{{path('app_panier_show')}}"><button class="btn btn-info">Historique Panier</button></a>
-   
-        <div class="table-responsive">
-          <table class="table">
-            <thead>
-              <tr>
-                <th scope="col" style="color:white"class="h4">Produit</th>
-                <th scope="col" style="color:white">Image</th>
-                <th scope="col" style="color:white">Prix</th>
-                <th scope="col"style="color:white">Quantité</th>
-                <th scope="col"style="color:white">Total</th>
-                
-                <th scope="col"style="color:white">Actions</th>
-              </tr>
-            </thead>
-           <tbody>
-          
-            {%  for element in LignePaniers %}
-                <tr>
-                
-                <td style="color:white"> {{element.Produit.nom}}</td>
-                <td style="color:white">  <img width="50"src="{{ asset('uploads/'~ element.Produit.image)}}"></td>
-                <td style="color:white"> {{element.produit.prix}}</td>
-                <td style="color:white"> {{element.quantite}}</td>
-                <td style="color:white"> {{element.totalProduit}}TND</td>
-                <td style="color:white">
-                <a href="{{path('app_cart_test',{id:element.produit.id})}}"class="btn btn-success"><i class="bi bi-cart-plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16"><path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/></svg></svg></i>
-                </a>
+        <div class="card">
+          <div class="card-body p-4">
+
+            <div class="row">
+
+              <div class="col-lg-7">
+                <h5 class="mb-3"><a href="#!" class="text-body"><i
+                      class="fas fa-long-arrow-alt-left me-2"></i>Continue shopping</a></h5>
+                <hr>
+
+                <div class="d-flex justify-content-between align-items-center mb-4">
+                  <div>
+                    <p class="mb-1">Shopping cart</p>
+                    <p class="mb-0">You have {{nbr}} items in your cart</p>
+                  </div>
+                  <div>
+                    <p class="mb-0"><span class="text-muted">Sort by:</span> 
+                   {% if ordre  =='desc' %}
+                    <a href="{{ path('app_cart', {'ordre': 'asc'}) }}" class="text-body">price
+    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
+        <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
+    </svg>
+    </a>
+    {% elseif ordre=='asc' %}
+    <a href="{{ path('app_cart', {'ordre': 'desc'}) }}" class="text-body">
+       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-up" viewBox="0 0 16 16">
+  <path fill-rule="evenodd" d="M8 15a.5.5 0 0 0 .5-.5V2.707l3.146 3.147a.5.5 0 0 0 .708-.708l-4-4a.5.5 0 0 0-.708 0l-4 4a.5.5 0 1 0 .708.708L7.5 2.707V14.5a.5.5 0 0 0 .5.5z"/>
+</svg>
+    </a>
+    {%  endif %}
+                    </p>
+                  </div>
+                </div>
+{%  for element in LignePaniers %}
+                <div class="card mb-3">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between">
+                      <div class="d-flex flex-row align-items-center">
+                        <div>
+                          <img
+                            src="{{ asset('uploads/'~ element.Produit.image)}}"
+                            class="img-fluid rounded-3" alt="Shopping item" style="width: 65px;">
+                        </div>
+                        <div class="ms-3">
+                          <h5> {{element.Produit.nom}}</h5>
+                          <p class="small mb-0">{{element.produit.categorie.Type}}</p>
+                        </div>
+                      </div>
+                      <div class="d-flex flex-row align-items-center">
+                        <div style="width: 50px;">
+                          <h5 class="fw-normal mb-0">{{element.quantite}}</h5>
+                        </div>
+                        <div style="width: 80px;">
+                          <h5 class="mb-0">{{element.totalProduit}}TND</h5>
+                        </div>
+                          {% if element.produit.stock  >0  %}
+                        <a href="{{path('app_cart_test',{id:element.produit.id})}}"class="btn btn-success"><i class="bi bi-cart-plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-plus-fill" viewBox="0 0 16 16"><path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0zM9 5.5V7h1.5a.5.5 0 0 1 0 1H9v1.5a.5.5 0 0 1-1 0V8H6.5a.5.5 0 0 1 0-1H8V5.5a.5.5 0 0 1 1 0z"/></svg></svg></i>
+                        </a>
+                          {% endif %}
                 <a href="{{path('app_cart_remove',{id:element.produit.id})}}"class="btn btn-warning"><i class="bi bi-cart-plus"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash" viewBox="0 0 16 16"><path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/><path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg></i>
                 </a>
                 <a href="{{path('app_cart_delete',{id:element.produit.id})}}"class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-x" viewBox="0 0 16 16"><path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z"/> <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
                 </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
                 
-                </td>
-
-           </tr>
-         
-
-
-
-           </tbody>
-           <tfoot>
-           <tr>
-           <td style="color:white"colspan="4">Total</td>
-           <td style="color:white"class="text-end">{{total}}TND</td>
-            <td><a href="{{path('app_cart_delete_all')}}"class="btn btn-danger"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-x" viewBox="0 0 16 16"><path d="M7.354 5.646a.5.5 0 1 0-.708.708L7.793 7.5 6.646 8.646a.5.5 0 1 0 .708.708L8.5 8.207l1.146 1.147a.5.5 0 0 0 .708-.708L9.207 7.5l1.147-1.146a.5.5 0 0 0-.708-.708L8.5 6.793 7.354 5.646z"/> <path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
-                </a></td>
-           </tr>
-        
-           </tfoot>
-           
-              {% else %}
-
-            <tr><td colspan ="6"  style="color:white" class  ="text-center">Votre Panier est Vide !</td></tr>
             {% endfor %}
-            
-          </table>
-          {%  if LignePaniers != null %}
-             <a href="{{path('app_panier_add')}}"><button class="btn btn-success">Passer Commande</button></a>
-          {% endif %}
+
+               
+
+              </div>
+              <div class="col-lg-5">
+
+                <div class="card bg-primary text-white rounded-3">
+                  <div class="card-body">
+                    <div class="d-flex justify-content-between align-items-center mb-4">
+                      <h5 class="mb-0">Card details</h5>
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/avatar-6.webp"
+                        class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+                    </div>
+
+                   
+
+                    <hr class="my-4">
+
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-2">Subtotal</p>
+                      <p class="mb-2">{{total}} TND</p>
+                    </div>
+
+                    <div class="d-flex justify-content-between">
+                      <p class="mb-2">Shipping</p>
+                      <p class="mb-2">7 TND</p>
+                    </div>
+
+                    <div class="d-flex justify-content-between mb-4">
+                      <p class="mb-2">Total(Incl. taxes)</p>
+                      <p class="mb-2">{{totalC}} TND</p>
+                    </div>
+ {%  if LignePaniers != null %}
+             <a href="{{path('app_panier_add')}}">
+          
+                    <button type="button" class="btn btn-info btn-block btn-lg">
+                      <div class="d-flex justify-content-between">
+                        <span>{{totalC}} TND</span>
+                        <span>Checkout <i class="fas fa-long-arrow-alt-right ms-2"></i></span>
+                      </div>
+                    </button>
+                    </a>
+{% endif %}
+                  </div>
+                </div>
+
+              </div>
+
+            </div>
+
+          </div>
         </div>
-
-        
-
       </div>
     </div>
   </div>
-</section>
 </section>
     {% endblock %}

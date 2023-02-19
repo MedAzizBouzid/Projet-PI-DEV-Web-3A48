@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Repository\CategorieRepository;
+use App\Repository\LignePanierRepository;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -24,11 +25,12 @@ class ProduitController extends AbstractController
         ]);
     }
     #[Route('/show/front', name: 'app_produit_index_front', methods: ['GET'])]
-    public function AffichageFront(ProduitRepository $produitRepository, CategorieRepository $categorieRepository): Response
-    {
+    public function AffichageFront(ProduitRepository $produitRepository, LignePanierRepository $LPR, CategorieRepository $categorieRepository): Response
+    {$nbr=$LPR->countAll();
         return $this->render('front/team.html.twig', [
             'produits' => $produitRepository->findAll(),
-            'categories' => $categorieRepository->findAll()
+            'categories' => $categorieRepository->findAll(),
+            'nbr'=>$nbr
         ]);
     }
 

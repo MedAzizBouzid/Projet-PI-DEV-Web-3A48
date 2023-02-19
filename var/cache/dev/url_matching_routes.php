@@ -16,6 +16,7 @@ return [
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
         '/cart' => [[['_route' => 'app_cart', '_controller' => 'App\\Controller\\CartController::index'], null, null, null, false, false, null]],
         '/delete' => [[['_route' => 'app_cart_delete_all', '_controller' => 'App\\Controller\\CartController::deleteAll'], null, null, null, false, false, null]],
+        '/trier' => [[['_route' => 'app_panier_trie', '_controller' => 'App\\Controller\\CartController::trierParPrix'], null, null, null, false, false, null]],
         '/addPanier' => [[['_route' => 'app_panier_add', '_controller' => 'App\\Controller\\CartController::addPanier'], null, null, null, false, false, null]],
         '/panier' => [[['_route' => 'app_panier_show', '_controller' => 'App\\Controller\\CartController::panierShow'], null, null, null, false, false, null]],
         '/categorie/show/back' => [[['_route' => 'app_categorie_index_back', '_controller' => 'App\\Controller\\CategorieController::index'], null, ['GET' => 0], null, false, false, null]],

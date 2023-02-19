@@ -260,7 +260,33 @@
     <script src="{{ asset('assets/front/js/jquery.slicknav.js')}}"></script>
     <script src="{{ asset('assets/front/js/owl.carousel.min.js')}}"></script>
     <script src="{{ asset('assets/front/js/main.js')}}"></script>
+    <script>
+                  $(document).ready(function() {
+    $('.add-to-cart-btn').click(function(e) {
+        e.preventDefault();
 
+        var produitId = $(this).data('produit-id');
+
+        $.ajax({
+            url: '/test/' + produitId,
+            type: 'POST',
+            success: function(response) {
+                if (response.action == 'update') {
+                    // Redirect to update method
+                    window.location.href = '/update/' + produitId;
+                }  else if (response.action == 'add')  {
+                    // Redirect to add method
+                    window.location.href = '/add/' + produitId;
+        }
+            },
+            error: function(xhr) {
+                alert('Error adding product to cart: ' + xhr.statusText);
+            }
+        });
+    });
+});
+
+</script>
         {% endblock %}
 
 

@@ -23,6 +23,7 @@ return [
     'app_cart_remove' => [['id'], ['_controller' => 'App\\Controller\\CartController::remove'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/remove']], [], [], []],
     'app_cart_delete' => [['id'], ['_controller' => 'App\\Controller\\CartController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/delete']], [], [], []],
     'app_cart_delete_all' => [[], ['_controller' => 'App\\Controller\\CartController::deleteAll'], [], [['text', '/delete']], [], [], []],
+    'app_panier_trie' => [[], ['_controller' => 'App\\Controller\\CartController::trierParPrix'], [], [['text', '/trier']], [], [], []],
     'app_panier_add' => [[], ['_controller' => 'App\\Controller\\CartController::addPanier'], [], [['text', '/addPanier']], [], [], []],
     'app_panier_show' => [[], ['_controller' => 'App\\Controller\\CartController::panierShow'], [], [['text', '/panier']], [], [], []],
     'app_panier_delete' => [['id'], ['_controller' => 'App\\Controller\\CartController::deletePanier'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/deletePanier']], [], [], []],

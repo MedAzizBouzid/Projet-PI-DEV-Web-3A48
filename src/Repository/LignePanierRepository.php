@@ -53,7 +53,22 @@ class LignePanierRepository extends ServiceEntityRepository
         ->getQuery()
         ->execute();
     }
+    public function countAll(): int
+    {
+        return $this->createQueryBuilder('e')
+            ->select('COUNT(e.id)')
+            ->getQuery()
+            ->getSingleScalarResult();
+    }
+    public function trierParPrix($ordre="asc")
+{
+    $qb = $this->createQueryBuilder('lp')
+      
+        ->orderBy('lp.totalProduit', $ordre)
+        ->getQuery();
 
+    return $qb->getResult();
+}
     //    /**
     //     * @return LignePanier[] Returns an array of LignePanier objects
     //     */
