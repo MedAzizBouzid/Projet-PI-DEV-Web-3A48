@@ -46,6 +46,9 @@ class Evenement
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Sponsor::class)]
     private Collection $sponsors;
 
+    #[ORM\Column(nullable: true)]
+    private ?float $prix = null;
+
     public function __construct()
     {
         $this->sponsors = new ArrayCollection();
@@ -168,6 +171,18 @@ class Evenement
                 $sponsor->setEvent(null);
             }
         }
+
+        return $this;
+    }
+
+    public function getPrix(): ?float
+    {
+        return $this->prix;
+    }
+
+    public function setPrix(?float $prix): self
+    {
+        $this->prix = $prix;
 
         return $this;
     }

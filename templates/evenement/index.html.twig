@@ -301,6 +301,7 @@
                         <h5 class="mb-1">{{ evenement.lieu }}</h5>
                         <p>begin at: {{ evenement.beginAt ? evenement.beginAt|date('Y-m-d H:i:s') : '' }}</p>
                         <p>finish at: {{ evenement.finishAt ? evenement.finishAt|date('Y-m-d H:i:s') : '' }}</p>
+                        <p>{{ evenement.prix }} DT</p>
                         <p>{{ evenement.capacite }} places disponibles</p>
                         <p>{% if  evenement.type is not null  %}
                             {{ evenement.type.typeE }}

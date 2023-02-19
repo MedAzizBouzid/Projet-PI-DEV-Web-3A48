@@ -65,7 +65,7 @@ class EvenementType extends AbstractType
                     
                 ]),
             ]])
-            ->add('type')
+            ->add('prix')
             ->add('type', EntityType::class, [
                 // looks for choices from this entity
                 'class' => TypeEvent::class,
