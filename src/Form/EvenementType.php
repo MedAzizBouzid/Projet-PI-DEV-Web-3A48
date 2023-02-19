@@ -24,7 +24,7 @@ class EvenementType extends AbstractType
                     new NotBlank(),
                     new Regex([
                         'pattern'=>'/^[a-zA-Z]+$/',
-                        'message'=>'the name must not have numbers'
+                        'message'=>'le nom doit contenir que des caracteres'
                     
                 ]),
 
@@ -35,8 +35,8 @@ class EvenementType extends AbstractType
                 'constraints' => [
                     new NotBlank(),
                     new Regex([
-                        'pattern'=>'/^[a-zA-Z]+$/',
-                        'message'=>'the name must not have numbers'
+                        'pattern'=>'/^[a-zA-Z0-9 ]+$/',
+                        'message'=>'le lieux doit contenur que des nombres et caracteres'
                     
                 ]),
 
@@ -56,12 +56,12 @@ class EvenementType extends AbstractType
                 
                 'constraints' => [
                     new NotBlank([
-                        'message' => 'Please enter a phone number',
+                        'message' => 'ce champ ne doit pas etre vide',
                     ]),
                     
                     new Regex([
                         'pattern'=>'/^[0-9]+$/',
-                        'message'=>'Your password should be at least 8 characters:upper lower and number'
+                        'message'=>'veuillez entrer que des nombres'
                     
                 ]),
             ]])
