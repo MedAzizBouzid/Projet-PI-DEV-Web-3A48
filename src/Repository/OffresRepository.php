@@ -36,11 +36,14 @@ class OffresRepository extends ServiceEntityRepository
     public function remove(Offres $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
-
+        
         if ($flush) {
             $this->getEntityManager()->flush();
         }
+
     }
+
+   
 
 //    /**
 //     * @return Offres[] Returns an array of Offres objects

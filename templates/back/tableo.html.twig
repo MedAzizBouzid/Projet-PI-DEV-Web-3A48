@@ -18,9 +18,11 @@
                                            <th>duree</th>
                                     
                                                <th>Prix</th>
+                                                       <th>nouveau prix apres reduction</th>
                                                 
                                                <th>Description</th>
-                                           
+                                                 <th>promotion</th>
+                                            
                                                 <th>actions</th>
                                                
                                         </tr>
@@ -30,16 +32,41 @@
                                      {% for offre in offres %}
                                             <tr>
                                                  <td>{{ offre.id }}</td>
+                                                 
                                                 <td> Tarif Par {{ offre.type }}</td>
-                                                 <td>{{ offre.duree   }}  Mois</td>   
-                                              <td>{{ offre.prix }}   DT</td>                                     
-                                              
-                                             <td>{{ offre.description }}</td>
-                                             <td>
-                                      
-                                            <a href="{{ path('app_offres_edit', {'id': offre.id}) }}">edit</a>
-                                            <a href= "{{ path('app_offres_delete', {'id': offre.id}) }}" >delete</a>
 
+                                                 <td>{{ offre.duree   }}  Mois</td>  
+
+                                              <td>{{ offre.prix }}   DT</td> 
+
+                                                 <td> {% if  offre.promo is  null  %} 
+                                                     pas de nv prix
+                                                     
+                                                  {% else %}
+                                       {{ offre.NvPrix}}   
+                                              {% endif %}
+                                                                                     
+                                               </td>  
+                                             <td>{{ offre.description }}</td>
+                                      <td> {% if  offre.promo is  null  %}
+                                              offre pas en promotion
+          
+                                                  {% else %}
+                                            {{ offre.promo.pourcentage }} %
+                                              {% endif %}
+                                                                    </td>
+                                      
+                                         
+                                      
+                                                <td>   <a href="{{ path('app_offres_edit', {'id': offre.id}) }}"><button class="btn btn-danger "><i class=" bi bi-pen "></i></button></a>&nbsp;
+                                            <a href= "{{ path('app_offres_delete', {'id': offre.id}) }}" ><button class="btn btn-danger "><i class="bi bi-trash-fill"></i></button></a>&nbsp;
+                                            <a href=" {{ path('app_offres_show', {'id': offre.id}) }} "><button class="btn btn-danger "><i class=" bi bi-info-circle "></i></button></a> &nbsp;
+                                         <br>
+                                        
+                                            
+                                      
+                                            
+                                       
 
                                          
                                             
@@ -55,7 +82,8 @@
                                  </table>
                                                <a href="{{ path('app_offres_new') }}">Create new</a>
                                                <br> </br>
-                                                 <a href="{{ path('app_tri') }}">trier</a>
+                                      
+                                              
                                             
                                          
 

@@ -1,8 +1,9 @@
 <?php
 
 namespace App\Form;
-
+use App\Entity\Promotion;
 use App\Entity\Offres;
+use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\FormBuilderInterface;
 use Symfony\Component\OptionsResolver\OptionsResolver;
@@ -18,6 +19,17 @@ class OffresType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
+        ->add('promo', EntityType::class, [
+            // looks for choices from this entity
+            'class' => Promotion::class,
+            // uses the User.username property as the visible option string
+            'choice_label' => 'pourcentage',
+            'placeholder' => 'None',
+            'required' => false,
+            // used to render a select box, check boxes or radios
+            'multiple' => false,
+            'expanded' => false,
+        ])
             ->add ('type', ChoiceType::class,array(
                 'choices'=> array(
                      'Personne'=> 'Personne',
@@ -62,6 +74,8 @@ class OffresType extends AbstractType
                         ]),
                 ]
                     ])
+                 
+               
           
                 
         

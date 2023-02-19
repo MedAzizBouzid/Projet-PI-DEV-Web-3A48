@@ -38,17 +38,32 @@
                 {% for offre in data%}
             
                 <div class="col-lg-4 col-md-8">
-                  
+                
                     <div class="ps-item">
-                      
-                        <h3> Tarif Par {{ offre.type }}</h3>
                     
+                        <h3> Tarif Par {{ offre.type }}</h3>
+                              
                         <div class="pi-price">
-                            <h2>{{offre.prix}}  DT </h2>
-                            <span>{{ offre.duree }} Mois </span>
-                            <br> </br>
-                               <span>{{ offre.description  }} </span>
-                          
+
+             
+                            {%if offre.promo %}
+                              
+                    
+                                 
+                          <span>     {{offre.prix}}  DT  /   {{ offre.duree }} Mois </span> 
+                           <br> <br>
+         <p style="font-size: 40px;">   {{offre.promo.pourcentage}} %</p>
+     
+                                       <h2> {{offre.NvPrix}} DT</h2>
+                   
+                           
+                              {% else %}
+                                    <h2>{{offre.prix}}  DT  <span>   / {{ offre.duree }} Mois  </span> </h2>
+                                    <br>
+                                    {% endif %}
+                                    
+                               <span>    <li>{{ offre.description  }} </li> </span> 
+                      
                         </div>
                               <div class="center">
                          
@@ -58,8 +73,8 @@
                          <div class="pi-price">
                             
                    
-                           
-                                   
+                         
+ 
     
                 
             

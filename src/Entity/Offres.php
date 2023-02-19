@@ -21,8 +21,7 @@ class Offres
     
 
     #[ORM\Column(length: 255)]
-    
-    private ?string $type = null;
+    private ?string $type ;
 
    
 
@@ -74,6 +73,17 @@ class Offres
 
     #[ORM\OneToMany(mappedBy: 'offre', targetEntity: Abonnement::class)]
     private Collection $abonnements;
+
+    #[ORM\ManyToOne(inversedBy: 'offres')]
+    private ?Promotion $promo = null;
+
+    #[ORM\Column(nullable: true)]
+    private ?float $nv_prix = null;
+
+   
+   
+
+   
 
    
 
@@ -173,8 +183,31 @@ class Offres
         return $this;
     }
 
-  
+    public function getPromo(): ?Promotion
+    {
+        return $this->promo;
+    }
 
+    public function setPromo(?Promotion $promo): self
+    {
+        $this->promo = $promo;
+
+        return $this;
+    }
+
+    public function getNvPrix(): ?float
+    {
+        return $this->nv_prix;
+    }
+
+    public function setNvPrix(?float $nv_prix): self
+    {
+        $this->nv_prix = $nv_prix;
+
+        return $this;
+    }
+
+  
  
   
 }

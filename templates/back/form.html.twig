@@ -58,16 +58,19 @@
                                      <td> {{  form_errors(form.description) }}</td>
                                 </tr>
                                 
+                              
                         </div>
                     
 </table>
-    <button class="btn">{{ button_label|default('Save') }}</button>
+  {{ form_label(form.promo) }}
+                                {{ form_widget(form.promo) }}
+       <button class="btn">{{ button_label|default('Save') }}</button>
+<br>
+    <a href="{{ path('app_offres_index') }}">back to list</a>
+
+
 {{ form_end(form) }}
  
-
-   
-
-    <a href="{{ path('app_offres_index') }}">back to list</a>
 
                         </div>
                     </div>

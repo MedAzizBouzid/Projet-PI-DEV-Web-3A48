@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Controller;
-
+use App\Entity\Promotion;
 use App\Entity\Offres;
 use App\Form\OffresType;
 use App\Repository\OffresRepository;
@@ -11,6 +11,7 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\MyEntityRepository;
+use App\Repository\PromotionRepository;
 
 
 
@@ -32,6 +33,7 @@ class OffresController extends AbstractController
         $form = $this->createForm(OffresType::class, $offre);
         $form->handleRequest($request);
     
+    
         if ($form->isSubmitted() && $form->isValid()) {
             $offresRepository->save($offre, true);
 
@@ -44,22 +46,26 @@ class OffresController extends AbstractController
         ]);
     }
 
-  //  #[Route('/{id}', name: 'app_offres_show', methods: ['GET'])]
+   #[Route('/show/{id}', name: 'app_offres_show', methods: ['GET'])]
 
 
- //  public function show(OffresRepository $offresRepository): Response
-   // {
-      //  return $this->render('back/table.html.twig', [
-        //    'offres' => $offresRepository->findbyId(),
+   public function show(Offres $offres): Response
+    {
+      return $this->render('back/table.html.twig', [
+            'offre' => $offres,
             
-        //]);
-   // }
+        ]);
+    }
 
     #[Route('/{id}/edit', name: 'app_offres_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Offres $offre, OffresRepository $offresRepository): Response
     {
         $form = $this->createForm(OffresType::class, $offre);
         $form->handleRequest($request);
+        if($offre->getPromo()){
+        $offre->setNvPrix($offre->getPrix()-(1*($offre->getPromo()->getPourcentage()/100)));}
+        
+        
 
         if ($form->isSubmitted() && $form->isValid()) {
             $offresRepository->save($offre, true);
@@ -116,17 +122,4 @@ class OffresController extends AbstractController
         ]);
     }
 
-
-    #[Route('/tri', name: 'app_tri', methods: ['GET'])]
-
-    public function tri(OffresRepository $myEntityRepository)
-{
-  $data = $myEntityRepository->tri();
-
-  return $this->render('back/tableee.html.twig', [
-      'offres' => $data,
-    
-  ]);
 }
-  
-        }
