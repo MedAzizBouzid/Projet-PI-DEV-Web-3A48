@@ -22,6 +22,14 @@ class EvenementController extends AbstractController
         ]);
     }
 
+    #[Route('/call', name: 'app_call', methods: ['GET'])]
+    public function call(): Response
+    {
+        return $this->render('back/call.xml', [
+           
+        ]);
+    }
+
     // afficher event dans front
     #[Route('/front', name: 'app_evenement_index_front', methods: ['GET'])]
     public function showFront(EvenementRepository $evenementRepository): Response

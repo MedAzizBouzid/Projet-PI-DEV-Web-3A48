@@ -3,15 +3,16 @@
 namespace App\Controller;
 // require __DIR__ . '/vendor/autoload.php';
 
-use twilio\Rest\Client;
-use App\Entity\Evenement;
+
 use App\Entity\Pass;
 use App\Entity\User;
 use App\Form\PassType;
 use DateTimeImmutable;
+use Twilio\Rest\Client;
+use App\Entity\Evenement;
 use App\Repository\PassRepository;
-use App\Repository\EvenementRepository;
 use App\Repository\UserRepository;
+use App\Repository\EvenementRepository;
 use Symfony\Contracts\EventDispatcher\Event;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -28,6 +29,17 @@ class PassController extends AbstractController
             'passes' => $passRepository->findAll(),
         ]);
     }
+
+    #[Route('/mesPass/{id}', name: 'app_pass_index_mesPass', methods: ['GET'])]
+    public function mesPass(PassRepository $passRepository,$id): Response
+    {
+        return $this->render('front/mes-Pass.html.twig', [
+            'passes' => $passRepository->findPassByIdClient($id),
+        ]);
+    }
+
+
+
 
     #[Route('/new', name: 'app_pass_new', methods: ['GET', 'POST'])]
     public function new(Request $request, PassRepository $passRepository): Response
@@ -80,25 +92,37 @@ $twilio = new Client($sid, $token);
         
             $passRepository->save($pass, true);
 
-            $numeroTelephone=$client->getNumTel();
-            $numeroTelephoneEnString = (string)$numeroTelephone ; // conversion en chaîne de caractères
-            $receiver_number = '+216' . $numeroTelephoneEnString; // concaténation avec la chaîne '+216'
-            $client_name=$client->getNom();
-$event_name=$event->getNom();
-$event_place=$event->getLieu();
-$event_time=$event->getBeginAt();
-	$body="Hello Mr ". $client_name ." you have just get a pass for our evenet ". $event_name . " who take place in ". $event_place;
+//             $numeroTelephone=$client->getNumTel();
+//             $numeroTelephoneEnString = (string)$numeroTelephone ; // conversion en chaîne de caractères
+//             $receiver_number = '+216' . $numeroTelephoneEnString; // concaténation avec la chaîne '+216'
+//             $client_name=$client->getNom();
+// $event_name=$event->getNom();
+// $event_place=$event->getLieu();
+// $event_time=$event->getBeginAt();
+// 	$body="Hello Mr ". $client_name ." you have just get a pass for our evenet ". $event_name . " who take place in ". $event_place;
 
 	
     
-            $message = $twilio->messages
-                  ->create('+21626181201', // to
-                           array(
-                               "body" => $body,
-                               "from" => "+12697956309"
-                           )
-                  );
+            // $message = $twilio->messages
+            //       ->create('+21626181201', // to
+            //                array(
+            //                    "body" => $body,
+            //                    "from" => "+12697956309"
+            //                )
+            //       );
 
+
+            // $callParams = [
+            //     'url' => 'http://127.0.0.1:8000/evenement/call', // URL to TwiML instructions for the call
+            //     'to' =>'+21626181201' , // Phone number to call
+            //     'from' => '+12697956309', // Your Twilio phone number
+            // ];
+         
+            $call = $twilio->calls
+            ->create("+21626181201", // to
+                     "+12697956309", // from
+                     ["url" => "http://127.0.0.1:8000/evenement/call"]
+            );
             return $this->redirectToRoute('app_evenement_index_front', [], Response::HTTP_SEE_OTHER);
        
 

@@ -63,4 +63,16 @@ class PassRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+public function findPassByIdClient($clientId)
+{
+    $qb = $this->createQueryBuilder('s')
+        ->leftJoin('s.client', 'e')
+        ->andWhere('e.id = :clientId')
+        ->setParameter('clientId', $clientId)
+        ->getQuery();
+
+    return $qb->getResult();
+}
+
 }
