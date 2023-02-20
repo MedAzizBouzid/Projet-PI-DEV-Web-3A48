@@ -1,0 +1,59 @@
+{% extends 'back/base.html.twig' %}
+ {% block title %}
+   Gestion de produits
+    {% endblock %}
+    {% block ProdActive %}active{% endblock %}
+
+{% block body %}
+            <!-- Table Start -->
+            <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+            <div class="container-fluid pt-4 px-4" style="bottom:0;">
+          <a href="{{path ('app_produit_new')}}"> <button type="button" class="btn btn-danger m-2">Add New</button></a> 
+                {# <div class="card-body"> #}
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                          
+                                            <th>Nom</th>
+                                            <th>Image</th>
+                                            <th>Catégorie</th>
+                                            <th>Prix</th>
+                                            <th>Stock</th>
+                                            <th>action</th>
+                                        </tr>
+                                    </thead>
+                                   
+                                    <tbody>
+                                    {% for produit in produits %}
+                                    <tr>
+                                        <td>{{ produit.id }}</td>
+                                        <td>{{ produit.nom }}</td>
+                                        <td>
+                                        <img src="{{ asset('uploads/'~ produit.image) }}" alt="" width="75"
+                                        >
+                                        </td>
+                                        <td>{{ produit.categorie }}</td>
+                                          
+                                        <td>{{ produit.prix }}</td>
+                                        <td>{{ produit.stock }}</td>
+                                        <td>
+                                            <a href="{{ path('app_produit_show', {'id': produit.id}) }}"><button class="btn btn-warning m-2"> Detail</button> </a>
+                                            <a href="{{ path('app_produit_edit', {'id': produit.id}) }}"><button class="btn btn-light ">Modifier</button></a>
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="6">no records found</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+            <!-- Table End -->
+            {% endblock %}
+
+            

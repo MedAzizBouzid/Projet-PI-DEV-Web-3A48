@@ -63,10 +63,4 @@ class ProduitRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
-public function findProductPaginated(int $page,string $slug,int $limit = 6):array
-{
-$result=[];
-
-return $result;
-}
 }
