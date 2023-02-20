@@ -1,7 +1,9 @@
 <?php
 
 namespace App\Controller;
+// require __DIR__ . '/vendor/autoload.php';
 
+use twilio\Rest\Client;
 use App\Entity\Evenement;
 use App\Entity\Pass;
 use App\Entity\User;
@@ -58,6 +60,14 @@ class PassController extends AbstractController
         } 
         
 
+//         $sid    = "ACe5e12645de4fa19a9d817da822c48552";
+// $token  = "4890e95a4b67ff9d7f2d2127ed72ddb5";
+// $twilio = new Client($sid, $token);
+
+
+
+
+
         $pass = new Pass();
         $client=new User();
         $event->setCapacite($event->getCapacite()-1);
@@ -69,6 +79,20 @@ class PassController extends AbstractController
         $pass->setCreatedAt($dateObj);
         
             $passRepository->save($pass, true);
+
+            // $numeroTelephone=$client->getNumTel();
+            // $numeroTelephoneEnString = (string)$numeroTelephone ; // conversion en chaîne de caractères
+            // $receiver_number = '+216' . $numeroTelephoneEnString; // concaténation avec la chaîne '+216'
+// dd($receiver_number);
+	
+    
+            // $message = $twilio->messages
+            //       ->create("receiver_number", // to
+            //                array(
+            //                    "body" => '',
+            //                    "from" => "++12697956309"
+            //                )
+            //       );
 
             return $this->redirectToRoute('app_evenement_index_front', [], Response::HTTP_SEE_OTHER);
        
