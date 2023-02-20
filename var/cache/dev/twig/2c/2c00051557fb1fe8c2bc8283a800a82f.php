@@ -86,20 +86,9 @@ class __TwigTemplate_9a7520de9d094318a0ae3a4ef50ffb01 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 7
-        echo "  <div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">
- <a href=\"";
+        echo "\t\t\t\t";
         // line 8
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_index");
-        echo "\"> <button type=\"button\"class=\"btn btn-primary\" >Back to list</button></a>
-  \t<a href=\"";
-        // line 9
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 9, $this->source); })()), "id", [], "any", false, false, false, 9)]), "html", null, true);
-        echo "\"><button type=\"button\" class=\"btn btn-secondary\">Mofidier cette activité</button></a>
-  ";
-        // line 11
-        echo "      <div class=\"btn-toggle\">Go Nuit</div>
-
-</div>
+        echo "
 \t<style>
 \t\tbody {
 \t\t\tbackground-color: #f1f1f1;
@@ -134,151 +123,191 @@ class __TwigTemplate_9a7520de9d094318a0ae3a4ef50ffb01 extends Template
 \t\t}
 
 
-
-
-
-
-
 \t\thtml {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-body {
-    /* background: var(--fond); */
-}
-hr {
-    width: 200px;
-}
-h1 {
-    text-align: center;
-    padding-top: 70px;
-    /* color: var(--ecriture); */
-}
-.contenu {
-    padding: 50px 10%;
-    text-align: justify;
-    /* color: var(--ecriture); */
+\t\t\tfont-family: Verdana, Geneva, Tahoma, sans-serif;
+\t\t}
+\t\tbody {
+\t\t\t;
+\t\t\t/* background: var(--fond); */
+\t\t}
+\t\thr {
+\t\t\twidth: 200px;
+\t\t}
+\t\th1 {
+\t\t\ttext-align: center;
+\t\t\tpadding-top: 70px;
+\t\t\t/* color: var(--ecriture); */
+\t\t}
+\t\t.contenu {
+\t\t\tpadding: 50px 10%;
+\t\t\ttext-align: justify;
+\t\t\t/* color: var(--ecriture); */
 
-}
-.btn-toggle {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: #333;
-    color: #fff;
-    border: 1px solid #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    cursor: pointer;
-}
+\t\t}
+\t\t.btn-toggle {
+\t\t\tposition: absolute;
+\t\t\ttop: 0;
+\t\t\tleft: 0;
+\t\t\twidth: 80px;
+\t\t\theight: 80px;
+\t\t\tborder-radius: 50%;
+\t\t\tbackground: #333;
+\t\t\tcolor: #fff;
+\t\t\tborder: 1px solid #333;
+\t\t\tdisplay: flex;
+\t\t\tjustify-content: center;
+\t\t\talign-items: center;
+\t\t\tcursor: pointer;
+\t\t}
+\t\t.btn-group {
+\t\t\tposition: absolute;
+\t\t\ttop: 1px;
+\t\t\tright: 100px;
+\t\t\twidth: 180px;
+\t\t\theight: 180px;
+\t\t\tborder-radius: 50%;
+\t\t\tbackground: #333;
+\t\t\tcolor: #333;
+\t\t\tborder: 1px solid #333;
+\t\t\tdisplay: flex;
+\t\t\tjustify-content: center;
+\t\t\talign-items: center;
+\t\t\tcursor: pointer;
+\t\t}
+\t\t.btn-primary, .btn-secondary {
+\t\t\tbackground-color: red;
+\t\t\tborder-color: red;
+\t\t\tcolor: white;
+\t\t\t}
 
-body.dark {
-    color: #fff!important;
-    background: #333!important;
-}
-body.dark .btn-toggle {
-    background: #f1f1f1;
-    color: #333;
-}
+\t\t.btn-primary:hover, .btn-secondary:hover {
+\t\tbackground-color: darkred;
+\t\tborder-color: darkred;
+\t\tcolor: white;
+\t\t}
+\t\tbody.dark {
+\t\t\tcolor: #fff !important;
+\t\t\tbackground: #333 !important;
+\t\t}
+\t\tbody.dark .btn-toggle {
+\t\t\tbackground: #f1f1f1;
+\t\t\tcolor: #333;
+\t\t}
 \t</style>
-
-<body class=\"light\">
-\t<table class=\"table\">
-\t\t<tbody>
-\t\t\t";
-        // line 106
-        echo "\t\t\t<tr>
-\t\t\t\t<th>Nom</th>
-\t\t\t\t<td>";
-        // line 108
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 108, $this->source); })()), "nom", [], "any", false, false, false, 108), "html", null, true);
-        echo "</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Categorie</th>
-\t\t\t\t<td>";
-        // line 112
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 112, $this->source); })()), "categorie", [], "any", false, false, false, 112), "html", null, true);
-        echo "</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Materiel utilise</th>
-\t\t\t\t<td>";
-        // line 116
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 116, $this->source); })()), "materiel", [], "any", false, false, false, 116), "html", null, true);
-        echo "</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Intensite</th>
-\t\t\t\t<td>";
+\t\t\t\t";
+        // line 115
+        echo "
+\t<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">
+\t\t<a href=\"";
+        // line 117
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_index");
+        echo "\">
+\t\t\t<button id=\"openBtn\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Retourner à la liste</button>
+\t\t</a>
+\t\t<a href=\"";
         // line 120
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 120, $this->source); })()), "intensite", [], "any", false, false, false, 120), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_edit", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 120, $this->source); })()), "id", [], "any", false, false, false, 120)]), "html", null, true);
+        echo "\">
+\t\t\t<button type=\"button\" class=\"btn btn-secondary\">Mofidier cette activité</button>
+\t\t</a>
+
+\t</div>
+\t<div class=\"btn-toggle\">Go Nuit</div>
+
+\t<body class=\"light\">
+\t\t<table class=\"table\">
+\t\t\t<tbody>
+\t\t\t\t";
+        // line 134
+        echo "\t\t\t\t<tr>
+\t\t\t\t\t<th>Nom</th>
+\t\t\t\t\t<td>";
+        // line 136
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 136, $this->source); })()), "nom", [], "any", false, false, false, 136), "html", null, true);
         echo "</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Group musculaire sollicité</th>
-\t\t\t\t<td>";
-        // line 124
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 124, $this->source); })()), "grpMusculaire", [], "any", false, false, false, 124), "html", null, true);
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Categorie</th>
+\t\t\t\t\t<td>";
+        // line 140
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 140, $this->source); })()), "categorie", [], "any", false, false, false, 140), "html", null, true);
         echo "</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Tenue</th>
-\t\t\t\t<td>";
-        // line 128
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 128, $this->source); })()), "tenue", [], "any", false, false, false, 128), "html", null, true);
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Materiel utilise</th>
+\t\t\t\t\t<td>";
+        // line 144
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 144, $this->source); })()), "materiel", [], "any", false, false, false, 144), "html", null, true);
         echo "</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Recomendation</th>
-\t\t\t\t<td>";
-        // line 132
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 132, $this->source); })()), "recomendation", [], "any", false, false, false, 132), "html", null, true);
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Intensite</th>
+\t\t\t\t\t<td>";
+        // line 148
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 148, $this->source); })()), "intensite", [], "any", false, false, false, 148), "html", null, true);
         echo "</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Image</th>
-\t\t\t\t<td>
-\t\t\t\t\t<img   class=\"img-thumbnail\" src=\"";
-        // line 137
-        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 137, $this->source); })()), "image", [], "any", false, false, false, 137))), "html", null, true);
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Group musculaire sollicité</th>
+\t\t\t\t\t<td>";
+        // line 152
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 152, $this->source); })()), "grpMusculaire", [], "any", false, false, false, 152), "html", null, true);
+        echo "</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Tenue</th>
+\t\t\t\t\t<td>";
+        // line 156
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 156, $this->source); })()), "tenue", [], "any", false, false, false, 156), "html", null, true);
+        echo "</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Recomendation</th>
+\t\t\t\t\t<td>";
+        // line 160
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 160, $this->source); })()), "recomendation", [], "any", false, false, false, 160), "html", null, true);
+        echo "</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Image</th>
+\t\t\t\t\t<td>
+\t\t\t\t\t\t<img class=\"img-thumbnail\" src=\"";
+        // line 165
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl(("uploads/" . twig_get_attribute($this->env, $this->source, (isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 165, $this->source); })()), "image", [], "any", false, false, false, 165))), "html", null, true);
         echo "\" alt=\"\"></td>
-\t\t\t</tr>
+\t\t\t\t</tr>
 
-\t\t</tbody>
-\t</table>
+\t\t\t</tbody>
+\t\t</table>
 
-</body>
-<script>
+\t</body>
+\t<script>
 
-const btnToggle = document.querySelector('.btn-toggle');
+\t\tconst btnToggle = document.querySelector('.btn-toggle');
 
 btnToggle.addEventListener('click', () => {
 
-    const body = document.body;
+const body = document.body;
 
-    if(body.classList.contains('dark')){
+if (body.classList.contains('dark')) {
 
-        body.classList.add('light')
-        body.classList.remove('dark')
-        btnToggle.innerHTML = \"Go Dark\"
+body.classList.add('light')
+body.classList.remove('dark')
+btnToggle.innerHTML = \"Go Dark\"
 
-    } else if(body.classList.contains('light')){
+} else if (body.classList.contains('light')) {
 
-        body.classList.add('dark')
-        body.classList.remove('light')
-        btnToggle.innerHTML = \"Go Light\"
+body.classList.add('dark')
+body.classList.remove('light')
+btnToggle.innerHTML = \"Go Light\"
 
-    }
+}
 
 })
-</script>
+\t</script>
 \t";
-        // line 171
-        echo " \t";
+        // line 199
+        echo "\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -299,7 +328,7 @@ btnToggle.addEventListener('click', () => {
 
     public function getDebugInfo()
     {
-        return array (  281 => 171,  247 => 137,  239 => 132,  232 => 128,  225 => 124,  218 => 120,  211 => 116,  204 => 112,  197 => 108,  193 => 106,  100 => 11,  96 => 9,  92 => 8,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
+        return array (  310 => 199,  276 => 165,  268 => 160,  261 => 156,  254 => 152,  247 => 148,  240 => 144,  233 => 140,  226 => 136,  222 => 134,  209 => 120,  203 => 117,  199 => 115,  91 => 8,  89 => 7,  79 => 6,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -310,13 +339,8 @@ btnToggle.addEventListener('click', () => {
 {% endblock %}
 
 {% block body %}
-  <div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">
- <a href=\"{{ path('app_activite_index') }}\"> <button type=\"button\"class=\"btn btn-primary\" >Back to list</button></a>
-  \t<a href=\"{{ path('app_activite_edit', {'id': activite.id}) }}\"><button type=\"button\" class=\"btn btn-secondary\">Mofidier cette activité</button></a>
-  {# <button type=\"button\" class=\"btn btn-secondary\">Right</button> #}
-      <div class=\"btn-toggle\">Go Nuit</div>
+\t\t\t\t{# _________________________________________Css____________________________________ #}
 
-</div>
 \t<style>
 \t\tbody {
 \t\t\tbackground-color: #f1f1f1;
@@ -351,130 +375,163 @@ btnToggle.addEventListener('click', () => {
 \t\t}
 
 
-
-
-
-
-
 \t\thtml {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-body {
-    /* background: var(--fond); */
-}
-hr {
-    width: 200px;
-}
-h1 {
-    text-align: center;
-    padding-top: 70px;
-    /* color: var(--ecriture); */
-}
-.contenu {
-    padding: 50px 10%;
-    text-align: justify;
-    /* color: var(--ecriture); */
+\t\t\tfont-family: Verdana, Geneva, Tahoma, sans-serif;
+\t\t}
+\t\tbody {
+\t\t\t;
+\t\t\t/* background: var(--fond); */
+\t\t}
+\t\thr {
+\t\t\twidth: 200px;
+\t\t}
+\t\th1 {
+\t\t\ttext-align: center;
+\t\t\tpadding-top: 70px;
+\t\t\t/* color: var(--ecriture); */
+\t\t}
+\t\t.contenu {
+\t\t\tpadding: 50px 10%;
+\t\t\ttext-align: justify;
+\t\t\t/* color: var(--ecriture); */
 
-}
-.btn-toggle {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: #333;
-    color: #fff;
-    border: 1px solid #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    cursor: pointer;
-}
+\t\t}
+\t\t.btn-toggle {
+\t\t\tposition: absolute;
+\t\t\ttop: 0;
+\t\t\tleft: 0;
+\t\t\twidth: 80px;
+\t\t\theight: 80px;
+\t\t\tborder-radius: 50%;
+\t\t\tbackground: #333;
+\t\t\tcolor: #fff;
+\t\t\tborder: 1px solid #333;
+\t\t\tdisplay: flex;
+\t\t\tjustify-content: center;
+\t\t\talign-items: center;
+\t\t\tcursor: pointer;
+\t\t}
+\t\t.btn-group {
+\t\t\tposition: absolute;
+\t\t\ttop: 1px;
+\t\t\tright: 100px;
+\t\t\twidth: 180px;
+\t\t\theight: 180px;
+\t\t\tborder-radius: 50%;
+\t\t\tbackground: #333;
+\t\t\tcolor: #333;
+\t\t\tborder: 1px solid #333;
+\t\t\tdisplay: flex;
+\t\t\tjustify-content: center;
+\t\t\talign-items: center;
+\t\t\tcursor: pointer;
+\t\t}
+\t\t.btn-primary, .btn-secondary {
+\t\t\tbackground-color: red;
+\t\t\tborder-color: red;
+\t\t\tcolor: white;
+\t\t\t}
 
-body.dark {
-    color: #fff!important;
-    background: #333!important;
-}
-body.dark .btn-toggle {
-    background: #f1f1f1;
-    color: #333;
-}
+\t\t.btn-primary:hover, .btn-secondary:hover {
+\t\tbackground-color: darkred;
+\t\tborder-color: darkred;
+\t\tcolor: white;
+\t\t}
+\t\tbody.dark {
+\t\t\tcolor: #fff !important;
+\t\t\tbackground: #333 !important;
+\t\t}
+\t\tbody.dark .btn-toggle {
+\t\t\tbackground: #f1f1f1;
+\t\t\tcolor: #333;
+\t\t}
 \t</style>
+\t\t\t\t{# _________________________________________Css____________________________________ #}
 
-<body class=\"light\">
-\t<table class=\"table\">
-\t\t<tbody>
-\t\t\t{# <tr>
-\t\t\t                <th>Id</th>
-\t\t\t                <td>{{ activite.id }}</td>
-\t\t\t            </tr> #}
-\t\t\t<tr>
-\t\t\t\t<th>Nom</th>
-\t\t\t\t<td>{{ activite.nom }}</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Categorie</th>
-\t\t\t\t<td>{{ activite.categorie }}</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Materiel utilise</th>
-\t\t\t\t<td>{{ activite.materiel }}</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Intensite</th>
-\t\t\t\t<td>{{ activite.intensite }}</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Group musculaire sollicité</th>
-\t\t\t\t<td>{{ activite.grpMusculaire }}</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Tenue</th>
-\t\t\t\t<td>{{ activite.tenue }}</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Recomendation</th>
-\t\t\t\t<td>{{ activite.recomendation }}</td>
-\t\t\t</tr>
-\t\t\t<tr>
-\t\t\t\t<th>Image</th>
-\t\t\t\t<td>
-\t\t\t\t\t<img   class=\"img-thumbnail\" src=\"{{asset('uploads/'~ activite.image)}}\" alt=\"\"></td>
-\t\t\t</tr>
+\t<div class=\"btn-group\" role=\"group\" aria-label=\"Basic example\">
+\t\t<a href=\"{{ path('app_activite_index') }}\">
+\t\t\t<button id=\"openBtn\" class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Retourner à la liste</button>
+\t\t</a>
+\t\t<a href=\"{{ path('app_activite_edit', {'id': activite.id}) }}\">
+\t\t\t<button type=\"button\" class=\"btn btn-secondary\">Mofidier cette activité</button>
+\t\t</a>
 
-\t\t</tbody>
-\t</table>
+\t</div>
+\t<div class=\"btn-toggle\">Go Nuit</div>
 
-</body>
-<script>
+\t<body class=\"light\">
+\t\t<table class=\"table\">
+\t\t\t<tbody>
+\t\t\t\t{# <tr>
+\t\t\t\t\t\t\t                <th>Id</th>
+\t\t\t\t\t\t\t                <td>{{ activite.id }}</td>
+\t\t\t\t\t\t\t            </tr> #}
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Nom</th>
+\t\t\t\t\t<td>{{ activite.nom }}</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Categorie</th>
+\t\t\t\t\t<td>{{ activite.categorie }}</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Materiel utilise</th>
+\t\t\t\t\t<td>{{ activite.materiel }}</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Intensite</th>
+\t\t\t\t\t<td>{{ activite.intensite }}</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Group musculaire sollicité</th>
+\t\t\t\t\t<td>{{ activite.grpMusculaire }}</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Tenue</th>
+\t\t\t\t\t<td>{{ activite.tenue }}</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Recomendation</th>
+\t\t\t\t\t<td>{{ activite.recomendation }}</td>
+\t\t\t\t</tr>
+\t\t\t\t<tr>
+\t\t\t\t\t<th>Image</th>
+\t\t\t\t\t<td>
+\t\t\t\t\t\t<img class=\"img-thumbnail\" src=\"{{asset('uploads/'~ activite.image)}}\" alt=\"\"></td>
+\t\t\t\t</tr>
 
-const btnToggle = document.querySelector('.btn-toggle');
+\t\t\t</tbody>
+\t\t</table>
+
+\t</body>
+\t<script>
+
+\t\tconst btnToggle = document.querySelector('.btn-toggle');
 
 btnToggle.addEventListener('click', () => {
 
-    const body = document.body;
+const body = document.body;
 
-    if(body.classList.contains('dark')){
+if (body.classList.contains('dark')) {
 
-        body.classList.add('light')
-        body.classList.remove('dark')
-        btnToggle.innerHTML = \"Go Dark\"
+body.classList.add('light')
+body.classList.remove('dark')
+btnToggle.innerHTML = \"Go Dark\"
 
-    } else if(body.classList.contains('light')){
+} else if (body.classList.contains('light')) {
 
-        body.classList.add('dark')
-        body.classList.remove('light')
-        btnToggle.innerHTML = \"Go Light\"
+body.classList.add('dark')
+body.classList.remove('light')
+btnToggle.innerHTML = \"Go Light\"
 
-    }
+}
 
 })
-</script>
+\t</script>
 \t{# <a href=\"{{ path('app_activite_index') }}\"><button type=\"button\" class=\"btn btn-outline-danger\">Back</button></a>
-
-\t<a href=\"{{ path('app_activite_edit', {'id': activite.id}) }}\">edit</a> #}
- \t{# {{ include('activite/_delete_form.html.twig') }} #}
+\t
+\t\t<a href=\"{{ path('app_activite_edit', {'id': activite.id}) }}\">edit</a> #}
+\t{# {{ include('activite/_delete_form.html.twig') }} #}
 {% endblock %}
 ", "back/show.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\back\\show.html.twig");
     }

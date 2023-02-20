@@ -4,6 +4,7 @@
 {% endblock %}
 
 {% block body %}
+				{# _________________________________________Css____________________________________ #}
 
 	<style>
 		body {
@@ -39,157 +40,161 @@
 		}
 
 
-
-
-
-
-
 		html {
-    font-family: Verdana, Geneva, Tahoma, sans-serif;
-}
-body {
-    /* background: var(--fond); */
-}
-hr {
-    width: 200px;
-}
-h1 {
-    text-align: center;
-    padding-top: 70px;
-    /* color: var(--ecriture); */
-}
-.contenu {
-    padding: 50px 10%;
-    text-align: justify;
-    /* color: var(--ecriture); */
+			font-family: Verdana, Geneva, Tahoma, sans-serif;
+		}
+		body {
+			;
+			/* background: var(--fond); */
+		}
+		hr {
+			width: 200px;
+		}
+		h1 {
+			text-align: center;
+			padding-top: 70px;
+			/* color: var(--ecriture); */
+		}
+		.contenu {
+			padding: 50px 10%;
+			text-align: justify;
+			/* color: var(--ecriture); */
 
-}
-.btn-toggle {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: #333;
-    color: #fff;
-    border: 1px solid #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    cursor: pointer;
-}
-.btn-group{
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: #333;
-    color: #fff;
-    border: 1px solid #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    cursor: pointer;
-}
-body.dark {
-    color: #fff!important;
-    background: #333!important;
-}
-body.dark .btn-toggle {
-    background: #f1f1f1;
-    color: #333;
-}
+		}
+		.btn-toggle {
+			position: absolute;
+			top: 0;
+			left: 0;
+			width: 80px;
+			height: 80px;
+			border-radius: 50%;
+			background: #333;
+			color: #fff;
+			border: 1px solid #333;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+		}
+		.btn-group {
+			position: absolute;
+			top: 1px;
+			right: 100px;
+			width: 180px;
+			height: 180px;
+			border-radius: 50%;
+			background: #333;
+			color: #333;
+			border: 1px solid #333;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			cursor: pointer;
+		}
+		.btn-primary, .btn-secondary {
+			background-color: red;
+			border-color: red;
+			color: white;
+			}
+
+		.btn-primary:hover, .btn-secondary:hover {
+		background-color: darkred;
+		border-color: darkred;
+		color: white;
+		}
+		body.dark {
+			color: #fff !important;
+			background: #333 !important;
+		}
+		body.dark .btn-toggle {
+			background: #f1f1f1;
+			color: #333;
+		}
 	</style>
+				{# _________________________________________Css____________________________________ #}
 
+	<div class="btn-group" role="group" aria-label="Basic example">
+		<a href="{{ path('app_activite_index') }}">
+			<button id="openBtn" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Retourner à la liste</button>
+		</a>
+		<a href="{{ path('app_activite_edit', {'id': activite.id}) }}">
+			<button type="button" class="btn btn-secondary">Mofidier cette activité</button>
+		</a>
 
+	</div>
+	<div class="btn-toggle">Go Nuit</div>
 
+	<body class="light">
+		<table class="table">
+			<tbody>
+				{# <tr>
+							                <th>Id</th>
+							                <td>{{ activite.id }}</td>
+							            </tr> #}
+				<tr>
+					<th>Nom</th>
+					<td>{{ activite.nom }}</td>
+				</tr>
+				<tr>
+					<th>Categorie</th>
+					<td>{{ activite.categorie }}</td>
+				</tr>
+				<tr>
+					<th>Materiel utilise</th>
+					<td>{{ activite.materiel }}</td>
+				</tr>
+				<tr>
+					<th>Intensite</th>
+					<td>{{ activite.intensite }}</td>
+				</tr>
+				<tr>
+					<th>Group musculaire sollicité</th>
+					<td>{{ activite.grpMusculaire }}</td>
+				</tr>
+				<tr>
+					<th>Tenue</th>
+					<td>{{ activite.tenue }}</td>
+				</tr>
+				<tr>
+					<th>Recomendation</th>
+					<td>{{ activite.recomendation }}</td>
+				</tr>
+				<tr>
+					<th>Image</th>
+					<td>
+						<img class="img-thumbnail" src="{{asset('uploads/'~ activite.image)}}" alt=""></td>
+				</tr>
 
+			</tbody>
+		</table>
 
+	</body>
+	<script>
 
-
-
-  <div class="btn-group" role="group" aria-label="Basic example">
- <a href="{{ path('app_activite_index') }}"> <button type="button"class="btn btn-primary" >Back to list</button></a>
-  	<a href="{{ path('app_activite_edit', {'id': activite.id}) }}"><button type="button" class="btn btn-secondary">Mofidier cette activité</button></a>
-  {# <button type="button" class="btn btn-secondary">Right</button> #}
-      <div class="btn-toggle">Go Nuit</div>
-
-</div>
-
-<body class="light">
-	<table class="table">
-		<tbody>
-			{# <tr>
-			                <th>Id</th>
-			                <td>{{ activite.id }}</td>
-			            </tr> #}
-			<tr>
-				<th>Nom</th>
-				<td>{{ activite.nom }}</td>
-			</tr>
-			<tr>
-				<th>Categorie</th>
-				<td>{{ activite.categorie }}</td>
-			</tr>
-			<tr>
-				<th>Materiel utilise</th>
-				<td>{{ activite.materiel }}</td>
-			</tr>
-			<tr>
-				<th>Intensite</th>
-				<td>{{ activite.intensite }}</td>
-			</tr>
-			<tr>
-				<th>Group musculaire sollicité</th>
-				<td>{{ activite.grpMusculaire }}</td>
-			</tr>
-			<tr>
-				<th>Tenue</th>
-				<td>{{ activite.tenue }}</td>
-			</tr>
-			<tr>
-				<th>Recomendation</th>
-				<td>{{ activite.recomendation }}</td>
-			</tr>
-			<tr>
-				<th>Image</th>
-				<td>
-					<img   class="img-thumbnail" src="{{asset('uploads/'~ activite.image)}}" alt=""></td>
-			</tr>
-
-		</tbody>
-	</table>
-
-</body>
-<script>
-
-const btnToggle = document.querySelector('.btn-toggle');
+		const btnToggle = document.querySelector('.btn-toggle');
 
 btnToggle.addEventListener('click', () => {
 
-    const body = document.body;
+const body = document.body;
 
-    if(body.classList.contains('dark')){
+if (body.classList.contains('dark')) {
 
-        body.classList.add('light')
-        body.classList.remove('dark')
-        btnToggle.innerHTML = "Go Dark"
+body.classList.add('light')
+body.classList.remove('dark')
+btnToggle.innerHTML = "Go Dark"
 
-    } else if(body.classList.contains('light')){
+} else if (body.classList.contains('light')) {
 
-        body.classList.add('dark')
-        body.classList.remove('light')
-        btnToggle.innerHTML = "Go Light"
+body.classList.add('dark')
+body.classList.remove('light')
+btnToggle.innerHTML = "Go Light"
 
-    }
+}
 
 })
-</script>
+	</script>
 	{# <a href="{{ path('app_activite_index') }}"><button type="button" class="btn btn-outline-danger">Back</button></a>
-
-	<a href="{{ path('app_activite_edit', {'id': activite.id}) }}">edit</a> #}
- 	{# {{ include('activite/_delete_form.html.twig') }} #}
+	
+		<a href="{{ path('app_activite_edit', {'id': activite.id}) }}">edit</a> #}
+	{# {{ include('activite/_delete_form.html.twig') }} #}
 {% endblock %}

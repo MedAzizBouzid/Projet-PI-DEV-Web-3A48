@@ -73,10 +73,9 @@ table {
   width: 100%;
 }
 
-thead {
-  background-color: #D3D3D3;
-}
-
+";
+        // line 16
+        echo "
 th, td {
   text-align: left;
   padding: 8px;
@@ -87,10 +86,9 @@ tr:nth-child(even) {
   background-color: #D3D3D3;
 }
 
-tr:hover {
-  background-color: #D3D3D3;
-}
-Ce code crée un tableau avec trois colonnes et trois rangées, et chaque rangée a une couleur de fond différente. Lorsque l'utilisateur passe la souris sur une rangée, sa couleur de fond change pour une autre couleur.
+";
+        // line 30
+        echo "Ce code crée un tableau avec trois colonnes et trois rangées, et chaque rangée a une couleur de fond différente. Lorsque l'utilisateur passe la souris sur une rangée, sa couleur de fond change pour une autre couleur.
 
 
 
@@ -148,22 +146,42 @@ body.dark .btn-toggle {
  
 \t";
         // line 86
-        echo "<body class=\"light\">
-\t  <div class=\"btn-toggle\">Go Nuit</div>
+        echo "  
 
-
-\t<div class=\"row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0\">
-\t\t";
-        // line 95
+\t";
+        // line 89
+        echo "\t\t";
+        // line 93
         echo "
 \t\t<div class=\"container-fluid pt-4 px-4\" style=\"bottom:0;\">
  
 
     ";
-        // line 100
-        echo "<button type=\"button\"   class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\"> Ajouter une salle</button>
-
+        // line 99
+        echo "
 <!-- Modal -->
+";
+        // line 123
+        echo " ";
+        // line 124
+        echo "<div class=\"table-responsive\"> 
+\t\t\t 
+          <div class=\"bg-secondary text-center rounded p-4\">
+\t\t\t\t\t<a href=";
+        // line 127
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_new");
+        echo " <button style=\"width:25%;height:35%\"
+\t\t\t type=\"button\"   class=\"btn btn-light m-2\"> Ajouter une nouvelle activité
+\t\t\t  </button> </a>  
+
+\t\t\t  ";
+        // line 132
+        echo "
+  ";
+        // line 134
+        echo "<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle activité</button>
+
+<!-- La pop-up -->
 <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
   <div class=\"modal-dialog\">
     <div class=\"modal-content\">
@@ -175,30 +193,168 @@ body.dark .btn-toggle {
  
     \t\t\t\t
 \t\t\t\t\t<div class=\"form-group\" style=\"position: center;\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t
-\t\t\t";
-        // line 115
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 115, $this->source); })()), 'form_start');
+   ";
+        // line 149
+        echo "      ";
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 149, $this->source); })()), 'form_start', ["attr" => ["novalidate" => "novalidate"]]);
+        // line 150
         echo "
-\t\t\t";
-        // line 116
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 116, $this->source); })()), 'widget');
-        echo "
-\t\t\t<button type=\"submit\">Save</button>
-\t\t\t";
-        // line 118
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 118, $this->source); })()), 'form_end');
-        echo "
-\t\t    </div>
 
+ \t\t\t\t\t<div class=\"row g-3 align-items-center \">
+
+\t\t\t\t\t\t";
+        // line 154
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 154, $this->source); })()), "nom", [], "any", false, false, false, 154), 'label');
+        echo "
+\t\t\t\t\t\t";
+        // line 155
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 155, $this->source); })()), "nom", [], "any", false, false, false, 155), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 450px; padding: 5px;"]]);
+        echo "
+\t\t\t\t\t\t";
+        // line 156
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 156, $this->source); })()), "nom", [], "any", false, false, false, 156), 'errors');
+        echo "
+
+\t\t\t\t\t</div>
+
+\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t\t";
+        // line 161
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 161, $this->source); })()), "lieu", [], "any", false, false, false, 161), 'label');
+        echo "
+\t\t\t\t\t\t";
+        // line 162
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 162, $this->source); })()), "lieu", [], "any", false, false, false, 162), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 450px; padding: 5px;"]]);
+        echo "
+\t\t\t\t\t\t";
+        // line 163
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 163, $this->source); })()), "lieu", [], "any", false, false, false, 163), 'errors');
+        echo "
+
+\t\t\t\t\t</div>
+ 
+\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+
+\t\t\t\t\t\t";
+        // line 169
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 169, $this->source); })()), "telephone", [], "any", false, false, false, 169), 'label');
+        echo "
+\t\t\t\t\t\t";
+        // line 170
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 170, $this->source); })()), "telephone", [], "any", false, false, false, 170), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 450px; padding: 5px;"]]);
+        echo "
+\t\t\t\t\t\t";
+        // line 171
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 171, $this->source); })()), "telephone", [], "any", false, false, false, 171), 'errors');
+        echo "
+
+\t\t\t\t\t</div>
+
+
+\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+
+\t\t\t\t\t\t";
+        // line 178
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 178, $this->source); })()), "email", [], "any", false, false, false, 178), 'label');
+        echo "
+\t\t\t\t\t\t";
+        // line 179
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 179, $this->source); })()), "email", [], "any", false, false, false, 179), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 450px; padding: 5px;"]]);
+        echo "
+\t\t\t\t\t\t";
+        // line 180
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 180, $this->source); })()), "email", [], "any", false, false, false, 180), 'errors');
+        echo "
+
+\t\t\t\t\t</div>
+
+\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+ 
+\t\t\t\t\t\t";
+        // line 186
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 186, $this->source); })()), "superficie", [], "any", false, false, false, 186), 'label');
+        echo "
+\t\t\t\t\t\t";
+        // line 187
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 187, $this->source); })()), "superficie", [], "any", false, false, false, 187), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 450px; padding: 5px;"]]);
+        echo "
+\t\t\t\t\t\t";
+        // line 188
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 188, $this->source); })()), "superficie", [], "any", false, false, false, 188), 'errors');
+        echo "
+
+\t\t\t\t\t</div>
+
+\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t\t";
+        // line 193
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 193, $this->source); })()), "description", [], "any", false, false, false, 193), 'label');
+        echo "
+\t\t\t\t\t\t";
+        // line 194
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 194, $this->source); })()), "description", [], "any", false, false, false, 194), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 450px; padding: 5px;"]]);
+        echo "
+\t\t\t\t\t\t";
+        // line 195
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 195, $this->source); })()), "description", [], "any", false, false, false, 195), 'errors');
+        echo "
+
+\t\t\t\t\t</div>
+
+\t\t\t\t\t 
+\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t";
+        // line 201
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 201, $this->source); })()), "image", [], "any", false, false, false, 201), 'label');
+        echo "
+\t\t\t\t\t\t";
+        // line 202
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 202, $this->source); })()), "image", [], "any", false, false, false, 202), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 450px; padding: 5px;"]]);
+        echo "
+\t\t\t\t\t\t";
+        // line 203
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 203, $this->source); })()), "image", [], "any", false, false, false, 203), 'errors');
+        echo "
+
+\t\t\t\t\t</div>
+\t\t \t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t\t";
+        // line 207
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 207, $this->source); })()), "cours", [], "any", false, false, false, 207), 'label');
+        echo "
+\t\t\t\t\t\t";
+        // line 208
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 208, $this->source); })()), "cours", [], "any", false, false, false, 208), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 450px; padding: 5px;"]]);
+        echo "
+\t\t\t\t\t\t";
+        // line 209
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 209, $this->source); })()), "cours", [], "any", false, false, false, 209), 'errors');
+        echo "
+
+\t\t\t\t\t</div>
+\t\t    </div>
+<button style=\"width: 90px;padding: 5px;\" class=\"btn btn-primary\">";
+        // line 213
+        echo twig_escape_filter($this->env, ((array_key_exists("button_label", $context)) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 213, $this->source); })()), "Save")) : ("Save")), "html", null, true);
+        echo "</button>
+
+
+\t\t\t\t\t\t";
+        // line 216
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 216, $this->source); })()), 'form_end');
+        echo "
+               ";
+        // line 218
+        echo "
       </div>
     </div>
   </div>
 </div>
- 
-
+  ";
+        // line 224
+        echo "
     ";
-        // line 128
+        // line 226
         echo "
 
 
@@ -210,18 +366,18 @@ body.dark .btn-toggle {
 \t 
 
  
-\t\t\t<a href=";
-        // line 139
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_new");
-        echo " <button style=\"width:25%;height:35%\"
-\t\t\t type=\"button\"   class=\"btn btn-light m-2\"> Ajouter un une nouvelle salle
-\t\t\t  </button> </a>  
-\t\t\t 
 \t\t\t";
-        // line 144
+        // line 241
+        echo "\t\t\t";
+        // line 242
         echo "
 \t\t\t<div class=\"table-responsive\"> 
-\t\t\t<table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\"> 
+      
+      <div id=\"pagination\">
+\t\t\t\t\t<a href=\"#\" class=\"previous\">&laquo; Previous</a>
+\t\t\t\t\t<a href=\"#\" class=\"next\">Next &raquo;</a>
+\t\t\t</div>
+\t\t\t<table class=\"table table-bordered\" id=\"myTable\" width=\"100%\" cellspacing=\"0\"> 
 \t\t\t<thead>
 \t\t\t  <tr>
 \t\t\t  \t\t<th style =\"color:#FF0000\">#</th>
@@ -234,7 +390,7 @@ body.dark .btn-toggle {
  \t\t\t  \t\t<th style =\"color:#FF0000\">Activité</th>
 
 \t\t\t\t\t";
-        // line 159
+        // line 262
         echo "
 \t\t\t\t\t<th style =\"color:#FF0000\">action</th>
 
@@ -243,54 +399,54 @@ body.dark .btn-toggle {
 \t\t\t</thead>
 
 \t\t\t";
-        // line 166
+        // line 269
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["salles"]) || array_key_exists("salles", $context) ? $context["salles"] : (function () { throw new RuntimeError('Variable "salles" does not exist.', 166, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["salles"]) || array_key_exists("salles", $context) ? $context["salles"] : (function () { throw new RuntimeError('Variable "salles" does not exist.', 269, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-            // line 167
+            // line 270
             echo "\t\t\t<tbody>
 \t\t\t\t\t\t\t\t
 \t\t\t<tr>
 \t\t\t\t";
-            // line 171
+            // line 274
             echo "\t\t\t\t<td style=\"font-family: Arial, sans-serif;\" >";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 171), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 274), "html", null, true);
             echo "</td>
 \t\t\t\t<td   >";
-            // line 172
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 172), "html", null, true);
+            // line 275
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 275), "html", null, true);
             echo "</td>
 \t\t\t\t<td  >";
-            // line 173
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "lieu", [], "any", false, false, false, 173), "html", null, true);
+            // line 276
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "lieu", [], "any", false, false, false, 276), "html", null, true);
             echo "</td>
 \t\t\t\t<td  >";
-            // line 174
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "telephone", [], "any", false, false, false, 174), "html", null, true);
+            // line 277
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "telephone", [], "any", false, false, false, 277), "html", null, true);
             echo "</td>
 \t\t\t\t<td  >";
-            // line 175
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "email", [], "any", false, false, false, 175), "html", null, true);
+            // line 278
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "email", [], "any", false, false, false, 278), "html", null, true);
             echo "</td>
 \t\t\t\t<td  >";
-            // line 176
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "superficie", [], "any", false, false, false, 176), "html", null, true);
+            // line 279
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "superficie", [], "any", false, false, false, 279), "html", null, true);
             echo "</td>
 \t\t\t\t<td  >";
-            // line 177
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "description", [], "any", false, false, false, 177), "html", null, true);
+            // line 280
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "description", [], "any", false, false, false, 280), "html", null, true);
             echo "</td>
 \t\t\t\t<td>
 \t\t\t\t";
-            // line 179
+            // line 282
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["p"], "cours", [], "any", false, false, false, 179));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["p"], "cours", [], "any", false, false, false, 282));
             foreach ($context['_seq'] as $context["_key"] => $context["c"]) {
-                // line 180
+                // line 283
                 echo "\t\t\t\t<ul>
 \t\t\t\t<li>";
-                // line 181
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["c"], "nom", [], "any", false, false, false, 181), "html", null, true);
+                // line 284
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["c"], "nom", [], "any", false, false, false, 284), "html", null, true);
                 echo "</li>
 \t\t\t\t
 \t\t\t\t</ul>
@@ -300,24 +456,24 @@ body.dark .btn-toggle {
             $_parent = $context['_parent'];
             unset($context['_seq'], $context['_iterated'], $context['_key'], $context['c'], $context['_parent'], $context['loop']);
             $context = array_intersect_key($context, $_parent) + $_parent;
-            // line 186
+            // line 289
             echo "\t\t\t\t</td> 
 
 \t\t\t\t";
-            // line 189
+            // line 292
             echo "
 \t\t\t\t<td><a href=\"";
-            // line 190
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteevent", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 190)]), "html", null, true);
+            // line 293
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteevent", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 293)]), "html", null, true);
             echo "\"><i class=\"bi bi-trash\"></i></a></td>
 
 \t\t\t\t<td><a href=\"";
-            // line 192
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 192)]), "html", null, true);
+            // line 295
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 295)]), "html", null, true);
             echo "\"><span class=\"bi bi-cart-fill\"></a></td>
 \t\t\t\t<td><a href=\"";
-            // line 193
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_show", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 193)]), "html", null, true);
+            // line 296
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_show", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 296)]), "html", null, true);
             echo "\"><i class=\"bi bi-book\"></i></a></td>
 
 \t\t\t</tr>
@@ -328,7 +484,7 @@ body.dark .btn-toggle {
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 198
+        // line 301
         echo " 
 \t\t\t 
 
@@ -342,11 +498,56 @@ body.dark .btn-toggle {
 
 <!-- Table End -->
 ";
-        // line 238
+        // line 341
         echo "\t</div>
 
 </body>
 <script>
+
+ \t\t\t";
+        // line 347
+        echo "let table = document.getElementById('myTable');
+let rowsPerPage = 5;
+let currentPage = 1;
+
+function showPage(page) {
+  let startIndex = (page - 1) * rowsPerPage;
+  let endIndex = startIndex + rowsPerPage;
+
+  let rows = table.rows;
+  for (let i = 1; i < rows.length; i++) {
+    let row = rows[i];
+    if (i < startIndex || i >= endIndex) {
+      row.style.display = 'none';
+    } else {
+      row.style.display = '';
+    }
+  }
+}
+
+function nextPage() {
+  if (currentPage < numPages()) {
+    currentPage++;
+    showPage(currentPage);
+  }
+}
+
+function previousPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    showPage(currentPage);
+  }
+}
+
+function numPages() {
+  return Math.ceil((table.rows.length - 1) / rowsPerPage);
+}
+
+document.querySelector('.previous').addEventListener('click', previousPage);
+document.querySelector('.next').addEventListener('click', nextPage);
+
+showPage(currentPage);
+
 
 const btnToggle = document.querySelector('.btn-toggle');
 
@@ -391,7 +592,7 @@ btnToggle.addEventListener('click', () => {
 
     public function getDebugInfo()
     {
-        return array (  346 => 238,  332 => 198,  320 => 193,  316 => 192,  311 => 190,  308 => 189,  304 => 186,  293 => 181,  290 => 180,  286 => 179,  281 => 177,  277 => 176,  273 => 175,  269 => 174,  265 => 173,  261 => 172,  256 => 171,  251 => 167,  247 => 166,  238 => 159,  222 => 144,  215 => 139,  202 => 128,  190 => 118,  185 => 116,  181 => 115,  164 => 100,  158 => 95,  151 => 86,  99 => 35,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  509 => 347,  502 => 341,  488 => 301,  476 => 296,  472 => 295,  467 => 293,  464 => 292,  460 => 289,  449 => 284,  446 => 283,  442 => 282,  437 => 280,  433 => 279,  429 => 278,  425 => 277,  421 => 276,  417 => 275,  412 => 274,  407 => 270,  403 => 269,  394 => 262,  373 => 242,  371 => 241,  358 => 226,  355 => 224,  348 => 218,  344 => 216,  338 => 213,  331 => 209,  327 => 208,  323 => 207,  316 => 203,  312 => 202,  308 => 201,  299 => 195,  295 => 194,  291 => 193,  283 => 188,  279 => 187,  275 => 186,  266 => 180,  262 => 179,  258 => 178,  248 => 171,  244 => 170,  240 => 169,  231 => 163,  227 => 162,  223 => 161,  215 => 156,  211 => 155,  207 => 154,  201 => 150,  198 => 149,  182 => 134,  179 => 132,  172 => 127,  167 => 124,  165 => 123,  161 => 99,  155 => 93,  153 => 89,  149 => 86,  97 => 35,  91 => 30,  78 => 16,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -408,9 +609,9 @@ table {
   width: 100%;
 }
 
-thead {
-  background-color: #D3D3D3;
-}
+{# thead {
+  background-color:#C0C0C0;
+} #}
 
 th, td {
   text-align: left;
@@ -422,9 +623,9 @@ tr:nth-child(even) {
   background-color: #D3D3D3;
 }
 
-tr:hover {
+{# tr:hover {
   background-color: #D3D3D3;
-}
+} #}
 Ce code crée un tableau avec trois colonnes et trois rangées, et chaque rangée a une couleur de fond différente. Lorsque l'utilisateur passe la souris sur une rangée, sa couleur de fond change pour une autre couleur.
 
 
@@ -481,11 +682,9 @@ body.dark .btn-toggle {
 \t<!-- Table Start -->
  
 \t{# _______________________________________Partie ajax rechargement d'un page web______________________________ #}
-<body class=\"light\">
-\t  <div class=\"btn-toggle\">Go Nuit</div>
+  
 
-
-\t<div class=\"row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0\">
+\t{# <div class=\"row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0\"> #}
 \t\t{# <form class=\"d-flex\" action=\"chercher_salle\" method=\"GET\">
 \t\t\t<input class=\"form-control me-2\" name=\"dhia\" type=\"search\" placeholder=\"Search\" aria-label=\"Search\">
 \t\t\t<button class=\"btn btn-outline-success\" type=\"submit\">Search</button>
@@ -495,10 +694,10 @@ body.dark .btn-toggle {
  
 
     {#_________________________________ Partie pop-up ____________________________________________________#}
-<button type=\"button\"   class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\"> Ajouter une salle</button>
+{# <button type=\"button\"   class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\"> Ajouter une salle</button> #}
 
 <!-- Modal -->
-<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+{# <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
   <div class=\"modal-dialog\">
     <div class=\"modal-content\">
       <div class=\"modal-header\">
@@ -519,8 +718,108 @@ body.dark .btn-toggle {
       </div>
     </div>
   </div>
-</div>
+</div> #}
+ {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
+<div class=\"table-responsive\"> 
+\t\t\t 
+          <div class=\"bg-secondary text-center rounded p-4\">
+\t\t\t\t\t<a href={{path('app_activite_new')}} <button style=\"width:25%;height:35%\"
+\t\t\t type=\"button\"   class=\"btn btn-light m-2\"> Ajouter une nouvelle activité
+\t\t\t  </button> </a>  
+
+\t\t\t  {# <button type=\"button\"   class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\"> Ajouter une salle</button> #}
+
+  {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
+<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle activité</button>
+
+<!-- La pop-up -->
+<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+  <div class=\"modal-dialog\">
+    <div class=\"modal-content\">
+      <div class=\"modal-header\">
+        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ajouter une salle</h5>
+        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
+      </div>
+      <div class=\"modal-body\">
  
+    \t\t\t\t
+\t\t\t\t\t<div class=\"form-group\" style=\"position: center;\">
+   {# --------------------------------------FORM START-------------------------------------- #}
+      {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}
+\t\t\t\t\t) }}
+
+ \t\t\t\t\t<div class=\"row g-3 align-items-center \">
+
+\t\t\t\t\t\t{{form_label(form.nom)}}
+\t\t\t\t\t\t{{form_widget(form.nom, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+\t\t\t\t\t\t{{form_errors(form.nom)}}
+
+\t\t\t\t\t</div>
+
+\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t\t{{form_label(form.lieu)}}
+\t\t\t\t\t\t{{form_widget(form.lieu, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+\t\t\t\t\t\t{{form_errors(form.lieu)}}
+
+\t\t\t\t\t</div>
+ 
+\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+
+\t\t\t\t\t\t{{form_label(form.telephone)}}
+\t\t\t\t\t\t{{form_widget(form.telephone, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+\t\t\t\t\t\t{{ form_errors(form.telephone) }}
+
+\t\t\t\t\t</div>
+
+
+\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+
+\t\t\t\t\t\t{{form_label(form.email)}}
+\t\t\t\t\t\t{{form_widget(form.email, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+\t\t\t\t\t\t{{ form_errors(form.email) }}
+
+\t\t\t\t\t</div>
+
+\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+ 
+\t\t\t\t\t\t{{form_label(form.superficie)}}
+\t\t\t\t\t\t{{form_widget(form.superficie, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+\t\t\t\t\t\t{{ form_errors(form.superficie) }}
+
+\t\t\t\t\t</div>
+
+\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t\t{{form_label(form.description)}}
+\t\t\t\t\t\t{{form_widget(form.description, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+\t\t\t\t\t\t{{ form_errors(form.description) }}
+
+\t\t\t\t\t</div>
+
+\t\t\t\t\t 
+\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t{{form_label(form.image)}}
+\t\t\t\t\t\t{{form_widget(form.image, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+\t\t\t\t\t\t{{form_errors(form.image)}}
+
+\t\t\t\t\t</div>
+\t\t \t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t\t{{form_label(form.cours)}}
+\t\t\t\t\t\t{{form_widget(form.cours, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+\t\t\t\t\t\t{{ form_errors(form.cours) }}
+
+\t\t\t\t\t</div>
+\t\t    </div>
+<button style=\"width: 90px;padding: 5px;\" class=\"btn btn-primary\">{{ button_label|default('Save') }}</button>
+
+
+\t\t\t\t\t\t{{ form_end(form) }}
+               {# --------------------------------------FORM END-------------------------------------- #}
+
+      </div>
+    </div>
+  </div>
+</div>
+  {# <!-- Modal-----------------------------------FIN DU POP UP--------- ---------- #}
 
     {#_________________________________ Partie pop-up ____________________________________________________#}
 
@@ -534,14 +833,19 @@ body.dark .btn-toggle {
 \t 
 
  
-\t\t\t<a href={{path('app_salle_new')}} <button style=\"width:25%;height:35%\"
+\t\t\t{# <a href={{path('app_salle_new')}} <button style=\"width:25%;height:35%\"
 \t\t\t type=\"button\"   class=\"btn btn-light m-2\"> Ajouter un une nouvelle salle
 \t\t\t  </button> </a>  
-\t\t\t 
+\t\t\t  #}
 \t\t\t{# _________PARTIE POP-UP__________________________________________________________ #}
 
 \t\t\t<div class=\"table-responsive\"> 
-\t\t\t<table class=\"table table-bordered\" id=\"dataTable\" width=\"100%\" cellspacing=\"0\"> 
+      
+      <div id=\"pagination\">
+\t\t\t\t\t<a href=\"#\" class=\"previous\">&laquo; Previous</a>
+\t\t\t\t\t<a href=\"#\" class=\"next\">Next &raquo;</a>
+\t\t\t</div>
+\t\t\t<table class=\"table table-bordered\" id=\"myTable\" width=\"100%\" cellspacing=\"0\"> 
 \t\t\t<thead>
 \t\t\t  <tr>
 \t\t\t  \t\t<th style =\"color:#FF0000\">#</th>
@@ -637,6 +941,50 @@ body.dark .btn-toggle {
 
 </body>
 <script>
+
+ \t\t\t{# script pagination #}
+let table = document.getElementById('myTable');
+let rowsPerPage = 5;
+let currentPage = 1;
+
+function showPage(page) {
+  let startIndex = (page - 1) * rowsPerPage;
+  let endIndex = startIndex + rowsPerPage;
+
+  let rows = table.rows;
+  for (let i = 1; i < rows.length; i++) {
+    let row = rows[i];
+    if (i < startIndex || i >= endIndex) {
+      row.style.display = 'none';
+    } else {
+      row.style.display = '';
+    }
+  }
+}
+
+function nextPage() {
+  if (currentPage < numPages()) {
+    currentPage++;
+    showPage(currentPage);
+  }
+}
+
+function previousPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    showPage(currentPage);
+  }
+}
+
+function numPages() {
+  return Math.ceil((table.rows.length - 1) / rowsPerPage);
+}
+
+document.querySelector('.previous').addEventListener('click', previousPage);
+document.querySelector('.next').addEventListener('click', nextPage);
+
+showPage(currentPage);
+
 
 const btnToggle = document.querySelector('.btn-toggle');
 

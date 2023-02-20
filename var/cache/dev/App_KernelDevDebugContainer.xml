@@ -6493,11 +6493,12 @@
         <argument key="repo" type="service_closure" id="App\Repository\ActiviteRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Bm._Ysy" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.HClHANl" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="em" type="service_closure" id="doctrine.orm.default_entity_manager"/>
         <argument key="salleRepository" type="service_closure" id="App\Repository\SalleRepository"/>
+        <argument key="slugger" type="service_closure" id="slugger"/>
       </argument>
     </service>
     <service id=".service_locator.AgytMX2" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -6555,7 +6556,7 @@
         <argument key="salleRepository" type="service_closure" id="App\Repository\SalleRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.Mj7rs.f" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.78qes5f" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActiviteController::Show_activite" type="service_closure" id=".service_locator.HvawtL6"/>
@@ -6573,7 +6574,7 @@
         <argument key="App\Controller\SalleController::deleteevent" type="service_closure" id=".service_locator.LgxktDZ"/>
         <argument key="App\Controller\SalleController::edit" type="service_closure" id=".service_locator.IRNJR8u"/>
         <argument key="App\Controller\SalleController::findSalle" type="service_closure" id=".service_locator.AgytMX2"/>
-        <argument key="App\Controller\SalleController::index" type="service_closure" id=".service_locator.Bm._Ysy"/>
+        <argument key="App\Controller\SalleController::index" type="service_closure" id=".service_locator.HClHANl"/>
         <argument key="App\Controller\SalleController::new" type="service_closure" id=".service_locator.ZvEUv74"/>
         <argument key="App\Controller\SalleController::new1" type="service_closure" id=".service_locator.ZvEUv74"/>
         <argument key="App\Controller\SalleController::show" type="service_closure" id=".service_locator.TrSRmLA"/>
@@ -6600,7 +6601,7 @@
         <argument key="App\Controller\SalleController:deleteevent" type="service_closure" id=".service_locator.LgxktDZ"/>
         <argument key="App\Controller\SalleController:edit" type="service_closure" id=".service_locator.IRNJR8u"/>
         <argument key="App\Controller\SalleController:findSalle" type="service_closure" id=".service_locator.AgytMX2"/>
-        <argument key="App\Controller\SalleController:index" type="service_closure" id=".service_locator.Bm._Ysy"/>
+        <argument key="App\Controller\SalleController:index" type="service_closure" id=".service_locator.HClHANl"/>
         <argument key="App\Controller\SalleController:new" type="service_closure" id=".service_locator.ZvEUv74"/>
         <argument key="App\Controller\SalleController:new1" type="service_closure" id=".service_locator.ZvEUv74"/>
         <argument key="App\Controller\SalleController:show" type="service_closure" id=".service_locator.TrSRmLA"/>
@@ -7448,12 +7449,12 @@
     <service id="debug.argument_resolver.request.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver"/>
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver"/>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.Mj7rs.f"/>
+      <argument type="service" id=".service_locator.78qes5f"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.Mj7rs.f"/>
+      <argument type="service" id=".service_locator.78qes5f"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8423,7 +8424,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.Mj7rs.f"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.78qes5f"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8445,8 +8446,8 @@
     <service id=".service_locator.h8Jkkd2" alias="messenger.retry_strategy_locator"/>
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.M_PVH31" alias=".service_locator.wpwJMw2"/>
-    <service id=".service_locator.kC2Srin" alias=".service_locator.Bm._Ysy"/>
-    <service id=".service_locator.RhWCYcZ" alias=".service_locator.Mj7rs.f"/>
+    <service id=".service_locator.wIlSgcI" alias=".service_locator.HClHANl"/>
+    <service id=".service_locator.53GOFc." alias=".service_locator.78qes5f"/>
     <service id=".service_locator.9XMoc9I" alias=".service_locator.kzegaci"/>
     <service id=".service_locator.4MADWD2" alias=".service_locator.Swm35VV"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
@@ -8503,7 +8504,7 @@
     <service id=".service_locator.YJDEEJt" alias=".service_locator.wpwJMw2"/>
     <service id=".service_locator.4rnSwPw" alias=".service_locator.2FmZe6r"/>
     <service id=".service_locator.kSbLz_m" alias=".service_locator.ZmedmnA"/>
-    <service id=".service_locator.yYkzIjS" alias=".service_locator.Bm._Ysy"/>
+    <service id=".service_locator.eQMY6ty" alias=".service_locator.HClHANl"/>
     <service id=".service_locator.lG5lfEB" alias=".service_locator.AgytMX2"/>
     <service id=".service_locator.6pSnQnJ" alias=".service_locator.ZvEUv74"/>
     <service id=".service_locator.6QjvSUp" alias=".service_locator.TrSRmLA"/>

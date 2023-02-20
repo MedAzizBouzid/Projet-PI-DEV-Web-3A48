@@ -10,9 +10,9 @@ table {
   width: 100%;
 }
 
-thead {
-  background-color: #D3D3D3;
-}
+{# thead {
+  background-color:#C0C0C0;
+} #}
 
 th, td {
   text-align: left;
@@ -24,9 +24,9 @@ tr:nth-child(even) {
   background-color: #D3D3D3;
 }
 
-tr:hover {
+{# tr:hover {
   background-color: #D3D3D3;
-}
+} #}
 Ce code crée un tableau avec trois colonnes et trois rangées, et chaque rangée a une couleur de fond différente. Lorsque l'utilisateur passe la souris sur une rangée, sa couleur de fond change pour une autre couleur.
 
 
@@ -83,11 +83,9 @@ body.dark .btn-toggle {
 	<!-- Table Start -->
  
 	{# _______________________________________Partie ajax rechargement d'un page web______________________________ #}
-<body class="light">
-	  <div class="btn-toggle">Go Nuit</div>
+  
 
-
-	<div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+	{# <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0"> #}
 		{# <form class="d-flex" action="chercher_salle" method="GET">
 			<input class="form-control me-2" name="dhia" type="search" placeholder="Search" aria-label="Search">
 			<button class="btn btn-outline-success" type="submit">Search</button>
@@ -97,10 +95,10 @@ body.dark .btn-toggle {
  
 
     {#_________________________________ Partie pop-up ____________________________________________________#}
-<button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter une salle</button>
+{# <button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter une salle</button> #}
 
 <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+{# <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header">
@@ -121,8 +119,108 @@ body.dark .btn-toggle {
       </div>
     </div>
   </div>
-</div>
+</div> #}
+ {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
+<div class="table-responsive"> 
+			 
+          <div class="bg-secondary text-center rounded p-4">
+					<a href={{path('app_activite_new')}} <button style="width:25%;height:35%"
+			 type="button"   class="btn btn-light m-2"> Ajouter une nouvelle activité
+			  </button> </a>  
+
+			  {# <button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter une salle</button> #}
+
+  {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
+<button id="openBtn"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter une nouvelle activité</button>
+
+<!-- La pop-up -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une salle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
  
+    				
+					<div class="form-group" style="position: center;">
+   {# --------------------------------------FORM START-------------------------------------- #}
+      {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}
+					) }}
+
+ 					<div class="row g-3 align-items-center ">
+
+						{{form_label(form.nom)}}
+						{{form_widget(form.nom, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.nom)}}
+
+					</div>
+
+					<div class="row g-3 align-items-center">
+						{{form_label(form.lieu)}}
+						{{form_widget(form.lieu, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.lieu)}}
+
+					</div>
+ 
+					<div class="row g-3 align-items-center">
+
+						{{form_label(form.telephone)}}
+						{{form_widget(form.telephone, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.telephone) }}
+
+					</div>
+
+
+					<div class="row g-3 align-items-center">
+
+						{{form_label(form.email)}}
+						{{form_widget(form.email, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.email) }}
+
+					</div>
+
+					<div class="row g-3 align-items-center">
+ 
+						{{form_label(form.superficie)}}
+						{{form_widget(form.superficie, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.superficie) }}
+
+					</div>
+
+					<div class="row g-3 align-items-center">
+						{{form_label(form.description)}}
+						{{form_widget(form.description, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.description) }}
+
+					</div>
+
+					 
+					<div class="row g-3 align-items-center ">
+						{{form_label(form.image)}}
+						{{form_widget(form.image, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.image)}}
+
+					</div>
+		 	<div class="row g-3 align-items-center">
+						{{form_label(form.cours)}}
+						{{form_widget(form.cours, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.cours) }}
+
+					</div>
+		    </div>
+<button style="width: 90px;padding: 5px;" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+
+						{{ form_end(form) }}
+               {# --------------------------------------FORM END-------------------------------------- #}
+
+      </div>
+    </div>
+  </div>
+</div>
+  {# <!-- Modal-----------------------------------FIN DU POP UP--------- ---------- #}
 
     {#_________________________________ Partie pop-up ____________________________________________________#}
 
@@ -136,14 +234,19 @@ body.dark .btn-toggle {
 	 
 
  
-			<a href={{path('app_salle_new')}} <button style="width:25%;height:35%"
+			{# <a href={{path('app_salle_new')}} <button style="width:25%;height:35%"
 			 type="button"   class="btn btn-light m-2"> Ajouter un une nouvelle salle
 			  </button> </a>  
-			 
+			  #}
 			{# _________PARTIE POP-UP__________________________________________________________ #}
 
 			<div class="table-responsive"> 
-			<table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 
+      
+      <div id="pagination">
+					<a href="#" class="previous">&laquo; Previous</a>
+					<a href="#" class="next">Next &raquo;</a>
+			</div>
+			<table class="table table-bordered" id="myTable" width="100%" cellspacing="0"> 
 			<thead>
 			  <tr>
 			  		<th style ="color:#FF0000">#</th>
@@ -239,6 +342,50 @@ body.dark .btn-toggle {
 
 </body>
 <script>
+
+ 			{# script pagination #}
+let table = document.getElementById('myTable');
+let rowsPerPage = 5;
+let currentPage = 1;
+
+function showPage(page) {
+  let startIndex = (page - 1) * rowsPerPage;
+  let endIndex = startIndex + rowsPerPage;
+
+  let rows = table.rows;
+  for (let i = 1; i < rows.length; i++) {
+    let row = rows[i];
+    if (i < startIndex || i >= endIndex) {
+      row.style.display = 'none';
+    } else {
+      row.style.display = '';
+    }
+  }
+}
+
+function nextPage() {
+  if (currentPage < numPages()) {
+    currentPage++;
+    showPage(currentPage);
+  }
+}
+
+function previousPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    showPage(currentPage);
+  }
+}
+
+function numPages() {
+  return Math.ceil((table.rows.length - 1) / rowsPerPage);
+}
+
+document.querySelector('.previous').addEventListener('click', previousPage);
+document.querySelector('.next').addEventListener('click', nextPage);
+
+showPage(currentPage);
+
 
 const btnToggle = document.querySelector('.btn-toggle');
 

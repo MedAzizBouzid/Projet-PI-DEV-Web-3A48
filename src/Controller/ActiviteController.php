@@ -215,23 +215,20 @@ class ActiviteController extends AbstractController
     }
     
 
-    #[Route('/find_Salle', name: 'find_acti')]
+    #[Route('/findActitivité', name: 'find_actitivité')]
     public function findSalle(EntityManagerInterface $em,Request $request,ActiviteRepository $repo)
     {
         $r=$request->query->get('findbyname');
          if($r!=""){
-            $req=$em->createQuery("select c from App\Entity\Salle c   where c.id=:t ");
+            $req=$em->createQuery("select c from App\Entity\Activite c   where c.id=:t ");
                    
             $req->setParameter('t' ,$r);
-             $activite=$req->getResult();
-    
-                        
-                
+             $activite=$req->getResult();  
                     }
                     else {
                 $salles= $repo->findAll();
             }
-            return $this->render('back/table.html.twig',[
+            return $this->render('back/table_act.html.twig',[
                 'activite' => $activite]);
         }
 }

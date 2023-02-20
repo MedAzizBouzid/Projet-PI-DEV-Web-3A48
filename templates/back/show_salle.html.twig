@@ -1,0 +1,193 @@
+{% extends 'base.html.twig' %}
+
+{# {% block title %}salle #}
+{# {% endblock %} #}
+
+{% block body %}
+	<style>
+		body {
+			background-color: #f1f1f1;
+			display: flex;
+			justify-content: center;
+			align-items: center;
+			height: 100vh;
+		}
+
+		/* Style pour le tableau */
+		.table {
+			border-collapse: collapse;
+			background-color: white;
+			color: black;
+			font-family: Arial, sans-serif;
+			font-size: 16px;
+			text-align: left;
+			border: 1px solid black;
+			margin: auto;
+			padding: 20px;
+			width: 80%;
+		}
+		.table th {
+			background-color: #333;
+			color: white;
+			padding: 10px;
+		}
+		.table td,
+		.table th {
+			border: 1px solid black;
+			padding: 10px;
+		}
+
+
+
+
+
+
+
+		html {
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+body {
+    /* background: var(--fond); */
+}
+hr {
+    width: 200px;
+}
+h1 {
+    text-align: center;
+    padding-top: 70px;
+    /* color: var(--ecriture); */
+}
+.contenu {
+    padding: 50px 10%;
+    text-align: justify;
+    /* color: var(--ecriture); */
+
+}
+.btn-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    cursor: pointer;
+}
+.btn btn-primary
+{
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    cursor: pointer;
+}
+body.dark {
+    color: #fff!important;
+    background: #333!important;
+}
+body.dark .btn-toggle {
+    background: #f1f1f1;
+    color: #333;
+} 
+button:hover {
+    background-color: darkred;
+  }
+	</style>
+
+
+
+
+
+
+
+  <div class="button-side" role="group" aria-label="Basic example">
+ <a href="{{ path('app_salle_index') }}"> <button style="background-color: red; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Back to list</button></a>
+  	<a href="{{ path('app_salle_edit', {'id': salle.id}) }}"><button style="background-color: red; color: white; border: none; padding: 10px 20px; border-radius: 5px;">Mofidier cette activité</button></a>
+  {# <button type="button" class="btn btn-secondary">Right</button> #}
+        <div class="btn-toggle">Go Nuit</div>
+
+</div>
+	 
+<body class="light">
+	<table class="table">
+		<tbody>
+			{# <tr>
+			                <th>Id</th>
+			                <td>{{ salle.id }}</td>
+			            </tr> #}
+			<tr>
+				<th>Nom</th>
+				<td>{{ salle.nom }}</td>
+			</tr>
+			<tr>
+				<th>Lieu</th>
+				<td>{{ salle.lieu }}</td>
+			</tr>
+			<tr>
+				<th>Téléphone</th>
+				<td>{{ salle.telephone }}</td>
+			</tr>
+			<tr>
+				<th>Email</th>
+				<td>{{ salle.email }}</td>
+			</tr>
+			<tr>
+				<th>Superficie</th>
+				<td>{{ salle.superficie }}</td>
+			</tr>
+			<tr>
+				<th>Description</th>
+				<td>{{ salle.description }}</td>
+			</tr>
+			 
+			<tr>
+				<th>Image</th>
+				<td>
+					<img   class="img-thumbnail" src="{{asset('uploads/'~ salle.image)}}" alt=""></td>
+			</tr>
+
+		</tbody>
+	</table>
+</body>
+<script>
+
+const btnToggle = document.querySelector('.btn-toggle');
+
+btnToggle.addEventListener('click', () => {
+
+    const body = document.body;
+
+    if(body.classList.contains('dark')){
+
+        body.classList.add('light')
+        body.classList.remove('dark')
+        btnToggle.innerHTML = "Go Dark"
+
+    } else if(body.classList.contains('light')){
+
+        body.classList.add('dark')
+        body.classList.remove('light')
+        btnToggle.innerHTML = "Go Light"
+
+    }
+
+})
+</script>
+	{# <a href="{{ path('app_salle_index') }}"><button type="button" class="btn btn-outline-danger">Back</button></a>
+
+	<a href="{{ path('app_salle_edit', {'id': salle.id}) }}">edit</a> #}
+ 	{# {{ include('salle/_delete_form.html.twig') }} #}
+{% endblock %}

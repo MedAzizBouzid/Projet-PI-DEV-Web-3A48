@@ -3,7 +3,9 @@
 
 {% block body %}
 <style>
-
+th{
+   color: red;
+}
 </style>
 	<!-- Table Start -->
 	
@@ -58,8 +60,7 @@
 
 
 
-
-	<div>
+ 
 							{# __________________________________________ #}
 {# 
 							<form action="find_Salle" method="GET">
@@ -168,7 +169,7 @@
 					</div>
 		 
 		    </div>
-<button style="width: 90px;padding: 5px;" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+<button style="width: 90px;padding: 5px;" class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
 
 
 						{{ form_end(form) }}
@@ -182,29 +183,29 @@
 
                     <div class="d-flex align-items-center justify-content-between mb-4">
                         {# <h6 class="mb-0">Salles</h6> #}
-                        <a href="">Show All</a>
+                        <a href={{path('app_activite_index')}}>Show All</a>
                     </div>
-                    <div class="table-responsive">
-								        <div class="btn-toggle">Go Nuit</div>
+                    {# <div class="table-responsive">
+								        <div class="btn-toggle">Go Nuit</div> #}
 
                        	<div id="pagination">
 							<a href="#" class="previous">&laquo; Previous</a>
 							<a href="#" class="next">Next &raquo;</a>
 							</div>
 					    {# <table id="myTable" class="table text-start align-middle table-bordered table-hover mb-0"> #}
-                     <table id="myTable" class="light">
+                     <table id="myTable" >
 
 							<thead>
                                 <tr class="text-white">
                                     {# <th scope="col"><input class="form-check-input" type="checkbox"></th> #}
                                      <th scope="col">#</th>
-								    <th scope="col">nom</th>
-								    <th scope="col">categorie</th>
-                                    <th scope="col">materiel</th>
-                                    <th scope="col">intensite</th>
-                                    <th scope="col">GRPmusculaire</th>
-                                    <th scope="col">tenue</th>
-									<th scope="col">recomendation</th>
+								    <th scope="col">Activité</th>
+								    <th scope="col">Categorie</th>
+                                    <th scope="col">Materiel</th>
+                                    <th scope="col">Intensite</th>
+                                    <th scope="col">Group musculaire</th>
+                                    <th scope="col">Tenue</th>
+									<th scope="col">Recomendation</th>
                                     <th scope="col">Salles</th>
 								    <th scope="col">Action</th>
 
@@ -243,6 +244,7 @@
                     </div>
                 </div>
             </div>
+									 
             <!-- Recent Sales End -->
 		{# _________________________________________________________________________________________________________ #}
 			{# <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0"> 

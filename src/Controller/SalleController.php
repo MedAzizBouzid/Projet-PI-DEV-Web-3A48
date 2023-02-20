@@ -17,7 +17,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 class SalleController extends AbstractController
 {
     #[Route('/', name: 'app_salle_index', methods: ['GET', 'POST'])]
-    public function index(Request $request ,SalleRepository $salleRepository,EntityManagerInterface $em): Response
+    public function index(Request $request ,SalleRepository $salleRepository,EntityManagerInterface $em,SluggerInterface $slugger): Response
     {
         
  
@@ -27,6 +27,28 @@ class SalleController extends AbstractController
 
         
         if ($form->isSubmitted() && $form->isValid()) {
+            $image = $form->get('image')->getData();
+
+            if ($image) {
+                $originalFilename = pathinfo($image->getClientOriginalName(), PATHINFO_FILENAME);
+                // this is needed to safely include the file name as part of the URL
+                $safeFilename = $slugger->slug($originalFilename);
+                $newFilename = $safeFilename . '-' . uniqid() . '.' . $image->guessExtension();
+
+                // Move the file to the directory where brochures are stored
+                try {
+                    $image->move(
+                        $this->getParameter('activite_directory'),
+                        $newFilename
+                    );
+                } catch (FileException $e) {
+                    // ... handle exception if something happens during file upload
+                }
+
+                // updates the 'photo$photoname' property to store the PDF file name
+                // instead of its contents
+                $salle->setImage($newFilename);
+            }
             $salleRepository->save($salle, true);
 
             return $this->redirectToRoute('app_salle_index', [], Response::HTTP_SEE_OTHER);
@@ -38,6 +60,7 @@ class SalleController extends AbstractController
          ]);
         
     }
+    
 // _______________________________________________________________________________
 #[Route('/chercher_salle', name: 'chercher_salle')]
 public function chercher_student(EntityManagerInterface $em,Request $request,SalleRepository $repo)
