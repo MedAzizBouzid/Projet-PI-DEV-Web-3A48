@@ -2,10 +2,15 @@
 
 namespace App\Controller;
 
+use App\Entity\ForgetPwd;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\ForgetPwdRepository;
+use App\Repository\UserRepository;
 use App\Security\EmailVerifier;
 use App\Security\LoginAuthenticator;
+use App\Service\JWTService;
+use App\Service\SendMailService;
 use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bridge\Twig\Mime\TemplatedEmail;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -23,12 +28,7 @@ use Twilio\Rest\Client;
 
 class RegistrationController extends AbstractController
 {
-    private EmailVerifier $emailVerifier;
-
-    public function __construct(EmailVerifier $emailVerifier)
-    {
-        $this->emailVerifier = $emailVerifier;
-    }
+    
     public function sendSmsAction()
     {
         $TWILIO_ACCOUNT_SID= 'AC41806a149ebbbac29e16f2d14d8a5e64';
@@ -60,7 +60,9 @@ class RegistrationController extends AbstractController
     }
 
     #[Route('/register', name: 'app_register')]
-    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator, EntityManagerInterface $entityManager,SluggerInterface $slugger): Response
+    public function register(Request $request, UserPasswordHasherInterface $userPasswordHasher, 
+    UserAuthenticatorInterface $userAuthenticator, LoginAuthenticator $authenticator,
+     EntityManagerInterface $entityManager,SluggerInterface $slugger,SendMailService $mail,JWTService $jwt): Response
     {
         $err="";
         $user = new User();
@@ -106,15 +108,29 @@ class RegistrationController extends AbstractController
                 $entityManager->persist($user);
                 $entityManager->flush();
     
-                // generate a signed url and email it to the user
-                $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-                    (new TemplatedEmail())
-                        ->from(new Address('pidevsymfony8@gmail.com', 'BodyRock verification'))
-                        ->to($user->getEmail())
-                        ->subject('Please Confirm your Email')
-                        ->htmlTemplate('registration/confirmation_email.html.twig')
-                );
+                $header=[
+                    'type'=>'JWT',
+                    'alg'=>'HS256'
+                ];
+    
+               $payload=[
+                'user_id'=> $user->getId()
+               ];
+    
+               $token=$jwt->generate($header,$payload,$this->getParameter('app.jwtsecret'));
+               
+               
                 // do anything else you need here, like send an email
+                $mail->send(
+                    'pidevsymfony8@gmail.com',
+                    $user->getEmail(),
+                    'Activation',
+                    'email',
+                    [
+                        'user'=>$user,
+                        'token'=>$token
+                    ]
+                );
     
                 return $userAuthenticator->authenticateUser(
                     $user,
@@ -133,24 +149,108 @@ class RegistrationController extends AbstractController
         ]);
     }
 
-    #[Route('/verify/email', name: 'app_verify_email')]
-    public function verifyUserEmail(Request $request, TranslatorInterface $translator): Response
+    #[Route('/verify/{token}', name: 'app_verify_email')]
+    public function verifyUser($token,JWTService $jwt,UserRepository $userRepository, EntityManagerInterface $em): Response
     {
-        $this->denyAccessUnlessGranted('IS_AUTHENTICATED_FULLY');
-
-        // validate email confirmation link, sets User::isVerified=true and persists
-        try {
-            $this->emailVerifier->handleEmailConfirmation($request, $this->getUser());
-            $this->sendSmsAction();
-        } catch (VerifyEmailExceptionInterface $exception) {
-            $this->addFlash('verify_email_error', $translator->trans($exception->getReason(), [], 'VerifyEmailBundle'));
-
-            return $this->redirectToRoute('app_register');
+       
+       if( $jwt->isValid($token)&& !$jwt->isExpired($token)&& $jwt->check($token,$this->getParameter('app.jwtsecret'))){
+        $payload=$jwt->getPayload($token);
+        $user=$userRepository->find($payload['user_id']);
+        if($user && !$user->isVerified()){
+            $user->setIsVerified(true);
+            $em->flush($user);
+            $this->addFlash('success', 'Your email address has been verified.');
         }
-
-        // @TODO Change the redirect on success and handle or remove the flash message in your templates
-        $this->addFlash('success', 'Your email address has been verified.');
+       }
+       $this->addFlash('danger','token invalid');
 
         return $this->redirectToRoute('app_Front_index');
+    }
+    #[Route('/forgetPwdl', name: 'app_forgetPwd')]
+    public function forgetPwd(Request $request): Response
+    {
+       
+
+        return $this->render('front/forgetPwd.html.twig',[
+            
+        ]);
+    }
+    // #[Route('/resetForm', name: 'app_resetForm')]
+    // public function resetForm(): Response
+    // {
+    //     $error="";
+
+    //     return $this->render('security/resetPwd.html.twig',[
+    //         'error'=>$error
+    //     ]);
+    // }
+    #[Route('/send', name: 'app_send')]
+    public function send(Request $request ,UserRepository $userRepository,  ForgetPwdRepository $forgetPwdRepository,SendMailService $mail): Response
+    {
+        $code=$this->random();
+        $user = new User();
+        $user=$userRepository->findOneByEmail($request->get('email')) ;
+       if($user){
+        $forgetPwd=new ForgetPwd();
+        $forgetPwd->setCode($code);
+        $forgetPwd->setUser($user);
+        $forgetPwdRepository->save($forgetPwd,true);
+        $mail->send(
+            'pidevsymfony8@gmail.com',
+            $user->getEmail(),
+            'Reset your password',
+            'forgetPwdTemplate',
+            [
+                'user'=>$user,
+                'code'=>$code
+            ]
+        );
+        // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
+        //             (new TemplatedEmail())
+        //                 ->from(new Address('pidevsymfony8@gmail.com', 'BodyRock verification'))
+        //                 ->to($request->get('email'))
+        //                 ->subject('Reset your password')
+        //                 ->html('test: '.$code)
+        //         );
+       }
+
+        return $this->render('front/forgetPwd.html.twig',[
+            
+        ]);
+    }
+    #[Route('/resretPwd', name: 'app_resretPwd')]
+    public function resretPwd(Request $request ,UserRepository $userRepository,  ForgetPwdRepository $forgetPwdRepository,UserPasswordHasherInterface $userPasswordHasher): Response
+    {
+       
+        $error="";
+        // if($request->get('submit')==""){
+
+            $user = new User();
+            $user=$userRepository->findOneByEmail($request->get('email')) ;
+            $forgetPwd=new ForgetPwd();
+            $forgetPwd=$forgetPwdRepository->findOneByUser($user);
+            // dd($forgetPwd);
+            if($forgetPwd && $request->get('code')){
+                
+                $user->setPassword(
+                    $userPasswordHasher->hashPassword(
+                        $user,
+                        $request->get('newPwd')
+                    )
+                );
+                $userRepository->save($user,true);
+                $forgetPwdRepository->remove($forgetPwd,true);
+                // return $this->render('security/login.html.twig',[
+                    
+                // ]);
+            // }else{
+            //     $error="Invalid code or email";
+            // }
+            // dd($error);
+        }
+        return $this->render('security/resetPwd.html.twig',[
+            'error'=>$error
+        ]);
+
     }
 }
