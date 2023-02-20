@@ -1,0 +1,152 @@
+{% extends 'front/baseF.html.twig' %}
+
+
+{% block body %}
+      
+ <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Services</h2>
+                      
+                        <div class="bt-option">
+                            <a href="./index.html">Home</a>
+                            <span>Services</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+
+    <!-- Services Section Begin -->
+    <section class="services-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>What we do?</span>
+                        <h2>PUSH YOUR LIMITS FORWARD</h2>
+                    </div>
+                </div>
+            </div>
+           
+     
+              {% for service in services %}
+            <div class="row">
+                <div class="col-lg-3 order-lg-1 col-md-6 p-0">
+                    <div class="ss-pic">
+                       <img src="{{asset('uploads/'~ service.image)}} " alt="" style="width: 300px; height: 250px;" >
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-2 col-md-6 p-0">
+                    <div class="ss-text">
+                        <h4>{{service.nom}}</h4>
+                        <p>{{service.description}}</p>
+                        <h3>{{service.tarif}}</h3>
+
+                        <a href="{{ path('app_rendezvous_new', {'id': service.id}) }}">RENDEZ-VOUS</a>
+         
+                    </div>
+                </div>
+                </div>
+                {% endfor %}
+  
+                {# <div class="col-lg-3 order-lg-3 col-md-6 p-0">
+                    <div class="ss-pic">
+                        <img src="{{ asset('assets/front/img/services/services-2.jpg')}}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-4 col-md-6 p-0">
+                    <div class="ss-text">
+                        <h4>Group fitness classes</h4>
+                        <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus.</p>
+                        <a href="#">Explore</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-8 col-md-6 p-0">
+                    <div class="ss-pic">
+                        <img src="{{ asset('assets/front/img/services/services-4.jpg')}}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-7 col-md-6 p-0">
+                    <div class="ss-text second-row">
+                        <h4>Body building</h4>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor ut dolore
+                            facilisis.</p>
+                        <a href="#">Explore</a>
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-6 col-md-6 p-0">
+                    <div class="ss-pic">
+                        <img src="{{ asset('assets/front/img/services/services-3.jpg')}}" alt="">
+                    </div>
+                </div>
+                <div class="col-lg-3 order-lg-5 col-md-6 p-0">
+                    <div class="ss-text second-row">
+                        <h4>Strength training</h4>
+                        <p>Quis ipsum suspendisse ultrices gravida. Risus commodo viverra maecenas accumsan lacus.</p>
+                        <a href="#">Explore</a>
+                    </div>
+                </div> #}
+            {# </div> #}
+        </div>
+    </section>
+
+
+{# jk #}
+    <!-- Team Section Begin -->
+    <section class="team-section team-page spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="team-title">
+                        <div class="section-title">
+                            <span>What we do?</span>
+                            <h2>PUSH YOUR LIMITS FORWARD</h2>
+                        </div>
+                        {# <a href="#" class="primary-btn btn-normal appoinment-btn">appointment</a> #}
+                    </div>
+                </div>
+            </div>
+
+            <div class="row">
+            {% for service in services %}
+ 
+                <div class="col-lg-4 col-sm-6">
+                    <div class="ts-item set-bg" data-setbg="{{asset('uploads/'~ service.image)}}">
+                        <div class="ts_text">
+                            <h4>{{service.nom}}</h4>
+                            <span>{{service.description}}</span>
+                            {# <div class="tt_social">
+                                <a href="#"><i class="fa fa-facebook"></i></a>
+                                <a href="#"><i class="fa fa-twitter"></i></a>
+                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+                                <a href="#"><i class="fa fa-instagram"></i></a>
+                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
+                            </div> #}
+                      
+                            <a href="{{ path('app_rendezvous_new', {'id': service.id}) }}" class="primary-btn btn-normal ">RENDEZ-VOUS</a>
+                          
+                        </div>
+                    </div>
+                </div>
+  {% endfor %}
+    
+            </div>
+
+
+        </div>
+    </section>
+    <!-- Team Section End -->
+
+    <!-- Services Section End -->
+
+
+    
+
+    {% endblock %}
+

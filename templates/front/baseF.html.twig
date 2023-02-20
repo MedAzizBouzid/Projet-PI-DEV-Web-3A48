@@ -23,9 +23,12 @@
     <link rel="stylesheet" href="{{ asset('assets/front/css/magnific-popup.css')}}" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/front/css/slicknav.min.css')}}" type="text/css">
     <link rel="stylesheet" href="{{ asset('assets/front/css/style.css')}}" type="text/css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.css" />
+
 {% endblock %}
 </head>
 <body>
+
     <!-- Page Preloder -->
     <div id="preloder">
         <div class="loader"></div>
@@ -123,11 +126,16 @@
                 <i class="fa fa-bars"></i>
             </div>
         </div>
+       
+
     </header>
     <!-- Header End -->
    <body>
+  
     {% block body %}
-                        
+    {# {{ calendar_widget({
+        'events_url': path('calendar_events')
+    }) }}               #}
      {% endblock %}
    </body>
 
@@ -247,7 +255,7 @@
     </div>
     <!-- Search model end -->
         {% block javascripts %}
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/fullcalendar/3.10.2/fullcalendar.min.js"></script>
     <!-- Js Plugins -->
     <script src="{{ asset('assets/front/js/jquery-3.3.1.min.js')}}"></script>
     <script src="{{ asset('assets/front/js/bootstrap.min.js')}}"></script>

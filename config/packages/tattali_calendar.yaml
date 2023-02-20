@@ -1,0 +1,7 @@
+# tattali_calendar:
+    # routing:
+        # prefix: /calendar
+    # template:
+        # month: 'TattaliCalendarBundle:Calendar:month.html.twig'
+        # week: 'TattaliCalendarBundle:Calendar:week.html.twig'
+        # day: 'TattaliCalendarBundle:Calendar:day.html.twig'

@@ -1,0 +1,55 @@
+{% extends 'back/base.html.twig' %}
+
+
+{% block body %}
+            <!-- Table Start -->
+            <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+            <div class="container-fluid pt-4 px-4" style="bottom:0;">
+            
+                {# <div class="card-body"> #}
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                       <tr>
+                                            <th>Id</th>
+                                            <th>Service</th>
+                                            <th>Client</th>
+                                            <th>Date</th>
+                                            <th>Heure</th>
+                                        
+                                            <th>Actions</th>
+                                        </tr>
+                                    </thead>
+                                   
+                                                            <tbody>
+                                {% for rendez in rendez_vouses %}
+                                    <tr>
+                                        <td>{{ rendez.id }}</td>
+                                        <td>{{ rendez.service.id }}</td>
+                                        <td>{{ rendez.client }}</td>
+                                        <td>{{ rendez.dateAt |date("m/d/Y")}}</td>
+                                        <td>{{ rendez.heure|date("g:ia")}}</td>
+                                        
+                                        <td>
+                                           <form method="post" action="{{ path('app_rendez_vous_delete', {'id': rendez.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
+                                                <input type="hidden" name="_token" value="{{ csrf_token('delete' ~ rendez.id) }}">
+                                                 <button class="btn">Delete</button>
+                                            </form>
+
+                                            {# <a href="{{ path('app_service_edit', {'id': service.id}) }}">edit</a> #}
+                                        </td>
+                                    </tr>
+                                {% else %}
+                                    <tr>
+                                        <td colspan="7">no records found</td>
+                                    </tr>
+                                {% endfor %}
+                                </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+            <!-- Table End -->
+            {% endblock %}
+
+            
