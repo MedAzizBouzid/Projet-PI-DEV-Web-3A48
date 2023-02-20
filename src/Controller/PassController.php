@@ -60,9 +60,9 @@ class PassController extends AbstractController
         } 
         
 
-//         $sid    = "ACe5e12645de4fa19a9d817da822c48552";
-// $token  = "4890e95a4b67ff9d7f2d2127ed72ddb5";
-// $twilio = new Client($sid, $token);
+        $sid    = "ACe5e12645de4fa19a9d817da822c48552";
+$token  = "4890e95a4b67ff9d7f2d2127ed72ddb5";
+$twilio = new Client($sid, $token);
 
 
 
@@ -80,19 +80,24 @@ class PassController extends AbstractController
         
             $passRepository->save($pass, true);
 
-            // $numeroTelephone=$client->getNumTel();
-            // $numeroTelephoneEnString = (string)$numeroTelephone ; // conversion en chaîne de caractères
-            // $receiver_number = '+216' . $numeroTelephoneEnString; // concaténation avec la chaîne '+216'
-// dd($receiver_number);
+            $numeroTelephone=$client->getNumTel();
+            $numeroTelephoneEnString = (string)$numeroTelephone ; // conversion en chaîne de caractères
+            $receiver_number = '+216' . $numeroTelephoneEnString; // concaténation avec la chaîne '+216'
+            $client_name=$client->getNom();
+$event_name=$event->getNom();
+$event_place=$event->getLieu();
+$event_time=$event->getBeginAt();
+	$body="Hello Mr ". $client_name ." you have just get a pass for our evenet ". $event_name . " who take place in ". $event_place;
+
 	
     
-            // $message = $twilio->messages
-            //       ->create("receiver_number", // to
-            //                array(
-            //                    "body" => '',
-            //                    "from" => "++12697956309"
-            //                )
-            //       );
+            $message = $twilio->messages
+                  ->create('+21626181201', // to
+                           array(
+                               "body" => $body,
+                               "from" => "+12697956309"
+                           )
+                  );
 
             return $this->redirectToRoute('app_evenement_index_front', [], Response::HTTP_SEE_OTHER);
        
