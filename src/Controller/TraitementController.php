@@ -58,6 +58,7 @@ class TraitementController extends AbstractController
             
         ]);
     }
+  
     #[Route('/profile/{id}', name: 'app_profile')]
     public function profile(User $user): Response
     {

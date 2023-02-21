@@ -29,7 +29,8 @@ class RegistrationFormType extends AbstractType
         $builder
             ->add('email',EmailType::class, [
                 'attr'=>[
-                    'class'=>'form-control'  
+                    'class'=>'form-control',
+                    'placeholder' => 'Enter Email',  
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -39,7 +40,8 @@ class RegistrationFormType extends AbstractType
                 ])
             ->add('nom',TextType::class, [
                 'attr'=>[
-                    'class'=>'form-control'  
+                    'class'=>'form-control',
+                    'placeholder' => 'Enter First Name',  
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -53,7 +55,8 @@ class RegistrationFormType extends AbstractType
                 ])
             ->add('prenom',TextType::class, [
                 'attr'=>[
-                    'class'=>'form-control'  
+                    'class'=>'form-control',
+                    'placeholder' => 'Enter Last Name',  
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -67,7 +70,8 @@ class RegistrationFormType extends AbstractType
                 ])
             ->add('userName',TextType::class, [
                 'attr'=>[
-                    'class'=>'form-control'  
+                    'class'=>'form-control',
+                    'placeholder' => 'Enter UserName',  
                 ],
                 'constraints' => [
                     new NotBlank(),
@@ -81,7 +85,8 @@ class RegistrationFormType extends AbstractType
                 ])
             ->add('numTel',TelType::class,[
                 'attr'=>[
-                    'class'=>'form-control'  
+                    'class'=>'form-control' ,
+                    'placeholder' => 'Enter Phone number', 
                 ],
                 'constraints' => [
                     new NotBlank([
@@ -142,7 +147,8 @@ class RegistrationFormType extends AbstractType
                 'mapped' => false,
                 'attr' => ['autocomplete' => 'new-password',
                 
-                    'class'=>'form-control'  
+                    'class'=>'form-control',
+                    'placeholder' => 'Enter Password',  
                 ],
                 'constraints' => [
                     new NotBlank([

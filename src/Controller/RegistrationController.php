@@ -159,6 +159,7 @@ class RegistrationController extends AbstractController
         if($user && !$user->isVerified()){
             $user->setIsVerified(true);
             $em->flush($user);
+            // $this->sendSmsAction();
             $this->addFlash('success', 'Your email address has been verified.');
         }
        }
@@ -175,15 +176,7 @@ class RegistrationController extends AbstractController
             
         ]);
     }
-    // #[Route('/resetForm', name: 'app_resetForm')]
-    // public function resetForm(): Response
-    // {
-    //     $error="";
 
-    //     return $this->render('security/resetPwd.html.twig',[
-    //         'error'=>$error
-    //     ]);
-    // }
     #[Route('/send', name: 'app_send')]
     public function send(Request $request ,UserRepository $userRepository,  ForgetPwdRepository $forgetPwdRepository,SendMailService $mail): Response
     {
@@ -205,16 +198,10 @@ class RegistrationController extends AbstractController
                 'code'=>$code
             ]
         );
-        // $this->emailVerifier->sendEmailConfirmation('app_verify_email', $user,
-        //             (new TemplatedEmail())
-        //                 ->from(new Address('pidevsymfony8@gmail.com', 'BodyRock verification'))
-        //                 ->to($request->get('email'))
-        //                 ->subject('Reset your password')
-        //                 ->html('test: '.$code)
-        //         );
+
        }
 
-        return $this->render('front/forgetPwd.html.twig',[
+        return $this->render('front/index.html.twig',[
             
         ]);
     }
@@ -223,6 +210,8 @@ class RegistrationController extends AbstractController
     {
        
         $error="";
+        if($request->isMethod('post')){
+           
         // if($request->get('submit')==""){
 
             $user = new User();
@@ -230,7 +219,7 @@ class RegistrationController extends AbstractController
             $forgetPwd=new ForgetPwd();
             $forgetPwd=$forgetPwdRepository->findOneByUser($user);
             // dd($forgetPwd);
-            if($forgetPwd && $request->get('code')){
+            if($forgetPwd && $request->get('code')==$forgetPwd->getCode()){
                 
                 $user->setPassword(
                     $userPasswordHasher->hashPassword(
@@ -240,14 +229,14 @@ class RegistrationController extends AbstractController
                 );
                 $userRepository->save($user,true);
                 $forgetPwdRepository->remove($forgetPwd,true);
-                // return $this->render('security/login.html.twig',[
+                return $this->render('security/login.html.twig',[
                     
-                // ]);
-            // }else{
-            //     $error="Invalid code or email";
-            // }
+                ]);
+            }else{
+                $error="Invalid code or email";
+            }
             // dd($error);
-        }
+         }
         return $this->render('security/resetPwd.html.twig',[
             'error'=>$error
         ]);

@@ -18,7 +18,7 @@ class ForgetPwd
     #[ORM\Column(length: 255)]
     private ?string $code = null;
 
-    #[ORM\OneToOne(cascade: ['persist', 'remove'])]
+    #[ORM\OneToOne]
     #[ORM\JoinColumn(nullable: false)]
     private ?User $user = null;
 

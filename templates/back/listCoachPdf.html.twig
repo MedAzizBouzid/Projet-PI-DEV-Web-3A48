@@ -1,53 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Attestation de travail - Coach de sport</title>
+    <style>
+      body {
+        font-family: Arial, sans-serif;
+        color: #333;
+        background-color: #f9f9f9;
+      }
+      h1 {
+        color: #4CAF50;
+      }
+      .container {
+        margin: 0 auto;
+        max-width: 800px;
+        padding: 20px;
+        background-color: #fff;
+        border-radius: 5px;
+        box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.2);
+      }
+      p {
+        margin-bottom: 20px;
+        line-height: 1.5;
+      }
+      .signature {
+        text-align: right;
+        margin-top: 50px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+    <center>
+      <h1>Attestation de travail</h1>
+    </center>
 
-
-
-{% block body %}
-            <!-- Table Start -->
-            <center>
-            <h1>Liste des coach</h1>
-            </center>
-            <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-            <div class="container-fluid pt-4 px-4" style="bottom:0;">
-                {# <div class="card-body"> #}
-                                <div class="table-responsive">
-                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                    <thead>
-                                        <tr>
-                                             <th>#</th>
-                                                <th>Nom</th>
-                                                <th>Prenom</th>
-                                                <th>UserName</th>
-                                                <th>Email</th>
-                                                <th>NumTel</th>
-                                                
-                                                <th>Etat</th>
-                                                
-                                                
-                                        </tr>
-                                    </thead>
-                                   
-                                    <tbody>
-                                        {% for user in users %}
-                                        <tr>
-                                             <td>{{ user.id }}</td>
-                                            <td>{{ user.nom }}</td>
-                                            <td>{{ user.prenom }}</td>
-                                            <td>{{ user.userName }}</td>
-                                            <td>{{ user.email }}</td>
-                                            <td>{{ user.numTel }}</td>
-                                            
-                                            <td>{{ user.etat }}</td>
-
-                                            
-                                        </tr>
-                                         {% endfor %} 
-
-                                    </tbody>
-                                    </table>
-                                </div>
-                            </div>
-                            </div>
-            <!-- Table End -->
-            {% endblock %}
-
-            
+      <p>Nous certifions que M/Mme [Nom du coach], exerçant en tant que coach de sport au sein de [Nom de l'entreprise], est employé(e) à temps plein depuis le [Date d'embauche].</p>
+      <p>Les fonctions de [Nom du coach] consistent à élaborer des programmes d'entraînement personnalisés pour nos clients, à animer des séances de coaching individuelles et collectives, ainsi qu'à assurer la gestion des équipements sportifs.</p>
+      <p>Nous attestons également que [Nom du coach] possède les qualifications nécessaires pour exercer ce métier et que sa rémunération est conforme aux conventions collectives en vigueur.</p>
+      <p>Fait à [Ville], le [Date de rédaction]</p>
+      <div class="signature">
+        <p>[Nom et signature du responsable de l'entreprise]</p>
+      </div>
+    </div>
+  </body>
+</html>
