@@ -54,7 +54,7 @@ class TraitementController extends AbstractController
     #[Route('/404', name: 'app_err')]
     public function err(): Response
     {
-        return $this->render('back/404.html.twig', [
+        return $this->render('front/404.html.twig', [
             
         ]);
     }
