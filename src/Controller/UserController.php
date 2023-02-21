@@ -7,6 +7,7 @@ use App\Entity\Role;
 use App\Form\RegistrationFormType;
 use App\Repository\RoleRepository;
 use App\Repository\UserRepository;
+use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
@@ -333,14 +334,17 @@ class UserController extends AbstractController
         return $this->redirectToRoute('app_user_admin', [], Response::HTTP_SEE_OTHER);
     }
     /***************************PDF************************* */
-    #[Route('/coachPdf', name: 'app_user_coachPdf', methods: ['GET'])]
-    public function coachpDF(UserRepository $userRepository): Response
+    #[Route('/coachPdf/{id}', name: 'app_user_coachPdf', methods: ['GET'])]
+    public function coachpDF(User $user ,UserRepository $userRepository): Response
     {
         $options = new Options();
         $options->set('defaultFont', 'Courier');
         $dompdf = new Dompdf($options);
+        $date = new DateTime();
+        $dateString = $date->format('d-m-Y ');
         $html= $this->renderView('back/listCoachPdf.html.twig', [
-            'users' => $userRepository->findAllUser('["ROLE_COACH"]'),
+            'user' => $user,
+            'date'=>$dateString
 
         ]);
         $dompdf->loadHtml($html);
