@@ -29,7 +29,17 @@ class PassController extends AbstractController
             'passes' => $passRepository->findAll(),
         ]);
     }
+//afficher les passes d'un evenement back
+    #[Route('/event/{id}', name: 'app_pass_event', methods: ['GET'])]
+    public function index_pass_event(PassRepository $passRepository,$id): Response
+    {
+        return $this->render('pass/index.html.twig', [
+            'passes' => $passRepository->findPassByIdEvent($id),
+        ]);
+    }
 
+
+    //afficher les pass d'un client en front
     #[Route('/mesPass/{id}', name: 'app_pass_index_mesPass', methods: ['GET'])]
     public function mesPass(PassRepository $passRepository,$id): Response
     {

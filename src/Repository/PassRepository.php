@@ -75,4 +75,15 @@ public function findPassByIdClient($clientId)
     return $qb->getResult();
 }
 
+public function findPassByIdEvent($eventId)
+{
+    $qb = $this->createQueryBuilder('s')
+        ->leftJoin('s.event', 'e')
+        ->andWhere('e.id = :eventId')
+        ->setParameter('eventId', $eventId)
+        ->getQuery();
+
+    return $qb->getResult();
+}
+
 }

@@ -28,6 +28,15 @@ class SponsorController extends AbstractController
         ]);
     }
 
+    #[Route('/event/{id}', name: 'app_sponsor_event', methods: ['GET'])]
+    public function index_sponsor_event(SponsorRepository $sponsorRepository,$id): Response
+    {
+        $sponsors=$sponsorRepository->findSponsorsByEvent($id);
+        return $this->render('sponsor/index.html.twig', [
+            'sponsors' => $sponsors,
+        ]);
+    }
+
     #[Route('/front/{id}', name: 'app_sponsor_index_front', methods: ['GET', 'POST'])]
     public function indexF(SponsorRepository $sponsorRepository,$id,EvenementRepository $eventrepo, Request $request, PassRepository $passRepository): Response
     {

@@ -17,6 +17,7 @@ class Pass
     private ?\DateTimeImmutable $createdAt = null;
 
     #[ORM\ManyToOne(inversedBy: 'passes')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Evenement $event = null;
 
     #[ORM\ManyToOne(inversedBy: 'passes')]
