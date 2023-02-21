@@ -82,9 +82,9 @@ class PassController extends AbstractController
         } 
         
 
-        $sid    = "ACe5e12645de4fa19a9d817da822c48552";
-$token  = "4890e95a4b67ff9d7f2d2127ed72ddb5";
-$twilio = new Client($sid, $token);
+//         $sid    = "ACe5e12645de4fa19a9d817da822c48552";
+// $token  = "4890e95a4b67ff9d7f2d2127ed72ddb5";
+// $twilio = new Client($sid, $token);
 
 
 
@@ -128,12 +128,12 @@ $twilio = new Client($sid, $token);
             //     'from' => '+12697956309', // Your Twilio phone number
             // ];
          
-            $call = $twilio->calls
-            ->create("+21626181201", // to
-                     "+12697956309", // from
-                     ["url" => "http://127.0.0.1:8000/evenement/call"]
-            );
-            return $this->redirectToRoute('app_evenement_index_front', [], Response::HTTP_SEE_OTHER);
+            // $call = $twilio->calls
+            // ->create("+21626181201", // to
+            //          "+12697956309", // from
+            //          ["url" => "http://127.0.0.1:8000/evenement/call"]
+            // );
+            // return $this->redirectToRoute('app_evenement_index_front', [], Response::HTTP_SEE_OTHER);
        
 
        

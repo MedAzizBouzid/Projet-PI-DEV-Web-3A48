@@ -46,9 +46,13 @@ class User
     #[ORM\OneToMany(mappedBy: 'client', targetEntity: Pass::class)]
     private Collection $passes;
 
+    #[ORM\OneToMany(mappedBy: 'client', targetEntity: Commentaire::class)]
+    private Collection $commentaires;
+
     public function __construct()
     {
         $this->passes = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -188,6 +192,36 @@ class User
             // set the owning side to null (unless already changed)
             if ($pass->getClient() === $this) {
                 $pass->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires->add($commentaire);
+            $commentaire->setClient($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getClient() === $this) {
+                $commentaire->setClient(null);
             }
         }
 

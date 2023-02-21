@@ -52,12 +52,16 @@ class Evenement
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Pass::class)]
     private Collection $passes;
 
+    #[ORM\OneToMany(mappedBy: 'event', targetEntity: Commentaire::class)]
+    private Collection $commentaires;
+
 
 
     public function __construct()
     {
         $this->sponsors = new ArrayCollection();
         $this->passes = new ArrayCollection();
+        $this->commentaires = new ArrayCollection();
   
     }
 
@@ -218,6 +222,36 @@ class Evenement
             // set the owning side to null (unless already changed)
             if ($pass->getEvent() === $this) {
                 $pass->setEvent(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Commentaire>
+     */
+    public function getCommentaires(): Collection
+    {
+        return $this->commentaires;
+    }
+
+    public function addCommentaire(Commentaire $commentaire): self
+    {
+        if (!$this->commentaires->contains($commentaire)) {
+            $this->commentaires->add($commentaire);
+            $commentaire->setEvent($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCommentaire(Commentaire $commentaire): self
+    {
+        if ($this->commentaires->removeElement($commentaire)) {
+            // set the owning side to null (unless already changed)
+            if ($commentaire->getEvent() === $this) {
+                $commentaire->setEvent(null);
             }
         }
 
