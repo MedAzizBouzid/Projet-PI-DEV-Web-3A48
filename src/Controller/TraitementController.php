@@ -144,4 +144,11 @@ class TraitementController extends AbstractController
             'form' => $form,
         ]);
     } 
+    #[Route('/details', name: 'details')]
+    public function details(): Response
+    {
+        return $this->render('front/class-details.html.twig', [
+            'controller_name' => 'TraitementController',
+        ]);
+    }
 }

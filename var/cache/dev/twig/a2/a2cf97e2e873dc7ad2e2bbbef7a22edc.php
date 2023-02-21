@@ -219,31 +219,32 @@ class __TwigTemplate_32c1a91fcab3aae8bb15f4bf0fd0a17a extends Template
 \t\t 
 \t\t    </div>
 
-
-\t\t\t\t\t\t";
-        // line 83
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 83, $this->source); })()), 'form_end');
-        echo "
-\t\t\t\t\t\t<button style=\"width: 90px;padding: 5px;\" class=\"btn btn-primary\">";
-        // line 84
-        echo twig_escape_filter($this->env, ((array_key_exists("button_label", $context)) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 84, $this->source); })()), "Save")) : ("Save")), "html", null, true);
+\t\t\t\t\t\t\t\t\t\t<button style=\"width: 90px;padding: 5px;\" class=\"btn btn-primary\">";
+        // line 82
+        echo twig_escape_filter($this->env, ((array_key_exists("button_label", $context)) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 82, $this->source); })()), "Save")) : ("Save")), "html", null, true);
         echo "</button>
 
+\t\t\t\t\t\t";
+        // line 84
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 84, $this->source); })()), 'form_end');
+        echo "
+
 \t\t\t\t</div>
+
 \t\t\t</div>
 \t\t</div>
 
 \t\t";
-        // line 91
+        // line 92
         echo "\t\t";
-        // line 158
+        // line 159
         echo "
 \t\t\t\t\t";
-        // line 191
+        // line 192
         echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-        // line 390
+        // line 391
         echo "\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t";
-        // line 399
+        // line 400
         echo "\t</div>
 \t<!-- Form End -->
 ";
@@ -267,7 +268,7 @@ class __TwigTemplate_32c1a91fcab3aae8bb15f4bf0fd0a17a extends Template
 
     public function getDebugInfo()
     {
-        return array (  247 => 399,  245 => 390,  243 => 191,  240 => 158,  238 => 91,  229 => 84,  225 => 83,  215 => 76,  211 => 75,  207 => 74,  200 => 70,  196 => 69,  192 => 68,  184 => 63,  180 => 62,  176 => 61,  168 => 56,  164 => 55,  160 => 54,  151 => 48,  147 => 47,  143 => 46,  133 => 39,  129 => 38,  125 => 37,  115 => 30,  111 => 29,  107 => 28,  99 => 23,  95 => 22,  91 => 21,  83 => 16,  76 => 11,  71 => 7,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  248 => 400,  246 => 391,  244 => 192,  241 => 159,  239 => 92,  229 => 84,  224 => 82,  215 => 76,  211 => 75,  207 => 74,  200 => 70,  196 => 69,  192 => 68,  184 => 63,  180 => 62,  176 => 61,  168 => 56,  164 => 55,  160 => 54,  151 => 48,  147 => 47,  143 => 46,  133 => 39,  129 => 38,  125 => 37,  115 => 30,  111 => 29,  107 => 28,  99 => 23,  95 => 22,  91 => 21,  83 => 16,  76 => 11,  71 => 7,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -353,11 +354,12 @@ class __TwigTemplate_32c1a91fcab3aae8bb15f4bf0fd0a17a extends Template
 \t\t 
 \t\t    </div>
 
+\t\t\t\t\t\t\t\t\t\t<button style=\"width: 90px;padding: 5px;\" class=\"btn btn-primary\">{{ button_label|default('Save') }}</button>
 
 \t\t\t\t\t\t{{ form_end(form) }}
-\t\t\t\t\t\t<button style=\"width: 90px;padding: 5px;\" class=\"btn btn-primary\">{{ button_label|default('Save') }}</button>
 
 \t\t\t\t</div>
+
 \t\t\t</div>
 \t\t</div>
 

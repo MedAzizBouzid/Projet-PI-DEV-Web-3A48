@@ -116,7 +116,19 @@ class ActiviteController extends AbstractController
         $repo=$am->getRepository(Activite::class);
         $activite=$repo->findAll();
         
-        return $this->render('front/team.html.twig', [
+        return $this->render('front/showsalle.html.twig', [
+            'activite' => $activite,
+        ]);
+    }
+    // Show_activite_front_par_salle_______________________________________________________________________________________________
+    #[Route('/Show_activite_front_par_salle', name: 'Show_activite_front_par_salle')]
+    public function Show_activite_front_par_salle(EntityManagerInterface $am): Response
+    {
+       
+        $repo=$am->getRepository(Activite::class);
+        $activite=$repo->findAll();
+        
+        return $this->render('front/class_details.html.twig', [
             'activite' => $activite,
         ]);
     }
@@ -132,13 +144,24 @@ class ActiviteController extends AbstractController
             'activite' => $activite,
         ]);
     }
+    // _______________________________________________________________________________
     #[Route('show/{id}', name: 'app_activite_show', methods: ['GET'])]
     public function show(Activite $activite): Response
     {
-        return $this->render('back/show.html.twig', [
+        return $this->render('activité/show.html.twig', [
             'activite' => $activite,
         ]);
     }
+    // _______________________________________________________________________________
+
+    #[Route('/{id}/front', name: 'app_activite_show_front', methods: ['GET'])]
+    public function show_act(Activite $activite): Response
+    {
+        return $this->render('front/Act_Details.html.twig', [
+            'activite' => $activite,
+        ]);
+    }
+    // _______________________________________________________________________________
 
     #[Route('/{id}/edit', name: 'app_activite_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Activite $activite, SluggerInterface $slugger,ActiviteRepository $activiteRepository): Response

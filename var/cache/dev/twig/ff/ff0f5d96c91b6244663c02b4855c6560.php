@@ -55,14 +55,16 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\tcontent=\"\" name=\"description\">
 
 \t\t<!-- Favicon -->
+\t\t<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css\" integrity=\"sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=\" crossorigin=\"anonymous\">
+
 \t\t";
-        // line 13
+        // line 15
         $this->displayBlock('stylesheets', $context, $blocks);
         // line 85
         echo "
 \t<body class=\"light\">
 
-\t
+
 \t\t<div
 \t\t\tclass=\"container-fluid position-relative d-flex p-0\">
 \t\t\t<!-- Spinner Start -->
@@ -87,24 +89,24 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t\t\t<div class=\"bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1\"></div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"ms-3\">
-\t\t\t\t\t\t\t<h6 class=\"mb-0\">Ben Romdhane Fedi </h6>
+\t\t\t\t\t\t\t<h6 class=\"mb-0\">Ben Romdhane Fedi
+\t\t\t\t\t\t\t</h6>
 \t\t\t\t\t\t\t<span>Admin</span>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 
 
 \t\t\t\t\t<div class=\"navbar-nav w-100\">
- \t\t\t\t\t\t\t";
-        // line 121
-        echo "\t\t\t\t\t\t\t ";
+\t\t\t\t\t\t";
         // line 122
-        echo "\t\t\t\t\t\t\t\t\t\t\t    ";
+        echo "\t\t\t\t\t\t";
         // line 123
         echo "\t\t\t\t\t\t";
         // line 124
+        echo "\t\t\t\t\t\t";
+        // line 125
         echo "
-\t\t\t\t\t\t<div class=\"nav-item dropdown\">
-\t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
+\t\t\t\t\t\t\t<div class=\"nav-item dropdown\"> <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-laptop me-2\"></i>Elements</a>
 \t\t\t\t\t\t\t<div class=\"dropdown-menu bg-transparent border-0\">
 \t\t\t\t\t\t\t\t<a href=\"button.html\" class=\"dropdown-item\">Buttons</a>
@@ -116,45 +118,59 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
         // line 134
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("Show_salle_front");
         echo " class=\"nav-item nav-link\">
-\t\t\t\t\t\t\t<i class=\"fa fa-th me-2\"></i> Front_Office</a>
+\t\t\t\t\t\t\t<i class=\"fa fa-th me-2\"></i>
+\t\t\t\t\t\t\tFront_Office</a>
 
 
 \t\t\t\t\t\t<a href=";
-        // line 138
+        // line 139
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_new");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-keyboard me-2\"></i>Form Salle</a>
 
 \t\t\t\t\t\t<a href=";
-        // line 141
+        // line 142
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_new");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-keyboard me-2\"></i>Form Activité</a>
 
 \t\t\t\t\t\t<a href=";
-        // line 144
+        // line 145
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_index");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>Tables salles</a>
 
 \t\t\t\t\t\t<a href=";
-        // line 147
+        // line 148
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_index");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>Tables Activités</a>
 
+\t\t\t\t\t\t<a href=";
+        // line 151
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_calendrier_index");
+        echo " class=\"nav-item nav-link\">
+\t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>
+\t\t\t\t\t\t\tGestion du Planning
+\t\t\t\t\t\t</a>
 
-\t\t\t\t\t\t<a href=\"chart.html\" class=\"nav-item nav-link\">
-\t\t\t\t\t\t\t<i class=\"fa fa-chart-bar me-2\"></i>Charts</a>
-\t\t\t\t\t\t<div class=\"nav-item dropdown\">
+
+\t\t\t\t\t\t";
+        // line 159
+        echo "\t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle active\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"far fa-file-alt me-2\"></i>Pages</a>
 \t\t\t\t\t\t\t<div class=\"dropdown-menu bg-transparent border-0\">
-\t\t\t\t\t\t\t\t<a href=\"signin.html\" class=\"dropdown-item\">Sign In</a>
-\t\t\t\t\t\t\t\t<a href=\"signup.html\" class=\"dropdown-item\">Sign Up</a>
-\t\t\t\t\t\t\t\t<a href=\"404.html\" class=\"dropdown-item\">404 Error</a>
-\t\t\t\t\t\t\t\t<a href=\"blank.html\" class=\"dropdown-item active\">Blank Page</a>
-\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t<a href=";
+        // line 163
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_calendrier_index");
+        echo " class=\"nav-item nav-link\">
+\t\t\t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>
+\t\t\t\t\t\t\t\t\tGestion du Planning
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t";
+        // line 170
+        echo "\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t</nav>
@@ -175,18 +191,18 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t<a href=\"#\" class=\"sidebar-toggler flex-shrink-0\">
 \t\t\t\t\t\t<i class=\"fa fa-bars\"></i>
 \t\t\t\t\t</a>
-\t\t\t\t\t
+
 \t\t\t\t\t";
-        // line 184
+        // line 193
         echo "\t\t\t\t\t";
-        // line 190
+        // line 199
         echo "
 
 \t\t\t\t\t<div
 \t\t\t\t\t\tclass=\"navbar-nav align-items-center ms-auto\">
 
 \t\t\t\t\t\t";
-        // line 196
+        // line 205
         echo "
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
@@ -229,7 +245,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item text-center\">See all message</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t
+
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-bell me-lg-2\"></i>
@@ -254,16 +270,16 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item text-center\">See all notifications</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t\t
+
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<img class=\"rounded-circle me-lg-2\" src=\"img/user.jpg\" alt=\"\" style=\"width: 40px; height: 40px;\">
 \t\t\t\t\t\t\t\t<span class=\"d-none d-lg-inline-flex\">John Doe</span>
 \t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t{
-\t\t\t\t\t\t\t<div class=\"dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0\">
-\t\t\t\t\t\t\t\t";
-        // line 274
+
+\t\t\t\t\t\t\t<div
+\t\t\t\t\t\t\t\tclass=\"dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0\">";
+        // line 283
         echo "\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -272,25 +288,27 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
 
 \t\t\t\t<!-- Blank Start -->
-\t\t\t\t<div
-\t\t\t\t\tclass=\"container-fluid pt-4 px-4\">
-\t\t\t\t\t";
-        // line 285
-        echo "\t\t\t\t\t";
+\t\t\t\t<div style=\"background-color: black; \"  class=\"container-fluid pt-4 px-4\">
+\t\t\t\t";
+        // line 293
+        echo "\t\t\t\t\t<div>
+\t\t\t\t\t\t<div>";
+        // line 294
         $this->displayBlock('body', $context, $blocks);
-        // line 289
-        echo "\t\t\t\t\t";
-        // line 290
-        echo "\t\t\t\t</div>
+        // line 298
+        echo "\t\t\t\t\t\t";
+        // line 299
+        echo "\t\t\t\t\t</div>
+\t\t\t\t</div>
+
 \t\t\t\t<!-- Blank End -->
 
 
-\t\t\t\t<!-- Footer Start -->
-\t\t\t\t";
-        // line 313
+\t\t\t";
+        // line 325
         echo "\t\t\t\t<!-- Footer End -->
 
-\t\t\t\t
+
 \t\t\t</div>
 \t\t\t<!-- Content End -->
 
@@ -299,14 +317,15 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t<a href=\"#\" class=\"btn btn-lg btn-primary btn-lg-square back-to-top\">
 \t\t\t\t<i class=\"bi bi-arrow-up\"></i>
 \t\t\t</a>
-\t\t\t</div>
- 
-\t</body>
-</html>";
-        // line 327
+\t\t</div>
+
+
+\t\t";
+        // line 339
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 382
-        echo "</body></html>
+        // line 377
+        echo "\t</body>
+</html></body></html>
 ";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
@@ -316,7 +335,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
     }
 
-    // line 13
+    // line 15
     public function block_stylesheets($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -326,7 +345,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "stylesheets"));
 
-        // line 14
+        // line 16
         echo "
 \t\t\t<link
 \t\t\thref=\"img/favicon.ico\" rel=\"icon\">
@@ -343,36 +362,36 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
 
 \t\t\t<link href=\"";
-        // line 29
+        // line 31
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/owlcarousel/assets/owl.carousel.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
 \t\t\t<link
 \t\t\thref=\"";
-        // line 31
+        // line 33
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\"/>
 \t\t\t<!-- Libraries Stylesheet -->
 \t\t\t<link href=\"";
-        // line 33
+        // line 35
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/owlcarousel/assets/owl.carousel.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
 \t\t\t<link
 \t\t\thref=\"";
-        // line 35
+        // line 37
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\"/>
 
 \t\t\t<!-- Customized Bootstrap Stylesheet -->
 \t\t\t<link
 \t\t\thref=\"";
-        // line 39
+        // line 41
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/css/bootstrap.min.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
 
 \t\t\t<!-- Template Stylesheet -->
 \t\t\t<link
 \t\t\thref=\"";
-        // line 43
+        // line 45
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/css/style.css"), "html", null, true);
         echo "\" rel=\"stylesheet\">
 
@@ -383,38 +402,36 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js\" crossorigin=\"anonymous\"></script>
 \t\t\t<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
- <style>
+\t\t\t<style>
 
-.btn-toggle {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: #333;
-    color: #fff;
-    border: 1px solid #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    cursor: pointer;
-}
+\t\t\t\t.btn-toggle {
+\t\t\t\t\tposition: absolute;
+\t\t\t\t\ttop: 15px;
+\t\t\t\t\tright: 15px;
+\t\t\t\t\twidth: 80px;
+\t\t\t\t\theight: 80px;
+\t\t\t\t\tborder-radius: 50%;
+\t\t\t\t\tbackground: #333;
+\t\t\t\t\tcolor: #fff;
+\t\t\t\t\tborder: 1px solid #333;
+\t\t\t\t\tdisplay: flex;
+\t\t\t\t\tjustify-content: center;
+\t\t\t\t\talign-items: center;
+\t\t\t\t\tcursor: pointer;
+\t\t\t\t}
 
-body.dark {
-    color: #fff!important;
-    background: #333!important;
-}
-body.dark .btn-toggle {
-    background: #f1f1f1;
-    color: #333;
-}
-
-</style>
-
+\t\t\t\tbody.dark {
+\t\t\t\t\tcolor: #fff !important;
+\t\t\t\t\tbackground: #333 !important;
+\t\t\t\t}
+\t\t\t\tbody.dark .btn-toggle {
+\t\t\t\t\tbackground: #f1f1f1;
+\t\t\t\t\tcolor: #333;
+\t\t\t\t}
+\t\t\t</style>
 
 
-\t\t\t</head>
+\t\t</head>
 \t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -424,7 +441,7 @@ body.dark .btn-toggle {
 
     }
 
-    // line 285
+    // line 294
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -434,9 +451,9 @@ body.dark .btn-toggle {
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 286
-        echo "\t\t\t\t\t
-\t\t\t\t\t
+        // line 295
+        echo "
+
 \t\t\t\t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
@@ -446,7 +463,7 @@ body.dark .btn-toggle {
 
     }
 
-    // line 327
+    // line 339
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -456,89 +473,75 @@ body.dark .btn-toggle {
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 328
+        // line 340
         echo "
-<!-- JavaScript Libraries -->
-<script src=\"https://code.jquery.com/jquery-3.4.1.min.js\"></script>
-<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js\"></script>
-<script src=\"";
-        // line 332
+\t\t\t<!-- JavaScript Libraries -->
+\t\t\t<script src=\"https://code.jquery.com/jquery-3.4.1.min.js\"></script>
+\t\t\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js\"></script>
+\t\t\t<script src=\"";
+        // line 344
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/chart/chart.min.js"), "html", null, true);
         echo "\"></script>
-<script src=\"";
-        // line 333
+\t\t\t<script src=\"";
+        // line 345
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/easing/easing.min.js"), "html", null, true);
         echo "\"></script>
-<script src=\"";
-        // line 334
+\t\t\t<script src=\"";
+        // line 346
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/waypoints/waypoints.min.js"), "html", null, true);
         echo "\"></script>
-<script src=\"";
-        // line 335
+\t\t\t<script src=\"";
+        // line 347
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/owlcarousel/owl.carousel.min.js"), "html", null, true);
         echo "\"></script>
-<script src=\"";
-        // line 336
+\t\t\t<script src=\"";
+        // line 348
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/js/moment.min.js"), "html", null, true);
         echo "\"></script>
-<script src=\"";
-        // line 337
+\t\t\t<script src=\"";
+        // line 349
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/js/moment-timezone.min.js"), "html", null, true);
         echo "\"></script>
-<script src=\"";
-        // line 338
+\t\t\t<script src=\"";
+        // line 350
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"), "html", null, true);
         echo "\"></script>
 
-<script>
-
-
-const btnToggle = document.querySelector('.btn-toggle');
-
-btnToggle.addEventListener('click', () => {
-
-    const body = document.body;
-
-    if(body.classList.contains('dark')){
-
-        body.classList.add('light')
-        body.classList.remove('dark')
-        btnToggle.innerHTML = \"Go Dark\"
-
-    } else if(body.classList.contains('light')){
-
-        body.classList.add('dark')
-        body.classList.remove('light')
-        btnToggle.innerHTML = \"Go Light\"
-
-    }
-
-})
-
-</script>
-<!-- Template Javascript -->
-<script src=\"";
-        // line 367
+\t\t\t";
+        // line 353
+        echo "\t\t\t";
+        // line 355
+        echo "
+\t\t\t";
+        // line 356
+        echo "<script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js\" integrity=\"sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=\" crossorigin=\"anonymous\"> </script>
+\t\t\t";
+        // line 358
+        echo "
+\t\t\t<!-- Template Javascript -->
+\t\t\t<script src=\"";
+        // line 360
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/js/main.js"), "html", null, true);
         echo "\"></script>
-<!-- dataTable -->
-<script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\" crossorigin=\"anonymous\"></script>
-<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\"></script>
-<script src=\"";
-        // line 371
+\t\t\t<!-- dataTable -->
+\t\t\t<script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\" crossorigin=\"anonymous\"></script>
+\t\t\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\"></script>
+\t\t\t<script src=\"";
+        // line 364
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/js/scripts.js"), "html", null, true);
         echo "\"></script>
-<script src=\"https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js\" crossorigin=\"anonymous\"></script>
-<script src=\"https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js\" crossorigin=\"anonymous\"></script>
-<script src=\"assets/demo/datatables-demo.js\"></script>
-<script src=\"https://kit.fontawesome.com/a076d05399.js\" crossorigin=\"anonymous\"></script>
-<script type=\"text/javascript\" src=\"https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js\"></script>
-<script src=\"//cdn.jsdelivr.net/npm/sweetalert2@11\"></script>
-<script type=\"text/javascript\">
-\t\$(document).ready(function () {
+\t\t\t<script src=\"https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js\" crossorigin=\"anonymous\"></script>
+\t\t\t<script src=\"https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js\" crossorigin=\"anonymous\"></script>
+\t\t\t<script src=\"assets/demo/datatables-demo.js\"></script>
+\t\t\t<script src=\"https://kit.fontawesome.com/a076d05399.js\" crossorigin=\"anonymous\"></script>
+\t\t\t<script type=\"text/javascript\" src=\"https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js\"></script>
+\t\t\t<script src=\"//cdn.jsdelivr.net/npm/sweetalert2@11\"></script>
+\t\t\t<script type=\"text/javascript\">
+\t\t\t\t\$(document).ready(function () {
 \$(\"table\").DataTable();
 });
-</script>";
+\t\t\t</script>
+\t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -559,7 +562,7 @@ btnToggle.addEventListener('click', () => {
 
     public function getDebugInfo()
     {
-        return array (  529 => 371,  522 => 367,  490 => 338,  486 => 337,  482 => 336,  478 => 335,  474 => 334,  470 => 333,  466 => 332,  460 => 328,  450 => 327,  438 => 286,  428 => 285,  376 => 43,  369 => 39,  362 => 35,  357 => 33,  352 => 31,  347 => 29,  330 => 14,  320 => 13,  309 => 382,  307 => 327,  291 => 313,  284 => 290,  282 => 289,  279 => 285,  267 => 274,  190 => 196,  183 => 190,  181 => 184,  142 => 147,  136 => 144,  130 => 141,  124 => 138,  117 => 134,  105 => 124,  103 => 123,  101 => 122,  99 => 121,  62 => 85,  60 => 13,  46 => 1,);
+        return array (  531 => 364,  524 => 360,  520 => 358,  517 => 356,  514 => 355,  512 => 353,  507 => 350,  503 => 349,  499 => 348,  495 => 347,  491 => 346,  487 => 345,  483 => 344,  477 => 340,  467 => 339,  455 => 295,  445 => 294,  395 => 45,  388 => 41,  381 => 37,  376 => 35,  371 => 33,  366 => 31,  349 => 16,  339 => 15,  327 => 377,  325 => 339,  309 => 325,  301 => 299,  299 => 298,  297 => 294,  294 => 293,  283 => 283,  206 => 205,  199 => 199,  197 => 193,  173 => 170,  166 => 163,  160 => 159,  151 => 151,  145 => 148,  139 => 145,  133 => 142,  127 => 139,  119 => 134,  108 => 125,  106 => 124,  104 => 123,  102 => 122,  64 => 85,  62 => 15,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -576,6 +579,8 @@ btnToggle.addEventListener('click', () => {
 \t\tcontent=\"\" name=\"description\">
 
 \t\t<!-- Favicon -->
+\t\t<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css\" integrity=\"sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=\" crossorigin=\"anonymous\">
+
 \t\t{% block stylesheets %}
 
 \t\t\t<link
@@ -615,43 +620,41 @@ btnToggle.addEventListener('click', () => {
 \t\t\t<script src=\"https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js\" crossorigin=\"anonymous\"></script>
 \t\t\t<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
- <style>
+\t\t\t<style>
 
-.btn-toggle {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: #333;
-    color: #fff;
-    border: 1px solid #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    cursor: pointer;
-}
+\t\t\t\t.btn-toggle {
+\t\t\t\t\tposition: absolute;
+\t\t\t\t\ttop: 15px;
+\t\t\t\t\tright: 15px;
+\t\t\t\t\twidth: 80px;
+\t\t\t\t\theight: 80px;
+\t\t\t\t\tborder-radius: 50%;
+\t\t\t\t\tbackground: #333;
+\t\t\t\t\tcolor: #fff;
+\t\t\t\t\tborder: 1px solid #333;
+\t\t\t\t\tdisplay: flex;
+\t\t\t\t\tjustify-content: center;
+\t\t\t\t\talign-items: center;
+\t\t\t\t\tcursor: pointer;
+\t\t\t\t}
 
-body.dark {
-    color: #fff!important;
-    background: #333!important;
-}
-body.dark .btn-toggle {
-    background: #f1f1f1;
-    color: #333;
-}
-
-</style>
-
+\t\t\t\tbody.dark {
+\t\t\t\t\tcolor: #fff !important;
+\t\t\t\t\tbackground: #333 !important;
+\t\t\t\t}
+\t\t\t\tbody.dark .btn-toggle {
+\t\t\t\t\tbackground: #f1f1f1;
+\t\t\t\t\tcolor: #333;
+\t\t\t\t}
+\t\t\t</style>
 
 
-\t\t\t</head>
+\t\t</head>
 \t{% endblock %}
 
 \t<body class=\"light\">
 
-\t
+
 \t\t<div
 \t\t\tclass=\"container-fluid position-relative d-flex p-0\">
 \t\t\t<!-- Spinner Start -->
@@ -676,20 +679,20 @@ body.dark .btn-toggle {
 \t\t\t\t\t\t\t<div class=\"bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1\"></div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<div class=\"ms-3\">
-\t\t\t\t\t\t\t<h6 class=\"mb-0\">Ben Romdhane Fedi </h6>
+\t\t\t\t\t\t\t<h6 class=\"mb-0\">Ben Romdhane Fedi
+\t\t\t\t\t\t\t</h6>
 \t\t\t\t\t\t\t<span>Admin</span>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 
 
 \t\t\t\t\t<div class=\"navbar-nav w-100\">
- \t\t\t\t\t\t\t{# <i class=\"fa fa-tachometer-alt me-2\"></i>Dashboard</a> #}
-\t\t\t\t\t\t\t {# changer le mode claire => sombre  #}
-\t\t\t\t\t\t\t\t\t\t\t    {# <div class=\"btn-toggle\">Go Nuit</div> #}
+\t\t\t\t\t\t{# <i class=\"fa fa-tachometer-alt me-2\"></i>Dashboard</a> #}
+\t\t\t\t\t\t{# changer le mode claire => sombre  #}
+\t\t\t\t\t\t{# <div class=\"btn-toggle\">Go Nuit</div> #}
 \t\t\t\t\t\t{# changer le mode claire => sombre---------------------------------------- #}
 
-\t\t\t\t\t\t<div class=\"nav-item dropdown\">
-\t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
+\t\t\t\t\t\t\t<div class=\"nav-item dropdown\"> <a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-laptop me-2\"></i>Elements</a>
 \t\t\t\t\t\t\t<div class=\"dropdown-menu bg-transparent border-0\">
 \t\t\t\t\t\t\t\t<a href=\"button.html\" class=\"dropdown-item\">Buttons</a>
@@ -698,7 +701,8 @@ body.dark .btn-toggle {
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t\t<a href={{path('Show_salle_front')}} class=\"nav-item nav-link\">
-\t\t\t\t\t\t\t<i class=\"fa fa-th me-2\"></i> Front_Office</a>
+\t\t\t\t\t\t\t<i class=\"fa fa-th me-2\"></i>
+\t\t\t\t\t\t\tFront_Office</a>
 
 
 \t\t\t\t\t\t<a href={{path('app_salle_new')}} class=\"nav-item nav-link\">
@@ -713,17 +717,25 @@ body.dark .btn-toggle {
 \t\t\t\t\t\t<a href={{path('app_activite_index')}} class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>Tables Activités</a>
 
+\t\t\t\t\t\t<a href={{path('app_calendrier_index')}} class=\"nav-item nav-link\">
+\t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>
+\t\t\t\t\t\t\tGestion du Planning
+\t\t\t\t\t\t</a>
 
-\t\t\t\t\t\t<a href=\"chart.html\" class=\"nav-item nav-link\">
-\t\t\t\t\t\t\t<i class=\"fa fa-chart-bar me-2\"></i>Charts</a>
+
+\t\t\t\t\t\t{# <a href=\"chart.html\" class=\"nav-item nav-link\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t<i class=\"fa fa-chart-bar me-2\"></i>Charts</a> #}
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle active\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"far fa-file-alt me-2\"></i>Pages</a>
 \t\t\t\t\t\t\t<div class=\"dropdown-menu bg-transparent border-0\">
-\t\t\t\t\t\t\t\t<a href=\"signin.html\" class=\"dropdown-item\">Sign In</a>
-\t\t\t\t\t\t\t\t<a href=\"signup.html\" class=\"dropdown-item\">Sign Up</a>
-\t\t\t\t\t\t\t\t<a href=\"404.html\" class=\"dropdown-item\">404 Error</a>
-\t\t\t\t\t\t\t\t<a href=\"blank.html\" class=\"dropdown-item active\">Blank Page</a>
+\t\t\t\t\t\t\t\t<a href={{path('app_calendrier_index')}} class=\"nav-item nav-link\">
+\t\t\t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>
+\t\t\t\t\t\t\t\t\tGestion du Planning
+\t\t\t\t\t\t\t\t</a>
+\t\t\t\t\t\t\t\t{# <a href=\"signup.html\" class=\"dropdown-item\">Sign Up</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"404.html\" class=\"dropdown-item\">404 Error</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"blank.html\" class=\"dropdown-item active\">Blank Page</a> #}
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -745,14 +757,14 @@ body.dark .btn-toggle {
 \t\t\t\t\t<a href=\"#\" class=\"sidebar-toggler flex-shrink-0\">
 \t\t\t\t\t\t<i class=\"fa fa-bars\"></i>
 \t\t\t\t\t</a>
-\t\t\t\t\t
+
 \t\t\t\t\t{# __________________________________________ #}
 \t\t\t\t\t{# <form action=\"find_Salle\" method=\"GET\" class=\"d-none d-md-flex ms-4\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class=\"form-control bg-dark border-0\" name=\"find\" type=\"search\" placeholder=\"Search\">
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-outline-success\" type=\"submit\">Search</button>
-\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</form> #}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<input class=\"form-control bg-dark border-0\" name=\"find\" type=\"search\" placeholder=\"Search\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button class=\"btn btn-outline-success\" type=\"submit\">Search</button>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t</form> #}
 
 
 \t\t\t\t\t<div
@@ -801,7 +813,7 @@ body.dark .btn-toggle {
 \t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item text-center\">See all message</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t
+
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"fa fa-bell me-lg-2\"></i>
@@ -826,17 +838,17 @@ body.dark .btn-toggle {
 \t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item text-center\">See all notifications</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
-\t\t\t\t\t\t
+
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<img class=\"rounded-circle me-lg-2\" src=\"img/user.jpg\" alt=\"\" style=\"width: 40px; height: 40px;\">
 \t\t\t\t\t\t\t\t<span class=\"d-none d-lg-inline-flex\">John Doe</span>
 \t\t\t\t\t\t\t</a>
-\t\t\t\t\t\t\t\t{
-\t\t\t\t\t\t\t<div class=\"dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0\">
-\t\t\t\t\t\t\t\t{# <a href=\"#\" class=\"dropdown-item\">My Profile</a>
-\t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">Settings</a>
-\t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">Log Out</a> #}
+
+\t\t\t\t\t\t\t<div
+\t\t\t\t\t\t\t\tclass=\"dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0\">{# <a href=\"#\" class=\"dropdown-item\">My Profile</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">Settings</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\" class=\"dropdown-item\">Log Out</a> #}
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -845,40 +857,43 @@ body.dark .btn-toggle {
 
 
 \t\t\t\t<!-- Blank Start -->
-\t\t\t\t<div
-\t\t\t\t\tclass=\"container-fluid pt-4 px-4\">
-\t\t\t\t\t{# <div class=\"row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0\"> #}
-\t\t\t\t\t{% block body %}
-\t\t\t\t\t
-\t\t\t\t\t
+\t\t\t\t<div style=\"background-color: black; \"  class=\"container-fluid pt-4 px-4\">
+\t\t\t\t{# <div style=\"background-color: white\" class=\"row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0\">  #}
+\t\t\t\t\t<div>
+\t\t\t\t\t\t<div>{% block body %}
+
+
 \t\t\t\t\t{% endblock %}
-\t\t\t\t\t{# </div> #}
+\t\t\t\t\t\t{# </div> #}
+\t\t\t\t\t</div>
 \t\t\t\t</div>
+
 \t\t\t\t<!-- Blank End -->
 
 
-\t\t\t\t<!-- Footer Start -->
-\t\t\t\t{# <div class=\"container-fluid pt-4 px-4\">
-\t\t\t\t\t<div class=\"bg-secondary rounded-top p-4\">
-\t\t\t\t\t\t<div class=\"row\">
-\t\t\t\t\t\t\t<div class=\"col-12 col-sm-6 text-center text-sm-start\">
-\t\t\t\t\t\t\t\t&copy;
-\t\t\t\t\t\t\t\t<a href=\"#\">Your Site Name</a>, All Right Reserved.
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t\t<div
-\t\t\t\t\t\t\t\tclass=\"col-12 col-sm-6 text-center text-sm-end\">
-\t\t\t\t\t\t\t\t<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from \"https://htmlcodex.com/credit-removal\". Thank you for your support. ***/-->
-\t\t\t\t\t\t\t\tDesigned By
-\t\t\t\t\t\t\t\t<a href=\"https://htmlcodex.com\">HTML Codex</a>
-\t\t\t\t\t\t\t\t<br>Distributed By:
-\t\t\t\t\t\t\t\t<a href=\"https://themewagon.com\" target=\"_blank\">ThemeWagon</a>
-\t\t\t\t\t\t\t</div>
-\t\t\t\t\t\t</div>
-\t\t\t\t\t</div>
-\t\t\t\t</div> #}
+\t\t\t{# <!-- Footer Start -->
+\t\t\t\t\t\t\t\t\t\t\t\t\t{# 
+\t\t\t\t\t\t\t\t\t<div class=\"container-fluid pt-4 px-4\">
+\t\t\t\t\t\t\t\t\t\t<div class=\"bg-secondary rounded-top p-4\">
+\t\t\t\t\t\t\t\t\t\t\t<div class=\"row\">
+\t\t\t\t\t\t\t\t\t\t\t\t<div class=\"col-12 col-sm-6 text-center text-sm-start\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t&copy;
+\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"#\">Your Site Name</a>, All Right Reserved.
+\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t\t<div
+\t\t\t\t\t\t\t\t\t\t\t\t\tclass=\"col-12 col-sm-6 text-center text-sm-end\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from \"https://htmlcodex.com/credit-removal\". Thank you for your support. ***/-->
+\t\t\t\t\t\t\t\t\t\t\t\t\tDesigned By
+\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"https://htmlcodex.com\">HTML Codex</a>
+\t\t\t\t\t\t\t\t\t\t\t\t\t<br>Distributed By:
+\t\t\t\t\t\t\t\t\t\t\t\t\t<a href=\"https://themewagon.com\" target=\"_blank\">ThemeWagon</a>
+\t\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t\t\t</div> #}
 \t\t\t\t<!-- Footer End -->
 
-\t\t\t\t
+
 \t\t\t</div>
 \t\t\t<!-- Content End -->
 
@@ -887,65 +902,49 @@ body.dark .btn-toggle {
 \t\t\t<a href=\"#\" class=\"btn btn-lg btn-primary btn-lg-square back-to-top\">
 \t\t\t\t<i class=\"bi bi-arrow-up\"></i>
 \t\t\t</a>
-\t\t\t</div>
- 
-\t</body>
-</html>{% block javascripts %}
-
-<!-- JavaScript Libraries -->
-<script src=\"https://code.jquery.com/jquery-3.4.1.min.js\"></script>
-<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js\"></script>
-<script src=\"{{ asset('assets/back/lib/chart/chart.min.js')}}\"></script>
-<script src=\"{{ asset('assets/back/lib/easing/easing.min.js')}}\"></script>
-<script src=\"{{ asset('assets/back/lib/waypoints/waypoints.min.js')}}\"></script>
-<script src=\"{{ asset('assets/back/lib/owlcarousel/owl.carousel.min.js')}}\"></script>
-<script src=\"{{ asset('assets/back/lib/tempusdominus/js/moment.min.js')}}\"></script>
-<script src=\"{{ asset('assets/back/lib/tempusdominus/js/moment-timezone.min.js')}}\"></script>
-<script src=\"{{ asset('assets/back/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}\"></script>
-
-<script>
+\t\t</div>
 
 
-const btnToggle = document.querySelector('.btn-toggle');
+\t\t{% block javascripts %}
 
-btnToggle.addEventListener('click', () => {
+\t\t\t<!-- JavaScript Libraries -->
+\t\t\t<script src=\"https://code.jquery.com/jquery-3.4.1.min.js\"></script>
+\t\t\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js\"></script>
+\t\t\t<script src=\"{{ asset('assets/back/lib/chart/chart.min.js')}}\"></script>
+\t\t\t<script src=\"{{ asset('assets/back/lib/easing/easing.min.js')}}\"></script>
+\t\t\t<script src=\"{{ asset('assets/back/lib/waypoints/waypoints.min.js')}}\"></script>
+\t\t\t<script src=\"{{ asset('assets/back/lib/owlcarousel/owl.carousel.min.js')}}\"></script>
+\t\t\t<script src=\"{{ asset('assets/back/lib/tempusdominus/js/moment.min.js')}}\"></script>
+\t\t\t<script src=\"{{ asset('assets/back/lib/tempusdominus/js/moment-timezone.min.js')}}\"></script>
+\t\t\t<script src=\"{{ asset('assets/back/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}\"></script>
 
-    const body = document.body;
+\t\t\t{# _________________________________________________________ #}
+\t\t\t{# <script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js\"
+\t\t\t\t\t\t\t\t integrity=\"sha256-z82jYOK/utiAteR0z6FjIOQmdWzvxqXJ6wsXbGJkBwY=\" crossorigin=\"anonymous\"></script> #}
 
-    if(body.classList.contains('dark')){
+\t\t\t{# Versioin 5.3 #}<script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js\" integrity=\"sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=\" crossorigin=\"anonymous\"> </script>
+\t\t\t{# ______________________________________________________ #}
 
-        body.classList.add('light')
-        body.classList.remove('dark')
-        btnToggle.innerHTML = \"Go Dark\"
-
-    } else if(body.classList.contains('light')){
-
-        body.classList.add('dark')
-        body.classList.remove('light')
-        btnToggle.innerHTML = \"Go Light\"
-
-    }
-
-})
-
-</script>
-<!-- Template Javascript -->
-<script src=\"{{ asset('assets/back/js/main.js')}}\"></script>
-<!-- dataTable -->
-<script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\" crossorigin=\"anonymous\"></script>
-<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\"></script>
-<script src=\"{{ asset('assets/back/js/scripts.js')}}\"></script>
-<script src=\"https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js\" crossorigin=\"anonymous\"></script>
-<script src=\"https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js\" crossorigin=\"anonymous\"></script>
-<script src=\"assets/demo/datatables-demo.js\"></script>
-<script src=\"https://kit.fontawesome.com/a076d05399.js\" crossorigin=\"anonymous\"></script>
-<script type=\"text/javascript\" src=\"https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js\"></script>
-<script src=\"//cdn.jsdelivr.net/npm/sweetalert2@11\"></script>
-<script type=\"text/javascript\">
-\t\$(document).ready(function () {
+\t\t\t<!-- Template Javascript -->
+\t\t\t<script src=\"{{ asset('assets/back/js/main.js')}}\"></script>
+\t\t\t<!-- dataTable -->
+\t\t\t<script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\" crossorigin=\"anonymous\"></script>
+\t\t\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\"></script>
+\t\t\t<script src=\"{{ asset('assets/back/js/scripts.js')}}\"></script>
+\t\t\t<script src=\"https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js\" crossorigin=\"anonymous\"></script>
+\t\t\t<script src=\"https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js\" crossorigin=\"anonymous\"></script>
+\t\t\t<script src=\"assets/demo/datatables-demo.js\"></script>
+\t\t\t<script src=\"https://kit.fontawesome.com/a076d05399.js\" crossorigin=\"anonymous\"></script>
+\t\t\t<script type=\"text/javascript\" src=\"https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js\"></script>
+\t\t\t<script src=\"//cdn.jsdelivr.net/npm/sweetalert2@11\"></script>
+\t\t\t<script type=\"text/javascript\">
+\t\t\t\t\$(document).ready(function () {
 \$(\"table\").DataTable();
 });
-</script>{% endblock %}</body></html>
+\t\t\t</script>
+\t\t{% endblock %}
+\t</body>
+</html></body></html>
 ", "back/base.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\back\\base.html.twig");
     }
 }

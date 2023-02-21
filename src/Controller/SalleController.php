@@ -172,6 +172,14 @@ public function chercher_student(EntityManagerInterface $em,Request $request,Sal
             'salle' => $salle,
         ]);
     }
+    
+    #[Route('/{id}/front', name: 'app_salle_show_front', methods: ['GET'])]
+    public function show_fornt(Salle $salle): Response
+    {
+        return $this->render('front/class_details.html.twig', [
+            'salle' => $salle,
+        ]);
+    }
 // _______________________________________________________________________________
 
     #[Route('/{id}/edit', name: 'app_salle_edit', methods: ['GET', 'POST'])]

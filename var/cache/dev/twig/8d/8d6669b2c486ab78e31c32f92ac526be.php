@@ -167,19 +167,15 @@ body.dark .btn-toggle {
         echo "<div class=\"table-responsive\"> 
 \t\t\t 
           <div class=\"bg-secondary text-center rounded p-4\">
-\t\t\t\t\t<a href=";
-        // line 127
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_new");
-        echo " <button style=\"width:25%;height:35%\"
-\t\t\t type=\"button\"   class=\"btn btn-light m-2\"> Ajouter une nouvelle activité
-\t\t\t  </button> </a>  
-
+\t\t\t\t\t";
+        // line 130
+        echo "
 \t\t\t  ";
         // line 132
         echo "
   ";
         // line 134
-        echo "<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle activité</button>
+        echo "<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle Salle</button>
 
 <!-- La pop-up -->
 <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
@@ -592,7 +588,7 @@ btnToggle.addEventListener('click', () => {
 
     public function getDebugInfo()
     {
-        return array (  509 => 347,  502 => 341,  488 => 301,  476 => 296,  472 => 295,  467 => 293,  464 => 292,  460 => 289,  449 => 284,  446 => 283,  442 => 282,  437 => 280,  433 => 279,  429 => 278,  425 => 277,  421 => 276,  417 => 275,  412 => 274,  407 => 270,  403 => 269,  394 => 262,  373 => 242,  371 => 241,  358 => 226,  355 => 224,  348 => 218,  344 => 216,  338 => 213,  331 => 209,  327 => 208,  323 => 207,  316 => 203,  312 => 202,  308 => 201,  299 => 195,  295 => 194,  291 => 193,  283 => 188,  279 => 187,  275 => 186,  266 => 180,  262 => 179,  258 => 178,  248 => 171,  244 => 170,  240 => 169,  231 => 163,  227 => 162,  223 => 161,  215 => 156,  211 => 155,  207 => 154,  201 => 150,  198 => 149,  182 => 134,  179 => 132,  172 => 127,  167 => 124,  165 => 123,  161 => 99,  155 => 93,  153 => 89,  149 => 86,  97 => 35,  91 => 30,  78 => 16,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  505 => 347,  498 => 341,  484 => 301,  472 => 296,  468 => 295,  463 => 293,  460 => 292,  456 => 289,  445 => 284,  442 => 283,  438 => 282,  433 => 280,  429 => 279,  425 => 278,  421 => 277,  417 => 276,  413 => 275,  408 => 274,  403 => 270,  399 => 269,  390 => 262,  369 => 242,  367 => 241,  354 => 226,  351 => 224,  344 => 218,  340 => 216,  334 => 213,  327 => 209,  323 => 208,  319 => 207,  312 => 203,  308 => 202,  304 => 201,  295 => 195,  291 => 194,  287 => 193,  279 => 188,  275 => 187,  271 => 186,  262 => 180,  258 => 179,  254 => 178,  244 => 171,  240 => 170,  236 => 169,  227 => 163,  223 => 162,  219 => 161,  211 => 156,  207 => 155,  203 => 154,  197 => 150,  194 => 149,  178 => 134,  175 => 132,  172 => 130,  167 => 124,  165 => 123,  161 => 99,  155 => 93,  153 => 89,  149 => 86,  97 => 35,  91 => 30,  78 => 16,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -723,14 +719,14 @@ body.dark .btn-toggle {
 <div class=\"table-responsive\"> 
 \t\t\t 
           <div class=\"bg-secondary text-center rounded p-4\">
-\t\t\t\t\t<a href={{path('app_activite_new')}} <button style=\"width:25%;height:35%\"
-\t\t\t type=\"button\"   class=\"btn btn-light m-2\"> Ajouter une nouvelle activité
-\t\t\t  </button> </a>  
+\t\t\t\t\t{# <a href={{path('app_activite_new')}} <button style=\"width:25%;height:35%\"
+\t\t\t type=\"button\"   class=\"btn btn-light m-2\"> Ajouter une nouvelle Salle
+\t\t\t  </button> </a>   #}
 
 \t\t\t  {# <button type=\"button\"   class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\"> Ajouter une salle</button> #}
 
   {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
-<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle activité</button>
+<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle Salle</button>
 
 <!-- La pop-up -->
 <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">

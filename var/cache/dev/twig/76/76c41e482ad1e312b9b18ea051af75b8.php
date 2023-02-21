@@ -129,19 +129,19 @@ th{
   ";
         // line 92
         echo "<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle activité</button>
-
 <!-- La pop-up -->
-<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
-  <div class=\"modal-dialog\">
+<div  
+  class=\"modal fade\" id=\"exampleModal\" tabindex=\"1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+  <div   class=\"modal-dialog\">
     <div class=\"modal-content\">
-      <div class=\"modal-header\">
-        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ajouter une salle</h5>
+      <div class=\"modal-header\" style=\"background-color:red;border: 2px solid black;\">
+        <h5 class=\"modal-title\" id=\"exampleModalLabel\" >________________Ajouter une Activité____________</h5>
         <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
       </div>
-      <div class=\"modal-body\">
+      <div class=\"modal-body\" style=\"background-color:white;\" >
  
     \t\t\t\t
-\t\t\t\t\t<div class=\"form-group\" style=\"position: center;\">
+\t\t\t\t\t<div  class=\"form-group\"   position: center;\">
    ";
         // line 107
         echo "      ";
@@ -149,7 +149,7 @@ th{
         // line 108
         echo "
 
- \t\t\t\t\t<div class=\"row g-3 align-items-center \">
+ \t\t\t\t\t<div  >
 
 \t\t\t\t\t\t";
         // line 112
@@ -166,7 +166,7 @@ th{
 
 \t\t\t\t\t</div>
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t<div  >
 \t\t\t\t\t\t";
         // line 119
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 119, $this->source); })()), "categorie", [], "any", false, false, false, 119), 'label');
@@ -183,7 +183,7 @@ th{
 \t\t\t\t\t</div>
 
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t<div >
 
 \t\t\t\t\t\t";
         // line 128
@@ -201,7 +201,7 @@ th{
 \t\t\t\t\t</div>
 
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t<div>
 
 \t\t\t\t\t\t";
         // line 137
@@ -218,7 +218,7 @@ th{
 
 \t\t\t\t\t</div>
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t<div  >
  
 \t\t\t\t\t\t";
         // line 145
@@ -235,7 +235,7 @@ th{
 
 \t\t\t\t\t</div>
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t<div  >
 \t\t\t\t\t\t";
         // line 152
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 152, $this->source); })()), "tenue", [], "any", false, false, false, 152), 'label');
@@ -251,7 +251,7 @@ th{
 
 \t\t\t\t\t</div>
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\" ;>
+\t\t\t\t\t<div  >
 \t\t\t\t\t\t";
         // line 159
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 159, $this->source); })()), "recomendation", [], "any", false, false, false, 159), 'label');
@@ -266,7 +266,7 @@ th{
         echo "
 
 \t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t<div  >
 \t\t\t\t\t\t";
         // line 165
         echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 165, $this->source); })()), "image", [], "any", false, false, false, 165), 'label');
@@ -281,113 +281,118 @@ th{
         echo "
 
 \t\t\t\t\t</div>
-\t\t 
-\t\t    </div>
-<button style=\"width: 90px;padding: 5px;\" class=\"btn btn-primary\">";
-        // line 172
-        echo twig_escape_filter($this->env, ((array_key_exists("button_label", $context)) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 172, $this->source); })()), "Enregistrer")) : ("Enregistrer")), "html", null, true);
+\t\t <button   class=\"btn btn-primary\">";
+        // line 170
+        echo twig_escape_filter($this->env, ((array_key_exists("button_label", $context)) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 170, $this->source); })()), "Enregistrer")) : ("Enregistrer")), "html", null, true);
         echo "</button>
+
+\t\t    </div>
+\t\t\t
 
 
 \t\t\t\t\t\t";
-        // line 175
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 175, $this->source); })()), 'form_end');
+        // line 176
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 176, $this->source); })()), 'form_end');
         echo "
                ";
-        // line 177
+        // line 178
         echo "
       </div>
     </div>
   </div>
 </div>
   ";
-        // line 183
+        // line 184
         echo "
                     <div class=\"d-flex align-items-center justify-content-between mb-4\">
                         ";
-        // line 186
+        // line 187
         echo "                        <a href=";
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_index");
         echo ">Show All</a>
                     </div>
                     ";
-        // line 190
+        // line 191
         echo "
                        \t<div id=\"pagination\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"previous\">&laquo; Previous</a>
 \t\t\t\t\t\t\t<a href=\"#\" class=\"next\">Next &raquo;</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t    ";
-        // line 196
-        echo "                     <table id=\"myTable\" >
+        // line 197
+        echo "                   <div class=\"table-responsive\"> 
+      
+      ";
+        // line 203
+        echo "\t\t\t<table class=\"table table-bordered\" id=\"myTable\" width=\"100%\" cellspacing=\"0\"> 
+\t\t\t<thead>
+\t\t\t  <tr>
+\t\t\t  \t\t<th style =\"color:#FF0000\">#</th>
+\t\t\t\t\t<th style =\"color:#FF0000\">Nom</th>
+\t\t\t\t\t<th style =\"color:#FF0000\">Lieu</th>
+\t\t\t\t\t<th style =\"color:#FF0000\">Telephone</th>
+\t\t\t\t    <th style =\"color:#FF0000\">Email</th>
+\t\t\t  \t\t<th style =\"color:#FF0000\">Superficie</th>
+\t\t\t  \t\t<th style =\"color:#FF0000\">Description</th>
+ \t\t\t  \t\t<th style =\"color:#FF0000\">Activité</th>
 
-\t\t\t\t\t\t\t<thead>
-                                <tr class=\"text-white\">
-                                    ";
-        // line 201
-        echo "                                     <th scope=\"col\">#</th>
-\t\t\t\t\t\t\t\t    <th scope=\"col\">Activité</th>
-\t\t\t\t\t\t\t\t    <th scope=\"col\">Categorie</th>
-                                    <th scope=\"col\">Materiel</th>
-                                    <th scope=\"col\">Intensite</th>
-                                    <th scope=\"col\">Group musculaire</th>
-                                    <th scope=\"col\">Tenue</th>
-\t\t\t\t\t\t\t\t\t<th scope=\"col\">Recomendation</th>
-                                    <th scope=\"col\">Salles</th>
-\t\t\t\t\t\t\t\t    <th scope=\"col\">Action</th>
+\t\t\t\t\t";
+        // line 216
+        echo "
+\t\t\t\t\t<th style =\"color:#FF0000\">action</th>
 
 
-                                </tr>
-                            </thead>
+\t\t\t  </tr>
+\t\t\t</thead>
 \t\t\t\t\t\t\t \t\t\t";
-        // line 215
+        // line 222
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable((isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 215, $this->source); })()));
+        $context['_seq'] = twig_ensure_traversable((isset($context["activite"]) || array_key_exists("activite", $context) ? $context["activite"] : (function () { throw new RuntimeError('Variable "activite" does not exist.', 222, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-            // line 216
+            // line 223
             echo "
                             <tbody>
                                 <tr>
 \t\t\t\t\t
 \t\t\t\t\t\t\t\t\t<td >";
-            // line 220
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 220), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t\t<td>";
-            // line 221
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 221), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t\t<td>";
-            // line 222
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "categorie", [], "any", false, false, false, 222), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t\t<td>";
-            // line 223
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "materiel", [], "any", false, false, false, 223), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t\t<td>";
-            // line 224
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "intensite", [], "any", false, false, false, 224), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t\t<td>";
-            // line 225
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "GRPmusculaire", [], "any", false, false, false, 225), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t\t<td>";
-            // line 226
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "tenue", [], "any", false, false, false, 226), "html", null, true);
-            echo "</td>
-\t\t\t\t\t\t\t\t\t<td>";
             // line 227
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "recomendation", [], "any", false, false, false, 227), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 227), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t\t\t\t<td>";
+            // line 228
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 228), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t\t\t\t<td>";
+            // line 229
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "categorie", [], "any", false, false, false, 229), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t\t\t\t<td>";
+            // line 230
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "materiel", [], "any", false, false, false, 230), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t\t\t\t<td>";
+            // line 231
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "intensite", [], "any", false, false, false, 231), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t\t\t\t<td>";
+            // line 232
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "GRPmusculaire", [], "any", false, false, false, 232), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t\t\t\t<td>";
+            // line 233
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "tenue", [], "any", false, false, false, 233), "html", null, true);
+            echo "</td>
+\t\t\t\t\t\t\t\t\t<td>";
+            // line 234
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "recomendation", [], "any", false, false, false, 234), "html", null, true);
             echo "</td>
 \t\t\t\t\t\t\t\t\t<td></ul>";
-            // line 228
+            // line 235
             $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["p"], "salles", [], "any", false, false, false, 228));
+            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["p"], "salles", [], "any", false, false, false, 235));
             foreach ($context['_seq'] as $context["_key"] => $context["c"]) {
                 echo " <li>";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["c"], "nom", [], "any", false, false, false, 228), "html", null, true);
+                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["c"], "nom", [], "any", false, false, false, 235), "html", null, true);
                 echo "</li>";
             }
             $_parent = $context['_parent'];
@@ -396,17 +401,17 @@ th{
             echo " <ul></td>
 \t\t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t<td><a href=\"";
-            // line 230
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 230)]), "html", null, true);
+            // line 237
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 237)]), "html", null, true);
             echo "\"><i class=\"bi bi-trash\"></i></a></td>
 
 \t\t\t\t\t\t\t\t\t<td><a href=\"";
-            // line 232
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 232)]), "html", null, true);
+            // line 239
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_edit", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 239)]), "html", null, true);
             echo "\"><span class=\"bi bi-cart-fill\"></span></a></td>
 \t\t\t\t\t\t\t\t\t<td><a href=\"";
-            // line 233
-            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_show", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 233)]), "html", null, true);
+            // line 240
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_show", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 240)]), "html", null, true);
             echo "\"><i class=\"bi bi-book\"></i></a></td>
 \t\t\t\t\t\t\t\t\t</td>
 \t\t\t\t\t\t\t\t
@@ -418,12 +423,12 @@ th{
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 239
+        // line 246
         echo " 
 
                         </table>
 \t\t\t\t\t\t\t\t";
-        // line 243
+        // line 250
         echo "\t\t\t\t\t
                     </div>
                 </div>
@@ -431,24 +436,24 @@ th{
 \t\t\t\t\t\t\t\t\t 
             <!-- Recent Sales End -->
 \t\t";
-        // line 250
+        // line 257
         echo "\t\t\t";
-        // line 283
+        // line 290
         echo "\t\t\t\t";
-        // line 284
+        // line 291
         echo "\t\t\t\t";
-        // line 285
+        // line 292
         echo "
      
  \t\t\t\t";
-        // line 288
+        // line 295
         echo "\t\t\t";
-        // line 305
+        // line 312
         echo "<!-- Table End -->
 
 \t\t\t<script>
 \t\t\t";
-        // line 309
+        // line 316
         echo "let table = document.getElementById('myTable');
 let rowsPerPage = 5;
 let currentPage = 1;
@@ -495,7 +500,7 @@ showPage(currentPage);
 
 
 \t\t\t";
-        // line 355
+        // line 362
         echo "
 const btnToggle = document.querySelector('.btn-toggle');
 
@@ -540,7 +545,7 @@ btnToggle.addEventListener('click', () => {
 
     public function getDebugInfo()
     {
-        return array (  499 => 355,  452 => 309,  447 => 305,  445 => 288,  441 => 285,  439 => 284,  437 => 283,  435 => 250,  427 => 243,  422 => 239,  409 => 233,  405 => 232,  400 => 230,  386 => 228,  382 => 227,  378 => 226,  374 => 225,  370 => 224,  366 => 223,  362 => 222,  358 => 221,  354 => 220,  348 => 216,  344 => 215,  328 => 201,  322 => 196,  315 => 190,  309 => 186,  305 => 183,  298 => 177,  294 => 175,  288 => 172,  280 => 167,  276 => 166,  272 => 165,  265 => 161,  261 => 160,  257 => 159,  249 => 154,  245 => 153,  241 => 152,  233 => 147,  229 => 146,  225 => 145,  216 => 139,  212 => 138,  208 => 137,  198 => 130,  194 => 129,  190 => 128,  180 => 121,  176 => 120,  172 => 119,  164 => 114,  160 => 113,  156 => 112,  150 => 108,  147 => 107,  131 => 92,  128 => 90,  121 => 85,  111 => 77,  108 => 71,  99 => 57,  94 => 53,  91 => 49,  87 => 30,  83 => 27,  80 => 25,  77 => 20,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  504 => 362,  457 => 316,  452 => 312,  450 => 295,  446 => 292,  444 => 291,  442 => 290,  440 => 257,  432 => 250,  427 => 246,  414 => 240,  410 => 239,  405 => 237,  391 => 235,  387 => 234,  383 => 233,  379 => 232,  375 => 231,  371 => 230,  367 => 229,  363 => 228,  359 => 227,  353 => 223,  349 => 222,  341 => 216,  327 => 203,  323 => 197,  316 => 191,  310 => 187,  306 => 184,  299 => 178,  295 => 176,  286 => 170,  280 => 167,  276 => 166,  272 => 165,  265 => 161,  261 => 160,  257 => 159,  249 => 154,  245 => 153,  241 => 152,  233 => 147,  229 => 146,  225 => 145,  216 => 139,  212 => 138,  208 => 137,  198 => 130,  194 => 129,  190 => 128,  180 => 121,  176 => 120,  172 => 119,  164 => 114,  160 => 113,  156 => 112,  150 => 108,  147 => 107,  131 => 92,  128 => 90,  121 => 85,  111 => 77,  108 => 71,  99 => 57,  94 => 53,  91 => 49,  87 => 30,  83 => 27,  80 => 25,  77 => 20,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -637,24 +642,24 @@ th{
 
   {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
 <button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle activité</button>
-
 <!-- La pop-up -->
-<div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
-  <div class=\"modal-dialog\">
+<div  
+  class=\"modal fade\" id=\"exampleModal\" tabindex=\"1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
+  <div   class=\"modal-dialog\">
     <div class=\"modal-content\">
-      <div class=\"modal-header\">
-        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ajouter une salle</h5>
+      <div class=\"modal-header\" style=\"background-color:red;border: 2px solid black;\">
+        <h5 class=\"modal-title\" id=\"exampleModalLabel\" >________________Ajouter une Activité____________</h5>
         <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
       </div>
-      <div class=\"modal-body\">
+      <div class=\"modal-body\" style=\"background-color:white;\" >
  
     \t\t\t\t
-\t\t\t\t\t<div class=\"form-group\" style=\"position: center;\">
+\t\t\t\t\t<div  class=\"form-group\"   position: center;\">
    {# --------------------------------------FORM START-------------------------------------- #}
       {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}
 \t\t\t\t\t) }}
 
- \t\t\t\t\t<div class=\"row g-3 align-items-center \">
+ \t\t\t\t\t<div  >
 
 \t\t\t\t\t\t{{form_label(form.nom)}}
 \t\t\t\t\t\t{{form_widget(form.nom, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
@@ -662,7 +667,7 @@ th{
 
 \t\t\t\t\t</div>
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t<div  >
 \t\t\t\t\t\t{{form_label(form.categorie)}}
 \t\t\t\t\t\t{{form_widget(form.categorie, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
 \t\t\t\t\t\t{{form_errors(form.categorie)}}
@@ -670,7 +675,7 @@ th{
 \t\t\t\t\t</div>
 
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t<div >
 
 \t\t\t\t\t\t{{form_label(form.materiel)}}
 \t\t\t\t\t\t{{form_widget(form.materiel, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
@@ -679,7 +684,7 @@ th{
 \t\t\t\t\t</div>
 
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t<div>
 
 \t\t\t\t\t\t{{form_label(form.intensite)}}
 \t\t\t\t\t\t{{form_widget(form.intensite, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
@@ -687,7 +692,7 @@ th{
 
 \t\t\t\t\t</div>
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t<div  >
  
 \t\t\t\t\t\t{{form_label(form.GRPmusculaire)}}
 \t\t\t\t\t\t{{form_widget(form.GRPmusculaire, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
@@ -695,28 +700,29 @@ th{
 
 \t\t\t\t\t</div>
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\">
+\t\t\t\t\t<div  >
 \t\t\t\t\t\t{{form_label(form.tenue)}}
 \t\t\t\t\t\t{{form_widget(form.tenue, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
 \t\t\t\t\t\t{{ form_errors(form.tenue) }}
 
 \t\t\t\t\t</div>
 
-\t\t\t\t\t<div class=\"row g-3 align-items-center\" ;>
+\t\t\t\t\t<div  >
 \t\t\t\t\t\t{{form_label(form.recomendation)}}
 \t\t\t\t\t\t{{form_widget(form.recomendation, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
 \t\t\t\t\t\t{{form_errors(form.recomendation)}}
 
 \t\t\t\t\t</div>
-\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t<div  >
 \t\t\t\t\t\t{{form_label(form.image)}}
 \t\t\t\t\t\t{{form_widget(form.image, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
 \t\t\t\t\t\t{{form_errors(form.image)}}
 
 \t\t\t\t\t</div>
-\t\t 
+\t\t <button   class=\"btn btn-primary\">{{ button_label|default('Enregistrer') }}</button>
+
 \t\t    </div>
-<button style=\"width: 90px;padding: 5px;\" class=\"btn btn-primary\">{{ button_label|default('Enregistrer') }}</button>
+\t\t\t
 
 
 \t\t\t\t\t\t{{ form_end(form) }}
@@ -740,25 +746,31 @@ th{
 \t\t\t\t\t\t\t<a href=\"#\" class=\"next\">Next &raquo;</a>
 \t\t\t\t\t\t\t</div>
 \t\t\t\t\t    {# <table id=\"myTable\" class=\"table text-start align-middle table-bordered table-hover mb-0\"> #}
-                     <table id=\"myTable\" >
+                   <div class=\"table-responsive\"> 
+      
+      {# <div id=\"pagination\">
+\t\t\t\t\t<a href=\"#\" class=\"previous\">&laquo; Previous</a>
+\t\t\t\t\t<a href=\"#\" class=\"next\">Next &raquo;</a>
+\t\t\t</div> #}
+\t\t\t<table class=\"table table-bordered\" id=\"myTable\" width=\"100%\" cellspacing=\"0\"> 
+\t\t\t<thead>
+\t\t\t  <tr>
+\t\t\t  \t\t<th style =\"color:#FF0000\">#</th>
+\t\t\t\t\t<th style =\"color:#FF0000\">Nom</th>
+\t\t\t\t\t<th style =\"color:#FF0000\">Lieu</th>
+\t\t\t\t\t<th style =\"color:#FF0000\">Telephone</th>
+\t\t\t\t    <th style =\"color:#FF0000\">Email</th>
+\t\t\t  \t\t<th style =\"color:#FF0000\">Superficie</th>
+\t\t\t  \t\t<th style =\"color:#FF0000\">Description</th>
+ \t\t\t  \t\t<th style =\"color:#FF0000\">Activité</th>
 
-\t\t\t\t\t\t\t<thead>
-                                <tr class=\"text-white\">
-                                    {# <th scope=\"col\"><input class=\"form-check-input\" type=\"checkbox\"></th> #}
-                                     <th scope=\"col\">#</th>
-\t\t\t\t\t\t\t\t    <th scope=\"col\">Activité</th>
-\t\t\t\t\t\t\t\t    <th scope=\"col\">Categorie</th>
-                                    <th scope=\"col\">Materiel</th>
-                                    <th scope=\"col\">Intensite</th>
-                                    <th scope=\"col\">Group musculaire</th>
-                                    <th scope=\"col\">Tenue</th>
-\t\t\t\t\t\t\t\t\t<th scope=\"col\">Recomendation</th>
-                                    <th scope=\"col\">Salles</th>
-\t\t\t\t\t\t\t\t    <th scope=\"col\">Action</th>
+\t\t\t\t\t{# <th style =\"color:#FF0000\">Image</th> #}
+
+\t\t\t\t\t<th style =\"color:#FF0000\">action</th>
 
 
-                                </tr>
-                            </thead>
+\t\t\t  </tr>
+\t\t\t</thead>
 \t\t\t\t\t\t\t \t\t\t{% for p in activite %}
 
                             <tbody>

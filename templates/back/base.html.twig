@@ -10,6 +10,8 @@
 		content="" name="description">
 
 		<!-- Favicon -->
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+
 		{% block stylesheets %}
 
 			<link
@@ -49,43 +51,41 @@
 			<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.1/js/all.min.js" crossorigin="anonymous"></script>
 			<link href='https://fonts.googleapis.com/css?family=Open+Sans:400,600,700,800' rel='stylesheet' type='text/css'>
 
- <style>
+			<style>
 
-.btn-toggle {
-    position: absolute;
-    top: 15px;
-    right: 15px;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background: #333;
-    color: #fff;
-    border: 1px solid #333;
-    display: flex;
-    justify-content: center;
-    align-items: center;    
-    cursor: pointer;
-}
+				.btn-toggle {
+					position: absolute;
+					top: 15px;
+					right: 15px;
+					width: 80px;
+					height: 80px;
+					border-radius: 50%;
+					background: #333;
+					color: #fff;
+					border: 1px solid #333;
+					display: flex;
+					justify-content: center;
+					align-items: center;
+					cursor: pointer;
+				}
 
-body.dark {
-    color: #fff!important;
-    background: #333!important;
-}
-body.dark .btn-toggle {
-    background: #f1f1f1;
-    color: #333;
-}
-
-</style>
-
+				body.dark {
+					color: #fff !important;
+					background: #333 !important;
+				}
+				body.dark .btn-toggle {
+					background: #f1f1f1;
+					color: #333;
+				}
+			</style>
 
 
-			</head>
+		</head>
 	{% endblock %}
 
 	<body class="light">
 
-	
+
 		<div
 			class="container-fluid position-relative d-flex p-0">
 			<!-- Spinner Start -->
@@ -110,20 +110,20 @@ body.dark .btn-toggle {
 							<div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
 						</div>
 						<div class="ms-3">
-							<h6 class="mb-0">Ben Romdhane Fedi </h6>
+							<h6 class="mb-0">Ben Romdhane Fedi
+							</h6>
 							<span>Admin</span>
 						</div>
 					</div>
 
 
 					<div class="navbar-nav w-100">
- 							{# <i class="fa fa-tachometer-alt me-2"></i>Dashboard</a> #}
-							 {# changer le mode claire => sombre  #}
-											    {# <div class="btn-toggle">Go Nuit</div> #}
+						{# <i class="fa fa-tachometer-alt me-2"></i>Dashboard</a> #}
+						{# changer le mode claire => sombre  #}
+						{# <div class="btn-toggle">Go Nuit</div> #}
 						{# changer le mode claire => sombre---------------------------------------- #}
 
-						<div class="nav-item dropdown">
-							<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+							<div class="nav-item dropdown"> <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
 								<i class="fa fa-laptop me-2"></i>Elements</a>
 							<div class="dropdown-menu bg-transparent border-0">
 								<a href="button.html" class="dropdown-item">Buttons</a>
@@ -132,7 +132,8 @@ body.dark .btn-toggle {
 							</div>
 						</div>
 						<a href={{path('Show_salle_front')}} class="nav-item nav-link">
-							<i class="fa fa-th me-2"></i> Front_Office</a>
+							<i class="fa fa-th me-2"></i>
+							Front_Office</a>
 
 
 						<a href={{path('app_salle_new')}} class="nav-item nav-link">
@@ -147,17 +148,25 @@ body.dark .btn-toggle {
 						<a href={{path('app_activite_index')}} class="nav-item nav-link">
 							<i class="fa fa-table me-2"></i>Tables Activités</a>
 
+						<a href={{path('app_calendrier_index')}} class="nav-item nav-link">
+							<i class="fa fa-table me-2"></i>
+							Gestion du Planning
+						</a>
 
-						<a href="chart.html" class="nav-item nav-link">
-							<i class="fa fa-chart-bar me-2"></i>Charts</a>
+
+						{# <a href="chart.html" class="nav-item nav-link">
+													<i class="fa fa-chart-bar me-2"></i>Charts</a> #}
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle active" data-bs-toggle="dropdown">
 								<i class="far fa-file-alt me-2"></i>Pages</a>
 							<div class="dropdown-menu bg-transparent border-0">
-								<a href="signin.html" class="dropdown-item">Sign In</a>
-								<a href="signup.html" class="dropdown-item">Sign Up</a>
-								<a href="404.html" class="dropdown-item">404 Error</a>
-								<a href="blank.html" class="dropdown-item active">Blank Page</a>
+								<a href={{path('app_calendrier_index')}} class="nav-item nav-link">
+									<i class="fa fa-table me-2"></i>
+									Gestion du Planning
+								</a>
+								{# <a href="signup.html" class="dropdown-item">Sign Up</a>
+																<a href="404.html" class="dropdown-item">404 Error</a>
+																<a href="blank.html" class="dropdown-item active">Blank Page</a> #}
 							</div>
 						</div>
 					</div>
@@ -179,14 +188,14 @@ body.dark .btn-toggle {
 					<a href="#" class="sidebar-toggler flex-shrink-0">
 						<i class="fa fa-bars"></i>
 					</a>
-					
+
 					{# __________________________________________ #}
 					{# <form action="find_Salle" method="GET" class="d-none d-md-flex ms-4">
-																									
-																															<input class="form-control bg-dark border-0" name="find" type="search" placeholder="Search">
-																									
-																															<button class="btn btn-outline-success" type="submit">Search</button>
-																														</form> #}
+																																			
+																																									<input class="form-control bg-dark border-0" name="find" type="search" placeholder="Search">
+																																			
+																																									<button class="btn btn-outline-success" type="submit">Search</button>
+																																								</form> #}
 
 
 					<div
@@ -235,7 +244,7 @@ body.dark .btn-toggle {
 								<a href="#" class="dropdown-item text-center">See all message</a>
 							</div>
 						</div>
-					
+
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
 								<i class="fa fa-bell me-lg-2"></i>
@@ -260,17 +269,17 @@ body.dark .btn-toggle {
 								<a href="#" class="dropdown-item text-center">See all notifications</a>
 							</div>
 						</div>
-						
+
 						<div class="nav-item dropdown">
 							<a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
 								<img class="rounded-circle me-lg-2" src="img/user.jpg" alt="" style="width: 40px; height: 40px;">
 								<span class="d-none d-lg-inline-flex">John Doe</span>
 							</a>
-								{
-							<div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
-								{# <a href="#" class="dropdown-item">My Profile</a>
-								<a href="#" class="dropdown-item">Settings</a>
-								<a href="#" class="dropdown-item">Log Out</a> #}
+
+							<div
+								class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">{# <a href="#" class="dropdown-item">My Profile</a>
+																										<a href="#" class="dropdown-item">Settings</a>
+																										<a href="#" class="dropdown-item">Log Out</a> #}
 							</div>
 						</div>
 					</div>
@@ -279,40 +288,43 @@ body.dark .btn-toggle {
 
 
 				<!-- Blank Start -->
-				<div
-					class="container-fluid pt-4 px-4">
-					{# <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0"> #}
-					{% block body %}
-					
-					
+				<div style="background-color: black; "  class="container-fluid pt-4 px-4">
+				{# <div style="background-color: white" class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">  #}
+					<div>
+						<div>{% block body %}
+
+
 					{% endblock %}
-					{# </div> #}
+						{# </div> #}
+					</div>
 				</div>
+
 				<!-- Blank End -->
 
 
-				<!-- Footer Start -->
-				{# <div class="container-fluid pt-4 px-4">
-					<div class="bg-secondary rounded-top p-4">
-						<div class="row">
-							<div class="col-12 col-sm-6 text-center text-sm-start">
-								&copy;
-								<a href="#">Your Site Name</a>, All Right Reserved.
-							</div>
-							<div
-								class="col-12 col-sm-6 text-center text-sm-end">
-								<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-								Designed By
-								<a href="https://htmlcodex.com">HTML Codex</a>
-								<br>Distributed By:
-								<a href="https://themewagon.com" target="_blank">ThemeWagon</a>
-							</div>
-						</div>
-					</div>
-				</div> #}
+			{# <!-- Footer Start -->
+													{# 
+									<div class="container-fluid pt-4 px-4">
+										<div class="bg-secondary rounded-top p-4">
+											<div class="row">
+												<div class="col-12 col-sm-6 text-center text-sm-start">
+													&copy;
+													<a href="#">Your Site Name</a>, All Right Reserved.
+												</div>
+												<div
+													class="col-12 col-sm-6 text-center text-sm-end">
+													<!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
+													Designed By
+													<a href="https://htmlcodex.com">HTML Codex</a>
+													<br>Distributed By:
+													<a href="https://themewagon.com" target="_blank">ThemeWagon</a>
+												</div>
+											</div>
+										</div>
+									</div> #}
 				<!-- Footer End -->
 
-				
+
 			</div>
 			<!-- Content End -->
 
@@ -321,62 +333,46 @@ body.dark .btn-toggle {
 			<a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top">
 				<i class="bi bi-arrow-up"></i>
 			</a>
-			</div>
- 
-	</body>
-</html>{% block javascripts %}
-
-<!-- JavaScript Libraries -->
-<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-<script src="{{ asset('assets/back/lib/chart/chart.min.js')}}"></script>
-<script src="{{ asset('assets/back/lib/easing/easing.min.js')}}"></script>
-<script src="{{ asset('assets/back/lib/waypoints/waypoints.min.js')}}"></script>
-<script src="{{ asset('assets/back/lib/owlcarousel/owl.carousel.min.js')}}"></script>
-<script src="{{ asset('assets/back/lib/tempusdominus/js/moment.min.js')}}"></script>
-<script src="{{ asset('assets/back/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
-<script src="{{ asset('assets/back/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
-
-<script>
+		</div>
 
 
-const btnToggle = document.querySelector('.btn-toggle');
+		{% block javascripts %}
 
-btnToggle.addEventListener('click', () => {
+			<!-- JavaScript Libraries -->
+			<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
+			<script src="{{ asset('assets/back/lib/chart/chart.min.js')}}"></script>
+			<script src="{{ asset('assets/back/lib/easing/easing.min.js')}}"></script>
+			<script src="{{ asset('assets/back/lib/waypoints/waypoints.min.js')}}"></script>
+			<script src="{{ asset('assets/back/lib/owlcarousel/owl.carousel.min.js')}}"></script>
+			<script src="{{ asset('assets/back/lib/tempusdominus/js/moment.min.js')}}"></script>
+			<script src="{{ asset('assets/back/lib/tempusdominus/js/moment-timezone.min.js')}}"></script>
+			<script src="{{ asset('assets/back/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js')}}"></script>
 
-    const body = document.body;
+			{# _________________________________________________________ #}
+			{# <script src="https://cdn.jsdelivr.net/npm/fullcalendar@6.1.4/index.global.min.js"
+								 integrity="sha256-z82jYOK/utiAteR0z6FjIOQmdWzvxqXJ6wsXbGJkBwY=" crossorigin="anonymous"></script> #}
 
-    if(body.classList.contains('dark')){
+			{# Versioin 5.3 #}<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" integrity="sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=" crossorigin="anonymous"> </script>
+			{# ______________________________________________________ #}
 
-        body.classList.add('light')
-        body.classList.remove('dark')
-        btnToggle.innerHTML = "Go Dark"
-
-    } else if(body.classList.contains('light')){
-
-        body.classList.add('dark')
-        body.classList.remove('light')
-        btnToggle.innerHTML = "Go Light"
-
-    }
-
-})
-
-</script>
-<!-- Template Javascript -->
-<script src="{{ asset('assets/back/js/main.js')}}"></script>
-<!-- dataTable -->
-<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
-<script src="{{ asset('assets/back/js/scripts.js')}}"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
-<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
-<script src="assets/demo/datatables-demo.js"></script>
-<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
-<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
-<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-<script type="text/javascript">
-	$(document).ready(function () {
+			<!-- Template Javascript -->
+			<script src="{{ asset('assets/back/js/main.js')}}"></script>
+			<!-- dataTable -->
+			<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" crossorigin="anonymous"></script>
+			<script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+			<script src="{{ asset('assets/back/js/scripts.js')}}"></script>
+			<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js" crossorigin="anonymous"></script>
+			<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js" crossorigin="anonymous"></script>
+			<script src="assets/demo/datatables-demo.js"></script>
+			<script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+			<script type="text/javascript" src="https://cdn.datatables.net/v/bs4/dt-1.11.5/datatables.min.js"></script>
+			<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+			<script type="text/javascript">
+				$(document).ready(function () {
 $("table").DataTable();
 });
-</script>{% endblock %}</body></html>
+			</script>
+		{% endblock %}
+	</body>
+</html></body></html>

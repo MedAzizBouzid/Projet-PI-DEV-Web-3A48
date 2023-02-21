@@ -2,31 +2,6 @@
 
 {% block body %}
 	
-	<button id="show-form-btn" class="btn btn-primary">Afficher le formulaire</button>
-
-<script>
-  $(document).ready(function() {
-    $("#show-form-btn").click(function() {
-      $.ajax({
-        url: "{{ path('app_salle_new_ajax1') }}",
-        type: "GET",
-        success: function(data) {
-            
-	<div id="form-container">
-        {{ form_start(form) }}
-		{{ form_widget(form) }}
-			<button type="submit">Save</button>
-			{{ form_end(form) }}</div>
-
-          $("#form-container").html(data);
-        },
-        error: function() {
-          alert("Une erreur s'est produite lors de la récupération du formulaire.");
-        }
-      });
-    });
-  });
-</script>
-	</script>
+	
 
 {% endblock %}
