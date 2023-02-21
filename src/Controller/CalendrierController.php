@@ -152,7 +152,7 @@ class CalendrierController extends AbstractController
 // _____________________ la methode magique api conservation des données aprés un mouvement d'event_____
                     //  ___________________Keeeeeeep it secrettt___________________
     #[Route('/api/{id}/edit', name: 'api_event_api', methods: ['PUT'])]
-   public function MiseAjourEvent(Calendrier $calendar,ManagerRegistry $mg, Request $request){
+   public function MiseAjourEvent(Calendrier $calendar,ManagerRegistry $mg, CalendrierRepository $repo,Request $request){
 
   // On récupère les données
         $donnees = json_decode($request->getContent());
@@ -189,13 +189,15 @@ class CalendrierController extends AbstractController
             $calendar->setBorderColor($donnees->border_Color);
             $calendar->setTextColor($donnees->text_Color);
               
-            
-            $em = $mg->getManager(); 
-            $em->persist($calendar);
-            $em->flush();
+dd($calendar);
+            // $em = $mg->getManager(); 
+            // $em->persist($calendar);
+            // $em->flush();
 
             // On retourne le code
-            return new Response('Bine reçu', $code);
+            $repo->save($calendar, true);
+
+            return new Response('Bien reçu', $code);
         }else{
             // Les données sont incomplètes et envoyer 404 NOT FOUND
             return new Response('Données incomplètes', 404);

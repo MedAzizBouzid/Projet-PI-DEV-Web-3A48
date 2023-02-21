@@ -107,8 +107,10 @@
   {# <!-- Modal-----------------------------------FIN DU POP UP--------- ----------   #}
 
 {# {{dump(data)}} #}
-	 <div style="position: center;background-color:white;"id="calendrier"></div>     
-     
+
+	 <div style="position: center;background-color:black;"id="calendrier"></div>     
+     dd($calendar);
+
             
  
 
@@ -140,6 +142,7 @@
 				//console.log(e) 
 				// pour assurer l'injection des données => 
 				//Créer une variable URL qui contient la route de l'injection des données
+				 
 				 let url = `/api/${e.event.id}/edit`
            //Créer un tableau JSon pour stocker nos données de la table plannig 
 		    let donnees = {

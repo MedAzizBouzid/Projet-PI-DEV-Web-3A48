@@ -97,14 +97,16 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
         echo "
 ";
         // line 110
-        echo "\t <div style=\"position: center;background-color:white;\"id=\"calendrier\"></div>     
-     
+        echo "
+\t <div style=\"position: center;background-color:black;\"id=\"calendrier\"></div>     
+     dd(\$calendar);
+
             
  
 
 
 ";
-        // line 117
+        // line 119
         echo "
 \t<script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js\" 
         integrity=\"sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=\" crossorigin=\"anonymous\"></script>
@@ -121,8 +123,8 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
                 end: 'dayGridMonth,timeGridWeek'
             },
             events:";
-        // line 132
-        echo (isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 132, $this->source); })());
+        // line 134
+        echo (isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 134, $this->source); })());
         echo ",
 \t\t\teditable:true,
 \t\t\teventResizableFromStart:true,
@@ -134,6 +136,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 \t\t\t\t//console.log(e) 
 \t\t\t\t// pour assurer l'injection des données => 
 \t\t\t\t//Créer une variable URL qui contient la route de l'injection des données
+\t\t\t\t 
 \t\t\t\t let url = `/api/\${e.event.id}/edit`
            //Créer un tableau JSon pour stocker nos données de la table plannig 
 \t\t    let donnees = {
@@ -155,7 +158,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
     }
 </script>
                      ";
-        // line 164
+        // line 167
         echo "
 
  
@@ -180,7 +183,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 
     public function getDebugInfo()
     {
-        return array (  159 => 164,  125 => 132,  108 => 117,  100 => 110,  97 => 108,  95 => 107,  92 => 102,  89 => 100,  86 => 74,  84 => 32,  82 => 31,  79 => 17,  68 => 7,  58 => 6,  35 => 1,);
+        return array (  162 => 167,  127 => 134,  110 => 119,  100 => 110,  97 => 108,  95 => 107,  92 => 102,  89 => 100,  86 => 74,  84 => 32,  82 => 31,  79 => 17,  68 => 7,  58 => 6,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -294,8 +297,10 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
   {# <!-- Modal-----------------------------------FIN DU POP UP--------- ----------   #}
 
 {# {{dump(data)}} #}
-\t <div style=\"position: center;background-color:white;\"id=\"calendrier\"></div>     
-     
+
+\t <div style=\"position: center;background-color:black;\"id=\"calendrier\"></div>     
+     dd(\$calendar);
+
             
  
 
@@ -327,6 +332,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 \t\t\t\t//console.log(e) 
 \t\t\t\t// pour assurer l'injection des données => 
 \t\t\t\t//Créer une variable URL qui contient la route de l'injection des données
+\t\t\t\t 
 \t\t\t\t let url = `/api/\${e.event.id}/edit`
            //Créer un tableau JSon pour stocker nos données de la table plannig 
 \t\t    let donnees = {
