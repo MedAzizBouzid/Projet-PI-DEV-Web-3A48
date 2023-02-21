@@ -65,6 +65,12 @@
         </nav>
         <div id="mobile-menu-wrap"></div>
         <div class="canvas-social">
+          <a href="#"class="btn btn-outline-dark" type="submit">
+              <i class="bi-cart-fill me-1"></i>
+              Cart
+              <span id="nb_produit" class="badge bg-dark text-white ms-1 rounded-pill">1</span>
+          </a>
+         
             <a href="#"><i class="fa fa-facebook"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
             <a href="#"><i class="fa fa-youtube-play"></i></a>
@@ -80,7 +86,7 @@
                 <div class="col-lg-3">
                     <div class="logo">
                         <a href="./index.html">
-                            <img src="img/logo.png" alt="">
+                            <img src="{{asset('assets/front/img/logo.png')}}" alt="">
                         </a>
                     </div>
                 </div>
@@ -165,7 +171,7 @@
                 <div class="col-lg-4">
                     <div class="fs-about">
                         <div class="fa-logo">
-                            <a href="#"><img src="img/logo.png" alt=""></a>
+                            <a href="#"><img src="{{asset('assets/front/img/logo.png')}}" alt=""></a>
                         </div>
                         <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
                             labore dolore magna aliqua endisse ultrices gravida lorem.</p>
@@ -254,7 +260,36 @@
     <script src="{{ asset('assets/front/js/jquery.slicknav.js')}}"></script>
     <script src="{{ asset('assets/front/js/owl.carousel.min.js')}}"></script>
     <script src="{{ asset('assets/front/js/main.js')}}"></script>
+    {# <script>
+                  $(document).ready(function() {
+    $('.add-to-cart-btn').click(function(e) {
+        e.preventDefault();
 
+        var produitId = $(this).data('produit-id');
+
+        $.ajax({
+            url: '/test/' + produitId,
+            type: 'POST',
+            success: function(response) {
+                if (response.action == 'update') {
+                    // Redirect to update method
+                    window.location.href = '/update/' + produitId;
+                }  else if (response.action == 'add')  {
+                    // Redirect to add method
+                    window.location.href = '/add/' + produitId;
+        }
+            },
+            error: function(xhr) {
+                alert('Error adding product to cart: ' + xhr.statusText);
+            }
+        });
+    });
+});
+
+</script> #}
+        {% endblock %}
+        {% block jsbergila %}
+            
         {% endblock %}
 
 

@@ -3,6 +3,8 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Component\Validator\Constraints as Assert;
 
@@ -35,9 +37,13 @@ class Produit
     private ?string $stock = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
-    #[ORM\JoinColumn(nullable: false)]
+    #[ORM\JoinColumn(name: "categorie_id", referencedColumnName: "id", onDelete: "SET NULL")]
     #[Assert\NotBlank(message: "Catégorie doit etre non vide !")]
     private ?Categorie $categorie = null;
+
+
+
+
 
     public function getId(): ?int
     {

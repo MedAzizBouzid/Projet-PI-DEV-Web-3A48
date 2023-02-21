@@ -1,0 +1,81 @@
+
+{% extends 'front/baseF.html.twig' %}
+{% block title %}
+Historique Panier
+    {% endblock %}
+    {% block home %}{% endblock %}
+{% block shop %}active{% endblock %}
+    {% block body %}
+     <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Historique Panier</h2>
+                        
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    
+
+  <section class="h-100 h-custom">
+  <div class="container h-100 py-5">
+    <div class="row d-flex justify-content-center align-items-center h-100">
+      <div class="col">
+      
+   
+        <div class="table-responsive">
+          Client: {{nom}}
+          <table class="table">
+            <thead>
+              <tr>
+                <th scope="col" class="h5">#</th>
+                <th scope="col">Nombre des articles</th>
+                <th scope="col">Total Panier</th>
+                  
+               
+                
+              
+              </tr>
+            </thead>
+           <tbody>
+          
+            {%  for panier in Paniers %}
+                <tr>
+                 <td> {{panier.id}}</td>
+                <td> {{panier.nombreArticles}}</td>
+               
+                <td> {{panier.TotalPanier}} DT</td>
+               
+               
+               
+
+           </tr>
+         
+
+
+
+           </tbody>
+         
+           
+              {% else %}
+
+            <tr><td colspan ="6" class ="text-center">Vous n'avez pas de paniers</td></tr>
+            {% endfor %}
+            
+          </table>
+        
+        </div>
+
+        
+
+      </div>
+    </div>
+  </div>
+</section>
+
+    {% endblock %}

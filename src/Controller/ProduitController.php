@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Produit;
 use App\Form\ProduitType;
 use App\Repository\CategorieRepository;
+use App\Repository\LignePanierRepository;
 use App\Repository\ProduitRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -19,18 +20,11 @@ class ProduitController extends AbstractController
     #[Route('/show/back', name: 'app_produit_index_back', methods: ['GET'])]
     public function AffichageBack(ProduitRepository $produitRepository): Response
     {
-        return $this->render('back/produit/table.html.twig', [
+        return $this->render('back/produit/ProduitsB.html.twig', [
             'produits' => $produitRepository->findAll(),
         ]);
     }
-    #[Route('/show/front', name: 'app_produit_index_front', methods: ['GET'])]
-    public function AffichageFront(ProduitRepository $produitRepository,CategorieRepository $categorieRepository): Response
-    {
-        return $this->render('front/team.html.twig', [
-            'produits' => $produitRepository->findAll(),
-            'categories' => $categorieRepository->findAll()
-        ]);
-    }
+
 
     #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProduitRepository $produitRepository, SluggerInterface $slugger): Response
@@ -112,5 +106,20 @@ class ProduitController extends AbstractController
         }
 
         return $this->redirectToRoute('app_produit_index_back', [], Response::HTTP_SEE_OTHER);
+    }
+    #[Route('/show/front', name: 'app_produit_index_front', methods: ['GET'])]
+    public function AffichageFrontPaginated(Request $request, ProduitRepository $produitRepository, LignePanierRepository $LPR, CategorieRepository $categorieRepository): Response
+    {
+        $nbr[]= $LPR->countAll();
+        //on va chercher le num page dans l'url
+        $page = $request->query->getInt('page', 1);
+        //on va cherche la liste des produits paginated 
+        $produit = $produitRepository->findProductPaginated($page, 3);
+        
+        //dd($produit);
+        return $this->render('front/produitShow.html.twig', [
+            'produits' => $produit,
+
+        ]);
     }
 }
