@@ -17,16 +17,23 @@ use Symfony\Component\PasswordHasher\Hasher\UserPasswordHasherInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 use Dompdf\Dompdf;
 use Dompdf\Options;
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/admin')]
 class UserController extends AbstractController
 {
     /**************affichage************ */
     #[Route('/', name: 'app_user_admin', methods: ['GET'])]
-    public function admin(UserRepository $userRepository): Response
+    public function admin(UserRepository $userRepository, PaginatorInterface $paginator,Request $request): Response
     {
+        $users=$userRepository->findAllUser('["ROLE_ADMIN"]');
+        $users = $paginator->paginate(
+            $users, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            2/*limit per page*/
+        );
         return $this->render('back/tableAdmin.html.twig', [
-            'users' => $userRepository->findAllUser('["ROLE_ADMIN"]'),
+            'users' => $users,
         ]);
     }
     #[Route('/client', name: 'app_user_client', methods: ['GET'])]
@@ -313,6 +320,8 @@ class UserController extends AbstractController
 
         return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
     }
+    /***************************Bann Admin************************* */
+
     #[Route('/{id}/bann', name: 'app_user_bannA', methods: [ 'POST'])]
     public function bannA(Request $request, User $user, UserRepository $userRepository): Response
     {
@@ -332,6 +341,28 @@ class UserController extends AbstractController
             $userRepository->save($user, true);
 
         return $this->redirectToRoute('app_user_admin', [], Response::HTTP_SEE_OTHER);
+    }
+    /***************************Bann Coach************************* */
+
+    #[Route('/{id}/bannC', name: 'app_user_bannC', methods: [ 'POST'])]
+    public function bannC(Request $request, User $user, UserRepository $userRepository): Response
+    {
+    
+            
+            $user->setEtat(1);
+            $userRepository->save($user, true);
+
+        return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
+    }
+    #[Route('/{id}/anbannC', name: 'app_user_anbannC', methods: [ 'POST'])]
+    public function anbannC(Request $request, User $user, UserRepository $userRepository): Response
+    {
+    
+            
+            $user->setEtat(0);
+            $userRepository->save($user, true);
+
+        return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
     }
     /***************************PDF************************* */
     #[Route('/coachPdf/{id}', name: 'app_user_coachPdf', methods: ['GET'])]
