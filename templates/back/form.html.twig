@@ -62,8 +62,10 @@
                         </div>
                     
 </table>
+
   {{ form_label(form.promo) }}
-                                {{ form_widget(form.promo) }}
+        {{ form_widget(form.promo)}}
+                            
        <button class="btn">{{ button_label|default('Save') }}</button>
 <br>
     <a href="{{ path('app_offres_index') }}">back to list</a>

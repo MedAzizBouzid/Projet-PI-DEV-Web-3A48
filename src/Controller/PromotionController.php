@@ -12,16 +12,33 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Component\Routing\Annotation\Route;
+use Doctrine\ORM\Mapping\PromotionManagerInterface; 
+
+
+// récupère l'EntityManager
+
 
 #[Route('/promotion')]
 class PromotionController extends AbstractController
 {
     #[Route('/', name: 'app_promotion_index', methods: ['GET'])]
-    public function index(PromotionRepository $promotionRepository): Response
-    {
+    public function index(PromotionRepository $promotionRepository  ,ManagerRegistry $entityManager): Response
+    { 
+        $promotions = $promotionRepository->findAll();
+        foreach ($promotions as $promotion) {
+            if ($promotion->getDateFin() <= new \DateTime()) {
+                // Supprime la promotion si elle est expirée
+                $em=$entityManager->getManager();
+                $em->remove($promotion);
+                $em->flush();
+             
+            }
+        }
+        
         return $this->render('back/tablep.html.twig', [
             'promotion' => $promotionRepository->findAll(),
         ]);
+      
     }
 
 
@@ -36,12 +53,10 @@ class PromotionController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $promotionRepository->save($promotion, true);
-          
-    
-          
-    }
+            return $this->redirectToRoute('app_promotion_index', [], Response::HTTP_SEE_OTHER);
 
-        return $this->renderForm('back/formpro.html.twig', [
+  }
+   return $this->renderForm('back/formpro.html.twig', [
             'promotion' => $promotion,
             'form' => $form,
         ]);}
@@ -62,6 +77,9 @@ class PromotionController extends AbstractController
     {
         $form = $this->createForm(PromotionType::class, $promotion);
         $form->handleRequest($request);
+
+        
+          
       
 
         if ($form->isSubmitted() && $form->isValid()) {
@@ -95,6 +113,7 @@ class PromotionController extends AbstractController
         $em->flush();
         return $this->redirectToRoute('app_promotion_index');
     }
+    
 
 
 

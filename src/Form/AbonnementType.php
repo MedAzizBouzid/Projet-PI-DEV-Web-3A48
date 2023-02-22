@@ -49,7 +49,7 @@ class AbonnementType extends AbstractType
                     // looks for choices from this entity
                     'class' => Offres::class,
                     // uses the User.username property as the visible option string
-                    'choice_label' => 'id',
+                    'choice_label' => 'type',
                     // used to render a select box, check boxes or radios
                     'multiple' => false,
                     'expanded' => false,

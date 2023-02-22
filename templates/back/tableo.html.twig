@@ -18,7 +18,6 @@
                                            <th>duree</th>
                                     
                                                <th>Prix</th>
-                                                       <th>nouveau prix apres reduction</th>
                                                 
                                                <th>Description</th>
                                                  <th>promotion</th>
@@ -39,12 +38,11 @@
 
                                               <td>{{ offre.prix }}   DT</td> 
 
-                                                 <td> {% if  offre.promo is  null  %} 
-                                                     pas de nv prix
+                                            
                                                      
-                                                  {% else %}
-                                       {{ offre.NvPrix}}   
-                                              {% endif %}
+                            
+
+                                              
                                                                                      
                                                </td>  
                                              <td>{{ offre.description }}</td>
@@ -58,9 +56,10 @@
                                       
                                          
                                       
-                                                <td>   <a href="{{ path('app_offres_edit', {'id': offre.id}) }}"><button class="btn btn-danger "><i class=" bi bi-pen "></i></button></a>&nbsp;
-                                            <a href= "{{ path('app_offres_delete', {'id': offre.id}) }}" ><button class="btn btn-danger "><i class="bi bi-trash-fill"></i></button></a>&nbsp;
-                                            <a href=" {{ path('app_offres_show', {'id': offre.id}) }} "><button class="btn btn-danger "><i class=" bi bi-info-circle "></i></button></a> &nbsp;
+                                                <td>   <a href="{{ path('app_offres_edit', {'id': offre.id}) }}"><i class="bi bi-pencil-square"></i></a>
+
+                                            <a href= "{{ path('app_offres_delete', {'id': offre.id}) }}" ><i class="bi bi-trash-fill"></i></a>
+                                            <a href=" {{ path('app_offres_show', {'id': offre.id}) }} "><i class="bi bi-binoculars"></i></a>
                                          <br>
                                         
                                             

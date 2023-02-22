@@ -22,7 +22,7 @@
                                                 
                                                <th>Payement</th>
                                                
-                                               <th>id offre</th>
+                                               <th>type d'offre</th>
                                                     <th>Actions</th>
                                                  </tr>
                                     </thead>
@@ -40,15 +40,17 @@
                                                   
                                                   
                                                      <td> {% if  ab.offre is not null  %}
-             {{ ab.offre.id}}
+             {{ ab.offre.type}}
             {% else %}
                 pas d'offre a affecte
             {% endif %}
         </td>
 
                                                  <td>           
-                                            <a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}">edit</a>
-                                            <a href= "{{ path('app_abonnement_show', {'id': ab.id}) }}" >show </a>
+                                            
+                                               <a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}"><i class="bi bi-pencil-square"></i></a>
+
+                                               <a href=" {{ path('app_abonnement_show', {'id': ab.id}) }} "><i class="bi bi-binoculars"></i></a>
                                                   
 </td>
                                                          

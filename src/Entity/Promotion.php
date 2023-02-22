@@ -7,6 +7,9 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Validator\Constraints as Assert;
+use App\Entity\Promotion;
+use Doctrine\ORM\EntityManagerInterface;
 
 #[ORM\Entity(repositoryClass: PromotionRepository::class)]
 class Promotion
@@ -17,6 +20,17 @@ class Promotion
     private ?int $id = null;
 
     #[ORM\Column]
+     #[Assert\GreaterThan(0,
+    message:"reduction minimale est 1%"
+        
+    )]
+    
+    
+    #[Assert\LessThan(99,
+    message:"reduction maxi est 99%"
+        
+    )]
+
     private ?int $pourcentage = null;
 
     #[ORM\Column(type: Types::DATE_MUTABLE)]
@@ -97,8 +111,12 @@ class Promotion
 
         return $this;
     }
+       
 
+ 
+    
   
+
 
     
    

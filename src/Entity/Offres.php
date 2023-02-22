@@ -32,14 +32,11 @@ class Offres
     #[Assert\NotBlank(
         message :"veuillez remplir ce champs"
     )]
-    #[Assert\GreaterThan(99,
-    message:"le prix minimale est 100"
+    #[Assert\GreaterThan(0,
+    message:"le prix ne peut pas etre 0 dt"
         
     )]
-    #[Assert\LessThan(801,
-    message:"le prix maximale est 800"
-        
-    )]
+   
     private ?float $prix = null;
   
   
@@ -63,10 +60,10 @@ class Offres
         message :"veuillez remplir ce champs"
     )]
     #[Assert\Length(
-        min:'20',
-        max:'80',
-        minMessage:'la longuer minimale est  20 caratére ',
-        maxMessage:'la longuer maximale est 80 cartére',
+        min:'5',
+        max:'20',
+        minMessage:'la longuer minimale est  5 caratére ',
+        maxMessage:'la longuer maximale est 20 cartére',
     )]
 
     private ?string $description = null;
@@ -77,9 +74,7 @@ class Offres
     #[ORM\ManyToOne(inversedBy: 'offres')]
     private ?Promotion $promo = null;
 
-    #[ORM\Column(nullable: true)]
-    private ?float $nv_prix = null;
-
+ 
    
    
 

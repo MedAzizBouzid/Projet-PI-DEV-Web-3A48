@@ -32,8 +32,11 @@ class OffresController extends AbstractController
         $offre = new Offres();
         $form = $this->createForm(OffresType::class, $offre);
         $form->handleRequest($request);
-    
-    
+      
+        if($offre->getPromo()!= null){
+            $offre->setPrix($offre->getPrix()-(($offre->getPrix()*$offre->getPromo()->getPourcentage())/100));}
+           
+
         if ($form->isSubmitted() && $form->isValid()) {
             $offresRepository->save($offre, true);
 
@@ -51,33 +54,82 @@ class OffresController extends AbstractController
 
    public function show(Offres $offres): Response
     {
-      return $this->render('back/table.html.twig', [
+      return $this->render('back/showo.html.twig', [
             'offre' => $offres,
             
         ]);
     }
 
-    #[Route('/{id}/edit', name: 'app_offres_edit', methods: ['GET', 'POST'])]
-    public function edit(Request $request, Offres $offre, OffresRepository $offresRepository): Response
-    {
-        $form = $this->createForm(OffresType::class, $offre);
-        $form->handleRequest($request);
-        if($offre->getPromo()){
-        $offre->setNvPrix($offre->getPrix()-(1*($offre->getPromo()->getPourcentage()/100)));}
+//     #[Route('/{id}/edit', name: 'app_offres_edit', methods: ['GET', 'POST'])]
+//     public function edit(Request $request, Offres $offre, OffresRepository $offresRepository): Response
+//     {     if($offre->getPromo()!=null)
+//        {
+//         $bergila=0;
+//         $bergila=$offre->getPromo()->getPourcentage();
+       
+//        }
+//         $form = $this->createForm(OffresType::class, $offre);
+      
+//         $form->handleRequest($request);
         
         
+//   if ($form->isSubmitted() && $form->isValid()) {
+       
+       
+       
+//         if($offre->getPromo()==null){
+//             $offre->setPrix(($offre->getPrix()*100)/(100-$bergila));
+//             }   
+//             else 
+            
+//                 $offre->setPrix($offre->getPrix()-(($offre->getPrix()*$offre->getPromo()->getPourcentage())/100));
+//                 $offresRepository->save($offre, true);
+            
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $offresRepository->save($offre, true);
+//             return $this->redirectToRoute('app_offres_index', [], Response::HTTP_SEE_OTHER);
+//         }
 
-            return $this->redirectToRoute('app_offres_index', [], Response::HTTP_SEE_OTHER);
+//         return $this->renderForm('back/form.html.twig', [
+//             'offres' => $offre,
+//             'form' => $form,
+//         ]);
+//     }
+
+#[Route('/{id}/edit', name: 'app_offres_edit', methods: ['GET', 'POST'])]
+public function edit(Request $request, Offres $offre, OffresRepository $offresRepository): Response
+{
+    $pr = 0;
+    if ($offre->getPromo() != null) {
+        $pr = $offre->getPromo()->getPourcentage();
+    }
+
+    $form = $this->createForm(OffresType::class, $offre);
+    $form->handleRequest($request);
+
+    if ($form->isSubmitted() && $form->isValid()) {
+        if ($offre->getPromo() && $offre->getPromo()->getDateFin() <= new \DateTime()) {
+            // La promotion est expirée, supprimer la référence à la promotion dans l'offre
+            $offre->setPromo(null);
+        } else {
+            if ($offre->getPromo() == null) {
+                $offre->setPrix(($offre->getPrix() * 100) / (100 - $pr));
+            } else {
+                $offre->setPrix($offre->getPrix() - (($offre->getPrix() * $offre->getPromo()->getPourcentage()) / 100));
+            }
         }
 
-        return $this->renderForm('back/form.html.twig', [
-            'offres' => $offre,
-            'form' => $form,
-        ]);
+        $offresRepository->save($offre, true);
+        return $this->redirectToRoute('app_offres_index', [], Response::HTTP_SEE_OTHER);
     }
+
+    return $this->renderForm('back/form.html.twig', [
+        'offres' => $offre,
+        'form' => $form,
+    ]);
+}
+
+
+
 
     #[Route('/delte/{id}', name: 'app_offres_delete', methods: ['GET','POST'])]
 // public function delete(Request $request, Offres $offre, OffresRepository $offresRepository): Response

@@ -28,6 +28,10 @@
             <div class="row">
                 <div class="col-lg-6">
                     <div class="section-title contact-title">
+                    <br>
+                    <br>
+                      <br>
+                    <br>
                         <span>Contact Us</span>
                         <h2>GET IN TOUCH</h2>
                     </div>
@@ -47,11 +51,24 @@
                             <i class="fa fa-envelope"></i>
                             <p>Support.gymcenter@gmail.com</p>
                         </div>
+                        <div>
+                         <div class="section-title contact-title">
+                        <span>condition de payement</span>
+                        
+                  
+                    
+                                <p>Les frais d’inscription de 45 DT sont payés uniquement lors de la première inscription.
+Les abonnements ne sont ni remboursables ni transférables.
+En cas de perte, la carte membre sera remplacée moyennant 30 DT.</p>
+ </div>
+                          </div>
                     </div>
                 </div>
+                  
+                               
                 <div class="col-lg-6">
                  
-                  <div class="bg-secondary
+                  <div class="text-white
  rounded h-100 p-5">
                   
                           <div class="col-sm-12 col-xl-12">
@@ -75,14 +92,16 @@
 
 
 
-                                <label for="exampleInputEmail1"> Name</label>
-                                 {{ form_widget(form.Name) }}
+                                <label for="exampleInputEmail1"> Name  </label>   <br>
+                                   {{ form_widget(form.Name) }}
+                            
                                  {{ form_errors(form.Name) }}
-                                 
+                                 <br> 
                      
                                 <label for="exampleInputEmail1"> Email</label>
                                  {{ form_widget(form.Email) }}
                                  {{ form_errors(form.Email) }}
+                                   <br> 
                        
                                     <div class="form-group">
                                {{ form_label(form.salle) }}
@@ -92,6 +111,7 @@
                                     <option>Nasser</option>
                                     </select>
                                    </div>
+                                     <br> 
                                
                     <div class="form-group">
                                 <label for="exampleInputEmail1">Methode de payement </label>
@@ -99,21 +119,21 @@
      <option>Par carte</option>
       <option>  Par espéce</option>
      </select>
-        
+          <br> 
           </div>
             <div class="form-group">
                                    <label for="exampleInputEmail1" > Date debut</label>
                                  {{ form_widget(form.DateD )}} 
                                             
 
-          
+            <br> 
 
   </div>
 
-<br>
+
       
-     <button class="btn btn-danger btn-lg btn-block">{{ button_label|default('Save') }}</button> 
-     </br>
+     <button class="btn btn-outline-danger btn-block">{{ button_label|default('Save') }}</button> 
+    
 
    
 {{ form_end(form) }}

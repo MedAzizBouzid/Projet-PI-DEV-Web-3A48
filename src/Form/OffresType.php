@@ -33,6 +33,9 @@ class OffresType extends AbstractType
             ->add ('type', ChoiceType::class,array(
                 'choices'=> array(
                      'Personne'=> 'Personne',
+                     'Famiile'=> 'Famille',
+                     'BluePass-sport'=> 'BluePass-sport',
+                     'YellowPass-sport'=> 'YellowPass-sport',
                    'Couple'=>'Couple' ,
                  'Enfant'=>'Enfant',))
             )
@@ -74,6 +77,7 @@ class OffresType extends AbstractType
                         ]),
                 ]
                     ])
+                    
                  
                
           
