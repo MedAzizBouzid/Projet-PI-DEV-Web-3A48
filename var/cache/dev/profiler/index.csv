@@ -19473,3 +19473,9 @@ ab05c6,127.0.0.1,GET,http://127.0.0.1:8000/assets/back/js/scripts.js,1677018504,
 588a77,127.0.0.1,GET,http://127.0.0.1:8000/calendrier/assets/demo/datatables-demo.js,1677018504,,404
 c974ec,127.0.0.1,GET,http://127.0.0.1:8000/calendrier/img/user.jpg,1677018505,06b4d5,404
 06b4d5,127.0.0.1,GET,http://127.0.0.1:8000/calendrier/img/user.jpg,1677018505,,404
+b2f9d0,127.0.0.1,GET,http://127.0.0.1:8000/api/3/edit,1677021792,5ede91,404
+5ede91,127.0.0.1,PUT,http://127.0.0.1:8000/api/3/edit,1677021792,,404
+3d088e,127.0.0.1,GET,http://127.0.0.1:8000/api/4/edit,1677021794,b478de,404
+b478de,127.0.0.1,PUT,http://127.0.0.1:8000/api/4/edit,1677021794,,404
+f5dbfc,127.0.0.1,GET,http://127.0.0.1:8000/api/4/edit,1677021799,5a6122,404
+5a6122,127.0.0.1,PUT,http://127.0.0.1:8000/api/4/edit,1677021799,,404
