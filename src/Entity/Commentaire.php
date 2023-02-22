@@ -18,7 +18,7 @@ class Commentaire
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
-    private ?user $client = null;
+    private ?User $client = null;
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
     private ?Evenement $event = null;
@@ -45,7 +45,7 @@ class Commentaire
         return $this->client;
     }
 
-    public function setClient(?user $client): self
+    public function setClient(?User $client): self
     {
         $this->client = $client;
 

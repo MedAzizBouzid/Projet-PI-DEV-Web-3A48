@@ -2,16 +2,20 @@
 
 namespace App\Controller;
 
+use App\Entity\Commentaire;
 use App\Entity\Pass;
 use App\Entity\User;
 use App\Form\PassType;
 use App\Form\UserType;
 use DateTimeImmutable;
 use App\Entity\Sponsor;
+use App\Form\CommentaireType;
 use App\Form\SponsorType;
+use App\Repository\CommentaireRepository;
 use App\Repository\PassRepository;
 use App\Repository\SponsorRepository;
 use App\Repository\EvenementRepository;
+use App\Repository\UserRepository;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
@@ -37,15 +41,32 @@ class SponsorController extends AbstractController
         ]);
     }
 
-    #[Route('/front/{id}', name: 'app_sponsor_index_front', methods: ['GET', 'POST'])]
-    public function indexF(SponsorRepository $sponsorRepository,$id,EvenementRepository $eventrepo, Request $request, PassRepository $passRepository): Response
+
+    //afficher les details d'un event + ses sponsors + ses commentaires avec la possibilite d'ajout d'un commentaire a cet event
+    #[Route('/front/{id}/{id_client}', name: 'app_sponsor_index_front', methods: ['GET', 'POST'])]
+    public function indexF(SponsorRepository $sponsorRepository,$id,EvenementRepository $eventrepo, Request $request,$id_client, CommentaireRepository $commentaireRepository,UserRepository $userRepo): Response
     {
         // $pass = new Pass();
         // $form = $this->createForm(PassType::class, $pass);
         // $form->handleRequest($request);
-
         $event=$eventrepo->find($id);
         $sponsors=$sponsorRepository->findSponsorsByEvent($id);
+
+
+        $commentaire = new Commentaire();
+        $client= new User();
+        $client=$userRepo->find($id_client);
+    
+        $form = $this->createForm(CommentaireType::class, $commentaire);
+        $form->handleRequest($request);
+
+        if ($form->isSubmitted() && $form->isValid()) {
+            $commentaire->setEvent($event);
+            $commentaire->setClient($client);
+            $commentaireRepository->save($commentaire, true);
+
+            return $this->redirectToRoute('app_sponsor_index_front', [], Response::HTTP_SEE_OTHER);
+        }
         
         // if ($form->isSubmitted() && $form->isValid()) {
         // dd($form);
@@ -62,7 +83,8 @@ class SponsorController extends AbstractController
         return $this->render('front/detail-event.html.twig', [
             'sponsors' => $sponsors,
             'event'=>$event,
-            // 'form'=>$form,
+            'commentaires' => $commentaireRepository->findAll(),
+            'form'=>$form,
         ]);
          
     }

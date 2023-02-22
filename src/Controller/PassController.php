@@ -99,7 +99,8 @@ class PassController extends AbstractController
         $dateObj = DateTimeImmutable::createFromFormat('Y-m-d H:i:s', $date);
 
         $pass->setCreatedAt($dateObj);
-        
+                
+
             $passRepository->save($pass, true);
 
 //             $numeroTelephone=$client->getNumTel();
@@ -133,7 +134,7 @@ class PassController extends AbstractController
             //          "+12697956309", // from
             //          ["url" => "http://127.0.0.1:8000/evenement/call"]
             // );
-            // return $this->redirectToRoute('app_evenement_index_front', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_evenement_index_front', [], Response::HTTP_SEE_OTHER);
        
 
        
