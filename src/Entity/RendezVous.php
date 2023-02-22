@@ -5,7 +5,7 @@ namespace App\Entity;
 use App\Repository\RendezVousRepository;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Validator\Constraints as Assert;
 #[ORM\Entity(repositoryClass: RendezVousRepository::class)]
 class RendezVous
 {
@@ -13,7 +13,7 @@ class RendezVous
     #[ORM\GeneratedValue]
     #[ORM\Column]
     private ?int $id = null;
-
+//TypeDateTimeType
     #[ORM\Column]
     private ?\DateTime $dateAt = null;
 
@@ -27,8 +27,6 @@ class RendezVous
     #[ORM\JoinColumn(nullable: false)]
     private ?Service $service = null;
 
-    #[ORM\Column(type: Types::TIME_MUTABLE)]
-    private ?\DateTimeInterface $heure = null;
 
     public function getId(): ?int
     {
@@ -83,15 +81,5 @@ class RendezVous
         return $this;
     }
 
-    public function getHeure(): ?\DateTimeInterface
-    {
-        return $this->heure;
-    }
 
-    public function setHeure(\DateTimeInterface $heure): self
-    {
-        $this->heure = $heure;
-
-        return $this;
-    }
 }

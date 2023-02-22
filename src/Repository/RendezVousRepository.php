@@ -5,7 +5,7 @@ namespace App\Repository;
 use App\Entity\RendezVous;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
-
+use App\Entity\Service;
 /**
  * @extends ServiceEntityRepository<RendezVous>
  *
@@ -38,6 +38,30 @@ class RendezVousRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function isDateRangeAvailable($dateAt): bool
+    {
+        $dateTime = new \DateTime($dateAt);
+        $dateTime->modify('-60 minutes');
+        $start = $dateTime->format('Y-m-d H:i:s');
+        $dateTime->modify('+120 minutes');
+        $end = $dateTime->format('Y-m-d H:i:s');
+
+        $count = $this->createQueryBuilder('r')
+            ->select('COUNT(r.id)')
+            ->where('r.dateAt >= :start')
+            ->andWhere('r.dateAt <= :end')
+            ->setParameter('start', $start)
+            ->setParameter('end', $end)
+            ->getQuery()
+            ->getSingleScalarResult();
+
+        return $count == 0;
+    }
+
+
+    
+    
+
 
 //    /**
 //     * @return RendezVous[] Returns an array of RendezVous objects

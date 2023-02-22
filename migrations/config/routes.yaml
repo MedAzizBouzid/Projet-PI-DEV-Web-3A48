@@ -6,7 +6,3 @@ controllers:
     
 # tattali_calendar:
     # resource: '@TattaliCalendarBundle/Resources/config/routing.yml'
-rendezvous_check_availability:
-  path: /rendezvous/check_availability
-  methods: [POST]
-  controller: App\Controller\RendezvousController::checkAvailability
