@@ -27,7 +27,7 @@ return [
     'app_activite_delete' => [['id'], ['_controller' => 'App\\Controller\\ActiviteController::removeStudent'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/activite']], [], [], []],
     'find_actitivité' => [[], ['_controller' => 'App\\Controller\\ActiviteController::findSalle'], [], [['text', '/activite/findActitivité']], [], [], []],
     'app_calendrier_index' => [[], ['_controller' => 'App\\Controller\\CalendrierController::index'], [], [['text', '/calendrier/']], [], [], []],
-    'app_calendrier_new' => [[], ['_controller' => 'App\\Controller\\CalendrierController::new'], [], [['text', '/calendrier/new']], [], [], []],
+    'app_calendrier_new' => [['id'], ['_controller' => 'App\\Controller\\CalendrierController::new'], [], [['text', '/new'], ['variable', '/', '[^/]++', 'id', true], ['text', '/calendrier']], [], [], []],
     'app_calendrier_show' => [['id'], ['_controller' => 'App\\Controller\\CalendrierController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/calendrier']], [], [], []],
     'app_calendrier_edit' => [['id'], ['_controller' => 'App\\Controller\\CalendrierController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/calendrier']], [], [], []],
     'app_calendrier_delete' => [['id'], ['_controller' => 'App\\Controller\\CalendrierController::delete'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/calendrier']], [], [], []],

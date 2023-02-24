@@ -3,7 +3,12 @@
 namespace App\Controller;
 
 use App\Entity\Calendrier;
+use App\Entity\Salle;
+
 use App\Form\CalendrierType;
+use App\Repository\SalleRepository;
+;
+
 use App\Repository\CalendrierRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -25,18 +30,23 @@ class CalendrierController extends AbstractController
         $rdvs = [];
         foreach($events as $event){
             $rdvs[] = [
-                'id' => $event->getId(),
+                'id' => $event->getId(),    
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $event->getEnd()->format('Y-m-d H:i:s'),
-                'title' => $event->getTitle(),
-                'description' => $event->getDescription(),
+                // 'title' => $event->getTitle(),
+                // 'description' => $event->getDescription(),
+                'activite' => $event->getActivite(),
+
                 'backgroundColor' => $event->getBackgroundColor(),
                 'borderColor' => $event->getBorderColor(),
                 'textColor' => $event->getTextColor(),
-                // 'allDay' => $event->isAllDay(),
-            ];
+
+             ];
+
         }
         $data = json_encode($rdvs);
+        // dd($data);
+
  
         // _______________________________________________________
 
@@ -52,13 +62,15 @@ class CalendrierController extends AbstractController
         }
         // stoker dans la variable data le contenue du tab json 
 
-        return $this->render('back/FullCalender.html.twig', [
-            'calendriers' => $calendrierRepository->findAll(),
-            'form' => $form, 
-            'data' => $data, 
-            // compact('data')
+        // return $this->render('back/FullCalender.html.twig', [
+        //     'calendriers' => $calendrierRepository->findAll(),
+        //     // 'form' => $form, 
+        //     'data' => $data, 
+        //     compact('data')
 
-        ]);
+
+
+            return $this->render('back/FullCalender.html.twig', compact('data','form'));
    
 
     }
@@ -68,14 +80,23 @@ class CalendrierController extends AbstractController
     //     compact('data')
         
     // );
-    #[Route('/new', name: 'app_calendrier_new', methods: ['GET', 'POST'])]
-    public function new(Request $request, CalendrierRepository $calendrierRepository): Response
+    #[Route('/{id}/new', name: 'app_calendrier_new', methods: ['GET', 'POST'])]
+     public function new($id,Request $request, CalendrierRepository $calendrierRepository,SalleRepository $SalleRe): Response
     {
+
+        $salle  = new Salle();
+        $salle=$SalleRe->find($id);
+
         $calendrier = new Calendrier();
         $form = $this->createForm(CalendrierType::class, $calendrier);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
+
+            // dd($request->get('Salle'));
+
+        $calendrier->setActivite($request->get('Salle'));
+        $calendrier->setSalla($salle);
             $calendrierRepository->save($calendrier, true);
 
             return $this->redirectToRoute('app_calendrier_index', [], Response::HTTP_SEE_OTHER);
@@ -83,6 +104,7 @@ class CalendrierController extends AbstractController
 
         return $this->renderForm('calendrier/new.html.twig', [
             'calendrier' => $calendrier,
+            'salle' => $salle,
             'form' => $form,
         ]);
     }

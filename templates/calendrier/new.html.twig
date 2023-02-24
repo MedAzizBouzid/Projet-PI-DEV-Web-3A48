@@ -1,11 +1,40 @@
-{% extends 'base.html.twig' %}
+{% extends 'back/base.html.twig' %}
 
+
+ 
+	
+{% block body %}
 {% block title %}New Calendrier{% endblock %}
 
-{% block body %}
-    <h1>Create new Calendrier</h1>
+        <h1>Create new Calendrier</h1>
+<div class="container-fluid pt-4 px-4"> <div style="display: flex; justify-content: center; align-items: center; height: 100%;class=" row g-4">
+			<div class="col-sm-12 col-xl-6">
+				<div class="bg-secondary rounded h-100 p-4">
+                        <h6 class="mb-4">Basic Form</h6>
+                        						<div class="mb-3 form-check" style="position:center;  ">
 
-    {{ include('calendrier/_form.html.twig') }}
+    {{ form_start(form) }}
+        {{ form_widget(form) }}
+            <select name="Salle" id="salle">
+                {%  for p in salle.cours %}
+                <option value="{{p.nom}}">{{p.nom}}</option>
+                {% endfor %}
+            </select>
 
-    <a href="{{ path('app_calendrier_index') }}">back to list</a>
+    
+    {# <button class="btn">{{ button_label|default('Save') }}</button> #}
+    <button style="width: 90px;padding: 7px;" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+	{{ form_end(form) }}
+					</div>
+
+					</div>
+				</div>
+			</div>
+
+
+    <a href="{{ path('app_salle_index') }}"><i class="bi bi-arrow-left-circle-fill"></i>
+</a>
+
+    <a href="{{ path('app_calendrier_index') }}"><i class="bi bi-arrow-right-circle-fill"></i></a>
 {% endblock %}

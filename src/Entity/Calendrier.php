@@ -36,6 +36,13 @@ class Calendrier
     #[ORM\Column(length: 7)]
     private ?string $text_color = null;
 
+    #[ORM\ManyToOne]
+    #[ORM\JoinColumn(nullable: true)]
+    private ?Salle $salla = null;
+
+    #[ORM\Column(length: 255)]
+    private ?string $activite = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -122,6 +129,30 @@ class Calendrier
     public function setTextColor(string $text_color): self
     {
         $this->text_color = $text_color;
+
+        return $this;
+    }
+
+    public function getSalla(): ?Salle
+    {
+        return $this->salla;
+    }
+
+    public function setSalla(?Salle $salla): self
+    {
+        $this->salla = $salla;
+
+        return $this;
+    }
+
+    public function getActivite(): ?string
+    {
+        return $this->activite;
+    }
+
+    public function setActivite(string $activite): self
+    {
+        $this->activite = $activite;
 
         return $this;
     }

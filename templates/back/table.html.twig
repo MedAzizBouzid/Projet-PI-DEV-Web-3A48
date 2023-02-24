@@ -124,9 +124,9 @@ body.dark .btn-toggle {
 <div class="table-responsive"> 
 			 
           <div class="bg-secondary text-center rounded p-4">
-					{# <a href={{path('app_activite_new')}} <button style="width:25%;height:35%"
+					<a href={{path('app_activite_new')}} <button style="width:25%;height:35%"
 			 type="button"   class="btn btn-light m-2"> Ajouter une nouvelle Salle
-			  </button> </a>   #}
+			  </button> </a>  
 
 			  {# <button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter une salle</button> #}
 
@@ -255,7 +255,7 @@ body.dark .btn-toggle {
 					<th style ="color:#FF0000">Telephone</th>
 				    <th style ="color:#FF0000">Email</th>
 			  		<th style ="color:#FF0000">Superficie</th>
-			  		<th style ="color:#FF0000">Description</th>
+			  		{# <th style ="color:#FF0000">Description</th> #}
  			  		<th style ="color:#FF0000">Activité</th>
 
 					{# <th style ="color:#FF0000">Image</th> #}
@@ -277,7 +277,7 @@ body.dark .btn-toggle {
 				<td  >{{p.telephone}}</td>
 				<td  >{{p.email}}</td>
 				<td  >{{p.superficie}}</td>
-				<td  >{{p.description}}</td>
+				{# <td  >{{p.description}}</td> #}
 				<td>
 				{% for c in p.cours %}
 				<ul>
@@ -294,6 +294,10 @@ body.dark .btn-toggle {
 
 				<td><a href="{{path('app_salle_edit',{'id':p.id})}}"><span class="bi bi-cart-fill"></a></td>
 				<td><a href="{{path('app_salle_show',{'id':p.id})}}"><i class="bi bi-book"></i></a></td>
+				<td><a href="{{path('app_calendrier_new',{'id':p.id})}}">A</a></td>
+
+
+        
 
 			</tr>
 										

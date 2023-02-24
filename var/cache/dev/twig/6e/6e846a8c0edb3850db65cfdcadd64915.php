@@ -77,36 +77,40 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 \t ";
         // line 17
         echo "<!-- La pop-up -->
+   ";
+        // line 19
+        echo " \t 
  ";
-        // line 31
-        echo "   ";
         // line 32
+        echo "   ";
+        // line 33
         echo "       ";
-        // line 74
+        // line 75
         echo "
 \t\t\t\t\t";
-        // line 100
+        // line 101
         echo "  
                ";
-        // line 102
+        // line 103
         echo "
        ";
-        // line 107
-        echo "  ";
         // line 108
+        echo "  ";
+        // line 109
         echo "
 ";
-        // line 110
+        // line 111
         echo "
 \t <div style=\"position: center;background-color:black;\"id=\"calendrier\"></div>     
-     dd(\$calendar);
-
+     ";
+        // line 114
+        echo "
             
  
 
 
 ";
-        // line 119
+        // line 120
         echo "
 \t<script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js\" 
         integrity=\"sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=\" crossorigin=\"anonymous\"></script>
@@ -117,17 +121,31 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
             initialView: 'timeGridWeek',
             locale: 'fr',
              timeZone: 'Afrique/Tunisie',
+\t\t\t   weekends: true,
+  
+
+  defaultView: 'month',
+ \t\t\t    businessHours: {
+\t\t\t\tstart: '08:00',
+\t\t\t\tend: '18:00',
+\t\t\t\tdow: [1, 2, 3, 4, 5]
+\t\t\t\t},
             headerToolbar: {
                 start: 'prev,next today',
                 center: 'title',
                 end: 'dayGridMonth,timeGridWeek'
             },
+\t\t\t
             events:";
-        // line 134
-        echo (isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 134, $this->source); })());
+        // line 145
+        echo (isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 145, $this->source); })());
         echo ",
 \t\t\teditable:true,
-\t\t\teventResizableFromStart:true,
+/*\t\t\teventResizableFromStart:true,
+\t\t\teventDrop :function(event){
+\t\t\t\tconsole.log(event)
+\t\t\t}*/
+\t\t\t
 
     })
 
@@ -147,6 +165,9 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
                 \"backgroundColor\": e.event.background_color,
                 \"borderColor\": e.event.border_color,
                 \"textColor\": e.event.text_color,
+\t\t\t\t\"activite\": e.event.activite,
+
+ 
              }          
 \t\t\t            let xhr = new XMLHttpRequest 
 \t\t\t\t\t\t// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ 
@@ -158,7 +179,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
     }
 </script>
                      ";
-        // line 167
+        // line 185
         echo "
 
  
@@ -183,7 +204,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 
     public function getDebugInfo()
     {
-        return array (  162 => 167,  127 => 134,  110 => 119,  100 => 110,  97 => 108,  95 => 107,  92 => 102,  89 => 100,  86 => 74,  84 => 32,  82 => 31,  79 => 17,  68 => 7,  58 => 6,  35 => 1,);
+        return array (  183 => 185,  141 => 145,  114 => 120,  107 => 114,  103 => 111,  100 => 109,  98 => 108,  95 => 103,  92 => 101,  89 => 75,  87 => 33,  85 => 32,  82 => 19,  79 => 17,  68 => 7,  58 => 6,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -205,8 +226,9 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
     </style>
 \t {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
 <!-- La pop-up -->
- {# <button  style=\" width: 20%;\"id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle activité</button>
-
+   {# <button  style=\" width: 20%;\"id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle activité</button>  #}
+ \t 
+ {# 
 <div  class=\"modal fade\" id=\"exampleModal\" tabindex=\"1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
   <div   class=\"modal-dialog\">
     <div class=\"modal-content\">
@@ -299,7 +321,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 {# {{dump(data)}} #}
 
 \t <div style=\"position: center;background-color:black;\"id=\"calendrier\"></div>     
-     dd(\$calendar);
+     {# dd(\$calendar); #}
 
             
  
@@ -316,14 +338,28 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
             initialView: 'timeGridWeek',
             locale: 'fr',
              timeZone: 'Afrique/Tunisie',
+\t\t\t   weekends: true,
+  
+
+  defaultView: 'month',
+ \t\t\t    businessHours: {
+\t\t\t\tstart: '08:00',
+\t\t\t\tend: '18:00',
+\t\t\t\tdow: [1, 2, 3, 4, 5]
+\t\t\t\t},
             headerToolbar: {
                 start: 'prev,next today',
                 center: 'title',
                 end: 'dayGridMonth,timeGridWeek'
             },
+\t\t\t
             events:{{data|raw}},
 \t\t\teditable:true,
-\t\t\teventResizableFromStart:true,
+/*\t\t\teventResizableFromStart:true,
+\t\t\teventDrop :function(event){
+\t\t\t\tconsole.log(event)
+\t\t\t}*/
+\t\t\t
 
     })
 
@@ -343,6 +379,9 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
                 \"backgroundColor\": e.event.background_color,
                 \"borderColor\": e.event.border_color,
                 \"textColor\": e.event.text_color,
+\t\t\t\t\"activite\": e.event.activite,
+
+ 
              }          
 \t\t\t            let xhr = new XMLHttpRequest 
 \t\t\t\t\t\t// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ 

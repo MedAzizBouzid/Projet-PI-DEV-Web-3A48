@@ -3,6 +3,7 @@
 namespace App\Form;
 
 use App\Entity\Calendrier;
+use App\Entity\Salle;
 use Symfony\Component\Form\AbstractType;
 use Symfony\Component\Form\Extension\Core\Type\ColorType;
 use Symfony\Component\Form\FormBuilderInterface;
@@ -17,10 +18,10 @@ class CalendrierType extends AbstractType
             ->add('start')
             ->add('end')
             ->add('description')
-            // ->add('all_day')
             ->add('background_color',ColorType::class)
             ->add('border_color',ColorType::class)
             ->add('text_color',ColorType::class)
+           
         ;
     }
 

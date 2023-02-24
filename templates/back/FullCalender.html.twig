@@ -15,8 +15,9 @@
     </style>
 	 {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
 <!-- La pop-up -->
- {# <button  style=" width: 20%;"id="openBtn"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter une nouvelle activité</button>
-
+   {# <button  style=" width: 20%;"id="openBtn"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter une nouvelle activité</button>  #}
+ 	 
+ {# 
 <div  class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
   <div   class="modal-dialog">
     <div class="modal-content">
@@ -126,14 +127,28 @@
             initialView: 'timeGridWeek',
             locale: 'fr',
              timeZone: 'Afrique/Tunisie',
+			   weekends: true,
+  
+
+  defaultView: 'month',
+ 			    businessHours: {
+				start: '08:00',
+				end: '18:00',
+				dow: [1, 2, 3, 4, 5]
+				},
             headerToolbar: {
                 start: 'prev,next today',
                 center: 'title',
                 end: 'dayGridMonth,timeGridWeek'
             },
+			
             events:{{data|raw}},
 			editable:true,
-			eventResizableFromStart:true,
+/*			eventResizableFromStart:true,
+			eventDrop :function(event){
+				console.log(event)
+			}*/
+			
 
     })
 
@@ -153,6 +168,9 @@
                 "backgroundColor": e.event.background_color,
                 "borderColor": e.event.border_color,
                 "textColor": e.event.text_color,
+				"activite": e.event.activite,
+
+ 
              }          
 			            let xhr = new XMLHttpRequest 
 						// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ 

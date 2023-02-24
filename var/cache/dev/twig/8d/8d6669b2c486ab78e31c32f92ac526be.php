@@ -167,9 +167,13 @@ body.dark .btn-toggle {
         echo "<div class=\"table-responsive\"> 
 \t\t\t 
           <div class=\"bg-secondary text-center rounded p-4\">
-\t\t\t\t\t";
-        // line 130
-        echo "
+\t\t\t\t\t<a href=";
+        // line 127
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_new");
+        echo " <button style=\"width:25%;height:35%\"
+\t\t\t type=\"button\"   class=\"btn btn-light m-2\"> Ajouter une nouvelle Salle
+\t\t\t  </button> </a>  
+
 \t\t\t  ";
         // line 132
         echo "
@@ -382,8 +386,9 @@ body.dark .btn-toggle {
 \t\t\t\t\t<th style =\"color:#FF0000\">Telephone</th>
 \t\t\t\t    <th style =\"color:#FF0000\">Email</th>
 \t\t\t  \t\t<th style =\"color:#FF0000\">Superficie</th>
-\t\t\t  \t\t<th style =\"color:#FF0000\">Description</th>
- \t\t\t  \t\t<th style =\"color:#FF0000\">Activité</th>
+\t\t\t  \t\t";
+        // line 259
+        echo " \t\t\t  \t\t<th style =\"color:#FF0000\">Activité</th>
 
 \t\t\t\t\t";
         // line 262
@@ -428,11 +433,9 @@ body.dark .btn-toggle {
             // line 279
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "superficie", [], "any", false, false, false, 279), "html", null, true);
             echo "</td>
-\t\t\t\t<td  >";
-            // line 280
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "description", [], "any", false, false, false, 280), "html", null, true);
-            echo "</td>
-\t\t\t\t<td>
+\t\t\t\t";
+            // line 281
+            echo "\t\t\t\t<td>
 \t\t\t\t";
             // line 282
             $context['_parent'] = $context;
@@ -471,6 +474,13 @@ body.dark .btn-toggle {
             // line 296
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_show", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 296)]), "html", null, true);
             echo "\"><i class=\"bi bi-book\"></i></a></td>
+\t\t\t\t<td><a href=\"";
+            // line 297
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_calendrier_new", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 297)]), "html", null, true);
+            echo "\">A</a></td>
+
+
+        
 
 \t\t\t</tr>
 \t\t\t\t\t\t\t\t\t\t
@@ -480,7 +490,7 @@ body.dark .btn-toggle {
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 301
+        // line 305
         echo " 
 \t\t\t 
 
@@ -494,14 +504,14 @@ body.dark .btn-toggle {
 
 <!-- Table End -->
 ";
-        // line 341
+        // line 345
         echo "\t</div>
 
 </body>
 <script>
 
  \t\t\t";
-        // line 347
+        // line 351
         echo "let table = document.getElementById('myTable');
 let rowsPerPage = 5;
 let currentPage = 1;
@@ -588,7 +598,7 @@ btnToggle.addEventListener('click', () => {
 
     public function getDebugInfo()
     {
-        return array (  505 => 347,  498 => 341,  484 => 301,  472 => 296,  468 => 295,  463 => 293,  460 => 292,  456 => 289,  445 => 284,  442 => 283,  438 => 282,  433 => 280,  429 => 279,  425 => 278,  421 => 277,  417 => 276,  413 => 275,  408 => 274,  403 => 270,  399 => 269,  390 => 262,  369 => 242,  367 => 241,  354 => 226,  351 => 224,  344 => 218,  340 => 216,  334 => 213,  327 => 209,  323 => 208,  319 => 207,  312 => 203,  308 => 202,  304 => 201,  295 => 195,  291 => 194,  287 => 193,  279 => 188,  275 => 187,  271 => 186,  262 => 180,  258 => 179,  254 => 178,  244 => 171,  240 => 170,  236 => 169,  227 => 163,  223 => 162,  219 => 161,  211 => 156,  207 => 155,  203 => 154,  197 => 150,  194 => 149,  178 => 134,  175 => 132,  172 => 130,  167 => 124,  165 => 123,  161 => 99,  155 => 93,  153 => 89,  149 => 86,  97 => 35,  91 => 30,  78 => 16,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  515 => 351,  508 => 345,  494 => 305,  479 => 297,  475 => 296,  471 => 295,  466 => 293,  463 => 292,  459 => 289,  448 => 284,  445 => 283,  441 => 282,  438 => 281,  434 => 279,  430 => 278,  426 => 277,  422 => 276,  418 => 275,  413 => 274,  408 => 270,  404 => 269,  395 => 262,  391 => 259,  373 => 242,  371 => 241,  358 => 226,  355 => 224,  348 => 218,  344 => 216,  338 => 213,  331 => 209,  327 => 208,  323 => 207,  316 => 203,  312 => 202,  308 => 201,  299 => 195,  295 => 194,  291 => 193,  283 => 188,  279 => 187,  275 => 186,  266 => 180,  262 => 179,  258 => 178,  248 => 171,  244 => 170,  240 => 169,  231 => 163,  227 => 162,  223 => 161,  215 => 156,  211 => 155,  207 => 154,  201 => 150,  198 => 149,  182 => 134,  179 => 132,  172 => 127,  167 => 124,  165 => 123,  161 => 99,  155 => 93,  153 => 89,  149 => 86,  97 => 35,  91 => 30,  78 => 16,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -719,9 +729,9 @@ body.dark .btn-toggle {
 <div class=\"table-responsive\"> 
 \t\t\t 
           <div class=\"bg-secondary text-center rounded p-4\">
-\t\t\t\t\t{# <a href={{path('app_activite_new')}} <button style=\"width:25%;height:35%\"
+\t\t\t\t\t<a href={{path('app_activite_new')}} <button style=\"width:25%;height:35%\"
 \t\t\t type=\"button\"   class=\"btn btn-light m-2\"> Ajouter une nouvelle Salle
-\t\t\t  </button> </a>   #}
+\t\t\t  </button> </a>  
 
 \t\t\t  {# <button type=\"button\"   class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\"> Ajouter une salle</button> #}
 
@@ -850,7 +860,7 @@ body.dark .btn-toggle {
 \t\t\t\t\t<th style =\"color:#FF0000\">Telephone</th>
 \t\t\t\t    <th style =\"color:#FF0000\">Email</th>
 \t\t\t  \t\t<th style =\"color:#FF0000\">Superficie</th>
-\t\t\t  \t\t<th style =\"color:#FF0000\">Description</th>
+\t\t\t  \t\t{# <th style =\"color:#FF0000\">Description</th> #}
  \t\t\t  \t\t<th style =\"color:#FF0000\">Activité</th>
 
 \t\t\t\t\t{# <th style =\"color:#FF0000\">Image</th> #}
@@ -872,7 +882,7 @@ body.dark .btn-toggle {
 \t\t\t\t<td  >{{p.telephone}}</td>
 \t\t\t\t<td  >{{p.email}}</td>
 \t\t\t\t<td  >{{p.superficie}}</td>
-\t\t\t\t<td  >{{p.description}}</td>
+\t\t\t\t{# <td  >{{p.description}}</td> #}
 \t\t\t\t<td>
 \t\t\t\t{% for c in p.cours %}
 \t\t\t\t<ul>
@@ -889,6 +899,10 @@ body.dark .btn-toggle {
 
 \t\t\t\t<td><a href=\"{{path('app_salle_edit',{'id':p.id})}}\"><span class=\"bi bi-cart-fill\"></a></td>
 \t\t\t\t<td><a href=\"{{path('app_salle_show',{'id':p.id})}}\"><i class=\"bi bi-book\"></i></a></td>
+\t\t\t\t<td><a href=\"{{path('app_calendrier_new',{'id':p.id})}}\">A</a></td>
+
+
+        
 
 \t\t\t</tr>
 \t\t\t\t\t\t\t\t\t\t
