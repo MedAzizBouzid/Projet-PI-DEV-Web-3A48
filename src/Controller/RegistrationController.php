@@ -159,7 +159,7 @@ class RegistrationController extends AbstractController
         if($user && !$user->isVerified()){
             $user->setIsVerified(true);
             $em->flush($user);
-            // $this->sendSmsAction();
+            $this->sendSmsAction();
             $this->addFlash('success', 'Your email address has been verified.');
         }
        }
@@ -229,7 +229,7 @@ class RegistrationController extends AbstractController
                 );
                 $userRepository->save($user,true);
                 $forgetPwdRepository->remove($forgetPwd,true);
-                return $this->render('security/login.html.twig',[
+                return $this->render('front/index.html.twig',[
                     
                 ]);
             }else{
