@@ -161,6 +161,8 @@ class RegistrationController extends AbstractController
             $em->flush($user);
             // $this->sendSmsAction();
             $this->addFlash('success', 'Your email address has been verified.');
+            return $this->redirectToRoute('app_Front_index');
+
         }
        }
        $this->addFlash('danger','token invalid');
