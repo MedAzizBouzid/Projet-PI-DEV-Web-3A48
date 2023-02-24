@@ -159,7 +159,7 @@ class RegistrationController extends AbstractController
         if($user && !$user->isVerified()){
             $user->setIsVerified(true);
             $em->flush($user);
-            $this->sendSmsAction();
+            // $this->sendSmsAction();
             $this->addFlash('success', 'Your email address has been verified.');
         }
        }

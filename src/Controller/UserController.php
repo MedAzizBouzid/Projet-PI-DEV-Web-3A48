@@ -30,17 +30,23 @@ class UserController extends AbstractController
         $users = $paginator->paginate(
             $users, /* query NOT result */
             $request->query->getInt('page', 1), /*page number*/
-            2/*limit per page*/
+            3/*limit per page*/
         );
         return $this->render('back/tableAdmin.html.twig', [
             'users' => $users,
         ]);
     }
     #[Route('/client', name: 'app_user_client', methods: ['GET'])]
-    public function client(UserRepository $userRepository): Response
+    public function client(UserRepository $userRepository, PaginatorInterface $paginator,Request $request): Response
     {
+        $users=$userRepository->findAllUser('[]');
+        $users = $paginator->paginate(
+            $users, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            12/*limit per page*/
+        );
         return $this->render('back/tableClient.html.twig', [
-            'users' => $userRepository->findAllUser('[]'),
+            'users' => $users,
         ]);
     }
     #[Route('/coach', name: 'app_user_coach', methods: ['GET'])]
@@ -326,11 +332,18 @@ class UserController extends AbstractController
     public function bannA(Request $request, User $user, UserRepository $userRepository): Response
     {
     
-            
             $user->setEtat(1);
             $userRepository->save($user, true);
+        if($user->getRoles()[0]=="ROLE_ADMIN"){
 
-        return $this->redirectToRoute('app_user_admin', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_user_admin', [], Response::HTTP_SEE_OTHER);
+        }else if($user->getRoles()[0]=="ROLE_USER"){
+
+            return $this->redirectToRoute('app_user_client', [], Response::HTTP_SEE_OTHER);
+        }else{
+            return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
+
+        }
     }
     #[Route('/{id}/anbann', name: 'app_user_anbannA', methods: [ 'POST'])]
     public function anbannA(Request $request, User $user, UserRepository $userRepository): Response
@@ -339,31 +352,61 @@ class UserController extends AbstractController
             
             $user->setEtat(0);
             $userRepository->save($user, true);
+            if($user->getRoles()[0]=="ROLE_ADMIN"){
 
-        return $this->redirectToRoute('app_user_admin', [], Response::HTTP_SEE_OTHER);
+                return $this->redirectToRoute('app_user_admin', [], Response::HTTP_SEE_OTHER);
+            }else if($user->getRoles()[0]=="ROLE_USER"){
+    
+                return $this->redirectToRoute('app_user_client', [], Response::HTTP_SEE_OTHER);
+            }else{
+                return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
+    
+            }
     }
     /***************************Bann Coach************************* */
 
-    #[Route('/{id}/bannC', name: 'app_user_bannC', methods: [ 'POST'])]
-    public function bannC(Request $request, User $user, UserRepository $userRepository): Response
-    {
+    // #[Route('/{id}/bannC', name: 'app_user_bannC', methods: [ 'POST'])]
+    // public function bannC(Request $request, User $user, UserRepository $userRepository): Response
+    // {
     
             
-            $user->setEtat(1);
-            $userRepository->save($user, true);
+    //         $user->setEtat(1);
+    //         $userRepository->save($user, true);
 
-        return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
-    }
-    #[Route('/{id}/anbannC', name: 'app_user_anbannC', methods: [ 'POST'])]
-    public function anbannC(Request $request, User $user, UserRepository $userRepository): Response
-    {
+    //     return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
+    // }
+    // #[Route('/{id}/anbannC', name: 'app_user_anbannC', methods: [ 'POST'])]
+    // public function anbannC(Request $request, User $user, UserRepository $userRepository): Response
+    // {
     
             
-            $user->setEtat(0);
-            $userRepository->save($user, true);
+    //         $user->setEtat(0);
+    //         $userRepository->save($user, true);
 
-        return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
-    }
+    //     return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
+    // }
+    /***************************Bann user************************* */
+
+    // #[Route('/{id}/bannU', name: 'app_user_bannU', methods: [ 'POST'])]
+    // public function bannU(Request $request, User $user, UserRepository $userRepository): Response
+    // {
+    
+            
+    //         $user->setEtat(1);
+    //         $userRepository->save($user, true);
+
+    //     return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
+    // }
+    // #[Route('/{id}/anbannU', name: 'app_user_anbannU', methods: [ 'POST'])]
+    // public function anbannU(Request $request, User $user, UserRepository $userRepository): Response
+    // {
+    
+            
+    //         $user->setEtat(0);
+    //         $userRepository->save($user, true);
+
+    //     return $this->redirectToRoute('app_user_coach', [], Response::HTTP_SEE_OTHER);
+    // }
     /***************************PDF************************* */
     #[Route('/coachPdf/{id}', name: 'app_user_coachPdf', methods: ['GET'])]
     public function coachpDF(User $user ,UserRepository $userRepository): Response

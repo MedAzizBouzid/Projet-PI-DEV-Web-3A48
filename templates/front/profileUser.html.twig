@@ -32,7 +32,14 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="cd-trainer-pic">
-                                        <img src="{{asset('uploads/'~ user.image )}}" alt="" >
+                                        {% if "download" in user.image %}
+
+                                          <img src="{{asset('uploads/'~ user.image )}}" alt="" >
+                                          {% else %}
+                                          <img src="{{user.image }}" alt="" >
+                                          {% endif %}
+
+
                                     </div>
                                 </div>
                                 <div class="col-md-6">
@@ -60,7 +67,7 @@
                                         {# <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                                             tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
                                             vel facilisis. </p> #}
-                                            <a href="{{ path('app_profileEdit', {'id': app.user.id}) }}" class="primary-btn btn-normal appoinment-btn">Edit</i></a>
+                                            <a href="{{ path('app_profileEdit', {'id': user.id}) }}" class="primary-btn btn-normal appoinment-btn">Edit</i></a>
                                     </div>
                                     
                                 </div>
