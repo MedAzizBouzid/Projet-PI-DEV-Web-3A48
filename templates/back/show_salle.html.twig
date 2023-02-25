@@ -1,0 +1,100 @@
+{% extends 'back/base.html.twig' %}
+{% block body %}
+   <style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			max-width: 800px;
+			margin: 0 auto;
+			background-color: white;
+		}
+		
+		th, td {
+			padding: 10px;
+			text-align: left;
+			border: 1px solid #white;
+		}
+		
+		tr:hover {
+			background-color: #000;
+			color: #fff;
+		}
+	</style>  
+ 
+	<section class="class-details-section spad">
+		<div class="container">
+			<div class="cd-text">
+				<div class="cd-single-item">
+					<h3 style="color:red;">{{salle.nom}}</h3>
+					<p style="color:smoke-white;">{{salle.description}}</p>
+				</div>
+				<div class="cd-single-item">
+					<h3>{{salle.lieu}}</h3>
+
+				</div>
+			</div>
+			<div class="row">
+
+
+				<div class="col-lg-8">
+					<div class="class-details-text">
+						<div
+							class="cd-pic">{# <img src="{{ asset('uploads/'~ salle.image)}}" alt=""> #}
+						</div>
+
+
+						<div class="cd-trainer" style="background-color: white-smoke">
+							<div class="row">
+								<div class="col-md-6">
+                                
+									<div class="cd-trainer-pic">
+										<img   style=" width:330px;height:250px"  src="{{ asset('uploads/'~ salle.image)}}" alt="">
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="cd-trainer-text">
+										<div class="trainer-title">
+											<h4>Notre salle</h4>
+
+											<h4 style="color:red;">{{salle.nom | upper }}</h4>
+										</div>
+										<div class="trainer-social">
+											<a href="#">
+												<i class="fa fa-facebook"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-twitter"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-youtube-play"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-instagram"></i>
+											</a>
+											<a href="#">
+												<i class="fa  fa-envelope-o"></i>
+											</a>
+										</div>
+										<p>{{salle.description | upper}}</p>
+										<ul class="trainer-info">
+											<li>
+												<span style="color:red;">Superficie</span>
+												{{salle.superficie | upper}}</li>
+											<li>
+												<span style="color:red;">Lieu</span>
+												{{salle.lieu}}</li>
+											<li>
+												<span style="color:red;">Telephone</span>
+												{{salle.telephone}}</li>
+											<li>
+												<span style="color:red;">Email</span>
+												{{salle.email}}</li>
+										</ul>
+
+
+
+
+                                  
+			</section>
+		{% endblock %}
+		 

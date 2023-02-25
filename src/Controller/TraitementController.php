@@ -2,9 +2,11 @@
 
 namespace App\Controller;
 
+use App\Entity\Salle;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\UserRepository;
+use Doctrine\ORM\EntityManagerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -49,6 +51,14 @@ class TraitementController extends AbstractController
     {
         return $this->render('front/index.html.twig', [
             
+        ]);
+    }
+    #[Route('/team', name: 'app_team')]
+    public function team(UserRepository $userRepository): Response
+    {
+        return $this->render('front/team.html.twig', [
+            'users' => $userRepository->findAllUser('["ROLE_COACH"]'),
+
         ]);
     }
     #[Route('/404', name: 'app_err')]
@@ -115,5 +125,23 @@ class TraitementController extends AbstractController
 
         return $this->redirectToRoute('app_login', [], Response::HTTP_SEE_OTHER);
     }
-    
+    /************************act************************************** */
+    #[Route('/Show_salle_front', name: 'Show_salle_front')]
+    public function Show_salle_front(EntityManagerInterface $am): Response
+    {
+       
+        $repo=$am->getRepository(Salle::class);
+        $salle=$repo->findAll();
+        
+        return $this->render('front/mesSalles.html.twig', [
+            'salle' => $salle,
+        ]);
+    }
+    #[Route('/showactiviteinfront', name: 'show_activite_infront')]
+    public function showSalleinfront(): Response
+    {
+        return $this->render('front/team.html.twig', [
+            'controller_name' => 'TraitementController',
+        ]);
+    }
 }

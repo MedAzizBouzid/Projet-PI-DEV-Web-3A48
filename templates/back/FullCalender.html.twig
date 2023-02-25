@@ -1,0 +1,191 @@
+{% extends 'back/base.html.twig' %}
+
+
+ 
+	
+{% block body %}
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+
+     <style>
+        #calendrier{
+            margin: auto;
+            width: 63%;
+			height: 60%;
+        }
+    </style>
+	 {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
+<!-- La pop-up -->
+   {# <button  style=" width: 20%;"id="openBtn"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter une nouvelle activité</button>  #}
+ 	 
+ {# 
+<div  class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div   class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header" style="background-color:red;border: 2px solid black;">
+        <h5 class="modal-title" id="exampleModalLabel" >________________Ajouter un plannig____________</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="background-color:white;" >
+ 
+    				
+					<div  class="form-group"   position: center;">  #}
+   {# --------------------------------------FORM START-------------------------------------- #}
+       {# {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+
+ 					
+                    <div>
+						{{form_label(form.title)}}
+						{{form_widget(form.title, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.title)}}
+
+					</div>
+
+					<div  >
+						{{form_label(form.start)}}
+						{{form_widget(form.start, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.start)}}
+
+					</div>
+
+
+					<div >
+
+						{{form_label(form.end)}}
+						{{form_widget(form.end, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.end) }}
+
+					</div>
+
+
+					<div>
+
+						{{form_label(form.description)}}
+						{{form_widget(form.description, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.description) }}
+
+					</div>
+{#  
+					<div >
+ 
+						{{form_label(form.all_day)}}
+						{{form_widget(form.all_day, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.all_day) }}
+
+					</div> #}
+
+					{# <div  >
+						{{form_label(form.background_color)}}
+						{{form_widget(form.background_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.background_color) }}
+
+					</div>
+
+					<div  >
+						{{form_label(form.border_color)}}
+						{{form_widget(form.border_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.border_color)}}
+
+					</div>
+					<div  >
+						{{form_label(form.text_color)}}
+						{{form_widget(form.text_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.text_color)}}
+
+					</div>
+		 <button   class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+
+		    </div>
+			
+
+
+						{{ form_end(form) }}   #}  
+               {# --------------------------------------FORM END-------------------------------------- #}
+
+       {# </div>
+    </div>
+  </div>   
+</div>   #}
+  {# <!-- Modal-----------------------------------FIN DU POP UP--------- ----------   #}
+
+{# {{dump(data)}} #}
+
+	 <div style="position: center;background-color:black;"id="calendrier"></div>     
+     {# dd($calendar); #}
+
+            
+ 
+
+
+{# ________________________________________________________Debut__Partie JS___________________________________________________________________ #}
+
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" 
+        integrity="sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=" crossorigin="anonymous"></script>
+<script>
+    window.onload = () => {
+        let calendarElt = document.querySelector("#calendrier")
+        let calendar = new FullCalendar.Calendar(calendarElt, {
+            initialView: 'timeGridWeek',
+            locale: 'fr',
+            timeZone: 'Afrique/Tunisie',
+		    weekends: true,
+  
+
+  defaultView: 'month',
+ 			    businessHours: {
+				start: '08:00',
+				end: '18:00',
+				dow: [1, 2, 3, 4, 5]
+				},
+            headerToolbar: {
+                start: 'prev,next today',
+                center: 'title',
+                end: 'dayGridMonth,timeGridWeek'
+            },
+			
+            events:{{data|raw}},
+			editable:true,
+/*			eventResizableFromStart:true,
+			eventDrop :function(event){
+				console.log(event)
+			}*/
+			
+
+    })
+
+			calendar.on('eventChange',(e) => {
+			//afficher 
+				//console.log(e) 
+				// pour assurer l'injection des données => 
+				//Créer une variable URL qui contient la route de l'injection des données
+				 
+				 let url = `/api/${e.event.id}/edit`
+           //Créer un tableau JSon pour stocker nos données de la table plannig 
+		    let donnees = {
+                "title": e.event.title,
+                "description": e.event.description,
+                "start": e.event.start,
+                "end": e.event.end,
+                "backgroundColor": e.event.background_color,
+                "borderColor": e.event.border_color,
+                "textColor": e.event.text_color,
+				"activite": e.event.activite,
+
+ 
+             }          
+			            let xhr = new XMLHttpRequest 
+						// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ 
+ 						 xhr.open("PUT", url)
+           				 xhr.send(JSON.stringify(donnees))
+			})		
+
+                calendar.render()
+    }
+</script>
+                     {# __________________________Fin__Partie JS________________________________________________ #}
+
+
+ 
+{% endblock %}
+
+
+ 
