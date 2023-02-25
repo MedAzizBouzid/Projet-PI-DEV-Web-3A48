@@ -16,7 +16,7 @@ class TypeEventController extends AbstractController
     #[Route('/', name: 'app_type_event_index', methods: ['GET'])]
     public function index(TypeEventRepository $typeEventRepository): Response
     {
-        return $this->render('type_event/index.html.twig', [
+        return $this->render('back/type_event/index.html.twig', [
             'type_events' => $typeEventRepository->findAll(),
         ]);
     }
@@ -34,7 +34,7 @@ class TypeEventController extends AbstractController
             return $this->redirectToRoute('app_type_event_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('type_event/new.html.twig', [
+        return $this->renderForm('back/type_event/new.html.twig', [
             'type_event' => $typeEvent,
             'form' => $form,
         ]);
@@ -43,7 +43,7 @@ class TypeEventController extends AbstractController
     #[Route('/{id}', name: 'app_type_event_show', methods: ['GET'])]
     public function show(TypeEvent $typeEvent): Response
     {
-        return $this->render('type_event/show.html.twig', [
+        return $this->render('back/type_event/show.html.twig', [
             'type_event' => $typeEvent,
         ]);
     }
@@ -60,7 +60,7 @@ class TypeEventController extends AbstractController
             return $this->redirectToRoute('app_type_event_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('type_event/edit.html.twig', [
+        return $this->renderForm('back/type_event/edit.html.twig', [
             'type_event' => $typeEvent,
             'form' => $form,
         ]);

@@ -27,7 +27,7 @@ class SponsorController extends AbstractController
     #[Route('/', name: 'app_sponsor_index', methods: ['GET'])]
     public function index(SponsorRepository $sponsorRepository): Response
     {
-        return $this->render('sponsor/index.html.twig', [
+        return $this->render('back/sponsor/index.html.twig', [
             'sponsors' => $sponsorRepository->findAll(),
         ]);
     }
@@ -36,7 +36,7 @@ class SponsorController extends AbstractController
     public function index_sponsor_event(SponsorRepository $sponsorRepository,$id): Response
     {
         $sponsors=$sponsorRepository->findSponsorsByEvent($id);
-        return $this->render('sponsor/index.html.twig', [
+        return $this->render('back/sponsor/index.html.twig', [
             'sponsors' => $sponsors,
         ]);
     }
@@ -110,7 +110,7 @@ class SponsorController extends AbstractController
             return $this->redirectToRoute('app_sponsor_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('sponsor/new.html.twig', [
+        return $this->renderForm('back/sponsor/new.html.twig', [
             'sponsor' => $sponsor,
             'form' => $form,
         ]);
@@ -119,7 +119,7 @@ class SponsorController extends AbstractController
     #[Route('/{id}', name: 'app_sponsor_show', methods: ['GET'])]
     public function show(Sponsor $sponsor): Response
     {
-        return $this->render('sponsor/show.html.twig', [
+        return $this->render('back/sponsor/show.html.twig', [
             'sponsor' => $sponsor,
         ]);
     }
@@ -136,7 +136,7 @@ class SponsorController extends AbstractController
             return $this->redirectToRoute('app_sponsor_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('sponsor/edit.html.twig', [
+        return $this->renderForm('back/sponsor/edit.html.twig', [
             'sponsor' => $sponsor,
             'form' => $form,
         ]);

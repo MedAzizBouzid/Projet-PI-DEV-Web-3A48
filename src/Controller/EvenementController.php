@@ -17,7 +17,7 @@ class EvenementController extends AbstractController
     #[Route('/', name: 'app_evenement_index', methods: ['GET'])]
     public function index(EvenementRepository $evenementRepository): Response
     {
-        return $this->render('evenement/index.html.twig', [
+        return $this->render('back/evenement/index.html.twig', [
             'evenements' => $evenementRepository->findAll(),
         ]);
     }
@@ -53,7 +53,7 @@ class EvenementController extends AbstractController
             return $this->redirectToRoute('app_evenement_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('evenement/new.html.twig', [
+        return $this->renderForm('back/evenement/new.html.twig', [
             'evenement' => $evenement,
             'form' => $form,
         ]);
@@ -62,7 +62,7 @@ class EvenementController extends AbstractController
     #[Route('/{id}', name: 'app_evenement_show', methods: ['GET'])]
     public function show(Evenement $evenement): Response
     {
-        return $this->render('evenement/show.html.twig', [
+        return $this->render('back/evenement/show.html.twig', [
             'evenement' => $evenement,
         ]);
     }
@@ -79,7 +79,7 @@ class EvenementController extends AbstractController
             return $this->redirectToRoute('app_evenement_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('evenement/edit.html.twig', [
+        return $this->renderForm('back/evenement/edit.html.twig', [
             'evenement' => $evenement,
             'form' => $form,
         ]);

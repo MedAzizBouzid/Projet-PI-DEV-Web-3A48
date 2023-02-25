@@ -1,11 +1,11 @@
-{% extends 'front/baseF.html.twig' %}
+{% extends 'back/base.html.twig' %}
 
 {# {% block title %}Commentaire index{% endblock %} #}
 
 {% block body %}
 
   <!-- Breadcrumb Section Begin -->
-  <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+  {# <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
     <div class="container">
         <div class="row">
             <div class="col-lg-12 text-center">
@@ -19,10 +19,18 @@
             </div>
         </div>
     </div>
-</section>
+</section> #}
 <!-- Breadcrumb Section End -->
-    {# <h1>Commentaire index</h1>
+    <h1>Commentaire index</h1>
 
+
+        <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+          <div class="container-fluid pt-4 px-4" style="bottom:0;">
+        
+            {# <div class="card-body"> #}
+                  {# <a href="{{ path('app_commentaire_new') }}">Create new</a> #}
+
+              <div class="table-responsive">
     <table class="table">
         <thead>
             <tr>
@@ -37,9 +45,11 @@
                 <td>{{ commentaire.id }}</td>
                 <td>{{ commentaire.description }}</td>
                 <td>
-                    <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}">show</a>
-                    <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">edit</a>
-                </td>
+                    {# <a href="{{ path('app_commentaire_show', {'id': commentaire.id}) }}">show</a> #}
+                    {# <a href="{{ path('app_commentaire_edit', {'id': commentaire.id}) }}">edit</a> #}
+    {{ include('commentaire/_delete_form.html.twig') }}
+
+                  </td>
             </tr>
         {% else %}
             <tr>
@@ -48,10 +58,11 @@
         {% endfor %}
         </tbody>
     </table>
+</div>
+</div>
+</div>
 
-    <a href="{{ path('app_commentaire_new') }}">Create new</a>
-#}
-<section class="pricing-section service-pricing spad">
+{# <section class="pricing-section service-pricing spad">
     <div class="container">
         <div class="col-lg-12">
             <div class="section-title">
@@ -219,5 +230,5 @@
         </div>
       </div> 
     </div>
-</section>
+</section> #}
 {% endblock %}

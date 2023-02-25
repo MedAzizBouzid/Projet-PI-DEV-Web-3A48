@@ -25,7 +25,7 @@ class PassController extends AbstractController
     #[Route('/', name: 'app_pass_index', methods: ['GET'])]
     public function index(PassRepository $passRepository): Response
     {
-        return $this->render('pass/index.html.twig', [
+        return $this->render('back/pass/index.html.twig', [
             'passes' => $passRepository->findAll(),
         ]);
     }
@@ -33,7 +33,7 @@ class PassController extends AbstractController
     #[Route('/event/{id}', name: 'app_pass_event', methods: ['GET'])]
     public function index_pass_event(PassRepository $passRepository,$id): Response
     {
-        return $this->render('pass/index.html.twig', [
+        return $this->render('back/pass/index.html.twig', [
             'passes' => $passRepository->findPassByIdEvent($id),
         ]);
     }
@@ -170,7 +170,7 @@ class PassController extends AbstractController
     #[Route('/{id}', name: 'app_pass_show', methods: ['GET'])]
     public function show(Pass $pass): Response
     {
-        return $this->render('pass/show.html.twig', [
+        return $this->render('back/pass/show.html.twig', [
             'pass' => $pass,
         ]);
     }

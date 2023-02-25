@@ -16,7 +16,7 @@ class TypeContratController extends AbstractController
     #[Route('/', name: 'app_type_contrat_index', methods: ['GET'])]
     public function index(TypeContratRepository $typeContratRepository): Response
     {
-        return $this->render('type_contrat/index.html.twig', [
+        return $this->render('back/type_contrat/index.html.twig', [
             'type_contrats' => $typeContratRepository->findAll(),
         ]);
     }
@@ -34,7 +34,7 @@ class TypeContratController extends AbstractController
             return $this->redirectToRoute('app_type_contrat_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('type_contrat/new.html.twig', [
+        return $this->renderForm('back/type_contrat/new.html.twig', [
             'type_contrat' => $typeContrat,
             'form' => $form,
         ]);
@@ -43,7 +43,7 @@ class TypeContratController extends AbstractController
     #[Route('/{id}', name: 'app_type_contrat_show', methods: ['GET'])]
     public function show(TypeContrat $typeContrat): Response
     {
-        return $this->render('type_contrat/show.html.twig', [
+        return $this->render('back/type_contrat/show.html.twig', [
             'type_contrat' => $typeContrat,
         ]);
     }
@@ -60,7 +60,7 @@ class TypeContratController extends AbstractController
             return $this->redirectToRoute('app_type_contrat_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('type_contrat/edit.html.twig', [
+        return $this->renderForm('back/type_contrat/edit.html.twig', [
             'type_contrat' => $typeContrat,
             'form' => $form,
         ]);

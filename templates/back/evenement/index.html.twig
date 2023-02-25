@@ -317,11 +317,12 @@
                             <a href="{{ path('app_evenement_show', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-info-circle"></i></button></a> &nbsp;
                             <a href="{{ path('app_evenement_edit', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-pen"></i></button></a> &nbsp;
                             <a href="{{ path('app_pass_event', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-arrow-up-square"></i></button></a> &nbsp;
+                            <a href="{{ path('app_commentaire_event', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-chat"></i></button></a> &nbsp;
                             <a href="{{ path('app_sponsor_event', {'id': evenement.id}) }}"><button class="btn btn-danger">sponsors</button></a> &nbsp;
                             
                             
                             {# <a href="{{ path('app_evenement_delete', {'id': evenement.id}) }}">delete</a> #}
-                            {{ include('evenement/_delete_form.html.twig') }}</p>
+                            {{ include('back/evenement/_delete_form.html.twig') }}</p>
 
                     </div>
                     
@@ -373,7 +374,7 @@
                                                         <a href="{{ path('app_evenement_show', {'id': evenement.id}) }}">show</a> &nbsp;
                                                         <a href="{{ path('app_evenement_edit', {'id': evenement.id}) }}">edit</a> &nbsp;
                                                         {# <a href="{{ path('app_evenement_delete', {'id': evenement.id}) }}">delete</a> #}
-                                                        {{ include('evenement/_delete_form.html.twig') }}
+                                                        {{ include('back/evenement/_delete_form.html.twig') }}
                                                     </td>
                                                 </tr>
                                         {% else %}

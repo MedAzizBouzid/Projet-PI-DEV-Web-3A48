@@ -89,7 +89,7 @@
                           {# <p class="small text-muted mb-0">Upvote?</p> #}
 
                           {% if cmt.client is not null and cmt.client.id == id_client %}
-                          <a href=""><button class="btn btn-danger">delete</button></a> &nbsp;
+                          <a href="{{ path('app_commentaire_delete_front', {'id': cmt.id,'id_event':event.id}) }}"><button class="btn btn-danger">delete</button></a> &nbsp;
                           <a href=""><button class="btn btn-danger">modify</button></a>
                           {% else %}
                             
@@ -246,7 +246,7 @@
                 <div class="col-lg-12">
                     <div class="section-title">
                         <span>Testimonial</span>
-                        <h2>Our cilent say</h2>
+                        <h2>Our sponsors</h2>
                     </div>
                 </div>
             </div>
