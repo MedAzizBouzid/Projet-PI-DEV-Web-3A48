@@ -43,9 +43,15 @@ class SponsorController extends AbstractController
 
 
     //afficher les details d'un event + ses sponsors + ses commentaires avec la possibilite d'ajout d'un commentaire a cet event
-    #[Route('/front/{id}/{id_client}', name: 'app_sponsor_index_front', methods: ['GET', 'POST'])]
-    public function indexF(SponsorRepository $sponsorRepository,$id,EvenementRepository $eventrepo, Request $request,$id_client, CommentaireRepository $commentaireRepository,UserRepository $userRepo): Response
+    #[Route('/front/{id}', name: 'app_sponsor_index_front', methods: ['GET', 'POST'])]
+    public function indexF(SponsorRepository $sponsorRepository,$id,EvenementRepository $eventrepo, Request $request, CommentaireRepository $commentaireRepository,UserRepository $userRepo): Response
     {
+        //session_start()
+        $session=$request->getSession();
+        $session->set('id_client',1);
+        $id_client=$session->get('id_client');
+
+
         // $pass = new Pass();
         // $form = $this->createForm(PassType::class, $pass);
         // $form->handleRequest($request);
@@ -65,7 +71,9 @@ class SponsorController extends AbstractController
             $commentaire->setClient($client);
             $commentaireRepository->save($commentaire, true);
 
-            return $this->redirectToRoute('app_sponsor_index_front', [], Response::HTTP_SEE_OTHER);
+            return $this->redirectToRoute('app_sponsor_index_front', [
+                'id'=>$id
+            ], Response::HTTP_SEE_OTHER);
         }
         
         // if ($form->isSubmitted() && $form->isValid()) {
@@ -76,7 +84,6 @@ class SponsorController extends AbstractController
         // $pass->setCreatedAt($currentDate);
         //     $pass->setEvent($event);
         //     $passRepository->save($pass, true);
-
         //     return $this->redirectToRoute('app_pass_index', [], Response::HTTP_SEE_OTHER);
         // }  
 
@@ -85,8 +92,9 @@ class SponsorController extends AbstractController
             'event'=>$event,
             'commentaires' => $commentaireRepository->findAll(),
             'form'=>$form,
+            'id_client'=>$id_client,
         ]);
-         
+
     }
   
     #[Route('/new', name: 'app_sponsor_new', methods: ['GET', 'POST'])]

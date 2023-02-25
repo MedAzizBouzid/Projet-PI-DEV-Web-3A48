@@ -46,9 +46,16 @@
                         <div class="pi-price">
                             <h2>{{ pass.client.nom }}</h2>
                             <span>created At: {{ pass.createdAt ? pass.createdAt|date('Y-m-d H:i:s') : '' }}</span>
+                            {% if pass.event is not null %}
                             <span>event name: {{ pass.event.nom }}</span>
+                                
+                            {% else %}
+                            <span>cet event a ete supprime</span>
+                                
+                            {% endif %}
 
                         </div>
+                        {% if pass.event is not null %}
                         <ul>
                             <li>event begin at: {{ pass.event.beginAt ? pass.event.beginAt|date('Y-m-d H:i:s') : '' }}</li>
                             <li>event finish at: {{ pass.event.finishAt ? pass.event.finishAt|date('Y-m-d H:i:s') : '' }}</li>
@@ -56,6 +63,11 @@
 
 
                         </ul>
+                            
+                        {% else %}
+                        <span>cet event a ete supprime</span>                           
+                        {% endif %}
+                        
                         
                         
                        

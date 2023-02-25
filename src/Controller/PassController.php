@@ -40,11 +40,16 @@ class PassController extends AbstractController
 
 
     //afficher les pass d'un client en front
-    #[Route('/mesPass/{id}', name: 'app_pass_index_mesPass', methods: ['GET'])]
-    public function mesPass(PassRepository $passRepository,$id): Response
+    #[Route('/mesPass', name: 'app_pass_index_mesPass', methods: ['GET'])]
+    public function mesPass(PassRepository $passRepository,Request $request): Response
     {
+        //session_start()
+        $session=$request->getSession();
+        $session->set('id_client',1);
+        $id_client=$session->get('id_client');
+
         return $this->render('front/mes-Pass.html.twig', [
-            'passes' => $passRepository->findPassByIdClient($id),
+            'passes' => $passRepository->findPassByIdClient($id_client),
         ]);
     }
 
@@ -71,9 +76,14 @@ class PassController extends AbstractController
     }
 
 //confirmer reservation== ajout d'un pass a partir du front
-    #[Route('/new_front/{id_event}/{id_client}/{date}', name: 'app_pass_new_front', methods: ['GET', 'POST'])]
-    public function newF(PassRepository $passRepository,$id_event,$id_client, EvenementRepository $eventRepo, UserRepository $userRepo,$date): Response
-    {
+    #[Route('/new_front/{id_event}/{date}', name: 'app_pass_new_front', methods: ['GET', 'POST'])]
+    public function newF(PassRepository $passRepository,$id_event,Request $request, EvenementRepository $eventRepo, UserRepository $userRepo,$date): Response
+    {   
+         //session_start()
+         $session=$request->getSession();
+         $session->set('id_client',1);
+         $id_client=$session->get('id_client');
+
 
         $event=new Evenement();
         $event=$eventRepo->find($id_event);

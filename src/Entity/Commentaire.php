@@ -18,9 +18,11 @@ class Commentaire
     private ?string $description = null;
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?User $client = null;
 
     #[ORM\ManyToOne(inversedBy: 'commentaires')]
+    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Evenement $event = null;
 
     public function getId(): ?int

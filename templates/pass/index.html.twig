@@ -25,7 +25,14 @@
                 <td>{{ pass.id }}</td>
                 <td>{{ pass.createdAt ? pass.createdAt|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ pass.client.email }}</td>
-                <td>{{ pass.event.nom }}</td>
+                <td>
+                {% if  pass.event is not null  %}
+                {{ pass.event.nom }}
+            {% else %}
+                pas d'event affecte a ce sponsor
+            {% endif %}
+        </td>
+                
                 <td>
                     <a href="{{ path('app_pass_show', {'id': pass.id}) }}">show</a>
                     {# <a href="{{ path('app_pass_edit', {'id': pass.id}) }}">edit</a> #}
