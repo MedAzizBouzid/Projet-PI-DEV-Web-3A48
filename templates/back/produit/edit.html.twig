@@ -1,0 +1,68 @@
+{% extends 'back/base.html.twig' %}
+            {% block body %}
+                       <!-- Form Start -->
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                        <div class="bg-secondary rounded h-100 p-4">
+                            <h6 class="mb-4">Modification Produit</h6>
+                           {{ form_start(form,{ attr: {novalidate :'novalidate'}}) }}
+
+                                <div class="mb-3">
+                                    <label  class="form-label">  
+                                     {{ form_label(form.nom,'Nom du Produit') }}
+                                     </label><br>
+                                     {{ form_widget(form.nom) }}
+                                   
+                                 </div>
+                                
+                                
+                                
+                                <div class="mb-3">
+                                     <label  class="form-label">  
+                                     {{ form_label(form.prix,'Prix') }}
+                                     </label><br>
+                                     {{ form_widget(form.prix) }}
+                                </div>
+                                <div class="mb-3">
+                                     <label  class="form-label">  
+                                     {{ form_label(form.stock,'Stock') }}
+                                     </label><br>
+                                     {{ form_widget(form.stock) }}
+                                </div>
+                                   <div class="mb-3">
+                                     <label  class="form-label">  
+                                     {{ form_label(form.categorie,'Catégorie:') }}
+                                     </label><br>
+                                     {{ form_widget(form.categorie) }}
+                                </div>
+                                <div class="mb-3">
+                                     <label  class="form-label">  
+                                     {{ form_label(form.photo,'Image:') }}
+                                     </label><br>
+                                     {{ form_widget(form.photo) }}
+                                </div>
+                                 <div class="mb-3">
+                                {{ form_widget(form.save, { 'label': 'Modifier','attr': {'class': 'btn-danger'} }) }} 
+                                 </div>
+                               
+                            {{ form_end(form) }}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- Form End -->
+            </div>
+            <!-- Blank End -->
+
+
+       
+        </div>
+        <!-- Content End -->
+
+
+        <!-- Back to Top -->
+        <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+    </div>
+        
+     {% endblock %}

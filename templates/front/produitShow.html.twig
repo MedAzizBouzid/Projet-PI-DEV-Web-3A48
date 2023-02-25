@@ -1,0 +1,119 @@
+{% extends 'front/baseF.html.twig' %}
+{% block title %}
+	<title>Shop-BodyRock</title>
+{% endblock %}
+{% block home %}{% endblock %}
+{% block shop %}active
+{% endblock %}
+{% block body %}
+
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb-text">
+						<h2>Our Shop</h2>
+						<div class="bt-option">
+							<a href="./index.html">Home</a>
+							<span>Our Products</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
+
+	<!-- Team Section Begin -->
+	<section class="team-section team-page spad">
+
+		<div class="container">
+
+			<div class="row">
+
+				<div class="col-lg-12">
+					<div class="team-title">
+						<div class="section-title">
+							<span>Our Shop</span>
+							<h2>Best Compliments, For Best Trainers</h2>
+						</div>
+
+						
+						<!-- Example single danger button -->
+
+					</div>
+
+
+				</div>
+			</div>
+		</div>
+
+
+	</div>
+
+
+	<div class="row">
+
+		{% for produit in produits.data %}
+			<div class="col-lg-4 col-sm-6" style="padding-left:10px">
+				<div class="ts-item set-bg" data-setbg="{{ asset('uploads/'~ produit.image)}}">
+					<div class="ts_text ">
+						<h6 style="color:white" class="d-inline">Nom:</h6>
+						<h6 style="color:red" class="d-inline">{{ produit.Nom }}</h6>
+						<span></span>
+						<h6 style="color:white" class="d-inline">Type:</h6>
+						<h6 style="color:red" class="d-inline">{{ produit.categorie }}</h6>
+						<span></span>
+						<h6 style="color:white" class="d-inline">Prix:</h6>
+						<h6 style="color:red" class="d-inline">{{ produit.Prix }}
+							TND</h6>
+
+						<span></span>
+						<h6 style="color:white" class="d-inline">Stock Restant:</h6>
+						<h6 style="color:red" class="d-inline">{{ produit.stock }}
+						</h6>
+
+						<div class="tt_social">
+							{% if produit.stock  >0  %}
+								<a class="js-add" href="{{path('app_cart_test',{id: produit.id })}}">
+									<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart" viewbox="0 0 16 16">
+										<path d="M0 1.5A.5.5 0 0 1 .5 1H2a.5.5 0 0 1 .485.379L2.89 3H14.5a.5.5 0 0 1 .491.592l-1.5 8A.5.5 0 0 1 13 12H4a.5.5 0 0 1-.491-.408L2.01 3.607 1.61 2H.5a.5.5 0 0 1-.5-.5zM3.102 4l1.313 7h8.17l1.313-7H3.102zM5 12a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm7 0a2 2 0 1 0 0 4 2 2 0 0 0 0-4zm-7 1a1 1 0 1 1 0 2 1 1 0 0 1 0-2zm7 0a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+									</svg>
+									<span class="js-nbr"></span>
+
+								</a>
+							{% else %}
+								<h3 style="color:white">Stock epuisé !</h3>
+							{% endif %}
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+
+	</div>
+</div>
+{% set path='app_produit_index_front'%}
+{% set pages = produits.pages %}
+{% set currentPage=produits.page %}
+{% include "front/pagination.html.twig"%}</section><!-- Team Section End --><!-- Get In Touch Section Begin --><!-- Get In Touch Section End --><!-- Footer Section Begin -->{% endblock %}{% block jsbergila %}<script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"> </script><script>
+function onClickBtnAdd(event) {
+event.preventDefault();
+
+// this return sur les a
+const url = this.href;
+const spanCount = this.querySelector('span.js-nbr');
+
+axios.get(url).then(function (response) {
+
+spanCount.textContent = response.data.nbr;
+
+})
+
+}
+
+
+document.querySelectorAll('a.js-add').forEach(function (link) {
+link.addEventListener('click', onClickBtnAdd);
+})</script>{% endblock %}
