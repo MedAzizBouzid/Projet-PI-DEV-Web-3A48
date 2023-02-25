@@ -33,9 +33,9 @@ class CalendrierController extends AbstractController
                 'id' => $event->getId(),    
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $event->getEnd()->format('Y-m-d H:i:s'),
-                // 'title' => $event->getTitle(),
-                // 'description' => $event->getDescription(),
-                'activite' => $event->getActivite(),
+                'title' => $event->getActivite(),
+                'description' => $event->getDescription(),
+                // 'activite' => $event->getActivite(),
 
                 'backgroundColor' => $event->getBackgroundColor(),
                 'borderColor' => $event->getBorderColor(),
@@ -48,8 +48,7 @@ class CalendrierController extends AbstractController
         // dd($data);
 
  
-        // _______________________________________________________
-
+ 
 
         $calendrier = new Calendrier();
         $form = $this->createForm(CalendrierType::class, $calendrier);
@@ -158,7 +157,7 @@ class CalendrierController extends AbstractController
                 'id' => $event->getId(),
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $event->getEnd()->format('Y-m-d H:i:s'),
-                'title' => $event->getTitle(),
+                // 'title' => $event->getTitle(),
                 'description' => $event->getDescription(),
                 'backgroundColor' => $event->getBackgroundColor(),
                 'borderColor' => $event->getBorderColor(),
@@ -203,7 +202,7 @@ class CalendrierController extends AbstractController
             }
   
             // Si oui (l'objet existe on injecte les données vers une url bien precise)
-            $calendar->setTitle($donnees->title);
+            // $calendar->setTitle($donnees->title);
             $calendar->setStart(new DateTime($donnees->start));
             $calendar->setStart(new DateTime($donnees->end));
             $calendar->setDescription($donnees->description);

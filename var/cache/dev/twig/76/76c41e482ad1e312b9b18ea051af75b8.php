@@ -333,7 +333,7 @@ th{
 \t\t\t\t\t<th style =\"color:#FF0000\">Telephone</th>
 \t\t\t\t    <th style =\"color:#FF0000\">Email</th>
 \t\t\t  \t\t<th style =\"color:#FF0000\">Superficie</th>
-\t\t\t  \t\t<th style =\"color:#FF0000\">Description</th>
+\t\t\t  \t\t<th style =\"color:#FF0000\">recomendation</th>
  \t\t\t  \t\t<th style =\"color:#FF0000\">Activité</th>
 
 \t\t\t\t\t";
@@ -761,7 +761,7 @@ th{
 \t\t\t\t\t<th style =\"color:#FF0000\">Telephone</th>
 \t\t\t\t    <th style =\"color:#FF0000\">Email</th>
 \t\t\t  \t\t<th style =\"color:#FF0000\">Superficie</th>
-\t\t\t  \t\t<th style =\"color:#FF0000\">Description</th>
+\t\t\t  \t\t<th style =\"color:#FF0000\">recomendation</th>
  \t\t\t  \t\t<th style =\"color:#FF0000\">Activité</th>
 
 \t\t\t\t\t{# <th style =\"color:#FF0000\">Image</th> #}

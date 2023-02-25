@@ -55,7 +55,7 @@ class __TwigTemplate_72a243e1e95d0beac3ace11c2c850111 extends Template
 
     }
 
-    // line 6
+    // line 4
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -65,74 +65,178 @@ class __TwigTemplate_72a243e1e95d0beac3ace11c2c850111 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 7
+        // line 5
+        echo "\t";
         $this->displayBlock('title', $context, $blocks);
-        // line 8
+        // line 7
         echo "
-        <h1>Create new Calendrier</h1>
-<div class=\"container-fluid pt-4 px-4\"> <div style=\"display: flex; justify-content: center; align-items: center; height: 100%;class=\" row g-4\">
+\t<h1>Create new Calendrier</h1>
+
+\t<a href=\"";
+        // line 10
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_index");
+        echo "\">
+\t\t<i class=\"bi bi-arrow-left-circle-fill\"></i>
+\t</a>
+
+\t<a href=\"";
+        // line 14
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_calendrier_index");
+        echo "\">
+\t\t<i class=\"bi bi-arrow-right-circle-fill\"></i>
+\t</a>
+
+
+\t";
+        // line 36
+        echo "\t<!-- Form Start -->
+\t<div class=\"container-fluid pt-4 px-4\">
+\t\t<div style=\"display: flex; justify-content: center; align-items: center; height: 100%;class=\" row g-4\">
 \t\t\t<div class=\"col-sm-12 col-xl-6\">
 \t\t\t\t<div class=\"bg-secondary rounded h-100 p-4\">
-                        <h6 class=\"mb-4\">Basic Form</h6>
-                        \t\t\t\t\t\t<div class=\"mb-3 form-check\" style=\"position:center;  \">
+\t\t\t\t\t<h6 class=\"mb-4\">Basic Form</h6>
+\t\t\t\t\t";
+        // line 49
+        echo "
+\t\t\t\t\t<div class=\"mb-3\">
+\t\t\t\t\t\t";
+        // line 51
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 51, $this->source); })()), 'form_start', ["attr" => ["novalidate" => "novalidate"]]);
+        // line 52
+        echo "
+\t\t\t\t\t\t 
 
-    ";
-        // line 16
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 16, $this->source); })()), 'form_start');
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t";
+        // line 56
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 56, $this->source); })()), "start", [], "any", false, false, false, 56), 'label');
         echo "
-        ";
-        // line 17
-        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 17, $this->source); })()), 'widget');
+\t\t\t\t\t\t\t";
+        // line 57
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 57, $this->source); })()), "start", [], "any", false, false, false, 57), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 500px; padding: 7px;"]]);
         echo "
-            <select name=\"Salle\" id=\"salle\">
-                ";
-        // line 19
+\t\t\t\t\t\t\t";
+        // line 58
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 58, $this->source); })()), "start", [], "any", false, false, false, 58), 'errors');
+        echo "
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t";
+        // line 62
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 62, $this->source); })()), "end", [], "any", false, false, false, 62), 'label');
+        echo "
+\t\t\t\t\t\t\t";
+        // line 63
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 63, $this->source); })()), "end", [], "any", false, false, false, 63), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 500px; padding: 7px;"]]);
+        echo "
+\t\t\t\t\t\t\t";
+        // line 64
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 64, $this->source); })()), "end", [], "any", false, false, false, 64), 'errors');
+        echo "
+
+\t\t\t\t\t\t</div>
+
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t";
+        // line 69
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 69, $this->source); })()), "description", [], "any", false, false, false, 69), 'label');
+        echo "
+\t\t\t\t\t\t\t";
+        // line 70
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 70, $this->source); })()), "description", [], "any", false, false, false, 70), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 500px; padding: 7px;"]]);
+        echo "
+\t\t\t\t\t\t\t";
+        // line 71
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 71, $this->source); })()), "description", [], "any", false, false, false, 71), 'errors');
+        echo "
+
+\t\t\t\t\t\t</div>
+
+
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t";
+        // line 77
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 77, $this->source); })()), "background_color", [], "any", false, false, false, 77), 'label');
+        echo "
+\t\t\t\t\t\t\t";
+        // line 78
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 78, $this->source); })()), "background_color", [], "any", false, false, false, 78), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 500px; padding: 7px;"]]);
+        echo "
+\t\t\t\t\t\t\t";
+        // line 79
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 79, $this->source); })()), "background_color", [], "any", false, false, false, 79), 'errors');
+        echo "
+
+\t\t\t\t\t\t</div>
+
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t";
+        // line 84
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 84, $this->source); })()), "border_color", [], "any", false, false, false, 84), 'label');
+        echo "
+\t\t\t\t\t\t\t";
+        // line 85
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 85, $this->source); })()), "border_color", [], "any", false, false, false, 85), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 500px; padding: 7px;"]]);
+        echo "
+\t\t\t\t\t\t\t";
+        // line 86
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 86, $this->source); })()), "border_color", [], "any", false, false, false, 86), 'errors');
+        echo "
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t";
+        // line 90
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 90, $this->source); })()), "text_color", [], "any", false, false, false, 90), 'label');
+        echo "
+\t\t\t\t\t\t\t";
+        // line 91
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 91, $this->source); })()), "text_color", [], "any", false, false, false, 91), 'widget', ["attr" => ["class" => "form-control", "style" => "width: 500px; padding: 7px;"]]);
+        echo "
+\t\t\t\t\t\t\t";
+        // line 92
+        echo $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->searchAndRenderBlock(twig_get_attribute($this->env, $this->source, (isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 92, $this->source); })()), "text_color", [], "any", false, false, false, 92), 'errors');
+        echo "
+
+\t\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+
+\t\t\t\t\t\t\t\t<select name=\"Salle\" id=\"salle\">
+\t\t\t\t\t\t\t\t\t";
+        // line 97
         $context['_parent'] = $context;
-        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["salle"]) || array_key_exists("salle", $context) ? $context["salle"] : (function () { throw new RuntimeError('Variable "salle" does not exist.', 19, $this->source); })()), "cours", [], "any", false, false, false, 19));
+        $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, (isset($context["salle"]) || array_key_exists("salle", $context) ? $context["salle"] : (function () { throw new RuntimeError('Variable "salle" does not exist.', 97, $this->source); })()), "cours", [], "any", false, false, false, 97));
         foreach ($context['_seq'] as $context["_key"] => $context["p"]) {
-            // line 20
-            echo "                <option value=\"";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 20), "html", null, true);
+            // line 98
+            echo "\t\t\t\t\t\t\t\t\t\t<option value=\"";
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 98), "html", null, true);
             echo "\">";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 20), "html", null, true);
+            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "nom", [], "any", false, false, false, 98), "html", null, true);
             echo "</option>
-                ";
+\t\t\t\t\t\t\t\t\t";
         }
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 22
-        echo "            </select>
-
-    
-    ";
-        // line 26
-        echo "    <button style=\"width: 90px;padding: 7px;\" class=\"btn btn-primary\">";
-        echo twig_escape_filter($this->env, ((array_key_exists("button_label", $context)) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 26, $this->source); })()), "Save")) : ("Save")), "html", null, true);
+        // line 100
+        echo "\t\t\t\t\t\t\t\t</select>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<button style=\"width: 90px;padding: 7px;\" class=\"btn btn-primary\">";
+        // line 102
+        echo twig_escape_filter($this->env, ((array_key_exists("button_label", $context)) ? (_twig_default_filter((isset($context["button_label"]) || array_key_exists("button_label", $context) ? $context["button_label"] : (function () { throw new RuntimeError('Variable "button_label" does not exist.', 102, $this->source); })()), "Save")) : ("Save")), "html", null, true);
         echo "</button>
 
-\t";
-        // line 28
-        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 28, $this->source); })()), 'form_end');
+\t\t\t\t\t\t\t";
+        // line 104
+        echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["form"]) || array_key_exists("form", $context) ? $context["form"] : (function () { throw new RuntimeError('Variable "form" does not exist.', 104, $this->source); })()), 'form_end');
         echo "
-\t\t\t\t\t</div>
 
+\t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
-\t\t\t</div>
 
 
-    <a href=\"";
-        // line 36
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_salle_index");
-        echo "\"><i class=\"bi bi-arrow-left-circle-fill\"></i>
-</a>
-
-    <a href=\"";
-        // line 39
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_calendrier_index");
-        echo "\"><i class=\"bi bi-arrow-right-circle-fill\"></i></a>
-";
+\t\t\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -141,7 +245,7 @@ class __TwigTemplate_72a243e1e95d0beac3ace11c2c850111 extends Template
 
     }
 
-    // line 7
+    // line 5
     public function block_title($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -151,7 +255,8 @@ class __TwigTemplate_72a243e1e95d0beac3ace11c2c850111 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "title"));
 
-        echo "New Calendrier";
+        echo "New Calendrier
+\t";
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
 
@@ -172,7 +277,7 @@ class __TwigTemplate_72a243e1e95d0beac3ace11c2c850111 extends Template
 
     public function getDebugInfo()
     {
-        return array (  145 => 7,  133 => 39,  127 => 36,  116 => 28,  110 => 26,  105 => 22,  94 => 20,  90 => 19,  85 => 17,  81 => 16,  71 => 8,  69 => 7,  59 => 6,  36 => 1,);
+        return array (  249 => 5,  231 => 104,  226 => 102,  222 => 100,  211 => 98,  207 => 97,  199 => 92,  195 => 91,  191 => 90,  184 => 86,  180 => 85,  176 => 84,  168 => 79,  164 => 78,  160 => 77,  151 => 71,  147 => 70,  143 => 69,  135 => 64,  131 => 63,  127 => 62,  120 => 58,  116 => 57,  112 => 56,  106 => 52,  104 => 51,  100 => 49,  92 => 36,  84 => 14,  77 => 10,  72 => 7,  69 => 5,  59 => 4,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -180,43 +285,114 @@ class __TwigTemplate_72a243e1e95d0beac3ace11c2c850111 extends Template
         return new Source("{% extends 'back/base.html.twig' %}
 
 
- 
-\t
 {% block body %}
-{% block title %}New Calendrier{% endblock %}
+\t{% block title %}New Calendrier
+\t{% endblock %}
 
-        <h1>Create new Calendrier</h1>
-<div class=\"container-fluid pt-4 px-4\"> <div style=\"display: flex; justify-content: center; align-items: center; height: 100%;class=\" row g-4\">
+\t<h1>Create new Calendrier</h1>
+
+\t<a href=\"{{ path('app_salle_index') }}\">
+\t\t<i class=\"bi bi-arrow-left-circle-fill\"></i>
+\t</a>
+
+\t<a href=\"{{ path('app_calendrier_index') }}\">
+\t\t<i class=\"bi bi-arrow-right-circle-fill\"></i>
+\t</a>
+
+
+\t{# {{ form_start(form) }}
+\t        {{ form_widget(form) }}
+\t            <select name=\"Salle\" id=\"salle\">
+\t                {%  for p in salle.cours %}
+\t                <option value=\"{{p.nom}}\">{{p.nom}}</option>
+\t                {% endfor %}
+\t            </select>
+\t
+\t    
+\t     <button style=\"width: 90px;padding: 7px;\" class=\"btn btn-primary\">{{ button_label|default('Save') }}</button>
+\t
+\t\t{{ form_end(form) }}
+\t\t\t\t\t\t</div>
+\t
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div> #}
+\t<!-- Form Start -->
+\t<div class=\"container-fluid pt-4 px-4\">
+\t\t<div style=\"display: flex; justify-content: center; align-items: center; height: 100%;class=\" row g-4\">
 \t\t\t<div class=\"col-sm-12 col-xl-6\">
 \t\t\t\t<div class=\"bg-secondary rounded h-100 p-4\">
-                        <h6 class=\"mb-4\">Basic Form</h6>
-                        \t\t\t\t\t\t<div class=\"mb-3 form-check\" style=\"position:center;  \">
+\t\t\t\t\t<h6 class=\"mb-4\">Basic Form</h6>
+\t\t\t\t\t{# <div class=\"form-group\" style=\"position: center;\">
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{ form_start(form) }}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{ form_widget(form) }}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t<button type=\"submit\">Save</button>
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t{{ form_end(form) }}
+\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t\t                </div> #}
 
-    {{ form_start(form) }}
-        {{ form_widget(form) }}
-            <select name=\"Salle\" id=\"salle\">
-                {%  for p in salle.cours %}
-                <option value=\"{{p.nom}}\">{{p.nom}}</option>
-                {% endfor %}
-            </select>
+\t\t\t\t\t<div class=\"mb-3\">
+\t\t\t\t\t\t{{ form_start(form,{'attr': {'novalidate': 'novalidate'}}
+\t\t\t\t\t\t) }}
+\t\t\t\t\t\t 
 
-    
-    {# <button class=\"btn\">{{ button_label|default('Save') }}</button> #}
-    <button style=\"width: 90px;padding: 7px;\" class=\"btn btn-primary\">{{ button_label|default('Save') }}</button>
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t{{form_label(form.start)}}
+\t\t\t\t\t\t\t{{form_widget(form.start, {'attr': {'class': 'form-control', 'style': 'width: 500px; padding: 7px;'}})}}
+\t\t\t\t\t\t\t{{ form_errors(form.start) }}
 
-\t{{ form_end(form) }}
-\t\t\t\t\t</div>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t{{form_label(form.end)}}
+\t\t\t\t\t\t\t{{form_widget(form.end, {'attr': {'class': 'form-control', 'style': 'width: 500px; padding: 7px;'}})}}
+\t\t\t\t\t\t\t{{ form_errors(form.end) }}
 
+\t\t\t\t\t\t</div>
+
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t{{form_label(form.description)}}
+\t\t\t\t\t\t\t{{form_widget(form.description, {'attr': {'class': 'form-control', 'style': 'width: 500px; padding: 7px;'}})}}
+\t\t\t\t\t\t\t{{form_errors(form.description)}}
+
+\t\t\t\t\t\t</div>
+
+
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t{{form_label(form.background_color)}}
+\t\t\t\t\t\t\t{{form_widget(form.background_color, {'attr': {'class': 'form-control', 'style': 'width: 500px; padding: 7px;'}})}}
+\t\t\t\t\t\t\t{{form_errors(form.background_color)}}
+
+\t\t\t\t\t\t</div>
+
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t{{form_label(form.border_color)}}
+\t\t\t\t\t\t\t{{form_widget(form.border_color, {'attr': {'class': 'form-control', 'style': 'width: 500px; padding: 7px;'}})}}
+\t\t\t\t\t\t\t{{form_errors(form.border_color)}}
+
+\t\t\t\t\t\t</div>
+\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+\t\t\t\t\t\t\t{{form_label(form.text_color)}}
+\t\t\t\t\t\t\t{{form_widget(form.text_color, {'attr': {'class': 'form-control', 'style': 'width: 500px; padding: 7px;'}})}}
+\t\t\t\t\t\t\t{{form_errors(form.text_color)}}
+
+\t\t\t\t\t\t\t<div class=\"row g-3 align-items-center \">
+
+\t\t\t\t\t\t\t\t<select name=\"Salle\" id=\"salle\">
+\t\t\t\t\t\t\t\t\t{%  for p in salle.cours %}
+\t\t\t\t\t\t\t\t\t\t<option value=\"{{p.nom}}\">{{p.nom}}</option>
+\t\t\t\t\t\t\t\t\t{% endfor %}
+\t\t\t\t\t\t\t\t</select>
+\t\t\t\t\t\t\t</div>
+\t\t\t\t\t\t\t<button style=\"width: 90px;padding: 7px;\" class=\"btn btn-primary\">{{ button_label|default('Save') }}</button>
+
+\t\t\t\t\t\t\t{{ form_end(form) }}
+
+\t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
 \t\t\t\t</div>
-\t\t\t</div>
 
 
-    <a href=\"{{ path('app_salle_index') }}\"><i class=\"bi bi-arrow-left-circle-fill\"></i>
-</a>
-
-    <a href=\"{{ path('app_calendrier_index') }}\"><i class=\"bi bi-arrow-right-circle-fill\"></i></a>
-{% endblock %}
+\t\t\t{% endblock %}
 ", "calendrier/new.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\calendrier\\new.html.twig");
     }
 }

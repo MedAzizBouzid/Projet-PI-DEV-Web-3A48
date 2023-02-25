@@ -179,14 +179,14 @@ body.dark .btn-toggle {
         echo "
   ";
         // line 134
-        echo "<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle Salle</button>
+        echo "<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Add new Gym</button>
 
 <!-- La pop-up -->
 <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
   <div class=\"modal-dialog\">
     <div class=\"modal-content\">
       <div class=\"modal-header\">
-        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ajouter une salle</h5>
+        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Add new Gym</h5>
         <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
       </div>
       <div class=\"modal-body\">
@@ -477,7 +477,7 @@ body.dark .btn-toggle {
 \t\t\t\t<td><a href=\"";
             // line 297
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_calendrier_new", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 297)]), "html", null, true);
-            echo "\">A</a></td>
+            echo "\">Go to plan</a></td>
 
 
         
@@ -736,14 +736,14 @@ body.dark .btn-toggle {
 \t\t\t  {# <button type=\"button\"   class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\"> Ajouter une salle</button> #}
 
   {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
-<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle Salle</button>
+<button id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Add new Gym</button>
 
 <!-- La pop-up -->
 <div class=\"modal fade\" id=\"exampleModal\" tabindex=\"-1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
   <div class=\"modal-dialog\">
     <div class=\"modal-content\">
       <div class=\"modal-header\">
-        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Ajouter une salle</h5>
+        <h5 class=\"modal-title\" id=\"exampleModalLabel\">Add new Gym</h5>
         <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
       </div>
       <div class=\"modal-body\">
@@ -899,7 +899,7 @@ body.dark .btn-toggle {
 
 \t\t\t\t<td><a href=\"{{path('app_salle_edit',{'id':p.id})}}\"><span class=\"bi bi-cart-fill\"></a></td>
 \t\t\t\t<td><a href=\"{{path('app_salle_show',{'id':p.id})}}\"><i class=\"bi bi-book\"></i></a></td>
-\t\t\t\t<td><a href=\"{{path('app_calendrier_new',{'id':p.id})}}\">A</a></td>
+\t\t\t\t<td><a href=\"{{path('app_calendrier_new',{'id':p.id})}}\">Go to plan</a></td>
 
 
         

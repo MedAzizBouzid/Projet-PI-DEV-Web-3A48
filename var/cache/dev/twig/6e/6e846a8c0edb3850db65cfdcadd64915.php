@@ -120,8 +120,8 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
         let calendar = new FullCalendar.Calendar(calendarElt, {
             initialView: 'timeGridWeek',
             locale: 'fr',
-             timeZone: 'Afrique/Tunisie',
-\t\t\t   weekends: true,
+            timeZone: 'Afrique/Tunisie',
+\t\t    weekends: true,
   
 
   defaultView: 'month',
@@ -337,8 +337,8 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
         let calendar = new FullCalendar.Calendar(calendarElt, {
             initialView: 'timeGridWeek',
             locale: 'fr',
-             timeZone: 'Afrique/Tunisie',
-\t\t\t   weekends: true,
+            timeZone: 'Afrique/Tunisie',
+\t\t    weekends: true,
   
 
   defaultView: 'month',
