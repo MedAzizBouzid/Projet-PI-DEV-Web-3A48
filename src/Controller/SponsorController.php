@@ -41,15 +41,26 @@ class SponsorController extends AbstractController
         ]);
     }
 
-
+    function badwords($message)
+    {
+        // $badwords = array("Bonjour1", "bonsoiree", "tifo");
+        $badwords = BadWordController::badword();
+// dd($badwords);
+        $filter = "*******";
+        $message = str_replace($badwords, $filter, $message);
+        return $message;
+    }
     //afficher les details d'un event + ses sponsors + ses commentaires avec la possibilite d'ajout d'un commentaire a cet event
     #[Route('/front/{id}', name: 'app_sponsor_index_front', methods: ['GET', 'POST'])]
     public function indexF(SponsorRepository $sponsorRepository,$id,EvenementRepository $eventrepo, Request $request, CommentaireRepository $commentaireRepository,UserRepository $userRepo): Response
     {
+        // $monArray = require_once 'config/profanities.php';
+        // dd($monArray);
         //session_start()
         $session=$request->getSession();
         $session->set('id_client',1);
         $id_client=$session->get('id_client');
+
 
 
         // $pass = new Pass();
@@ -63,13 +74,22 @@ class SponsorController extends AbstractController
         $client= new User();
         $client=$userRepo->find($id_client);
     
+
+
         $form = $this->createForm(CommentaireType::class, $commentaire);
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
             $commentaire->setEvent($event);
             $commentaire->setClient($client);
+
+            $message = $commentaire->getDescription();
+            $filtredMessage = $this->badwords($message);
+
+            $commentaire->setDescription($filtredMessage);
+
             $commentaireRepository->save($commentaire, true);
+
 
             return $this->redirectToRoute('app_sponsor_index_front', [
                 'id'=>$id
