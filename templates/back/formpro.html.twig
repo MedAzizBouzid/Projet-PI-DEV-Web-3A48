@@ -1,0 +1,31 @@
+{% extends 'back/base.html.twig' %}
+
+
+{% block body %}
+            <!-- Form Start -->
+                <h1>Create new promotion</h1>
+             
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                  
+                        <div class="bg-secondary rounded h-100 p-4">
+                          <div class="text-center">
+                            <h6 class="mb-4">Offer promo</h6>
+                          
+                               <div class="text-center">
+                                <div class="mx-auto" style="max-width: 400px;">
+              {{ form_start(form) }}
+    {{ form_widget(form) }}
+    
+    <button class="btn">{{ button_label|default('Save') }}</button>
+{{ form_end(form) }}
+
+    <a href="{{ path('app_promotion_index') }}">back to list</a>
+    
+                        </div>
+                    </div>
+                    </div>
+                     </div>
+                    </div>
+{% endblock %}

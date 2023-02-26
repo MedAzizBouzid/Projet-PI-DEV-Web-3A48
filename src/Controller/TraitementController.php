@@ -9,6 +9,7 @@ use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\CommandeRepository;
 use App\Repository\PanierRepository;
+use App\Repository\PassRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Sabberworm\CSS\Value\Size;
@@ -76,11 +77,13 @@ class TraitementController extends AbstractController
     }
 //   *************************************
     #[Route('/profile/{id}', name: 'app_profile')]
-    public function profile(User $user,PanierRepository $panierRepository,CommandeRepository $commandeRepository): Response
+    public function profile(User $user,PassRepository $passRepository,PanierRepository $panierRepository,CommandeRepository $commandeRepository): Response
     {
         $panier = new Panier();
         $panier=$panierRepository->findByClientId($user->getId());
-        
+        $PanierId=[];
+        $commande=[];
+        $cmd=[];
         // $commande = new Commande();
          foreach($panier as $p){
            $PanierId[] = $p->getId();
@@ -96,7 +99,8 @@ class TraitementController extends AbstractController
         // dd($cmd);
         return $this->render('front/profileUser.html.twig', [
             'user' => $user,
-            'commandes'=>$cmd
+            'commandes'=>$cmd,
+            'passes' => $passRepository->findPassByIdClient($user->getId())
         ]);
     }
     //   *************************************

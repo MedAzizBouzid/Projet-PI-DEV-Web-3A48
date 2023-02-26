@@ -55,9 +55,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\OneToMany(mappedBy: 'Client', targetEntity: Panier::class)]
     private Collection $paniers;
 
+    #[ORM\OneToMany(mappedBy: 'coach', targetEntity: Calendrier::class)]
+    private Collection $calendriers;
+
     public function __construct()
     {
         $this->paniers = new ArrayCollection();
+        $this->calendriers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -238,6 +242,36 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
             // set the owning side to null (unless already changed)
             if ($panier->getClient() === $this) {
                 $panier->setClient(null);
+            }
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Calendrier>
+     */
+    public function getCalendriers(): Collection
+    {
+        return $this->calendriers;
+    }
+
+    public function addCalendrier(Calendrier $calendrier): self
+    {
+        if (!$this->calendriers->contains($calendrier)) {
+            $this->calendriers->add($calendrier);
+            $calendrier->setCoach($this);
+        }
+
+        return $this;
+    }
+
+    public function removeCalendrier(Calendrier $calendrier): self
+    {
+        if ($this->calendriers->removeElement($calendrier)) {
+            // set the owning side to null (unless already changed)
+            if ($calendrier->getCoach() === $this) {
+                $calendrier->setCoach(null);
             }
         }
 

@@ -82,7 +82,7 @@ class UserController extends AbstractController
     //     ]);
     // }
     #[Route('/newA', name: 'app_user_newA', methods: ['GET', 'POST'])]
-    public function newA(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository ,RoleRepository $roleRepository,SluggerInterface $slugger): Response
+    public function newA(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository ,SluggerInterface $slugger): Response
     {
         $user = new User();
         $role=[];
@@ -134,7 +134,7 @@ class UserController extends AbstractController
         ]);
     }
     #[Route('/newC', name: 'app_user_newC', methods: ['GET', 'POST'])]
-    public function newC(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository ,RoleRepository $roleRepository,SluggerInterface $slugger): Response
+    public function newC(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository ,SluggerInterface $slugger): Response
     {
         $user = new User();
         $role=[];
@@ -435,5 +435,28 @@ class UserController extends AbstractController
             'users' => $userRepository->findAllUser('["ROLE_COACH"]'),
 
         ]);
+    }
+    /*****************search ajax**************************** */
+     public function getRealEntities($user)
+    {
+        foreach ($user as $user) {
+            $realEntities[$user->getId()] = [
+                $user->getNom(), $user->getPrenom(), $user->getUserName(), $user->getEmail(), $user->getImage(), $user->getNumTel(),$user->getEtat()];
+        }
+        return $realEntities;
+    }
+    #[Route('/searchA', name: 'ajaxsearch', methods: ['GET'])]
+
+    public function searchAction(Request $request ,UserRepository $userRepository)
+    {
+        $requestString = $request->get('b');
+        $user = $userRepository->findEntitiesByString($requestString);
+        if (!$user) {
+            $result['user']['error'] = "user not found! 🙁 ";
+        } else {
+            $result['user'] = $this->getRealEntities($user);
+        }
+        // dd($result);
+        return new Response(json_encode($result));
     }
 }

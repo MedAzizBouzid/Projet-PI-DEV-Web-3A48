@@ -1,0 +1,66 @@
+{% extends 'back/base.html.twig' %}
+
+
+{% block body %}
+	<!-- Form Start -->
+
+	<h1>Create new Offer</h1>
+
+	<div class="container-fluid pt-4 px-4">
+		<div class="row g-4">
+			<div class="col-sm-12 col-xl-6">
+
+				<div class="bg-secondary rounded h-100 p-4">
+					<div class="text-center">
+						<h6 class="mb-4">Offer Form</h6>
+
+						<div class="text-center">
+							<div class="mx-auto" style="max-width: 400px;">
+								{{ form_start(form ,{'attr': {'novalidate': 'novalidate'}}
+								) }}
+
+
+								{{ form_label(form.prix )  }}
+								{{ form_widget(form.prix) }}
+
+								{{ form_errors(form.prix) }}
+
+
+								{{ form_label(form.duree) }}
+								{{ form_widget(form.duree) }}
+								{{ form_errors(form.duree) }}
+
+
+								{{ form_label(form.description) }}
+								{{ form_widget(form.description) }}
+								{{  form_errors(form.description) }}
+
+								{{ form_label(form.promo) }}
+
+								{{ form_widget(form.promo) }}
+
+								{{  form_errors(form.promo) }}
+
+
+								{{ form_label(form.categ) }}
+								{{ form_widget(form.categ) }}
+								{{  form_errors(form.categ) }}
+
+
+							</div>
+
+
+							<button class="btn">{{ button_label|default('Save') }}</button>
+							{{ form_end(form) }}
+							<br>
+							<a href="{{ path('app_offres_index') }}">back to list</a>
+
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- Form End -->
+	{% endblock %}

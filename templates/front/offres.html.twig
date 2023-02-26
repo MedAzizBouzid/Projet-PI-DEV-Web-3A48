@@ -1,0 +1,110 @@
+{% extends 'front/baseF.html.twig' %}
+{% block body %}
+
+    <!-- Breadcrumb Section Begin -->
+    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Services</h2>
+                        <div class="bt-option">
+                            <a href="./index.html">Home</a>
+                            <span>Services</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+
+  
+    <!-- Banner Section End -->
+ 
+    <!-- Pricing Section Begin -->
+    <section class="pricing-section service-pricing spad">
+        <div class="container">
+         
+                              
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Our Plan</span>
+                        <h2 style="font-size: 40px; color: white; font-weight: bold;">Offres de la catégorie "{{ categorie.name }}"</h2>
+                     
+                    </div>
+            
+
+        
+         
+            <div class="row justify-content-center">
+                {% for offre in offres%}
+                 
+            
+                <div class="col-lg-4 col-md-8">
+                
+                    <div class="ps-item">
+       
+                    
+                       
+                              
+                        <div class="pi-price">
+
+             
+                            {%if offre.promo %}
+                            <br>
+                              
+                       <p style="font-size: 40px;">   {{offre.promo.pourcentage}} %</p>
+                                 
+                               <h2>{{offre.prix}}  DT  <span>   / {{ offre.duree }} Mois  </span> </h2>
+                           <br> 
+      
+        <br> 
+                                     {% else %}
+                              <br>
+                                    <h2>{{offre.prix}}  DT  <span>   / {{ offre.duree }} Mois  </span> </h2>
+                                    
+                                    
+                                <br> 
+                                 <br> 
+                             
+                                    {% endif %}
+                                    
+                                              
+        
+                            
+                             
+                               <span>    <li>{{ offre.description  }} </li> </span> 
+                                  
+                                 
+                        
+                      
+                        </div>
+                         
+                    
+
+                                
+                                 <a href="{{path('app_abonnement_new', {'id': offre.id} ) }}"class="primary-btn pricing-btn">Enroll now</a>
+        
+                         
+              
+                      
+                    </div>
+                       
+                   
+                         
+ 
+      </div>
+
+        
+               
+                {% endfor %}
+            </div>
+      
+        </div>
+    </section>
+    <!-- Pricing Section End -->
+{% endblock %}
+ 

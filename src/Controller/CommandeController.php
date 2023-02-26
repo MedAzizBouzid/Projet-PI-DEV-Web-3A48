@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Commande;
 use App\Form\CommandeType;
 use App\Repository\CommandeRepository;
+use Doctrine\Persistence\ManagerRegistry;
 use Dompdf\Dompdf;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -75,6 +76,30 @@ class CommandeController extends AbstractController
 
         return $this->redirectToRoute('app_commande_index', [], Response::HTTP_SEE_OTHER);
     }
+
+
+    // ---------------------------------begin-DELETE pop up ----------------------------------
+
+    #[Route('/delete/{id}', name: 'delete_commande')]
+    public function deleteevent($id,ManagerRegistry $mr,CommandeRepository $repo): Response
+    {
+        $user = $this->getUser();
+
+        $st=$repo->find($id);
+        $em=$mr->getManager();
+        $em->remove($st);
+        $em->flush();
+        $this->addFlash('success', 'Your Order  has been deleted.');
+
+       return $this->redirectToRoute('app_profile',['id'=>$user->getId()]);
+        // return new Response('removed');
+    }
+// ------------------------------end----DELETE pop up ----------------------------------
+
+
+
+
+
     #[Route('/{id}/pdf', name: 'app_commande_pdf')]
     public function generatePdfAction($id, CommandeRepository $cr)
     {

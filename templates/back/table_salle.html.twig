@@ -295,7 +295,12 @@ body.dark .btn-toggle {
 
 				<td><a href="{{path('app_salle_edit',{'id':p.id})}}"><span class="bi bi-cart-fill"></a></td>
 				<td><a href="{{path('app_salle_show',{'id':p.id})}}"><i class="bi bi-book"></i></a></td>
-				<td><a href="{{path('app_calendrier_new',{'id':p.id})}}">Go to plan</a></td>
+<td>
+	<a href="{{path('app_calendrier_new',{'id':p.id})}}">
+		<button style="background-color:red;color:white;" onclick="openPopup()">Go to plan</button>
+
+</a></td>
+
 
 
         

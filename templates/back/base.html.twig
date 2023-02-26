@@ -88,13 +88,13 @@
 						<a href="{{path('app_back_index')}}" class="nav-item nav-link">
 							<i class="fa fa-tachometer-alt me-2"></i>Dashboard</a>
 						{# <div class="nav-item dropdown">
-																		                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
-																		                        <div class="dropdown-menu bg-transparent border-0">
-																		                            <a href="button.html" class="dropdown-item">Buttons</a>
-																		                            <a href="typography.html" class="dropdown-item">Typography</a>
-																		                            <a href="element.html" class="dropdown-item">Other Elements</a>
-																		                        </div>
-																		                    </div> #}
+																														                        <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i class="fa fa-laptop me-2"></i>Elements</a>
+																														                        <div class="dropdown-menu bg-transparent border-0">
+																														                            <a href="button.html" class="dropdown-item">Buttons</a>
+																														                            <a href="typography.html" class="dropdown-item">Typography</a>
+																														                            <a href="element.html" class="dropdown-item">Other Elements</a>
+																														                        </div>
+																														                    </div> #}
 						{# <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>Widgets</a> #}
 						{# <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>Forms</a> #}
 
@@ -138,7 +138,7 @@
 							</div>
 							<div class="nav-item dropdown">
 								<a href="#" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">
-<i class="far fa-file-alt me-2"></i>Events Managment</a>
+									<i class="far fa-file-alt me-2"></i>Events Managment</a>
 
 								<div class="dropdown-menu bg-transparent border-0">
 									<a href="{{ path('app_evenement_index') }}" class="dropdown-item">Events</a>
@@ -146,6 +146,21 @@
 									<a href="{{ path('app_sponsor_index') }}" class="dropdown-item">Sponsor</a>
 									<a href="{{ path('app_type_contrat_index') }}" class="dropdown-item">Contract Types</a>
 									<a href="{{ path('app_pass_index') }}" class="nav-item nav-link">Pass</a>
+
+
+								</div>
+							</div>
+							<div class="nav-item dropdown">
+								<a href="#" class="nav-link dropdown-toggle " data-bs-toggle="dropdown">
+									<i class="far fa-file-alt me-2"></i>Offers Managment</a>
+
+								<div class="dropdown-menu bg-transparent border-0">
+									<a href="{{ path('app_offres_index') }}" class="dropdown-item">Offers</a>
+
+									<a href="{{path('app_categorie_index2')}}" class="dropdown-item">Categories</a>
+									<a href="{{ path('app_abonnement_index') }}" class="dropdown-item">Subscriptions</a>
+
+									<a href="{{ path('app_promotion_index') }}" class="dropdown-item">Promotions</a>
 
 
 								</div>
@@ -324,6 +339,10 @@ $("table").DataTable({"pageLenth": 6});
 });
 					</script>
 				{% endblock %}
+{% block Ajaxjavascripts %}
+				{% endblock %}
+
+
 
 			</body>
 

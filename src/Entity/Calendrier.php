@@ -42,6 +42,9 @@ class Calendrier
     #[ORM\Column(length: 255)]
     private ?string $activite = null;
 
+    #[ORM\ManyToOne(inversedBy: 'calendriers')]
+    private ?User $coach = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -140,6 +143,22 @@ class Calendrier
     public function setActivite(string $activite): self
     {
         $this->activite = $activite;
+
+        return $this;
+    }
+
+    public function getCoach(): ?User
+    {
+        return $this->coach;
+    }
+    public function getCoachName(): ?String
+    {
+        return $this->coach->getNom();
+    }
+
+    public function setCoach(?User $coach): self
+    {
+        $this->coach = $coach;
 
         return $this;
     }

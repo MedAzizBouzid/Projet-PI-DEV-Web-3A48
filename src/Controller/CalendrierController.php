@@ -4,12 +4,13 @@ namespace App\Controller;
 
 use App\Entity\Calendrier;
 use App\Entity\Salle;
-
+use App\Entity\User;
 use App\Form\CalendrierType;
 use App\Repository\SalleRepository;
 ;
 
 use App\Repository\CalendrierRepository;
+use App\Repository\UserRepository;
 use DateTime;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -27,13 +28,16 @@ class CalendrierController extends AbstractController
         //accéder au repo calendrier
         $events = $calendrierRepository->findAll();
         // créer un tableau Json a fin de stocker les données 
+        $coach=new User();
         $rdvs = [];
         foreach($events as $event){
+            $coach=$event->getCoach();
+            // dd($coach);
             $rdvs[] = [
                 'id' => $event->getId(),    
                 'start' => $event->getStart()->format('Y-m-d H:i:s'),
                 'end' => $event->getEnd()->format('Y-m-d H:i:s'),
-                'title' => $event->getActivite(),
+                'title' => $event->getActivite()."\n".$event->getCoachName(),
                 'description' => $event->getDescription(),
                 // 'activite' => $event->getActivite(),
 
@@ -80,7 +84,7 @@ class CalendrierController extends AbstractController
         
     // );
     #[Route('/{id}/new', name: 'app_calendrier_new', methods: ['GET', 'POST'])]
-     public function new($id,Request $request, CalendrierRepository $calendrierRepository,SalleRepository $SalleRe): Response
+     public function new($id,Request $request, CalendrierRepository $calendrierRepository,SalleRepository $SalleRe,UserRepository $userRepository): Response
     {
 
         $salle  = new Salle();
@@ -92,9 +96,10 @@ class CalendrierController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // dd($request->get('Salle'));
-
+            // dd($request->get('coach'));
+        $coach=$userRepository->find($request->get('coach'));
         $calendrier->setActivite($request->get('Salle'));
+        $calendrier->setCoach($coach);
         $calendrier->setSalla($salle);
             $calendrierRepository->save($calendrier, true);
 
@@ -105,6 +110,7 @@ class CalendrierController extends AbstractController
             'calendrier' => $calendrier,
             'salle' => $salle,
             'form' => $form,
+            'coachs' => $userRepository->findAllUser('["ROLE_COACH"]'),
         ]);
     }
 
