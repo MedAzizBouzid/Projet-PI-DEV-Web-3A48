@@ -2,232 +2,470 @@
 
 
 {% block body %}
- <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb-text">
-                        <h2>account detail</h2>
-                        
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+	{# ***********************style POP UP**************** #}
+	<style>
+		/* style pour la pop-up */
+		.popup {
+			position: fixed; /* positionnement fixe */
+			top: 0; /* positionné en haut */
+			left: 0; /* positionné à gauche */
+			width: 100%; /* largeur à 100% */
+			height: 100%; /* hauteur à 100% */
+			background-color: rgba(0, 0, 0, 0.5); /* couleur de fond semi-transparente */
+			display: none; /* cacher la pop-up par défaut */
+		}
+		.popup-content {
+			position: absolute; /* positionnement absolu */
+			top: 50%; /* positionné à 50% de la hauteur de la fenêtre */
+			left: 50%; /* positionné à 50% de la largeur de la fenêtre */
+			transform: translate(-50%, -50%); /* centrer horizontalement et verticalement */
+			width: 300px; /* largeur de la pop-up */
+			padding: 20px; /* marge intérieure */
+			background-color: #fff; /* couleur de fond */
+			border-radius: 5px; /* arrondi des coins */
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* ombre portée */
+			text-align: center; /* alignement centré */
+		}
+		.popup-content h2 {
+			margin-top: 0; /* supprimer la marge en haut du titre */
+		}
+		.popup-close {
+			position: absolute; /* positionnement absolu */
+			top: 10px; /* positionné à 10px du haut */
+			right: 10px; /* positionné à 10px de la droite */
+			font-size: 20px; /* taille de police */
+			color: #888; /* couleur du texte */
+			cursor: pointer; /* curseur de la souris en forme de main */
+		}
 
-    <!-- Class Details Section Begin -->
-    <section class="class-details-section spad">
-        <div class="container">
-                
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="class-details-text" >
-                        <div class="cd-pic">
-                            <img src="img/classes/class-details/class-detailsl.jpg" alt="">
-                        </div>
-                        
-                        <div class="cd-trainer">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <div class="cd-trainer-pic">
-                                        {% if "download" in user.image %}
+		.popup-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 80%;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+			text-align: center;
+		}
 
-                                          <img src="{{asset('uploads/'~ user.image )}}" alt="" >
-                                          {% else %}
-                                          <img src="{{user.image }}" alt="" >
-                                          {% endif %}
+		.table {
+			width: 100%;
+			margin-top: 20px;
+			border-collapse: collapse;
+		}
+
+		.table th,
+		.table td {
+			padding: 12px 15px;
+			text-align: center;
+			border: 1px solid #ddd;
+		}
+
+		.table th {
+			background-color: #343a40;
+			color: #fff;
+		}
+
+		.table tbody tr:hover {
+			background-color: #f5f5f5;
+		}
+	</style>
+
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb-text">
+						<h2>account detail</h2>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
+
+	<!-- Class Details Section Begin -->
+	<section class="class-details-section spad">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="class-details-text">
+						<div class="cd-pic">
+							<img src="img/classes/class-details/class-detailsl.jpg" alt="">
+						</div>
+
+						<div class="cd-trainer">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="cd-trainer-pic">
+										{% if "download" in user.image %}
+
+											<img src="{{asset('uploads/'~ user.image )}}" alt="">
+										{% else %}
+											<img src="{{user.image }}" alt="">
+										{% endif %}
 
 
-                                    </div>
-                                </div>
-                                <div class="col-md-6">
-                                    <div class="cd-trainer-text">
-                                        <div class="trainer-title">
-                                            <h4>{{user.username}}</h4>
-                                            {# <span>Gym Trainer</span> #}
-                                        </div>
-                                        <div class="trainer-social">
-                                            <a href="#"><i class="fa fa-facebook"></i></a>
-                                            <a href="#"><i class="fa fa-twitter"></i></a>
-                                            <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                            <a href="#"><i class="fa fa-instagram"></i></a>
-                                            <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                                        </div>
-                                        {# <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
-                                            vel facilisis.</p> #}
-                                        <ul class="trainer-info">
-                                            <li><span>Name</span>{{user.nom}}</li>
-                                            <li><span>Last Name</span>{{user.prenom}}</li>
-                                            <li><span>Email</span>{{user.email}}</li>
-                                            <li><span>Tel</span>{{user.numTel}}</li>
-                                        </ul>
-                                        {# <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-                                            tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
-                                            vel facilisis. </p> #}
-                                            <a href="{{ path('app_profileEdit', {'id': user.id}) }}" class="primary-btn btn-normal appoinment-btn">Edit</i></a>
-                                    </div>
-                                    
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="cd-trainer-text">
+										<div class="trainer-title">
+											<h4>{{user.username}}</h4>
+											{# <span>Gym Trainer</span> #}
+										</div>
+										<div class="trainer-social">
+											<a href="#">
+												<i class="fa fa-facebook"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-twitter"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-youtube-play"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-instagram"></i>
+											</a>
+											<a href="#">
+												<i class="fa  fa-envelope-o"></i>
+											</a>
+										</div>
+										{# <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+																																																																																																																																																																										                                            tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
+																																																																																																																																																																										                                            vel facilisis.</p> #}
+										<ul class="trainer-info">
+											<li>
+												<span>Name</span>
+												{{user.nom}}</li>
+											<li>
+												<span>Last Name</span>
+												{{user.prenom}}</li>
+											<li>
+												<span>Email</span>
+												{{user.email}}</li>
+											<li>
+												<span>Tel</span>
+												{{user.numTel}}</li>
+										</ul>
+										{# ***********************POP_UP affichage******************************************** #}
+										<!-- bouton pour ouvrir la pop-up -->
+										<button style="background-color:red;color:white;" onclick="openPopup()">Chek orders</button>
 
-                </div>
-                
-            </div>
-                
-        </div>
-    </section>
-    <!-- Class Details Section End -->
 
-    <!-- Class Timetable Section Begin -->
-    <section class="class-timetable-section class-details-timetable spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="class-details-timetable_title">
-                        <h5>Classes timetable</h5>
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="class-timetable details-timetable">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th></th>
-                                    <th>Monday</th>
-                                    <th>Tuesday</th>
-                                    <th>Wednesday</th>
-                                    <th>Thursday</th>
-                                    <th>Friday</th>
-                                    <th>Saturday</th>
-                                    <th>Sunday</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td class="class-time">6.00am - 8.00am</td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>WEIGHT LOOSE</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Cardio</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Yoga</h5>
-                                        <span>Keaf Shen</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Fitness</h5>
-                                        <span>Kimberly Stone</span>
-                                    </td>
-                                    <td class="dark-bg blank-td"></td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Boxing</h5>
-                                        <span>Rachel Adam</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Body Building</h5>
-                                        <span>Robert Cage</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="class-time">10.00am - 12.00am</td>
-                                    <td class="blank-td"></td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Fitness</h5>
-                                        <span>Kimberly Stone</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>WEIGHT LOOSE</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Cardio</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Body Building</h5>
-                                        <span>Robert Cage</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Karate</h5>
-                                        <span>Donald Grey</span>
-                                    </td>
-                                    <td class="blank-td"></td>
-                                </tr>
-                                <tr>
-                                    <td class="class-time">5.00pm - 7.00pm</td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Boxing</h5>
-                                        <span>Rachel Adam</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Karate</h5>
-                                        <span>Donald Grey</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Body Building</h5>
-                                        <span>Robert Cage</span>
-                                    </td>
-                                    <td class="blank-td"></td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Yoga</h5>
-                                        <span>Keaf Shen</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Cardio</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Fitness</h5>
-                                        <span>Kimberly Stone</span>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td class="class-time">7.00pm - 9.00pm</td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Cardio</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                    <td class="dark-bg blank-td"></td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Boxing</h5>
-                                        <span>Rachel Adam</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>Yoga</h5>
-                                        <span>Keaf Shen</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="motivation">
-                                        <h5>Karate</h5>
-                                        <span>Donald Grey</span>
-                                    </td>
-                                    <td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
-                                        <h5>Boxing</h5>
-                                        <span>Rachel Adam</span>
-                                    </td>
-                                    <td class="hover-dp ts-meta" data-tsmeta="workout">
-                                        <h5>WEIGHT LOOSE</h5>
-                                        <span>RLefew D. Loee</span>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Class Timetable Section End -->
+										<!-- pop-up -->
+										<div id="popup" class="popup">
+											<div class="popup-content">
+												<h2>My orders</h2>
+												<table class="table">
+													<thead >
+														<tr >
+															<th scope="col">#</th>
+															<th scope="col">Article Number</th>
+															<th scope="col">Total Commande</th>
+															<th scope="col">State</th>
+														</tr>
+													</thead>
+													<tbody>
+														{% for commande in commandes %}
+															<tr>
+																<td>{{ commande.id }}</td>
+																<td>{{ commande.NbArticles }}</td>
+																<td>{{ commande.TotalCommande }}</td>
+																<td>{{ commande.etat }}</td>
+															</tr>
+														{% endfor %}
+													</tbody>
+												</table>
+												<span class="popup-close" onclick="closePopup()">&times;</span>
+											</div>
+										</div>
 
-    
 
-    {% endblock %}
+										{# ******************************************************************* #}
+
+
+										{# 
+										
+										
+										 <table class="table table-dark table-hover">
+										
+											<thead>
+												<tr>
+													<th scope="col">#</th>
+													<th scope="col">Article Number</th>
+										
+													<th scope="col">Total Commande</th>
+										
+													<th scope="col">etat</th>
+										
+												</tr>
+											</thead>
+										
+										
+											<tbody>
+												{% for commande in commandes %}
+										
+										
+													<tr>
+														<td>{{ commande.id }}</td>
+														<td>{{ commande.NbArticles }}</td>
+														<td>
+															{{ commande.TotalCommande }}</td>
+														<td>{{ commande.etat }}</td>
+										
+										
+														<td>
+															{{ commande.TotalCommande }}</td>
+													</tr>
+										
+												</tbody>
+											{% endfor %}
+										</table> #}
+
+ 																																																																																																																																																																										                                          
+									 
+									{# /************************************************************************* #}
+									{# <div class="card" style="width: 18rem;">
+																																																																																																																																																																<div class="card-body">
+																																																																																																																																																																	<h5 class="card-title">Card title</h5>
+																																																																																																																																																																	<h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
+																																																																																																																																																																	<p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+																																																																																																																																																																	<a href="#" class="card-link">Card link</a>
+																																																																																																																																																																	<a href="#" class="card-link">Another link</a>
+																																																																																																																																																																</div> #}
+									{# </div> #}
+
+
+									{# afficher l'historique des commandes de chaque user #}
+									{# <div class="col-lg-6"> <nav class="nav-menu">
+																																																													<ul>
+																																																														{% for commande in commandes %}
+																																																	
+																																																															<li>
+																																																																<div class="bg-secondary rounded h-100 p-4" style="width:350px">
+																																																																	<div class="card" style="width: 18rem;">
+																																																																		<div class="card-body">
+																																																																			<div class="card-body">
+																																																																				<h5 class="card-title">id_com:{{ commande.id }}</h5>
+																																																																				<h6 class="card-subtitle mb-2 text-muted">{{ commande.NbArticles }}</h6>
+																																																																				<p class="card-text">{{ commande.TotalCommande }}</p>
+																																																																				<p class="card-text">{{ commande.etat }}</p>
+																																																																				<a href="#" class="card-link">Card link</a>
+																																																																				<a href="#" class="card-link">Another link</a>
+																																																																			</div>
+																																																																		</div>
+																																																																	</div>
+																																																																</li>
+																																																	
+																																																															{% endfor %}
+																																																														</ul>
+																																																													</nav>
+																																																												</div> #}
+
+
+									{# 
+																																																																																																																																																																																					
+																																																																																																																																																																																					<table class="table">
+																																																																																																																																																																																						<thead>
+																																																																																																																																																																																							<tr>
+																																																																																																																																																																																					
+																																																																																																																																																																																								<th>Id Cmd</th>
+																																																																																																																																																																																								<th>NbArticles</th>
+																																																																																																																																																																																								<th>TotalCommande</th>
+																																																																																																																																																																																								<th>Etat</th>
+																																																																																																																																																																																							</tr>
+																																																																																																																																																																																						</thead>
+																																																																																																																																																																																						<tbody>
+																																																																																																																																																																																					{% for commande in commandes %}
+																																																																																																																																																																																					
+																																																																																																																																																																																								<tr>
+																																																																																																																																																																																					
+																																																																																																																																																																																									<td>{{ commande.id }}</td>
+																																																																																																																																																																																									<td>{{ commande.NbArticles }}</td>
+																																																																																																																																																																																									<td>{{ commande.TotalCommande }}</td>
+																																																																																																																																																																																									<td>{{ commande.etat }}</td>
+																																																																																																																																																																																								</tr>
+																																																																																																																																																																																							</svg>
+																																																																																																																																																																																						</tbody>
+																																																																																																																																																																																					</a>
+																																																																																																																																																																																					</td>
+																																																																																																																																																																																					</tr> #}
+									{# {% else %}
+																																																																																																																																																																																					<tr>
+																																																																																																																																																																																					<td colspan="6">no records found</td>
+																																																																																																																																																																																					</tr> #}
+									{# </tbody>
+																																																																																																																																																																																					</table> #}
+
+
+									{# /******************************************************************************** #}
+										<a href="{{ path('app_profileEdit', {'id': user.id}) }}" class="primary-btn btn-normal appoinment-btn"> Edit</i>
+								</a>
+							</div>
+
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+
+</div></section><!-- Class Details Section End --><!-- Class Timetable Section Begin --><section class="class-timetable-section class-details-timetable spad">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="class-details-timetable_title">
+				<h5>Classes timetable</h5>
+			</div>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="class-timetable details-timetable">
+				<table>
+					<thead>
+						<tr>
+							<th></th>
+							<th>Monday</th>
+							<th>Tuesday</th>
+							<th>Wednesday</th>
+							<th>Thursday</th>
+							<th>Friday</th>
+							<th>Saturday</th>
+							<th>Sunday</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="class-time">6.00am - 8.00am</td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+								<h5>WEIGHT LOOSE</h5>
+								<span>RLefew D. Loee</span>
+							</td>
+							<td class="hover-dp ts-meta" data-tsmeta="fitness">
+								<h5>Cardio</h5>
+								<span>RLefew D. Loee</span>
+							</td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+								<h5>Yoga</h5>
+								<span>Keaf Shen</span>
+							</td>
+							<td class="hover-dp ts-meta" data-tsmeta="fitness">
+								<h5>Fitness</h5>
+								<span>Kimberly Stone</span>
+							</td>
+							<td class="dark-bg blank-td"></td>
+							<td class="hover-dp ts-meta" data-tsmeta="motivation">
+								<h5>Boxing</h5>
+								<span>Rachel Adam</span>
+							</td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+								<h5>Body Building</h5>
+								<span>Robert Cage</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="class-time">10.00am - 12.00am</td>
+							<td class="blank-td"></td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
+								<h5>Fitness</h5>
+								<span>Kimberly Stone</span>
+							</td>
+							<td class="hover-dp ts-meta" data-tsmeta="workout">
+								<h5>WEIGHT LOOSE</h5>
+								<span>RLefew D. Loee</span>
+							</td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation">
+								<h5>Cardio</h5>
+								<span>RLefew D. Loee</span>
+							</td>
+							<td class="hover-dp ts-meta" data-tsmeta="workout">
+								<h5>Body Building</h5>
+								<span>Robert Cage</span>
+							</td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation">
+								<h5>Karate</h5>
+								<span>Donald Grey</span>
+							</td>
+							<td class="blank-td"></td>
+						</tr>
+						<tr>
+							<td class="class-time">5.00pm - 7.00pm</td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
+								<h5>Boxing</h5>
+								<span>Rachel Adam</span>
+							</td>
+							<td class="hover-dp ts-meta" data-tsmeta="motivation">
+								<h5>Karate</h5>
+								<span>Donald Grey</span>
+							</td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+								<h5>Body Building</h5>
+								<span>Robert Cage</span>
+							</td>
+							<td class="blank-td"></td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+								<h5>Yoga</h5>
+								<span>Keaf Shen</span>
+							</td>
+							<td class="hover-dp ts-meta" data-tsmeta="motivation">
+								<h5>Cardio</h5>
+								<span>RLefew D. Loee</span>
+							</td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
+								<h5>Fitness</h5>
+								<span>Kimberly Stone</span>
+							</td>
+						</tr>
+						<tr>
+							<td class="class-time">7.00pm - 9.00pm</td>
+							<td class="hover-dp ts-meta" data-tsmeta="motivation">
+								<h5>Cardio</h5>
+								<span>RLefew D. Loee</span>
+							</td>
+							<td class="dark-bg blank-td"></td>
+							<td class="hover-dp ts-meta" data-tsmeta="fitness">
+								<h5>Boxing</h5>
+								<span>Rachel Adam</span>
+							</td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="workout">
+								<h5>Yoga</h5>
+								<span>Keaf Shen</span>
+							</td>
+							<td class="hover-dp ts-meta" data-tsmeta="motivation">
+								<h5>Karate</h5>
+								<span>Donald Grey</span>
+							</td>
+							<td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness">
+								<h5>Boxing</h5>
+								<span>Rachel Adam</span>
+							</td>
+							<td class="hover-dp ts-meta" data-tsmeta="workout">
+								<h5>WEIGHT LOOSE</h5>
+								<span>RLefew D. Loee</span>
+							</td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div></section><script>
+// fonction pour ouvrir la pop-up
+function openPopup() {
+document.getElementById("popup").style.display = "block";
+}
+
+// fonction pour fermer la pop-up
+function closePopup() {
+document.getElementById("popup").style.display = "none";
+}</script><!-- Class Timetable Section End -->{% endblock %}

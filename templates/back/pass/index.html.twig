@@ -1,0 +1,52 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}Pass index{% endblock %}
+
+{% block body %}
+    <h1>Pass index</h1>
+    <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+        <div class="container-fluid pt-4 px-4" style="bottom:0;">
+
+            {# <div class="card-body"> #}
+                    <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>CreatedAt</th>
+                <th>email client</th>
+                <th>event nom</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for pass in passes %}
+            <tr>
+                <td>{{ pass.id }}</td>
+                <td>{{ pass.createdAt ? pass.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+                <td>{{ pass.client.email }}</td>
+                <td>
+                {% if  pass.event is not null  %}
+                {{ pass.event.nom }}
+            {% else %}
+                pas d'event affecte a ce sponsor
+            {% endif %}
+        </td>
+                
+                <td>
+                    <a href="{{ path('app_pass_show', {'id': pass.id}) }}">show</a>
+                    {# <a href="{{ path('app_pass_edit', {'id': pass.id}) }}">edit</a> #}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="3">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+
+{% endblock %}

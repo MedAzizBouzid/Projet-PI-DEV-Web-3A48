@@ -1,0 +1,294 @@
+{% extends 'front/baseF.html.twig' %}
+
+
+{% block body %}
+
+   
+
+    <!-- acheter pass Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title contact-title">
+                        <span>Our event</span>
+                        <h2>{{event.nom}}</h2>
+                    </div>
+                    <div class="contact-widget">
+                        <div class="cw-text">
+                            <i class="fa fa-map-marker"></i>
+                            <p>{{event.lieu}}</p>
+                        </div>
+                        <div class="cw-text">
+                            <i class="fa fa-mobile"></i>
+                            <ul>
+                                <li>125-711-811</li>
+                                <li>125-668-886</li>
+                            </ul>
+                        </div>
+                        <div class="cw-text email">
+                            <i class="fa fa-envelope"></i>
+                            <p>Support.gymcenter@gmail.com</p>
+                        </div>
+                        {% if event.capacite > 0 %}
+                        <a href="{{ path('app_pass_reservation', {'id_event': event.id}) }}"><button class="btn btn-danger">reservez votre place</button></a>
+                        {% else %}
+                        <a href=""><button class="btn btn-danger">pas de places disponibles</button></a>
+                        {% endif %}
+                        
+                    </div>
+                </div>
+                
+            </div>
+
+        </div>
+    </section>
+    <!-- acheter pass Section End -->
+
+    <!-- comments Section Begin -->
+    <section class="pricing-section service-pricing spad">
+        <div class="container">
+            <div class="col-lg-12">
+                <div class="section-title">
+                    <span>Testimonial</span>
+                    <h2>Our cilent say</h2>
+                </div>
+            </div>
+        <div class="row d-flex justify-content-center ">
+            <div class="col-md-8 col-lg-6">
+              <div class="card shadow-0 border" style="background-color: #8d1414;">
+                <div class="card-body p-4 ">
+                  <div class="form-outline mb-4">
+
+                    {# <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+                    <label class="form-label" for="addANote">+ Add a note</label> #}
+                    {{ form_start(form) }}
+                    {{ form_widget(form) }}
+                    <button class="btn">
+                                    {{ button_label|default('Save') }}</button>
+                        {{ form_end(form) }}
+
+                  </div>
+          {% for cmt in commentaires %}
+            
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <p>{{cmt.description}}</p>
+          
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
+                            height="25" />
+                            {% if cmt.client is not null %}
+                          <p class="small mb-0 ms-2">{{cmt.client.nom}}</p>
+                            {% else %}
+                          <p class="small mb-0 ms-2">ce client a ete supprime</p>
+                            {% endif %}
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          {# <p class="small text-muted mb-0">Upvote?</p> #}
+
+                          {% if cmt.client is not null and cmt.client.id == id_client %}
+                          <a href="{{ path('app_commentaire_delete_front', {'id': cmt.id,'id_event':event.id}) }}"><button class="btn btn-danger">delete</button></a> &nbsp;
+                          <a href=""><button class="btn btn-danger">modify</button></a>
+                          {% else %}
+                            
+                          {% endif %}
+                          {# <p class="small text-muted mb-0">3</p> #}
+                        </div>
+
+                      </div>
+                    </div>
+                  </div>
+          
+                  {% endfor %}
+
+
+                  {# <div class="card mb-4">
+                    <div class="card-body">
+                      <p>Type your note, and hit enter to add it</p>
+          
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                            height="25" />
+                          <p class="small mb-0 ms-2">Johny</p>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <p class="small text-muted mb-0">Upvote?</p>
+                          <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                          <p class="small text-muted mb-0">4</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <p>Type your note, and hit enter to add it</p>
+          
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                            height="25" />
+                          <p class="small mb-0 ms-2">Johny</p>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <p class="small text-muted mb-0">Upvote?</p>
+                          <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                          <p class="small text-muted mb-0">4</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <p>Type your note, and hit enter to add it</p>
+          
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                            height="25" />
+                          <p class="small mb-0 ms-2">Johny</p>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <p class="small text-muted mb-0">Upvote?</p>
+                          <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                          <p class="small text-muted mb-0">4</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <p>Type your note, and hit enter to add it</p>
+          
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                            height="25" />
+                          <p class="small mb-0 ms-2">Johny</p>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <p class="small text-muted mb-0">Upvote?</p>
+                          <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                          <p class="small text-muted mb-0">4</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <p>Type your note, and hit enter to add it</p>
+          
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                            height="25" />
+                          <p class="small mb-0 ms-2">Johny</p>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <p class="small text-muted mb-0">Upvote?</p>
+                          <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                          <p class="small text-muted mb-0">4</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+          
+                  <div class="card mb-4">
+                    <div class="card-body">
+                      <p>Type your note, and hit enter to add it</p>
+          
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="25"
+                            height="25" />
+                          <p class="small mb-0 ms-2">Mary Kate</p>
+                        </div>
+                        <div class="d-flex flex-row align-items-center text-primary">
+                          <p class="small mb-0">Upvoted</p>
+                          <i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
+                          <p class="small mb-0">2</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+          
+                  <div class="card">
+                    <div class="card-body">
+                      <p>Type your note, and hit enter to add it</p>
+          
+                      <div class="d-flex justify-content-between">
+                        <div class="d-flex flex-row align-items-center">
+                          <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                            height="25" />
+                          <p class="small mb-0 ms-2">Johny</p>
+                        </div>
+                        <div class="d-flex flex-row align-items-center">
+                          <p class="small text-muted mb-0">Upvote?</p>
+                          <i class="far fa-thumbs-up ms-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                        </div>
+                      </div>
+                    </div>
+                  </div> #}
+                </div>
+              </div>
+            </div>
+          </div> 
+        </div>
+    </section>
+    <!-- comments Section end -->
+
+    <!-- sponsor Section Begin -->
+    <section class="testimonial-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="section-title">
+                        <span>Testimonial</span>
+                        <h2>Our sponsors</h2>
+                    </div>
+                </div>
+            </div>
+            <div class="ts_slider owl-carousel">
+
+
+                {% for sponsor in sponsors %}
+                    
+                
+                <div class="ts_item">
+                    <div class="row">
+                        <div class="col-lg-12 text-center">
+                            <div class="ti_pic">
+                                <img src="{{ sponsor.logo}}" alt="">
+                            </div>
+                            <div class="ti_text">
+                                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+                                    incididunt<br /> ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
+                                    gravida. Risus commodo<br /> viverra maecenas accumsan lacus vel facilisis.</p>
+                                <h5>Marshmello Gomez</h5>
+                                <div class="tt-rating">
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                    <i class="fa fa-star"></i>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+
+
+            </div>
+        </div>
+    </section>
+    <!-- Testimonial Section End -->
+
+  {% endblock %}
+
+  {% block ajax %}
+ 
+
+  {% endblock %}

@@ -2,11 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Commande;
+use App\Entity\Panier;
 use App\Entity\Salle;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\CommandeRepository;
+use App\Repository\PanierRepository;
 use App\Repository\UserRepository;
 use Doctrine\ORM\EntityManagerInterface;
+use Sabberworm\CSS\Value\Size;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Bundle\SecurityBundle\Security;
 use Symfony\Component\HttpFoundation\File\Exception\FileException;
@@ -14,6 +19,7 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Component\String\Slugger\SluggerInterface;
+use Symfony\Component\Validator\Constraints\Length;
 
 class TraitementController extends AbstractController
 {
@@ -68,14 +74,33 @@ class TraitementController extends AbstractController
             
         ]);
     }
-  
+//   *************************************
     #[Route('/profile/{id}', name: 'app_profile')]
-    public function profile(User $user): Response
+    public function profile(User $user,PanierRepository $panierRepository,CommandeRepository $commandeRepository): Response
     {
+        $panier = new Panier();
+        $panier=$panierRepository->findByClientId($user->getId());
+        
+        // $commande = new Commande();
+         foreach($panier as $p){
+           $PanierId[] = $p->getId();
+
+         }
+         foreach($PanierId as $pId){
+           $commande[]=$commandeRepository->findByPanierId($pId);
+         }
+        for ($i=0; $i < count($commande); $i++) { 
+            # code...
+            $cmd[]=$commande[$i][0];
+        }
+        // dd($cmd);
         return $this->render('front/profileUser.html.twig', [
             'user' => $user,
+            'commandes'=>$cmd
         ]);
     }
+    //   *************************************
+
     #[Route('/Edit/{id}', name: 'app_profileEdit')]
     public function profileEdit(Request $request, User $user, UserRepository $userRepository,SluggerInterface $slugger): Response
     {$form = $this->createForm(RegistrationFormType::class, $user);
