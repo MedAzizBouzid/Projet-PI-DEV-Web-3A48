@@ -2,6 +2,8 @@
 
 namespace App\Form;
 use App\Entity\Promotion;
+use App\Entity\Categorie;
+
 use App\Entity\Offres;
 use Symfony\Bridge\Doctrine\Form\Type\EntityType;
 use Symfony\Component\Form\AbstractType;
@@ -30,15 +32,18 @@ class OffresType extends AbstractType
             'multiple' => false,
             'expanded' => false,
         ])
-            ->add ('type', ChoiceType::class,array(
-                'choices'=> array(
-                     'Personne'=> 'Personne',
-                     'Famiile'=> 'Famille',
-                     'BluePass-sport'=> 'BluePass-sport',
-                     'YellowPass-sport'=> 'YellowPass-sport',
-                   'Couple'=>'Couple' ,
-                 'Enfant'=>'Enfant',))
-            )
+        ->add('categ', EntityType::class, [
+            // looks for choices from this entity
+            'class' => Categorie::class,
+            // uses the User.username property as the visible option string
+            'choice_label' => 'name',
+        
+            'required' => false,
+            // used to render a select box, check boxes or radios
+            'multiple' => false,
+            'expanded' => false,
+        ])
+            
             
             
             ->add('prix' ,NumberType::class, [

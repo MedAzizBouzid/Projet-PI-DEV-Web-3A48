@@ -1,0 +1,95 @@
+{% extends 'front/baseF.html.twig' %}
+
+
+{% block body %}
+
+    <!-- Breadcrumb Section Begin -->
+     <!-- Breadcrumb Section Begin -->
+     <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12 text-center">
+                    <div class="breadcrumb-text">
+                        <h2>Payement</h2>
+                        <div class="bt-option">
+                            <a href="./index.html">Home</a>
+                            <span>payement</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <!-- Breadcrumb Section End -->
+     <!-- Contact Section Begin -->
+    <section class="contact-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-6">
+                    <div class="section-title contact-title">
+                    <br>
+                    <br>
+                      <br>
+       
+                  <div class="text-white
+ rounded h-100 p-5">
+                  
+                          <div class="col-sm-12 col-xl-12">
+                   
+
+                    <div class="leave-comment">
+<form action="{{ path('app_process_payment') }}" method="post">
+    <input type="hidden" name="card_token" value="{{ cardToken }}" />
+    
+        <label for="amount">Montant</label>
+        <input type="number" name="amount" id="amount" class="form-control" required>
+<label for="email">Adresse e-mail</label>
+<input type="email" name="email" id="email" class="form-control" required>
+    
+        <label for="card_number">Numéro de carte</label>
+        <input type="text" name="card_number" id="card_number" class="form-control" required>
+    
+    
+        <label for="exp_month">Mois d'expiration</label>
+        <input type="number" name="exp_month" id="exp_month" class="form-control" required>
+    
+    
+        <label for="exp_year">Année d'expiration</label>
+        <input type="number" name="exp_year" id="exp_year" class="form-control" required>
+    
+    
+        <label for="cvc">CVC</label>
+        <input type="number" name="cvc" id="cvc" class="form-control" required>
+    
+    <button type="submit" class="btn btn-primary">Payer</button>
+</form>  
+
+
+    </div>
+         
+    
+                    </div>
+
+                        </div>
+                    </div>
+                    </div>
+                    </div>
+                </div>
+            </div>
+            <div id="payment-alert"></div>
+
+<script>
+    var alertDiv = document.getElementById('payment-alert');
+    var response = {{ paymentResponse|raw }};
+    
+    if (response.status == 'success') {
+        alertDiv.innerHTML = '<div class="alert alert-success">Paiement réussi</div>';
+    } else {
+        alertDiv.innerHTML = '<div class="alert alert-danger">' + response.message + '</div>';
+    }
+</script>
+
+
+
+            
+{% endblock %}

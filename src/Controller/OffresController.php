@@ -5,6 +5,8 @@ use App\Entity\Promotion;
 use App\Entity\Offres;
 use App\Form\OffresType;
 use App\Repository\OffresRepository;
+use App\Repository\CategorieRepository;
+
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -60,40 +62,6 @@ class OffresController extends AbstractController
         ]);
     }
 
-//     #[Route('/{id}/edit', name: 'app_offres_edit', methods: ['GET', 'POST'])]
-//     public function edit(Request $request, Offres $offre, OffresRepository $offresRepository): Response
-//     {     if($offre->getPromo()!=null)
-//        {
-//         $bergila=0;
-//         $bergila=$offre->getPromo()->getPourcentage();
-       
-//        }
-//         $form = $this->createForm(OffresType::class, $offre);
-      
-//         $form->handleRequest($request);
-        
-        
-//   if ($form->isSubmitted() && $form->isValid()) {
-       
-       
-       
-//         if($offre->getPromo()==null){
-//             $offre->setPrix(($offre->getPrix()*100)/(100-$bergila));
-//             }   
-//             else 
-            
-//                 $offre->setPrix($offre->getPrix()-(($offre->getPrix()*$offre->getPromo()->getPourcentage())/100));
-//                 $offresRepository->save($offre, true);
-            
-
-//             return $this->redirectToRoute('app_offres_index', [], Response::HTTP_SEE_OTHER);
-//         }
-
-//         return $this->renderForm('back/form.html.twig', [
-//             'offres' => $offre,
-//             'form' => $form,
-//         ]);
-//     }
 
 #[Route('/{id}/edit', name: 'app_offres_edit', methods: ['GET', 'POST'])]
 public function edit(Request $request, Offres $offre, OffresRepository $offresRepository): Response
@@ -132,16 +100,7 @@ public function edit(Request $request, Offres $offre, OffresRepository $offresRe
 
 
     #[Route('/delte/{id}', name: 'app_offres_delete', methods: ['GET','POST'])]
-// public function delete(Request $request, Offres $offre, OffresRepository $offresRepository): Response
-  //  {
-      //if ($this->isCsrfTokenValid('delete'.$offre->getId(), $request->request->get('_token'))) {
-    //  $offresRepository->remove($offre,TRUE);
-      //}
-    //return $this->redirectToRoute('app_offres_index', [], Response::HTTP_SEE_OTHER);
-     
- 
-    //}
-    public function remove($id,ManagerRegistry $mr,OffresRepository $repo): Response
+ public function remove($id,ManagerRegistry $mr,OffresRepository $repo): Response
     {
         
         $st=$repo->find($id);
@@ -163,15 +122,20 @@ public function edit(Request $request, Offres $offre, OffresRepository $offresRe
           }
 
 
-          #[Route('/afficher', name: 'app_offres_index2', methods: ['GET'])]
-
-          public function index2(OffresRepository $myEntityRepository)
-    {
-        $data = $myEntityRepository->findAllData();
-
-        return $this->render('front/services.html.twig', [
-            'data' => $data,
-        ]);
-    }
+          #[Route('/categorie/{id}/offres', name: 'app_categorie_offres', methods: ['GET'])]
+          public function afficherOffresParCategorie(int $id, CategorieRepository $categoriesRepository): Response
+          {
+              $categorie = $categoriesRepository->find($id);
+              if (!$categorie) {
+                  throw $this->createNotFoundException('La catégorie demandée n\'existe pas.');
+              }
+          
+              $offres = $categorie->getOffres();
+          
+              return $this->render('front/services.html.twig', [
+                  'categorie' => $categorie,
+                  'offres' => $offres,
+              ]);
+          }
 
 }

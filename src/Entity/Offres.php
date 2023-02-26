@@ -20,9 +20,7 @@ class Offres
     private ?int $id = null;
     
 
-    #[ORM\Column(length: 255)]
-    private ?string $type ;
-
+   
    
 
 
@@ -74,6 +72,9 @@ class Offres
     #[ORM\ManyToOne(inversedBy: 'offres')]
     private ?Promotion $promo = null;
 
+    #[ORM\ManyToOne(inversedBy: 'offres')]
+    private ?Categorie $categ = null;
+
  
    
    
@@ -95,17 +96,7 @@ class Offres
         return $this->id;
     }
 
-    public function getType(): ?string
-    {
-        return $this->type;
-    }
 
-    public function setType(string $type): self
-    {
-        $this->type = $type;
-
-        return $this;
-    }
 
    
     
@@ -198,6 +189,18 @@ class Offres
     public function setNvPrix(?float $nv_prix): self
     {
         $this->nv_prix = $nv_prix;
+
+        return $this;
+    }
+
+    public function getCateg(): ?categorie
+    {
+        return $this->categ;
+    }
+
+    public function setCateg(?categorie $categ): self
+    {
+        $this->categ = $categ;
 
         return $this;
     }

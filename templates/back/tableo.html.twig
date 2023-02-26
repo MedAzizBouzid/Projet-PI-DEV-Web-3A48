@@ -13,7 +13,7 @@
                                     <thead>
                                         <tr>
                                            <th>Id</th>
-                                              <th>Type</th>
+                                                      <th>Categorie</th> 
                                              
                                            <th>duree</th>
                                     
@@ -31,10 +31,9 @@
                                      {% for offre in offres %}
                                             <tr>
                                                  <td>{{ offre.id }}</td>
+                                                 <td>{{ offre.categ.name}} </td>  
                                                  
-                                                <td> Tarif Par {{ offre.type }}</td>
-
-                                                 <td>{{ offre.duree   }}  Mois</td>  
+                                              <td>{{ offre.duree   }}  Mois</td>  
 
                                               <td>{{ offre.prix }}   DT</td> 
 

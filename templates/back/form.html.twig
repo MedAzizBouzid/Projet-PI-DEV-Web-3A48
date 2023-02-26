@@ -24,54 +24,45 @@
                                      
                                           
                       
-                           <table class="center-table">
+                           
                              
-                           <tr>
-                                <div class="text-center">
-                              
-                                   <div class="row justify-content-center">
-                                       <td> {{ form_label(form.type) }}</td>
-                                <td> {{ form_widget(form.type) }} <br> </td>
-                                </tr>
+                   
 
-                                <tr>
+                        
                                 
-                                   <div class="row justify-content-center">
-                                <td> {{ form_label(form.prix )  }}</td>
-                                <td> {{ form_widget(form.prix) }} <br></td>
+                                   
+                              {{ form_label(form.prix )  }}
+                               {{ form_widget(form.prix) }} 
                               
-                                   <td>   <br>   {{ form_errors(form.prix) }}</td>
-                                </tr>
+                                       {{ form_errors(form.prix) }}
+                               
+                            
+                                        {{ form_label(form.duree) }}
+                                 {{ form_widget(form.duree) }} 
+                                   {{ form_errors(form.duree) }}                            
                                 
-                                 <tr>
-                                   <div class="row justify-content-center">
-                                       <td> {{ form_label(form.duree) }}</td>
-                                <td> {{ form_widget(form.duree) }} <br></td>
-                                  <td> {{ form_errors(form.duree) }}</td>
-                                </tr>
-                                
-                                 <tr>
-                                   <div class="row justify-content-center">
+                         
                               
-                                       <td> {{ form_label(form.description) }}</td>
-                                <td> {{ form_widget(form.description) }} <br></td>
-                                     <td> {{  form_errors(form.description) }}</td>
-                                </tr>
+                              
+                                       {{ form_label(form.description) }}
+                                {{ form_widget(form.description) }} 
+                                      {{  form_errors(form.description) }}
+                              
                                 
                               
                         </div>
-                    
-</table>
+       
 
-  {{ form_label(form.promo) }}
-        {{ form_widget(form.promo)}}
+
+
                             
-       <button class="btn">{{ button_label|default('Save') }}</button>
-<br>
-    <a href="{{ path('app_offres_index') }}">back to list</a>
+    
 
 
 {{ form_end(form) }}
+   <button class="btn">{{ button_label|default('Save') }}</button>
+<br>
+    <a href="{{ path('app_offres_index') }}">back to list</a>
  
 
                         </div>
