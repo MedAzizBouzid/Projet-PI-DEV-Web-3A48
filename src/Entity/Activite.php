@@ -42,9 +42,13 @@ class Activite
     #[ORM\ManyToMany(targetEntity: Salle::class, mappedBy: 'cours')]
     private Collection $salles;
 
+    #[ORM\ManyToMany(targetEntity: Offres::class, mappedBy: 'activities')]
+    private Collection $offres;
+
     public function __construct()
     {
         $this->salles = new ArrayCollection();
+        $this->offres = new ArrayCollection();
     }
 
    
@@ -172,6 +176,33 @@ class Activite
     {
         if ($this->salles->removeElement($salle)) {
             $salle->removeCour($this);
+        }
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Offres>
+     */
+    public function getOffres(): Collection
+    {
+        return $this->offres;
+    }
+
+    public function addOffre(Offres $offre): self
+    {
+        if (!$this->offres->contains($offre)) {
+            $this->offres->add($offre);
+            $offre->addActivity($this);
+        }
+
+        return $this;
+    }
+
+    public function removeOffre(Offres $offre): self
+    {
+        if ($this->offres->removeElement($offre)) {
+            $offre->removeActivity($this);
         }
 
         return $this;

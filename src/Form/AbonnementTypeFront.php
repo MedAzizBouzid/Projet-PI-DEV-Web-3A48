@@ -24,24 +24,24 @@ class AbonnementTypeFront extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-        ->add('Name',TextType::class,[
-            'constraints'=>[
-                new Assert\Regex([
-                    'pattern' => '/^[a-zA-Z\s]*$/',
-                    'message' => 'Le champ nom ne peut pas contenir de chiffres.'
-                    ]),
-            ]
-                ])
-            ->add('Email',
-            EmailType::class, [
+        // ->add('Name',TextType::class,[
+        //     'constraints'=>[
+        //         new Assert\Regex([
+        //             'pattern' => '/^[a-zA-Z\s]*$/',
+        //             'message' => 'Le champ nom ne peut pas contenir de chiffres.'
+        //             ]),
+        //     ]
+        //         ])
+        //     ->add('Email',
+        //     EmailType::class, [
              
-                'attr' => [
-                    'class' => 'form-control',
-                    'placeholder' => 'Entrez votre adresse email'
-                ]
-            ]
+        //         'attr' => [
+        //             'class' => 'form-control',
+        //             'placeholder' => 'Entrez votre adresse email'
+        //         ]
+        //     ]
            
-            )
+        //     )
             ->add('salle',  
             
             )

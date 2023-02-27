@@ -155,11 +155,17 @@ class PassController extends AbstractController
         $currentDate = new DateTimeImmutable();
         $currentDate->format('Y-m-d H:i:s');
         $client=$userRepo->find($id);
-        return $this->render('front/confirmer-pass.html.twig', [
-            'event' => $event,
-            'date'=>$currentDate,
-            'client'=>$client,
-        ]);
+        if($this->getUser()){
+
+            return $this->render('front/confirmer-pass.html.twig', [
+                'event' => $event,
+                'date'=>$currentDate,
+                'client'=>$client,
+            ]);
+        }else{
+            return $this->redirectToRoute('app_login');
+
+        }
     }
 
     #[Route('/{id}', name: 'app_pass_show', methods: ['GET'])]

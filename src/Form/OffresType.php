@@ -1,6 +1,8 @@
 <?php
 
 namespace App\Form;
+
+use App\Entity\Activite;
 use App\Entity\Promotion;
 use App\Entity\CategorieOff;
 
@@ -83,7 +85,15 @@ class OffresType extends AbstractType
                 ]
                     ])
                     
-                 
+            ->add('activities', EntityType::class, [
+            'class' => Activite::class,
+            'choice_label' => 'nom',
+            'label' => 'activities',
+            'multiple' => true,
+            'required' => true,
+                        'expanded' => false,
+
+        ]) 
                
           
                 

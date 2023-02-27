@@ -76,8 +76,8 @@
                                  
                                  
                                  
-                                  {{ form_start(form.Name,{'attr': {'novalidate': 'novalidate'}} ) }}
-                                     {{ form_start(form.Email,{'attr': {'novalidate': 'novalidate'}} ) }}
+                                  {# {{ form_start(form.Name,{'attr': {'novalidate': 'novalidate'}} ) }} #}
+                                     {# {{ form_start(form.Email,{'attr': {'novalidate': 'novalidate'}} ) }} #}
                                                    {{ form_start(form.salle,{'attr': {'novalidate': 'novalidate'}} ) }}
                                                              {{ form_start(form.MPayement,{'attr': {'novalidate': 'novalidate'}} ) }}
                                                                    {{ form_start(form.DateD,{'attr': {'novalidate': 'novalidate'}} ) }}
@@ -86,7 +86,7 @@
 
 
 
-                                <label for="exampleInputEmail1"> Name  </label>   <br>
+                                {# <label for="exampleInputEmail1"> Name  </label>   <br>
                                    {{ form_widget(form.Name) }}
                             
                                  {{ form_errors(form.Name) }}
@@ -95,7 +95,7 @@
                                 <label for="exampleInputEmail1"> Email</label>
                                  {{ form_widget(form.Email) }}
                                  {{ form_errors(form.Email) }}
-                                   <br> 
+                                   <br>  #}
                        
                                     <div class="form-group">
                                {{ form_label(form.salle) }}

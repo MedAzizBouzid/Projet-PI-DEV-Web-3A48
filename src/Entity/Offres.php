@@ -7,6 +7,7 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
+
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: OffresRepository::class)]
@@ -75,17 +76,24 @@ class Offres
     #[ORM\ManyToOne(inversedBy: 'offres')]
     private ?CategorieOff $categ = null;
 
+    #[ORM\ManyToMany(targetEntity: Activite::class, inversedBy: 'offres')]
+    private Collection $activities;
+
  
    
    
 
    
 
-   
+//    public function __toString()
+// {
+//     return (string) $this->getId();
+// }
 
     public function __construct()
     {
         $this->abonnements = new ArrayCollection();
+        $this->activities = new ArrayCollection();
     }
 
      
@@ -181,17 +189,17 @@ class Offres
         return $this;
     }
 
-    public function getNvPrix(): ?float
-    {
-        return $this->nv_prix;
-    }
+    // public function getNvPrix(): ?float
+    // {
+    //     return $this->nv_prix;
+    // }
 
-    public function setNvPrix(?float $nv_prix): self
-    {
-        $this->nv_prix = $nv_prix;
+    // public function setNvPrix(?float $nv_prix): self
+    // {
+    //     $this->nv_prix = $nv_prix;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getCateg(): ?CategorieOff
     {
@@ -201,6 +209,30 @@ class Offres
     public function setCateg(?CategorieOff $categ): self
     {
         $this->categ = $categ;
+
+        return $this;
+    }
+
+    /**
+     * @return Collection<int, Activite>
+     */
+    public function getActivities(): Collection
+    {
+        return $this->activities;
+    }
+
+    public function addActivity(Activite $activity): self
+    {
+        if (!$this->activities->contains($activity)) {
+            $this->activities->add($activity);
+        }
+
+        return $this;
+    }
+
+    public function removeActivity(Activite $activity): self
+    {
+        $this->activities->removeElement($activity);
 
         return $this;
     }

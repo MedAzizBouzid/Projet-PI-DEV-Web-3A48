@@ -139,8 +139,8 @@
 											</a>
 										</div>
 										{# <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
-																																																																																																																																																																																																																																																																																																																					                                            tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
-																																																																																																																																																																																																																																																																																																																					                                            vel facilisis.</p> #}
+																																																																																																																																																																																																																																																																																																																																																													                                            tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
+																																																																																																																																																																																																																																																																																																																																																													                                            vel facilisis.</p> #}
 										<ul class="trainer-info">
 											<li>
 												<span>Name</span>
@@ -155,132 +155,193 @@
 												<span>Tel</span>
 												{{user.numTel}}</li>
 										</ul>
-										{# ************************************************** Commande Start pop-up******************************************** #}
-
-										<!-- bouton pour ouvrir la pop-up -->
-										<button style="background-color:red;color:white;" onclick="openPopup()">Chek orders</button>
-
-
-										<!-- pop-up -->
-										<div id="popup" class="popup">
-											<div class="popup-content">
-												<h2>My orders</h2>
-												<table class="table">
-													<thead>
-														<tr>
-															<th scope="col">#</th>
-															<th scope="col">Article Number</th>
-															<th scope="col">Total Commande</th>
-															<th scope="col">State</th>
-															<th scope="col">Action</th>
+										{# /*************************************abn************************************************************************ #}
+										<table class="table">
+											<thead>
+												<tr>
 
 
-														</tr>
-													</thead>
-													<tbody>
-														{% for commande in commandes %}
-															<tr>
-																<td>{{ commande.id }}</td>
-																<td>{{ commande.NbArticles }}</td>
-																<td>{{ commande.TotalCommande }}</td>
-																<td>{{ commande.etat }}</td>
-																<td>
-																	<a href="{{path('delete_commande',{'id':commande.id})}}">
-																	{# <i class="bi bi-book"></i> #}
-																	Cancel 
-																	</a>
-																</td>
+													<th>salle</th>
+													<th>date Debut</th>
 
-															</tr>
-														{% endfor %}
-													</tbody>
-												</table>
-												<span class="popup-close" onclick="closePopup()">&times;</span>
-											</div>
-										</div>
-										{# ************************************************** Commande end pop-up*********************** #}
-										{# ************************************************** Pass pop-up*********************** #}
-										<!-- bouton pour ouvrir la pop-up -->
-											<button style="background-color:red;color:white;" onclick="openPopuppass()"> Chek Passes</button>
+													<th>Payement</th>
 
+													<th>Offer
+													</th>
+													<th>State</th>
+													<th>Actions</th>
+												</tr>
+											</thead>
 
-										<!-- pop-up -->
-										<div id="popup_passe" class="popup">
-											<div class="popup-content">
-												<h2>My Passes</h2>
-
-												<table class="table">
-
-													<thead style="background-color:red;"></thead>
+											<tbody>
+												{% for ab in abonnements %}
 
 													<tr>
-														<th scope="col">#</th>
-														<th scope="col">Client Number</th>
-														<th scope="col">createdAt</th>
 
-														<th scope="col">Event name</th>
-														<th scope="col">Begin
-														</th>
-														<th scope="col">End
-														</th>
-														<th scope="col">description</th>
+														<td>{{ ab.salle }}</td>
+														<td>{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}</td>
+														<td>{{ ab.MPayement }}</td>
+														<td>{{ ab.offre.id }}</td>
+														{% if ab.etatab %}
+															<td>
+
+																Active
+															</td>
+														{% else %}
+															<td>
+
+																Not Active
+															</td>
+
+														{% endif %}
+
+
+														<td>
+
+															<a href="{{ path('app_process_payment') }}">
+
+																{# <i class="bi bi-pencil-square"></i> #}
+																activer
+															</a>
+
+
+														</td>
+
+
+													</tr>
+												{% endfor %}
+
+
+											</tbody>
+										</tbody>
+									</table>
+
+									{# /*************************************abn************************************************************************ #}
+									{# ************************************************** Commande Start pop-up******************************************** #}
+
+									<!-- bouton pour ouvrir la pop-up -->
+										<button style="background-color:red;color:white;" onclick="openPopup()"> Chek orders</button>
+
+
+									<!-- pop-up -->
+									<div id="popup" class="popup">
+										<div class="popup-content">
+											<h2>My orders</h2>
+											<table class="table">
+												<thead>
+													<tr>
+														<th scope="col">#</th>
+														<th scope="col">Article Number</th>
+														<th scope="col">Total Commande</th>
+														<th scope="col">State</th>
+														<th scope="col">Action</th>
 
 
 													</tr>
 												</thead>
 												<tbody>
-													{% for pass in passes %}
-
-
+													{% for commande in commandes %}
 														<tr>
-															<td>id Pass:{{ pass.id }}</td>
-															<td>{{ pass.client.nom }}</td>
-															<td>created At:{{ pass.createdAt ? pass.createdAt|date('Y-m-d H:i:s') : '' }}</td>
-
-															{% if pass.event is not null %}
-																<td>event name:{{ pass.event.nom }}</td>
-
-															{% else %}
-																<td>this event has been deleted</td>
-
-															{% endif %}
-
-															{% if pass.event is not null %}
-
-																<td>event begin at:{{ pass.event.beginAt ? pass.event.beginAt|date('Y-m-d H:i:s') : '' }}
-																</td>
-
-
+															<td>{{ commande.id }}</td>
+															<td>{{ commande.NbArticles }}</td>
+															<td>{{ commande.TotalCommande }}</td>
+															<td>{{ commande.etat }}</td>
+															<td>
+																<a
+																	href="{{path('delete_commande',{'id':commande.id})}}">
+																	{# <i class="bi bi-book"></i> #}
+																	Cancel
+																</a>
 															</td>
 
-															<td>event finish at:
-																{{ pass.event.finishAt ? pass.event.finishAt|date('Y-m-d H:i:s') : '' }}</td>
-															<td>{{ pass.event.description }}</td>
-
 														</tr>
-													</td>
+													{% endfor %}
 												</tbody>
-											</tr>
-										</li>
-									</tbody>
-								</td>
+											</table>
+											<span class="popup-close" onclick="closePopup()">&times;</span>
+										</div>
+									</div>
+									{# ************************************************** Commande end pop-up*********************** #}
+									{# ************************************************** Pass pop-up*********************** #}
+									<!-- bouton pour ouvrir la pop-up -->
+										<button style="background-color:red;color:white;" onclick="openPopuppass()"> Chek Passes</button>
 
 
-							</tbody>
-						</td>
-					</tr>
-				</ul>
-			</tbody>
-		</tr>
-	</td>
-{% else %}
-	<td>this event has been deleted</td>
-{% endif %}</tr>{% endfor %}</tbody></table><span class="popup-close" onclick="closePopuppass()">&times;</span></div></div>{# ************************************************** Pass pop-up*********************** #}{# 
-																																																																										<!-- Pricing Section Begin -->
-																																																																										<section class="pricing-section service-pricing spad">
-																																																																																																																																																																																																																																																													<td colspan="6">no records found</td>
-																																																																																																																																																																																																																																																															</tr> #}{# </tbody>
-																																																																																																																																																																																																																																																															</table> #}{# /******************************************************************************** #}<a href="{{ path('app_profileEdit', {'id': user.id}) }}" class="primary-btn btn-normal appoinment-btn"> Edit</i></a></div></div> </div></div></div></div></div></div></section><!-- Class Details Section End --><!-- Class Timetable Section Begin --><section class="class-timetable-section class-details-timetable spad"><div class="container"><div class="row"><div class="col-lg-12"><div class="class-details-timetable_title"><h5>Classes timetable</h5></div></div></div><div class="row"><div class="col-lg-12"><div class="class-timetable details-timetable"><table> <thead><tr><th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th></tr> </thead> <tbody><tr><td class="class-time">6.00am - 8.00am</td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td><td class="dark-bg blank-td"></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td></tr><tr><td class="class-time">10.00am - 12.00am</td><td class="blank-td"></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="blank-td"></td></tr><tr><td class="class-time">5.00pm - 7.00pm</td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td><td class="blank-td"></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td></tr><tr><td class="class-time">7.00pm - 9.00pm</td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg blank-td"></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td></tr> </tbody></table></div></div></div></div></section><script>// fonction pour ouvrir la pop-up
+									<!-- pop-up -->
+									<div id="popup_passe" class="popup">
+										<div class="popup-content">
+											<h2>My Passes</h2>
+
+											<table class="table">
+
+												<thead style="background-color:red;"></thead>
+
+												<tr>
+													<th scope="col">#</th>
+													<th scope="col">Client Number</th>
+													<th scope="col">createdAt</th>
+
+													<th scope="col">Event name</th>
+													<th scope="col">Begin
+													</th>
+													<th scope="col">End
+													</th>
+													<th scope="col">description</th>
+
+
+												</tr>
+											</thead>
+											<tbody>
+												{% for pass in passes %}
+
+
+													<tr>
+														<td>id Pass:{{ pass.id }}</td>
+														<td>{{ pass.client.nom }}</td>
+														<td>created At:{{ pass.createdAt ? pass.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+
+														{% if pass.event is not null %}
+															<td>event name:{{ pass.event.nom }}</td>
+
+														{% else %}
+															<td>this event has been deleted</td>
+
+														{% endif %}
+
+														{% if pass.event is not null %}
+
+															<td>event begin at:{{ pass.event.beginAt ? pass.event.beginAt|date('Y-m-d H:i:s') : '' }}
+															</td>
+
+
+														</td>
+
+														<td>event finish at:
+															{{ pass.event.finishAt ? pass.event.finishAt|date('Y-m-d H:i:s') : '' }}</td>
+														<td>{{ pass.event.description }}</td>
+
+													</tr>
+												</td>
+											</tbody>
+										</tr>
+									</li>
+								</tbody>
+							</td>
+
+
+						</tbody>
+					</td>
+				</tr>
+			</ul>
+		</tbody>
+	</tr>
+</td>{% else %}
+<td>this event has been deleted</td>{% endif %}</tr>{% endfor %}</tbody></table><span class="popup-close" onclick="closePopuppass()">&times;</span></div></div>{# ************************************************** Pass pop-up*********************** #}{# 
+																																																																														<!-- Pricing Section Begin -->
+																																																																														<section class="pricing-section service-pricing spad">
+																																																																																																																																																																																																																																																																	<td colspan="6">no records found</td>
+																																																																																																																																																																																																																																																																			</tr> #}{# </tbody>
+																																																																																																																																																																																																																																																																			</table> #}{# /******************************************************************************** #}<a href="{{ path('app_profileEdit', {'id': user.id}) }}" class="primary-btn btn-normal appoinment-btn"> Edit</i></a></div> </div></div></div></div></div></div></div></section><!-- Class Details Section End --><!-- Class Timetable Section Begin --><section class="class-timetable-section class-details-timetable spad"><div class="container"><div class="row"><div class="col-lg-12"><div class="class-details-timetable_title"><h5>Classes timetable</h5></div></div></div><div class="row"><div class="col-lg-12"><div class="class-timetable details-timetable"><table><thead> <tr><th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th> </tr></thead><tbody> <tr><td class="class-time">6.00am - 8.00am</td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td><td class="dark-bg blank-td"></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td> </tr> <tr><td class="class-time">10.00am - 12.00am</td><td class="blank-td"></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="blank-td"></td> </tr> <tr><td class="class-time">5.00pm - 7.00pm</td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td><td class="blank-td"></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td> </tr> <tr><td class="class-time">7.00pm - 9.00pm</td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg blank-td"></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td> </tr></tbody></table></div></div></div></div></section><script>// fonction pour ouvrir la pop-up
 
 function openPopuppass() {
 

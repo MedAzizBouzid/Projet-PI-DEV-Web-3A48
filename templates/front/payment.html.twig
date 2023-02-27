@@ -41,10 +41,11 @@
 <form action="{{ path('app_process_payment') }}" method="post">
     <input type="hidden" name="card_token" value="{{ cardToken }}" />
     
-        <label for="amount">Montant</label>
-        <input type="number" name="amount" id="amount" class="form-control" required>
-<label for="email">Adresse e-mail</label>
-<input type="email" name="email" id="email" class="form-control" required>
+        {# <label for="amount">{{prix}}</label> #}
+<input type="hidden" name="amount" id="amount" class="form-control" value="{{prix}}">
+
+{# <label for="email">Adresse e-mail</label> #}
+{# <input type="email" name="email" id="email" class="form-control" required> #}
     
         <label for="card_number">Numéro de carte</label>
         <input type="text" name="card_number" id="card_number" class="form-control" required>
@@ -76,17 +77,17 @@
                     </div>
                 </div>
             </div>
-            <div id="payment-alert"></div>
+            {# <div id="payment-alert"></div> #}
 
 <script>
-    var alertDiv = document.getElementById('payment-alert');
+    {# var alertDiv = document.getElementById('payment-alert');
     var response = {{ paymentResponse|raw }};
     
     if (response.status == 'success') {
         alertDiv.innerHTML = '<div class="alert alert-success">Paiement réussi</div>';
     } else {
         alertDiv.innerHTML = '<div class="alert alert-danger">' + response.message + '</div>';
-    }
+    } #}
 </script>
 
 

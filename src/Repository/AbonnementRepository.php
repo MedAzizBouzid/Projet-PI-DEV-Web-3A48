@@ -67,4 +67,26 @@ class AbonnementRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+
+public function changeEtat($value,$id): void
+    {
+       $this->createQueryBuilder('a')
+           ->update()
+           ->set('a.etatab',$value)
+           ->where('a.id=:id')
+           ->setParameter('id', $id)
+           
+           ->getQuery()
+           ->execute();
+    }
+       public function findByEmail($value): ?array
+   {
+       return $this->createQueryBuilder('a')
+           ->andWhere('a.Email = :val')
+           ->setParameter('val', $value)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
+
 }

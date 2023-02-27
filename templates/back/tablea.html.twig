@@ -2,78 +2,93 @@
 
 
 {% block body %}
-            <!-- Table Start -->
-            <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-            <div class="container-fluid pt-4 px-4" style="bottom:0;">
-           <h1> Liste Abonnement </h1>
-                {# <div class="card-body"> #}
-                                <div class="table-responsive">
-                        
-                                    <table class="table">
-                                    <thead>
-                                        <tr>
-                                           <th>Id</th>
-                                              <th> Subscriber Name</th>
-                                             
-                                           <th>Email</th>
-                                    
-                                               <th>salle</th>
-                                                 <th>date Debut</th>
-                                                
-                                               <th>Payement</th>
-                                               
-                                               <th>type d'offre</th>
-                                                    <th>Actions</th>
-                                                 </tr>
-                                    </thead>
-                                   
-                                    <tbody> 
-                                     {% for ab in abonnements %}
-                                            <tr>
-                                                 <td>{{ ab.id }}</td>
-                                             
-                                                 <td>{{ ab.Name   }}  </td>   
-                                              <td>{{ ab.Email }}   </td> 
-                                             <td>{{ ab.salle }}</td>
-                                                       <td>{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}</td>
-                                                  <td>{{ ab.MPayement }}</td>
-                                                  <td>{{ ab.offre.id }}</td>
-                                                  
-                                                  
+	<!-- Table Start -->
+	<div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+		<div class="container-fluid pt-4 px-4" style="bottom:0;">
+			<h1>
+				Liste Abonnement
+			</h1>
+			{# <div class="card-body"> #}
+			<div class="table-responsive">
 
-                                                 <td>           
-                                            
-                                               <a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}"><i class="bi bi-pencil-square"></i></a>
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>
+								Subscriber Name</th>
 
-                                               <a href=" {{ path('app_abonnement_show', {'id': ab.id}) }} "><i class="bi bi-binoculars"></i></a>
-                                                  
-</td>
-                                                         
-                                               
-                                             </tr>
-                                                       
-                                          {% else %}
-                                                      <tr>
-                                                     <td colspan="6">no records found</td>
-                                                      </tr>
-                                          {% endfor %}
-                          
-                                      </tbody>
-                                 </table>
-                                               <a href="{{ path('app_abonnement_new_inback') }}">Ajouter Nouveau Abonnement</a> 
-                                               <br>
-                                                 
-                                            
-                                         
+							<th>Email</th>
 
-    
-                                
-                                 
-                                      
-                            </div>
-                            </div>
-            <!-- Table End -->
+							<th>salle</th>
+							<th>date Debut</th>
 
-            
-    {% endblock %}
+							<th>Payement</th>
 
+							<th>Offer
+							</th>
+							<th>State</th>
+							<th>Actions</th>
+						</tr>
+					</thead>
+
+					<tbody>
+						{% for ab in abonnements %}
+							<tr>
+								<td>{{ ab.id }}</td>
+
+								<td>{{ ab.Name   }}
+								</td>
+								<td>{{ ab.Email }}
+								</td>
+								<td>{{ ab.salle }}</td>
+								<td>{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}</td>
+								<td>{{ ab.MPayement }}</td>
+								<td>{{ ab.offre.id }}</td>
+								{% if ab.etatab %}
+									<td>
+
+										Active
+									</td>
+								{% else %}
+									<td>
+
+										Not Active
+									</td>
+
+								{% endif %}
+
+
+								<td>
+
+									<a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}">
+										<i class="bi bi-pencil-square"></i>
+									</a>
+
+									<a href=" {{ path('app_abonnement_show', {'id': ab.id}) }} ">
+										<i class="bi bi-binoculars"></i>
+									</a>
+
+								</td>
+
+
+							</tr>
+
+						{% else %}
+							<tr>
+								<td colspan="6">no records found</td>
+							</tr>
+						{% endfor %}
+
+					</tbody>
+				</table>
+				<a href="{{ path('app_abonnement_new_inback') }}">Ajouter Nouveau Abonnement</a>
+				<br>
+
+
+			</div>
+		</div>
+		<!-- Table End -->
+
+
+	{% endblock %}

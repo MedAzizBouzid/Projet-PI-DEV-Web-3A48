@@ -7,6 +7,7 @@ use App\Entity\Panier;
 use App\Entity\Salle;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
+use App\Repository\AbonnementRepository;
 use App\Repository\CommandeRepository;
 use App\Repository\PanierRepository;
 use App\Repository\PassRepository;
@@ -77,7 +78,8 @@ class TraitementController extends AbstractController
     }
 //   *************************************
     #[Route('/profile/{id}', name: 'app_profile')]
-    public function profile(User $user,PassRepository $passRepository,PanierRepository $panierRepository,CommandeRepository $commandeRepository): Response
+    public function profile(User $user,PassRepository $passRepository,PanierRepository $panierRepository,
+    CommandeRepository $commandeRepository,AbonnementRepository $abonnementRepository): Response
     {
         $panier = new Panier();
         $panier=$panierRepository->findByClientId($user->getId());
@@ -100,7 +102,8 @@ class TraitementController extends AbstractController
         return $this->render('front/profileUser.html.twig', [
             'user' => $user,
             'commandes'=>$cmd,
-            'passes' => $passRepository->findPassByIdClient($user->getId())
+            'passes' => $passRepository->findPassByIdClient($user->getId()),
+            'abonnements'=>$abonnementRepository->findByEmail($user->getEmail())
         ]);
     }
     //   *************************************

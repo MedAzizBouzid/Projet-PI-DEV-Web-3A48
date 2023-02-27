@@ -2,107 +2,97 @@
 
 
 {% block body %}
-            <!-- Table Start -->
-            <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-            <div class="container-fluid pt-4 px-4" style="bottom:0;">
-           <h1> Liste Offres </h1>
-                {# <div class="card-body"> #}
-                                <div class="table-responsive">
-                        
-                                    <table class="table">
-                                    <thead>
-                                        <tr>
-                                           <th>Id</th>
-                                                      <th>Categorie</th> 
-                                             
-                                           <th>duree</th>
-                                    
-                                               <th>Prix</th>
-                                                
-                                               <th>Description</th>
-                                                 <th>promotion</th>
+	<!-- Table Start -->
+	<div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+		<div class="container-fluid pt-4 px-4" style="bottom:0;">
+			<h1>
+				Liste Offres
+			</h1>
+			{# <div class="card-body"> #}
+			<div class="table-responsive">
 
-                                            
-                                                <th>actions</th>
-                                               
-                                        </tr>
-                                    </thead>
-                                   
-                                    <tbody> 
-                                     {% for offre in offres %}
-                                            <tr>
-                                                 <td>{{ offre.id }}</td>
-                                                 <td>{{ offre.categ.name}} </td>  
-                                                 
-                                              <td>{{ offre.duree   }}  Mois</td>  
+				<table class="table">
+					<thead>
+						<tr>
+							<th>Id</th>
+							<th>Categorie</th>
 
-                                              <td>{{ offre.prix }}   DT</td> 
+							<th>duree</th>
 
-                                            
-                                                     
-                            
+							<th>Prix</th>
+							<th>Activities</th>
 
-                                              
-                                                                                     
-                                               </td>  
-                                             <td>{{ offre.description }}</td>
-                                      <td> {% if  offre.promo is  null  %}
-                                              offre pas en promotion
-          
-                                                  {% else %}
-                                            {{ offre.promo.pourcentage }} %
-                                              {% endif %}
-                                                                    </td>
-                                                                    
-                                      
-                                         
-                                      
-                                                <td>   <a href="{{ path('app_offres_edit', {'id': offre.id}) }}"><i class="bi bi-pencil-square"></i></a>
-
-                                            <a href= "{{ path('app_offres_delete', {'id': offre.id}) }}" ><i class="bi bi-trash-fill"></i></a>
-                                            <a href=" {{ path('app_offres_show', {'id': offre.id}) }} "><i class="bi bi-binoculars"></i></a>
-                                         <br>
-                                        
-                                            
-                                      
-                                            
-                                       
-
-                                         
-                                            
-                                             </td>
-                                         </tr>
-                                          {% else %}
-                                                      <tr>
-                                                     <td colspan="6">no records found</td>
-                                                      </tr>
-                                          {% endfor %}
-                          
-                                      </tbody>
-                                 </table>
-                                               <a href="{{ path('app_offres_new') }}">Create new</a>
-                                               <br> </br>
-                                      
-                                              
-                                            
-                                         
-
-    
-                                
-                                 
-                                      
-                            </div>
-                            </div>
-            <!-- Table End -->
-
-            
-    {% endblock %}
+							<th>Description</th>
+							<th>promotion</th>
 
 
-            
-    
+							<th>actions</th>
+
+						</tr>
+					</thead>
+
+					<tbody>
+						{% for offre in offres %}
+							<tr>
+								<td>{{ offre.id }}</td>
+								<td>{{ offre.categ.name}}
+								</td>
+
+								<td>{{ offre.duree   }}
+									Mois</td>
+
+								<td>{{ offre.prix }}
+									DT</td>
 
 
+								<td>
 
-            
-            
+									{% for c in offre.activities %}
+
+										<ul>
+											<li>{{c.nom}}</li>
+
+										</ul>
+									 
+								{% endfor %}
+							 
+						</td>
+
+
+						<td>{{ offre.description }}</td>
+						<td>
+							{% if  offre.promo is  null  %}
+								offre pas en promotion
+
+							{% else %}
+								{{ offre.promo.pourcentage }}
+								%
+							{% endif %}
+						</td>
+
+
+						<td>
+							<a href="{{ path('app_offres_edit', {'id': offre.id}) }}">
+								<i class="bi bi-pencil-square"></i>
+							</a>
+
+							<a href="{{ path('app_offres_delete', {'id': offre.id}) }}">
+								<i class="bi bi-trash-fill"></i>
+							</a>
+							<a href=" {{ path('app_offres_show', {'id': offre.id}) }} ">
+								<i class="bi bi-binoculars"></i>
+							</a>
+							<br></td>
+					</tbody>
+				</tr>
+			{% else %}
+				<tr>
+					<td colspan="6">no records found</td>
+				</tr>
+			{% endfor %}
+
+		</tbody>
+	</table>
+	<a href="{{ path('app_offres_new') }}">Create new</a>
+	<br>
+</br></div></div><!-- Table End -->{% endblock %}

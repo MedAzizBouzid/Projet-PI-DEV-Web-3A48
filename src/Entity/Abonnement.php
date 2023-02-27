@@ -40,9 +40,12 @@ class Abonnement
    
     private ?string $Name = null;
 
-    #[ORM\ManyToOne(inversedBy: 'abonnements')]
+    #[ORM\ManyToOne(inversedBy: 'abonnements', cascade:["persist"])]
     #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Offres $offre = null;
+
+    #[ORM\Column]
+    private ?bool $etatab = false;
 
  
 
@@ -119,6 +122,18 @@ class Abonnement
     public function setOffre(?Offres $offre): self
     {
         $this->offre = $offre;
+
+        return $this;
+    }
+
+    public function isEtatab(): ?bool
+    {
+        return $this->etatab;
+    }
+
+    public function setEtatab(bool $etatab): self
+    {
+        $this->etatab = $etatab;
 
         return $this;
     }
