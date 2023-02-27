@@ -132,7 +132,7 @@ class __TwigTemplate_4011457be23e997b8d7f6d418f96c97b extends Template
         <!-- Content Start -->
         <div class=\"content\">
             <!-- Navbar Start -->
-            <nav class=\"navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0\">
+            <nav class=\"navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-cd0\">
                 <a href=\"index.html\" class=\"navbar-brand d-flex d-lg-none me-4\">
                     <h2 class=\"text-primary mb-0\"><i class=\"fa fa-user-edit\"></i></h2>
                 </a>
@@ -523,7 +523,7 @@ class __TwigTemplate_4011457be23e997b8d7f6d418f96c97b extends Template
         <!-- Content Start -->
         <div class=\"content\">
             <!-- Navbar Start -->
-            <nav class=\"navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0\">
+            <nav class=\"navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-cd0\">
                 <a href=\"index.html\" class=\"navbar-brand d-flex d-lg-none me-4\">
                     <h2 class=\"text-primary mb-0\"><i class=\"fa fa-user-edit\"></i></h2>
                 </a>
@@ -801,6 +801,6 @@ class __TwigTemplate_4011457be23e997b8d7f6d418f96c97b extends Template
     <script src=\"js/main.js\"></script>
 </body>
 
-</html>", "back/widget.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\back\\widget.html.twig");
+</html>", "back/widget.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\back\\widget.html.twig");
     }
 }

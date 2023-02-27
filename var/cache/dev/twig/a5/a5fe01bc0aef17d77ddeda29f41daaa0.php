@@ -759,6 +759,6 @@ class __TwigTemplate_55d745eb2d8a1b3a09adb3ed43c009bc extends Template
 
 </body>
 
-</html>", "front/bmi-calculator.html", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\front\\bmi-calculator.html");
+</html>", "front/bmi-calculator.html", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\front\\bmi-calculator.html");
     }
 }

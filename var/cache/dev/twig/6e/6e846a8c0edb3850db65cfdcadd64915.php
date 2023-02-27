@@ -74,57 +74,35 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 \t\t\theight: 60%;
         }
     </style>
-\t ";
-        // line 17
-        echo "<!-- La pop-up -->
-   ";
-        // line 19
-        echo " \t 
- ";
-        // line 32
-        echo "   ";
-        // line 33
-        echo "       ";
-        // line 75
-        echo "
-\t\t\t\t\t";
-        // line 101
-        echo "  
-               ";
-        // line 103
-        echo "
-       ";
-        // line 108
-        echo "  ";
-        // line 109
-        echo "
-";
-        // line 111
-        echo "
+\t  
+
 \t <div style=\"position: center;background-color:black;\"id=\"calendrier\"></div>     
      ";
-        // line 114
+        // line 20
         echo "
             
  
 
 
 ";
-        // line 120
+        // line 26
         echo "
 \t<script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js\" 
-        integrity=\"sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=\" crossorigin=\"anonymous\"></script>
+       
+\t    integrity=\"sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=\" crossorigin=\"anonymous\"></script>
+
+
 <script>
     window.onload = () => {
         let calendarElt = document.querySelector(\"#calendrier\")
         let calendar = new FullCalendar.Calendar(calendarElt, {
+ 
             initialView: 'timeGridWeek',
             locale: 'fr',
             timeZone: 'Afrique/Tunisie',
 \t\t    weekends: true,
-  
 
-  defaultView: 'month',
+  defaultView: 'dayGridWeek',
  \t\t\t    businessHours: {
 \t\t\t\tstart: '08:00',
 \t\t\t\tend: '18:00',
@@ -133,16 +111,16 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
             headerToolbar: {
                 start: 'prev,next today',
                 center: 'title',
-                end: 'dayGridMonth,timeGridWeek'
+                end: 'dayGridWeek,timeGridWeek'
             },
 \t\t\t
             events:";
-        // line 145
-        echo (isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 145, $this->source); })());
+        // line 54
+        echo (isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 54, $this->source); })());
         echo ",
 \t\t\teditable:true,
-/*\t\t\teventResizableFromStart:true,
-\t\t\teventDrop :function(event){
+\t\t    eventResizableFromStart:true,
+\t\t/*\t\teventDrop :function(event){
 \t\t\t\tconsole.log(event)
 \t\t\t}*/
 \t\t\t
@@ -171,7 +149,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
              }          
 \t\t\t            let xhr = new XMLHttpRequest 
 \t\t\t\t\t\t// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ 
- \t\t\t\t\t\t xhr.open(\"PUT\", url)
+ \t\t\t\t\t\t xhr .open(\"PUT\", url)
            \t\t\t\t xhr.send(JSON.stringify(donnees))
 \t\t\t})\t\t
 
@@ -179,8 +157,15 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
     }
 </script>
                      ";
-        // line 185
+        // line 94
         echo "
+
+                     ";
+        // line 97
+        echo "
+
+
+  
 
  
 ";
@@ -204,7 +189,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 
     public function getDebugInfo()
     {
-        return array (  183 => 185,  141 => 145,  114 => 120,  107 => 114,  103 => 111,  100 => 109,  98 => 108,  95 => 103,  92 => 101,  89 => 75,  87 => 33,  85 => 32,  82 => 19,  79 => 17,  68 => 7,  58 => 6,  35 => 1,);
+        return array (  165 => 97,  161 => 94,  119 => 54,  89 => 26,  82 => 20,  68 => 7,  58 => 6,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -224,101 +209,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 \t\t\theight: 60%;
         }
     </style>
-\t {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
-<!-- La pop-up -->
-   {# <button  style=\" width: 20%;\"id=\"openBtn\"  class=\"btn btn-primary\" data-bs-toggle=\"modal\" data-bs-target=\"#exampleModal\">Ajouter une nouvelle activité</button>  #}
- \t 
- {# 
-<div  class=\"modal fade\" id=\"exampleModal\" tabindex=\"1\" aria-labelledby=\"exampleModalLabel\" aria-hidden=\"true\">
-  <div   class=\"modal-dialog\">
-    <div class=\"modal-content\">
-      <div class=\"modal-header\" style=\"background-color:red;border: 2px solid black;\">
-        <h5 class=\"modal-title\" id=\"exampleModalLabel\" >________________Ajouter un plannig____________</h5>
-        <button type=\"button\" class=\"btn-close\" data-bs-dismiss=\"modal\" aria-label=\"Close\"></button>
-      </div>
-      <div class=\"modal-body\" style=\"background-color:white;\" >
- 
-    \t\t\t\t
-\t\t\t\t\t<div  class=\"form-group\"   position: center;\">  #}
-   {# --------------------------------------FORM START-------------------------------------- #}
-       {# {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
-
- \t\t\t\t\t
-                    <div>
-\t\t\t\t\t\t{{form_label(form.title)}}
-\t\t\t\t\t\t{{form_widget(form.title, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
-\t\t\t\t\t\t{{form_errors(form.title)}}
-
-\t\t\t\t\t</div>
-
-\t\t\t\t\t<div  >
-\t\t\t\t\t\t{{form_label(form.start)}}
-\t\t\t\t\t\t{{form_widget(form.start, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
-\t\t\t\t\t\t{{form_errors(form.start)}}
-
-\t\t\t\t\t</div>
-
-
-\t\t\t\t\t<div >
-
-\t\t\t\t\t\t{{form_label(form.end)}}
-\t\t\t\t\t\t{{form_widget(form.end, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
-\t\t\t\t\t\t{{ form_errors(form.end) }}
-
-\t\t\t\t\t</div>
-
-
-\t\t\t\t\t<div>
-
-\t\t\t\t\t\t{{form_label(form.description)}}
-\t\t\t\t\t\t{{form_widget(form.description, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
-\t\t\t\t\t\t{{ form_errors(form.description) }}
-
-\t\t\t\t\t</div>
-{#  
-\t\t\t\t\t<div >
- 
-\t\t\t\t\t\t{{form_label(form.all_day)}}
-\t\t\t\t\t\t{{form_widget(form.all_day, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
-\t\t\t\t\t\t{{ form_errors(form.all_day) }}
-
-\t\t\t\t\t</div> #}
-
-\t\t\t\t\t{# <div  >
-\t\t\t\t\t\t{{form_label(form.background_color)}}
-\t\t\t\t\t\t{{form_widget(form.background_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
-\t\t\t\t\t\t{{ form_errors(form.background_color) }}
-
-\t\t\t\t\t</div>
-
-\t\t\t\t\t<div  >
-\t\t\t\t\t\t{{form_label(form.border_color)}}
-\t\t\t\t\t\t{{form_widget(form.border_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
-\t\t\t\t\t\t{{form_errors(form.border_color)}}
-
-\t\t\t\t\t</div>
-\t\t\t\t\t<div  >
-\t\t\t\t\t\t{{form_label(form.text_color)}}
-\t\t\t\t\t\t{{form_widget(form.text_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
-\t\t\t\t\t\t{{form_errors(form.text_color)}}
-
-\t\t\t\t\t</div>
-\t\t <button   class=\"btn btn-primary\">{{ button_label|default('Enregistrer') }}</button>
-
-\t\t    </div>
-\t\t\t
-
-
-\t\t\t\t\t\t{{ form_end(form) }}   #}  
-               {# --------------------------------------FORM END-------------------------------------- #}
-
-       {# </div>
-    </div>
-  </div>   
-</div>   #}
-  {# <!-- Modal-----------------------------------FIN DU POP UP--------- ----------   #}
-
-{# {{dump(data)}} #}
+\t  
 
 \t <div style=\"position: center;background-color:black;\"id=\"calendrier\"></div>     
      {# dd(\$calendar); #}
@@ -330,18 +221,21 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 {# ________________________________________________________Debut__Partie JS___________________________________________________________________ #}
 
 \t<script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js\" 
-        integrity=\"sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=\" crossorigin=\"anonymous\"></script>
+       
+\t    integrity=\"sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=\" crossorigin=\"anonymous\"></script>
+
+
 <script>
     window.onload = () => {
         let calendarElt = document.querySelector(\"#calendrier\")
         let calendar = new FullCalendar.Calendar(calendarElt, {
+ 
             initialView: 'timeGridWeek',
             locale: 'fr',
             timeZone: 'Afrique/Tunisie',
 \t\t    weekends: true,
-  
 
-  defaultView: 'month',
+  defaultView: 'dayGridWeek',
  \t\t\t    businessHours: {
 \t\t\t\tstart: '08:00',
 \t\t\t\tend: '18:00',
@@ -350,13 +244,13 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
             headerToolbar: {
                 start: 'prev,next today',
                 center: 'title',
-                end: 'dayGridMonth,timeGridWeek'
+                end: 'dayGridWeek,timeGridWeek'
             },
 \t\t\t
             events:{{data|raw}},
 \t\t\teditable:true,
-/*\t\t\teventResizableFromStart:true,
-\t\t\teventDrop :function(event){
+\t\t    eventResizableFromStart:true,
+\t\t/*\t\teventDrop :function(event){
 \t\t\t\tconsole.log(event)
 \t\t\t}*/
 \t\t\t
@@ -385,7 +279,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
              }          
 \t\t\t            let xhr = new XMLHttpRequest 
 \t\t\t\t\t\t// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ 
- \t\t\t\t\t\t xhr.open(\"PUT\", url)
+ \t\t\t\t\t\t xhr .open(\"PUT\", url)
            \t\t\t\t xhr.send(JSON.stringify(donnees))
 \t\t\t})\t\t
 
@@ -394,6 +288,12 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 </script>
                      {# __________________________Fin__Partie JS________________________________________________ #}
 
+
+                     {# __________________________Fin__Partie JS________________________________________________ #}
+
+
+
+  
 
  
 {% endblock %}

@@ -535,6 +535,6 @@ class __TwigTemplate_dc3a5f6f3416f786653c3f9b2c35e02d extends Template
     <script src=\"js/main.js\"></script>
 </body>
 
-</html>", "back/404.html", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\back\\404.html");
+</html>", "back/404.html", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\back\\404.html");
     }
 }

@@ -73,6 +73,6 @@ class __TwigTemplate_1c0368ab92256c4a70d2977f216b2791 extends Template
     <line x1=\"4\" y1=\"12\" x2=\"20\" y2=\"12\"></line>
     <line x1=\"4\" y1=\"18\" x2=\"20\" y2=\"18\"></line>
 </svg>
-", "@WebProfiler/Icon/menu.svg", "C:\\Users\\Admin\\Desktop\\Pidev1\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Icon\\menu.svg");
+", "@WebProfiler/Icon/menu.svg", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\vendor\\symfony\\web-profiler-bundle\\Resources\\views\\Icon\\menu.svg");
     }
 }

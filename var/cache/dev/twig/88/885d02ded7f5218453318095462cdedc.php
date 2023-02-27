@@ -154,6 +154,6 @@ class __TwigTemplate_820e43dc8e88cfc2c6316fb22bffc7ba extends Template
     </ul>
 </div>
 {% endblock %}
-", "traitement/index.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\traitement\\index.html.twig");
+", "traitement/index.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\traitement\\index.html.twig");
     }
 }

@@ -133,6 +133,6 @@ class __TwigTemplate_fa118855852e5783eb8f8cf8cfdb1583 extends Template
 
     <a href=\"{{ path('app_salle_index') }}\">back to list</a>
 {% endblock %}
-", "salle/new.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\salle\\new.html.twig");
+", "salle/new.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\salle\\new.html.twig");
     }
 }

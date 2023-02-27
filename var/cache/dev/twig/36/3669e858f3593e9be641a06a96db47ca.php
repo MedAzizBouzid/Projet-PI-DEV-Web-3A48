@@ -84,6 +84,6 @@ class __TwigTemplate_a1ce3655d92a843d34e54ea227ba36ce extends Template
     {{ form_widget(form) }}
     <button class=\"btn\">{{ button_label|default('Save') }}</button>
 {{ form_end(form) }}
-", "salle/_form.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\salle\\_form.html.twig");
+", "salle/_form.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\salle\\_form.html.twig");
     }
 }

@@ -500,6 +500,6 @@ class __TwigTemplate_63a7b26e0ece41dd4e00b97988953e25 extends Template
 \t\t<!-- Get In Touch Section End -->
 
 \t{% endblock %}
-", "front/salles.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\front\\salles.html.twig");
+", "front/salles.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\front\\salles.html.twig");
     }
 }

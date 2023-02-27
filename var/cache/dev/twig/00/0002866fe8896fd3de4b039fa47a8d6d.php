@@ -66,7 +66,33 @@ class __TwigTemplate_18987ef23e65337352598e93c7b2b415 extends Template
 
         // line 3
         echo "                        
-       
+       <style>
+\t\tbody {
+\t\t\tbackground-color: #f5f5f5;
+\t\t\tcolor: #222;
+\t\t\ttransition: background-color 0.5s ease;
+\t\t}
+\t\tbody.dark-mode {
+\t\t\tbackground-color: #222;
+\t\t\tcolor: #f5f5f5;
+\t\t}
+\t\t.button {
+\t\t\tbackground-color: #007bff;
+\t\t\tcolor: #fff;
+\t\t\tpadding: 10px;
+\t\t\tborder-radius: 5px;
+\t\t\tcursor: pointer;
+\t\t}
+\t</style>
+<body>
+\t<button class=\"button\" onclick=\"toggleDarkMode()\">Mode sombre / Mode nuit</button>
+
+\t<script>
+\t\tfunction toggleDarkMode() {
+\t\t\tvar body = document.getElementsByTagName('body')[0];
+\t\t\tbody.classList.toggle('dark-mode');
+\t\t}
+\t</script>
 
 
             <!-- Chart Start -->
@@ -110,6 +136,7 @@ class __TwigTemplate_18987ef23e65337352598e93c7b2b415 extends Template
                     </div>
                 </div>
             </div>
+            </body>
             <!-- Chart End -->
          ";
         
@@ -140,7 +167,33 @@ class __TwigTemplate_18987ef23e65337352598e93c7b2b415 extends Template
         return new Source("{% extends 'back/base.html.twig' %}
     {% block body %}
                         
-       
+       <style>
+\t\tbody {
+\t\t\tbackground-color: #f5f5f5;
+\t\t\tcolor: #222;
+\t\t\ttransition: background-color 0.5s ease;
+\t\t}
+\t\tbody.dark-mode {
+\t\t\tbackground-color: #222;
+\t\t\tcolor: #f5f5f5;
+\t\t}
+\t\t.button {
+\t\t\tbackground-color: #007bff;
+\t\t\tcolor: #fff;
+\t\t\tpadding: 10px;
+\t\t\tborder-radius: 5px;
+\t\t\tcursor: pointer;
+\t\t}
+\t</style>
+<body>
+\t<button class=\"button\" onclick=\"toggleDarkMode()\">Mode sombre / Mode nuit</button>
+
+\t<script>
+\t\tfunction toggleDarkMode() {
+\t\t\tvar body = document.getElementsByTagName('body')[0];
+\t\t\tbody.classList.toggle('dark-mode');
+\t\t}
+\t</script>
 
 
             <!-- Chart Start -->
@@ -184,11 +237,12 @@ class __TwigTemplate_18987ef23e65337352598e93c7b2b415 extends Template
                     </div>
                 </div>
             </div>
+            </body>
             <!-- Chart End -->
          {% endblock %}
 
 
 
-        ", "back/chart.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\back\\chart.html.twig");
+        ", "back/chart.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\back\\chart.html.twig");
     }
 }

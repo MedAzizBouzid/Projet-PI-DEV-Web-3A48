@@ -46,6 +46,18 @@ class TraitementController extends AbstractController
             'controller_name' => 'TraitementController',
         ]);
     }
+
+    // ***********************************************
+    #[Route('/indextimetable', name: 'indextimetable')]
+    public function indextimetable(): Response
+    {
+        return $this->render('front/Calendrer_front.html.twig', [
+            'controller_name' => 'TraitementController',
+        ]);
+    }
+ 
+    // ***********************************************
+
     #[Route('/form', name: 'form')]
     public function form_display(): Response
     {

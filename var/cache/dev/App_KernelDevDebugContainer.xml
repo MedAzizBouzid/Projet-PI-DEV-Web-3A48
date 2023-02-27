@@ -385,6 +385,10 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\AzizRepository" class="App\Repository\AzizRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\CalendrierRepository" class="App\Repository\CalendrierRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -4216,7 +4220,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.EWfv_YR"/>
+      <argument type="service" id=".service_locator.RFGZmuE"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -6135,6 +6139,8 @@
     <service id=".abstract.instanceof.App\Form\SalleType" class="App\Form\SalleType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ActiviteRepository" class="App\Repository\ActiviteRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ActiviteRepository" class="App\Repository\ActiviteRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\AzizRepository" class="App\Repository\AzizRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\AzizRepository" class="App\Repository\AzizRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CalendrierRepository" class="App\Repository\CalendrierRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CalendrierRepository" class="App\Repository\CalendrierRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommandeRepository" class="App\Repository\CommandeRepository" autowire="true" abstract="true"/>
@@ -6628,7 +6634,7 @@
         <argument key="salleRepository" type="service_closure" id="App\Repository\SalleRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.fdpJkzY" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.YGtISdT" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActiviteController::Show_activite" type="service_closure" id=".service_locator.HvawtL6"/>
@@ -6648,6 +6654,7 @@
         <argument key="App\Controller\CalendrierController::index" type="service_closure" id=".service_locator.veElpNM"/>
         <argument key="App\Controller\CalendrierController::new" type="service_closure" id=".service_locator.7.c5n1b"/>
         <argument key="App\Controller\CalendrierController::show" type="service_closure" id=".service_locator..b08g3n"/>
+        <argument key="App\Controller\CalendrierController::show_front" type="service_closure" id=".service_locator.veElpNM"/>
         <argument key="App\Controller\MainController::index" type="service_closure" id=".service_locator.L6THD6C"/>
         <argument key="App\Controller\SalleController::addnewsalle" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\SalleController::ajouter_salle" type="service_closure" id=".service_locator.NM2WyYT"/>
@@ -6686,6 +6693,7 @@
         <argument key="App\Controller\CalendrierController:index" type="service_closure" id=".service_locator.veElpNM"/>
         <argument key="App\Controller\CalendrierController:new" type="service_closure" id=".service_locator.7.c5n1b"/>
         <argument key="App\Controller\CalendrierController:show" type="service_closure" id=".service_locator..b08g3n"/>
+        <argument key="App\Controller\CalendrierController:show_front" type="service_closure" id=".service_locator.veElpNM"/>
         <argument key="App\Controller\MainController:index" type="service_closure" id=".service_locator.L6THD6C"/>
         <argument key="App\Controller\SalleController:addnewsalle" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\SalleController:ajouter_salle" type="service_closure" id=".service_locator.NM2WyYT"/>
@@ -6976,10 +6984,11 @@
         <argument key="doctrine.orm.messenger.doctrine_schema_subscriber" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_subscriber"/>
       </argument>
     </service>
-    <service id=".service_locator.EWfv_YR" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.RFGZmuE" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ActiviteRepository" type="service_closure" id="App\Repository\ActiviteRepository"/>
+        <argument key="App\Repository\AzizRepository" type="service_closure" id="App\Repository\AzizRepository"/>
         <argument key="App\Repository\CalendrierRepository" type="service_closure" id="App\Repository\CalendrierRepository"/>
         <argument key="App\Repository\CommandeRepository" type="service_closure" id="App\Repository\CommandeRepository"/>
         <argument key="App\Repository\PanierRepository" type="service_closure" id="App\Repository\PanierRepository"/>
@@ -7557,12 +7566,12 @@
     <service id="debug.argument_resolver.request.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver"/>
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver"/>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.fdpJkzY"/>
+      <argument type="service" id=".service_locator.YGtISdT"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.fdpJkzY"/>
+      <argument type="service" id=".service_locator.YGtISdT"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -8535,7 +8544,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.fdpJkzY"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.YGtISdT"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8559,7 +8568,7 @@
     <service id=".service_locator.M_PVH31" alias=".service_locator.wpwJMw2"/>
     <service id=".service_locator.27c_jQX" alias=".service_locator.7.c5n1b"/>
     <service id=".service_locator.wIlSgcI" alias=".service_locator.HClHANl"/>
-    <service id=".service_locator.LOW15LO" alias=".service_locator.fdpJkzY"/>
+    <service id=".service_locator.dBXmxIL" alias=".service_locator.YGtISdT"/>
     <service id=".service_locator.9XMoc9I" alias=".service_locator.kzegaci"/>
     <service id=".service_locator.vtEQA1N" alias=".service_locator..WuqklO"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>

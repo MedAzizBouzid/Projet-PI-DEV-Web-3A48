@@ -247,6 +247,6 @@ class __TwigTemplate_00b2829030589cb9adb31fdc8d27a294 extends Template
 
     <a href=\"{{ path('app_activite_new') }}\">Create new</a>
 {% endblock %}
-", "activite/index.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\activite\\index.html.twig");
+", "activite/index.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\activite\\index.html.twig");
     }
 }

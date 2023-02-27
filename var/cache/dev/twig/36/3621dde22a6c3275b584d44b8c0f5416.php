@@ -219,6 +219,6 @@ class __TwigTemplate_6cd388d1cefabce8e4e2385d250458cf extends Template
 
     <a href=\"{{ path('app_salle_new') }}\">Create new</a>
 {% endblock %}
-", "salle/index.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\salle\\index.html.twig");
+", "salle/index.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\salle\\index.html.twig");
     }
 }

@@ -682,6 +682,6 @@ class __TwigTemplate_caee3a25f70a0333d977f1623d4de211 extends Template
 
 </body>
              {% endblock %}
-", "back/index.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\back\\index.html.twig");
+", "back/index.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\back\\index.html.twig");
     }
 }

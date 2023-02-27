@@ -357,7 +357,7 @@ class __TwigTemplate_5095627a0218150f2c205ce4921712e1 extends Template
                         </div>
                         <a href=";
         // line 289
-        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("show_activite_infront");
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("Show_activite_front");
         echo " class=\"primary-btn btn-normal appoinment-btn\">appointment</a>
                     </div>
                 </div>
@@ -732,7 +732,7 @@ class __TwigTemplate_5095627a0218150f2c205ce4921712e1 extends Template
                             <span>Our Team</span>
                             <h2>TRAIN WITH EXPERTS</h2>
                         </div>
-                        <a href={{path('show_activite_infront')}} class=\"primary-btn btn-normal appoinment-btn\">appointment</a>
+                        <a href={{path('Show_activite_front')}} class=\"primary-btn btn-normal appoinment-btn\">appointment</a>
                     </div>
                 </div>
             </div>
@@ -792,6 +792,6 @@ class __TwigTemplate_5095627a0218150f2c205ce4921712e1 extends Template
     </section>
     <!-- Team Section End -->
 
-    {% endblock %}", "front/index.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\front\\index.html.twig");
+    {% endblock %}", "front/index.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\front\\index.html.twig");
     }
 }

@@ -651,6 +651,6 @@ class __TwigTemplate_220f38b201ac74ddd68a90f48fc54670 extends Template
     </section>
     <!-- Testimonial Section End -->
 
-  {% endblock %}", "front/about-us.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev1\\templates\\front\\about-us.html.twig");
+  {% endblock %}", "front/about-us.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\front\\about-us.html.twig");
     }
 }
