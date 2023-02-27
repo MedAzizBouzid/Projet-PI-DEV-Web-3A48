@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\RendezVous;
 use App\Form\RendezVousType;
 use App\Entity\Service;
+use App\Repository\CalendrierRepository;
 use App\Repository\RendezVousRepository;
 use App\Repository\ServiceRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -37,13 +38,31 @@ class RendezVousController extends AbstractController
     
 
     #[Route('/newR/{id}', name: 'app_rendezvous_new', methods: ['GET', 'POST'])]
-public function new(Request $request, RendezVousRepository $rendezVousRepository, $id, ServiceRepository $serv): Response
+public function new(Request $request, RendezVousRepository $rendezVousRepository, $id, ServiceRepository $serv,CalendrierRepository $calendrierRepository): Response
 {
     $service = $serv->find($id);
     $rendezVou = new RendezVous();
     $rendezVou->setService($service);
     $form = $this->createForm(RendezVousType::class, $rendezVou);
     $form->handleRequest($request);
+    $events = $calendrierRepository->findAll();
+
+    $rdvs = [];
+
+    foreach($events as $event){
+        $rdvs[] = [
+            'id' => $event->getId(),
+            'start' => $event->getDebut()->format('Y-m-d H:i:s'),
+            'end' => $event->getFin()->format('Y-m-d H:i:s'),
+            'title' => $event->getTitre(),
+            'description' => $event->getDescription(),
+            'backgroundColor' => $event->getFondCouleur(),
+            'borderColor' => $event->getBordureColor(),
+            'textColor' => $event->getTextColor(),
+            // 'allDay' => $event->getAllDay(),
+        ];
+    }
+    $data = json_encode($rdvs);
 
     if ($form->isSubmitted() && $form->isValid()) {
         $requestedDate = $rendezVou->getDateAt();
@@ -63,7 +82,9 @@ public function new(Request $request, RendezVousRepository $rendezVousRepository
             'rendez_vou' => $rendezVou,
             'service' => $service,
             'form' => $form->createView(),
-            'response' => $response
+            'response' => $response,
+             'calendriers' => $calendrierRepository->findAll(),
+            'data'=>$data
         ]);
     }
 
@@ -71,6 +92,8 @@ public function new(Request $request, RendezVousRepository $rendezVousRepository
         'rendez_vou' => $rendezVou,
         'service' => $service,
         'form' => $form->createView(),
+        'calendriers' => $calendrierRepository->findAll(),
+            'data'=>$data
     ]);
 }
 

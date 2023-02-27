@@ -45,6 +45,37 @@ class CalendrierController extends AbstractController
             'data'=>$data,
         ]);
     }
+    #[Route('/bergila', name: 'app_calendrier_index', methods: ['GET'])]
+    public function bergila(CalendrierRepository $calendrierRepository): Response
+    {
+
+        $events = $calendrierRepository->findAll();
+
+        $rdvs = [];
+
+        foreach($events as $event){
+            $rdvs[] = [
+                'id' => $event->getId(),
+                'start' => $event->getDebut()->format('Y-m-d H:i:s'),
+                'end' => $event->getFin()->format('Y-m-d H:i:s'),
+                'title' => $event->getTitre(),
+                'description' => $event->getDescription(),
+                'backgroundColor' => $event->getFondCouleur(),
+                'borderColor' => $event->getBordureColor(),
+                'textColor' => $event->getTextColor(),
+                // 'allDay' => $event->getAllDay(),
+            ];
+        }
+
+        $data = json_encode($rdvs);
+
+   
+
+        return $this->render('front/rdv.html.twig', [
+            'calendriers' => $calendrierRepository->findAll(),
+            'data'=>$data,
+        ]);
+    }
 
     #[Route('/new', name: 'app_calendrier_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CalendrierRepository $calendrierRepository): Response
