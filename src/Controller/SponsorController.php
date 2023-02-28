@@ -75,26 +75,29 @@ class SponsorController extends AbstractController
         $client=$userRepo->find($id_client);
     
 
+        // $form = $this->createForm(CommentaireType::class, $commentaire);
+        // $form->handleRequest($request);
 
-        $form = $this->createForm(CommentaireType::class, $commentaire);
-        $form->handleRequest($request);
+//         if ($form->isSubmitted() && $form->isValid()) {
+// dd($request);
+$message = $request->get('msg');
+if ($message!="") {
+    # code...
+    $commentaire->setEvent($event);
+    $commentaire->setClient($client);
 
-        if ($form->isSubmitted() && $form->isValid()) {
-            $commentaire->setEvent($event);
-            $commentaire->setClient($client);
+    $filtredMessage = $this->badwords($message);
 
-            $message = $commentaire->getDescription();
-            $filtredMessage = $this->badwords($message);
-
-            $commentaire->setDescription($filtredMessage);
-
-            $commentaireRepository->save($commentaire, true);
+    $commentaire->setDescription($filtredMessage);
+// dd($commentaire);
+    $commentaireRepository->save($commentaire, true);
+}
 
 
-            return $this->redirectToRoute('app_sponsor_index_front', [
-                'id'=>$id
-            ], Response::HTTP_SEE_OTHER);
-        }
+//             return $this->redirectToRoute('app_sponsor_index_front', [
+//                 'id'=>$id
+//             ], Response::HTTP_SEE_OTHER);
+//         }
         
         // if ($form->isSubmitted() && $form->isValid()) {
         // dd($form);
@@ -111,7 +114,7 @@ class SponsorController extends AbstractController
             'sponsors' => $sponsors,
             'event'=>$event,
             'commentaires' => $commentaireRepository->findAll(),
-            'form'=>$form,
+            // 'form'=>$form,
             'id_client'=>$id_client,
         ]);
 
