@@ -21,6 +21,7 @@ return [
         '/activite/Show_activite' => [[['_route' => 'Show_activite', '_controller' => 'App\\Controller\\ActiviteController::Show_activite'], null, null, null, false, false, null]],
         '/calendrier' => [[['_route' => 'app_calendrier_index', '_controller' => 'App\\Controller\\CalendrierController::index'], null, ['GET' => 0], null, true, false, null]],
         '/calendrier/calender_front' => [[['_route' => 'app_calendrier_front', '_controller' => 'App\\Controller\\CalendrierController::show_front'], null, ['GET' => 0], null, false, false, null]],
+        '/planning' => [[['_route' => 'app_planning', '_controller' => 'App\\Controller\\MainController::planning'], null, null, null, false, false, null]],
         '/main' => [[['_route' => 'app_main', '_controller' => 'App\\Controller\\MainController::index'], null, null, null, false, false, null]],
         '/salle' => [[['_route' => 'app_salle_index', '_controller' => 'App\\Controller\\SalleController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
         '/salle/chercher_salle' => [[['_route' => 'chercher_salle', '_controller' => 'App\\Controller\\SalleController::chercher_student'], null, null, null, false, false, null]],
@@ -71,30 +72,31 @@ return [
                 .')'
                 .'|/calendrier/(?'
                     .'|([^/]++)(?'
+                        .'|(*:307)'
                         .'|/(?'
-                            .'|new(*:314)'
-                            .'|edit(*:326)'
+                            .'|new(*:322)'
+                            .'|edit(*:334)'
                         .')'
-                        .'|(*:335)'
+                        .'|(*:343)'
                     .')'
-                    .'|find(*:348)'
-                    .'|api/([^/]++)/edit(*:373)'
+                    .'|find(*:356)'
+                    .'|api/([^/]++)/edit(*:381)'
                 .')'
                 .'|/salle/(?'
                     .'|([^/]++)(?'
-                        .'|(*:403)'
+                        .'|(*:411)'
                         .'|/(?'
-                            .'|front(*:420)'
-                            .'|edit(*:432)'
+                            .'|front(*:428)'
+                            .'|edit(*:440)'
                         .')'
-                        .'|(*:441)'
+                        .'|(*:449)'
                     .')'
-                    .'|Show_salle(*:460)'
-                    .'|delete/([^/]++)(*:483)'
-                    .'|find_Salle(*:501)'
+                    .'|Show_salle(*:468)'
+                    .'|delete/([^/]++)(*:491)'
+                    .'|find_Salle(*:509)'
                     .'|a(?'
-                        .'|ddnew(*:518)'
-                        .'|jouter_salle(*:538)'
+                        .'|ddnew(*:526)'
+                        .'|jouter_salle(*:546)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -112,23 +114,21 @@ return [
         238 => [[['_route' => 'app_activite_edit', '_controller' => 'App\\Controller\\ActiviteController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
         247 => [[['_route' => 'app_activite_delete', '_controller' => 'App\\Controller\\ActiviteController::removeStudent'], ['id'], null, null, false, true, null]],
         271 => [[['_route' => 'find_actitivité', '_controller' => 'App\\Controller\\ActiviteController::findSalle'], [], null, null, false, false, null]],
-        314 => [[['_route' => 'app_calendrier_new', '_controller' => 'App\\Controller\\CalendrierController::new'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        326 => [[['_route' => 'app_calendrier_edit', '_controller' => 'App\\Controller\\CalendrierController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        335 => [
-            [['_route' => 'app_calendrier_show', '_controller' => 'App\\Controller\\CalendrierController::show'], ['id'], ['GET' => 0], null, false, true, null],
-            [['_route' => 'app_calendrier_delete', '_controller' => 'App\\Controller\\CalendrierController::delete'], ['id'], ['POST' => 0], null, false, true, null],
-        ],
-        348 => [[['_route' => 'find_calendar', '_controller' => 'App\\Controller\\CalendrierController::find_event'], [], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        373 => [[['_route' => 'api_event_api', '_controller' => 'App\\Controller\\CalendrierController::MiseAjourEvent'], ['id'], ['PUT' => 0], null, false, false, null]],
-        403 => [[['_route' => 'app_salle_show', '_controller' => 'App\\Controller\\SalleController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        420 => [[['_route' => 'app_salle_show_front', '_controller' => 'App\\Controller\\SalleController::show_fornt'], ['id'], ['GET' => 0], null, false, false, null]],
-        432 => [[['_route' => 'app_salle_edit', '_controller' => 'App\\Controller\\SalleController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        441 => [[['_route' => 'app_salle_delete', '_controller' => 'App\\Controller\\SalleController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        460 => [[['_route' => 'Show_salle', '_controller' => 'App\\Controller\\SalleController::showstudent'], [], null, null, false, false, null]],
-        483 => [[['_route' => 'deleteevent', '_controller' => 'App\\Controller\\SalleController::deleteevent'], ['id'], null, null, false, true, null]],
-        501 => [[['_route' => 'find_Salle', '_controller' => 'App\\Controller\\SalleController::findSalle'], [], null, null, false, false, null]],
-        518 => [[['_route' => 'addnew_salle', '_controller' => 'App\\Controller\\SalleController::addnewsalle'], [], null, null, false, false, null]],
-        538 => [
+        307 => [[['_route' => 'app_planning_delete', '_controller' => 'App\\Controller\\CalendrierController::removeStudent'], ['id'], null, null, false, true, null]],
+        322 => [[['_route' => 'app_calendrier_new', '_controller' => 'App\\Controller\\CalendrierController::new'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        334 => [[['_route' => 'app_calendrier_edit', '_controller' => 'App\\Controller\\CalendrierController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        343 => [[['_route' => 'app_calendrier_show', '_controller' => 'App\\Controller\\CalendrierController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        356 => [[['_route' => 'find_calendar', '_controller' => 'App\\Controller\\CalendrierController::find_event'], [], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        381 => [[['_route' => 'api_event_api', '_controller' => 'App\\Controller\\CalendrierController::MiseAjourEvent'], ['id'], ['PUT' => 0], null, false, false, null]],
+        411 => [[['_route' => 'app_salle_show', '_controller' => 'App\\Controller\\SalleController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        428 => [[['_route' => 'app_salle_show_front', '_controller' => 'App\\Controller\\SalleController::show_fornt'], ['id'], ['GET' => 0], null, false, false, null]],
+        440 => [[['_route' => 'app_salle_edit', '_controller' => 'App\\Controller\\SalleController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        449 => [[['_route' => 'app_salle_delete', '_controller' => 'App\\Controller\\SalleController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        468 => [[['_route' => 'Show_salle', '_controller' => 'App\\Controller\\SalleController::showstudent'], [], null, null, false, false, null]],
+        491 => [[['_route' => 'deleteevent', '_controller' => 'App\\Controller\\SalleController::deleteevent'], ['id'], null, null, false, true, null]],
+        509 => [[['_route' => 'find_Salle', '_controller' => 'App\\Controller\\SalleController::findSalle'], [], null, null, false, false, null]],
+        526 => [[['_route' => 'addnew_salle', '_controller' => 'App\\Controller\\SalleController::addnewsalle'], [], null, null, false, false, null]],
+        546 => [
             [['_route' => 'app_salle', '_controller' => 'App\\Controller\\SalleController::ajouter_salle'], [], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],

@@ -1,41 +1,47 @@
-{% extends 'base.html.twig' %}
+{% extends 'back/base.html.twig' %}
 
-{% block title %}Calendrier index{% endblock %}
+{% block title %}Calender  {% endblock %}
 
 {% block body %}
-    <h1>Calendrier index</h1>
-
-    <table class="table">
-        <thead>
+    <h1>Calender</h1>
+<a href="{{ path('app_calendrier_index') }}">
+		<i class="bi bi-arrow-right-circle-fill"></i>
+	</a>
+ <div id="pagination">
+					<a href="#" class="previous">&laquo; Previous</a>
+					<a href="#" class="next">Next &raquo;</a>
+			</div>
+			<table class="table table-bordered" id="myTable" width="100%" cellspacing="0"> 
+			<thead>
             <tr>
-                <th>Id</th>
-                <th>Title</th>
-                <th>Start</th>
-                <th>End</th>
-                <th>Description</th>
-                <th>All_day</th>
-                <th>Background_color</th>
-                <th>Border_color</th>
-                <th>Text_color</th>
-                <th>actions</th>
+                <th style ="color:#FF0000">#</th>
+					<th style ="color:#FF0000">start</th>
+					<th style ="color:#FF0000">end</th>
+					<th style ="color:#FF0000">description</th>
+				    <th style ="color:#FF0000">backgroundcolor</th>
+			  		<th style ="color:#FF0000">bordercolor</th>
+			  		<th style ="color:#FF0000">textcolor</th>
+ 			  		<th style ="color:#FF0000">Activité</th>
+					<th style ="color:#FF0000">action</th>
             </tr>
         </thead>
         <tbody>
         {% for calendrier in calendriers %}
             <tr>
                 <td>{{ calendrier.id }}</td>
-                <td>{{ calendrier.title }}</td>
                 <td>{{ calendrier.start ? calendrier.start|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ calendrier.end ? calendrier.end|date('Y-m-d H:i:s') : '' }}</td>
                 <td>{{ calendrier.description }}</td>
-                <td>{{ calendrier.allDay ? 'Yes' : 'No' }}</td>
                 <td>{{ calendrier.backgroundColor }}</td>
                 <td>{{ calendrier.borderColor }}</td>
                 <td>{{ calendrier.textColor }}</td>
+                <td>{{ calendrier.activite }}</td>
+
                 <td>
-                    <a href="{{ path('app_calendrier_show', {'id': calendrier.id}) }}">show</a>
-                    <a href="{{ path('app_calendrier_edit', {'id': calendrier.id}) }}">edit</a>
-                </td>
+                <td><a href="{{path('app_planning_delete',{'id':calendrier.id})}}"><i class="bi bi-trash"></i></a></td>
+				<td><a href="{{path('app_calendrier_edit',{'id':calendrier.id})}}"><span class="bi bi-cart-fill"></a></td>
+
+                 </td>
             </tr>
         {% else %}
             <tr>
@@ -44,6 +50,51 @@
         {% endfor %}
         </tbody>
     </table>
+<script>
 
-    <a href="{{ path('app_calendrier_new') }}">Create new</a>
+ 			{# script pagination #}
+let table = document.getElementById('myTable');
+let rowsPerPage = 5;
+let currentPage = 1;
+
+function showPage(page) {
+  let startIndex = (page - 1) * rowsPerPage;
+  let endIndex = startIndex + rowsPerPage;
+
+  let rows = table.rows;
+  for (let i = 1; i < rows.length; i++) {
+    let row = rows[i];
+    if (i < startIndex || i >= endIndex) {
+      row.style.display = 'none';
+    } else {
+      row.style.display = '';
+    }
+  }
+}
+
+function nextPage() {
+  if (currentPage < numPages()) {
+    currentPage++;
+    showPage(currentPage);
+  }
+}
+
+function previousPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    showPage(currentPage);
+  }
+}
+
+function numPages() {
+  return Math.ceil((table.rows.length - 1) / rowsPerPage);
+}
+
+document.querySelector('.previous').addEventListener('click', previousPage);
+document.querySelector('.next').addEventListener('click', nextPage);
+
+showPage(currentPage);
+</script>
+
+    {# <a href="{{ path('app_calendrier_new') }}">Create new</a> #}
 {% endblock %}

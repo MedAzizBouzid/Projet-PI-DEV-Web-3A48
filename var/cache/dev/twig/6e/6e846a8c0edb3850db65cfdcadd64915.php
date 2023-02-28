@@ -67,6 +67,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
         // line 7
         echo "\t\t<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css\" integrity=\"sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=\" crossorigin=\"anonymous\">
 
+
      <style>
         #calendrier{
             margin: auto;
@@ -78,14 +79,14 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 
 \t <div style=\"position: center;background-color:black;\"id=\"calendrier\"></div>     
      ";
-        // line 20
+        // line 21
         echo "
             
  
 
 
 ";
-        // line 26
+        // line 27
         echo "
 \t<script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js\" 
        
@@ -101,29 +102,32 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
             locale: 'fr',
             timeZone: 'Afrique/Tunisie',
 \t\t    weekends: true,
+                themeSystem: 'bootstrap5',
+
 
   defaultView: 'dayGridWeek',
  \t\t\t    businessHours: {
-\t\t\t\tstart: '08:00',
+\t\t\t\tstart: '06:00',
 \t\t\t\tend: '18:00',
-\t\t\t\tdow: [1, 2, 3, 4, 5]
-\t\t\t\t},
+\t\t\t\tdow: [1, 2, 3, 4, 5],// dow ==> day of week
+               
+\t\t\t\t},   
+                // Specifique pour le head du calendrier
             headerToolbar: {
                 start: 'prev,next today',
                 center: 'title',
-                end: 'dayGridWeek,timeGridWeek'
+                end: 'timeGridWeek,listWeek,timeGridDay'
             },
-\t\t\t
+\t\t\t    dayMaxEvents: true, // allow \"more\" link when too many events
+
             events:";
-        // line 54
-        echo (isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 54, $this->source); })());
+        // line 60
+        echo (isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 60, $this->source); })());
         echo ",
 \t\t\teditable:true,
 \t\t    eventResizableFromStart:true,
-\t\t/*\t\teventDrop :function(event){
-\t\t\t\tconsole.log(event)
-\t\t\t}*/
-\t\t\t
+            
+\t
 
     })
 
@@ -157,11 +161,11 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
     }
 </script>
                      ";
-        // line 94
+        // line 98
         echo "
 
                      ";
-        // line 97
+        // line 101
         echo "
 
 
@@ -189,7 +193,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 
     public function getDebugInfo()
     {
-        return array (  165 => 97,  161 => 94,  119 => 54,  89 => 26,  82 => 20,  68 => 7,  58 => 6,  35 => 1,);
+        return array (  169 => 101,  165 => 98,  125 => 60,  90 => 27,  83 => 21,  68 => 7,  58 => 6,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -201,6 +205,7 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
 \t
 {% block body %}
 \t\t<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css\" integrity=\"sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=\" crossorigin=\"anonymous\">
+
 
      <style>
         #calendrier{
@@ -234,26 +239,29 @@ class __TwigTemplate_f61bf111b9faf41333f71cfe5cd584d2 extends Template
             locale: 'fr',
             timeZone: 'Afrique/Tunisie',
 \t\t    weekends: true,
+                themeSystem: 'bootstrap5',
+
 
   defaultView: 'dayGridWeek',
  \t\t\t    businessHours: {
-\t\t\t\tstart: '08:00',
+\t\t\t\tstart: '06:00',
 \t\t\t\tend: '18:00',
-\t\t\t\tdow: [1, 2, 3, 4, 5]
-\t\t\t\t},
+\t\t\t\tdow: [1, 2, 3, 4, 5],// dow ==> day of week
+               
+\t\t\t\t},   
+                // Specifique pour le head du calendrier
             headerToolbar: {
                 start: 'prev,next today',
                 center: 'title',
-                end: 'dayGridWeek,timeGridWeek'
+                end: 'timeGridWeek,listWeek,timeGridDay'
             },
-\t\t\t
+\t\t\t    dayMaxEvents: true, // allow \"more\" link when too many events
+
             events:{{data|raw}},
 \t\t\teditable:true,
 \t\t    eventResizableFromStart:true,
-\t\t/*\t\teventDrop :function(event){
-\t\t\t\tconsole.log(event)
-\t\t\t}*/
-\t\t\t
+            
+\t
 
     })
 

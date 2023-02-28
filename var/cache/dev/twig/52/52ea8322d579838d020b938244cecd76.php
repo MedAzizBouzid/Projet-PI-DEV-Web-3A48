@@ -70,19 +70,21 @@ class __TwigTemplate_db6415330020cc73e1f363fc6fdb69e7 extends Template
      <style>
         #calendrier{
             margin: auto;
-            width: auto !important;
-\t\t\theight: auto !important;
+          /*  width: auto !important;
+\t\t\theight: auto !important;*/
+\t\t\t width: 80%;
+\t\t\theight:auto;
         }
     </style>
 \t  
 
      ";
-        // line 18
+        // line 20
         echo "
        <section class=\"hero-section\">
         <div class=\"hs-slider owl-carousel\">
             <div class=\"hs-item set-bg\" data-setbg=\"";
-        // line 21
+        // line 23
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/front/img/hero/hero-1.jpg"), "html", null, true);
         echo "\">
                 <div class=\"container\">
@@ -98,7 +100,7 @@ class __TwigTemplate_db6415330020cc73e1f363fc6fdb69e7 extends Template
                 </div>
             </div>
             <div class=\"hs-item set-bg\" data-setbg=\"";
-        // line 34
+        // line 36
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/front/img/hero/hero-2.jpg"), "html", null, true);
         echo "\">
                 <div class=\"container\">
@@ -116,11 +118,13 @@ class __TwigTemplate_db6415330020cc73e1f363fc6fdb69e7 extends Template
         </div>
     </section>     
  
-
-\t <div style=\"position: center;background-color:white;color:red;\"id=\"calendrier\"></div>     
-
+ <section style=\"background-color:black;\" class=\"hero-section\">
+\t <div style=\"position: center;background-color:white;color:red;background-repeat:no-repeat;background-size:cover;
+\t background-image: url('https://st4.depositphotos.com/4259987/21763/i/450/depositphotos_217633412-stock-photo-picture-of-strong-sporty-bodybuilder.jpg');
+\t  \"id=\"calendrier\"></div>     
+\t </section>
 ";
-        // line 54
+        // line 58
         echo "
 \t<script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js\" 
        
@@ -136,39 +140,39 @@ class __TwigTemplate_db6415330020cc73e1f363fc6fdb69e7 extends Template
 \t\t    weekends: true,
 
   defaultView: 'dayGridWeek',
- \t\t\t    businessHours: {
-\t\t\t\tstart: '08:00',
-\t\t\t\tend: '18:00',
-\t\t\t\tdow: [1, 2, 3, 4, 5]
-\t\t\t\t},
+ \t\t\t    //businessHours: {
+\t\t\t\t//start: '08:00',
+\t\t\t\t//end: '18:00',
+\t\t\t\t//dow: [1, 2, 3, 4, 5]
+\t\t\t\t//},
             headerToolbar: {
-                start: 'prev,next today',
+                start: 'today',
                 center: 'title',
-                end: 'dayGridWeek,timeGridWeek'
+                end: 'timeGridWeek,listWeek'
             },
 \t\t\t
             events:";
-        // line 80
-        echo (isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 80, $this->source); })());
+        // line 84
+        echo (isset($context["data"]) || array_key_exists("data", $context) ? $context["data"] : (function () { throw new RuntimeError('Variable "data" does not exist.', 84, $this->source); })());
         echo ",
-\t\t\teditable:true,
-\t\t    eventResizableFromStart:true,
-\t\t\t datesSet: function (info) {
+\t\t\teditable:false,
+\t\t    eventResizableFromStart:false,
+\t\t\t      // datesSet: function (info) {
       // Récupérer la date de début de la plage d'affichage
-      let start = info.start;
+           //let start = info.start;
       // Récupérer la date de fin de la plage d'affichage
-      let end = info.end;
+            //let end = info.end;
       // Calculer la différence en jours entre les deux dates
-      let diff = end.diff(start, 'days');
+           //let diff = end.diff(start, 'days');
       // Si la plage d'affichage est supérieure à 7 jours
-      if (diff > 7) {
+           //if (diff > 7) {
         // Ajuster la date de fin pour n'afficher qu'une semaine
-        end = start.clone().add(7, 'days');
+             // end = start.clone().add(7, 'days');
         // Définir la plage d'affichage pour n'afficher qu'une semaine
-        calendar.gotoDate(start);
-        calendar.gotoDate(end);
-      }
-    }
+             //calendar.gotoDate(start);
+            //       //calendar.gotoDate(end);
+           // }
+         // }
 \t\t/*\t\teventDrop :function(event){
 \t\t\t\tconsole.log(event)
 \t\t\t}*/
@@ -196,10 +200,7 @@ class __TwigTemplate_db6415330020cc73e1f363fc6fdb69e7 extends Template
 
  
              }          
-\t\t\t            let xhr = new XMLHttpRequest 
-\t\t\t\t\t\t// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ 
- \t\t\t\t\t\t xhr .open(\"PUT\", url)
-           \t\t\t\t xhr.send(JSON.stringify(donnees))
+\t\t\t           
 \t\t\t})\t\t
 
                 calendar.render()
@@ -227,7 +228,7 @@ class __TwigTemplate_db6415330020cc73e1f363fc6fdb69e7 extends Template
 
     public function getDebugInfo()
     {
-        return array (  152 => 80,  124 => 54,  102 => 34,  86 => 21,  81 => 18,  68 => 6,  58 => 5,  35 => 1,);
+        return array (  156 => 84,  128 => 58,  104 => 36,  88 => 23,  83 => 20,  68 => 6,  58 => 5,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -242,8 +243,10 @@ class __TwigTemplate_db6415330020cc73e1f363fc6fdb69e7 extends Template
      <style>
         #calendrier{
             margin: auto;
-            width: auto !important;
-\t\t\theight: auto !important;
+          /*  width: auto !important;
+\t\t\theight: auto !important;*/
+\t\t\t width: 80%;
+\t\t\theight:auto;
         }
     </style>
 \t  
@@ -281,9 +284,11 @@ class __TwigTemplate_db6415330020cc73e1f363fc6fdb69e7 extends Template
         </div>
     </section>     
  
-
-\t <div style=\"position: center;background-color:white;color:red;\"id=\"calendrier\"></div>     
-
+ <section style=\"background-color:black;\" class=\"hero-section\">
+\t <div style=\"position: center;background-color:white;color:red;background-repeat:no-repeat;background-size:cover;
+\t background-image: url('https://st4.depositphotos.com/4259987/21763/i/450/depositphotos_217633412-stock-photo-picture-of-strong-sporty-bodybuilder.jpg');
+\t  \"id=\"calendrier\"></div>     
+\t </section>
 {# ________________________________________________________Debut__Partie JS___________________________________________________________________ #}
 
 \t<script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js\" 
@@ -300,36 +305,36 @@ class __TwigTemplate_db6415330020cc73e1f363fc6fdb69e7 extends Template
 \t\t    weekends: true,
 
   defaultView: 'dayGridWeek',
- \t\t\t    businessHours: {
-\t\t\t\tstart: '08:00',
-\t\t\t\tend: '18:00',
-\t\t\t\tdow: [1, 2, 3, 4, 5]
-\t\t\t\t},
+ \t\t\t    //businessHours: {
+\t\t\t\t//start: '08:00',
+\t\t\t\t//end: '18:00',
+\t\t\t\t//dow: [1, 2, 3, 4, 5]
+\t\t\t\t//},
             headerToolbar: {
-                start: 'prev,next today',
+                start: 'today',
                 center: 'title',
-                end: 'dayGridWeek,timeGridWeek'
+                end: 'timeGridWeek,listWeek'
             },
 \t\t\t
             events:{{data|raw}},
-\t\t\teditable:true,
-\t\t    eventResizableFromStart:true,
-\t\t\t datesSet: function (info) {
+\t\t\teditable:false,
+\t\t    eventResizableFromStart:false,
+\t\t\t      // datesSet: function (info) {
       // Récupérer la date de début de la plage d'affichage
-      let start = info.start;
+           //let start = info.start;
       // Récupérer la date de fin de la plage d'affichage
-      let end = info.end;
+            //let end = info.end;
       // Calculer la différence en jours entre les deux dates
-      let diff = end.diff(start, 'days');
+           //let diff = end.diff(start, 'days');
       // Si la plage d'affichage est supérieure à 7 jours
-      if (diff > 7) {
+           //if (diff > 7) {
         // Ajuster la date de fin pour n'afficher qu'une semaine
-        end = start.clone().add(7, 'days');
+             // end = start.clone().add(7, 'days');
         // Définir la plage d'affichage pour n'afficher qu'une semaine
-        calendar.gotoDate(start);
-        calendar.gotoDate(end);
-      }
-    }
+             //calendar.gotoDate(start);
+            //       //calendar.gotoDate(end);
+           // }
+         // }
 \t\t/*\t\teventDrop :function(event){
 \t\t\t\tconsole.log(event)
 \t\t\t}*/
@@ -357,10 +362,7 @@ class __TwigTemplate_db6415330020cc73e1f363fc6fdb69e7 extends Template
 
  
              }          
-\t\t\t            let xhr = new XMLHttpRequest 
-\t\t\t\t\t\t// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ 
- \t\t\t\t\t\t xhr .open(\"PUT\", url)
-           \t\t\t\t xhr.send(JSON.stringify(donnees))
+\t\t\t           
 \t\t\t})\t\t
 
                 calendar.render()

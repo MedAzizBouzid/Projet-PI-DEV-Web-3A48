@@ -66,7 +66,7 @@ class CalendrierController extends AbstractController
    
 
     }
-
+ 
 // /---------------------------------------------------------------------------------------------------------
 #[Route('/calender_front', name: 'app_calendrier_front', methods: ['GET'])]
     public function show_front(Request $request,CalendrierRepository $calendrierRepository): Response
@@ -93,9 +93,6 @@ class CalendrierController extends AbstractController
         }
         $data = json_encode($rdvs);
  
- 
- 
-
         $calendrier = new Calendrier();
         $form = $this->createForm(CalendrierType::class, $calendrier);
         $form->handleRequest($request);
@@ -105,26 +102,27 @@ class CalendrierController extends AbstractController
 
             return $this->redirectToRoute('app_calendrier_index', [], Response::HTTP_SEE_OTHER);
         }
-        
-
-
             return $this->render('front/Calendrier_front.html.twig', compact('data','form'));
-   
-
         }
 
 
 
 // _____________________________________________________________________________________________________________________________________________
 
- 
+    // supprimer un planning 
+    #[Route('/{id}', name: 'app_planning_delete')]
+    public function removeStudent($id,ManagerRegistry $mr,calendrierRepository $repo): Response
+    {
+        $st=$repo->find($id); 
+        $em=$mr->getManager();
+        $em->remove($st);
+        $em->flush();
+       
+        return $this->redirectToRoute('app_planning', [], Response::HTTP_SEE_OTHER);
+
+
+    }
 // _____________________________________________________________________________________________________________________________________________
-
-
-
-
-
-
 
 
  
@@ -141,7 +139,6 @@ class CalendrierController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
 
-            // dd($request->get('Salle'));
 
         $calendrier->setActivite($request->get('Salle'));
         $calendrier->setSalla($salle);
@@ -156,7 +153,7 @@ class CalendrierController extends AbstractController
             'form' => $form,
         ]);
     }
-
+// *******************************************************
     #[Route('/{id}', name: 'app_calendrier_show', methods: ['GET'])]
     public function show(Calendrier $calendrier): Response
     {
@@ -164,10 +161,11 @@ class CalendrierController extends AbstractController
             'calendrier' => $calendrier,
         ]);
     }
-
+// ***********************************************************
     #[Route('/{id}/edit', name: 'app_calendrier_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Calendrier $calendrier, CalendrierRepository $calendrierRepository): Response
     {
+        
         $form = $this->createForm(CalendrierType::class, $calendrier);
         $form->handleRequest($request);
 
@@ -177,21 +175,53 @@ class CalendrierController extends AbstractController
             return $this->redirectToRoute('app_calendrier_index', [], Response::HTTP_SEE_OTHER);
         }
 
-        return $this->renderForm('calendrier/edit.html.twig', [
+        return $this->renderForm('calendrier/form_calendrier.html.twig', [
             'calendrier' => $calendrier,
             'form' => $form,
         ]);
     }
 
-    #[Route('/{id}', name: 'app_calendrier_delete', methods: ['POST'])]
-    public function delete(Request $request, Calendrier $calendrier, CalendrierRepository $calendrierRepository): Response
-    {
-        if ($this->isCsrfTokenValid('delete'.$calendrier->getId(), $request->request->get('_token'))) {
-            $calendrierRepository->remove($calendrier, true);
-        }
 
-        return $this->redirectToRoute('app_calendrier_index', [], Response::HTTP_SEE_OTHER);
+    #[Route('/planning', name: 'app_planning')]
+
+    public function planning(CalendrierRepository $calendrierRepository): Response
+    {
+         
+        return $this->render('calendrier/index.html.twig', [
+            'calendrier' => $calendrierRepository->findAll(),
+ 
+        ]);
     }
+   
+
+
+
+
+    // *****************************************************
+
+
+    // #[Route('/planning', name: 'app_planning')]
+    // public function Show_planning(EntityManagerInterface $am): Response
+    // {
+       
+    //     $repo=$am->getRepository(Calendrier::class);
+    //     $calendrier=$repo->findAll();
+        
+    //     return $this->render('back/table_cal.html.twig', [
+    //         'calendrier' => $calendrier,
+    //     ]);
+    // }
+    // *****************************************************
+
+    // #[Route('/{id}', name: 'app_calendrier_delete', methods: ['POST'])]
+    // public function delete(Request $request, Calendrier $calendrier, CalendrierRepository $calendrierRepository): Response
+    // {
+    //     if ($this->isCsrfTokenValid('delete'.$calendrier->getId(), $request->request->get('_token'))) {
+    //         $calendrierRepository->remove($calendrier, true);
+    //     }
+
+    //     return $this->redirectToRoute('app_calendrier_index', [], Response::HTTP_SEE_OTHER);
+    // }
 
 
     #[Route('/find', name: 'find_calendar', methods: ['GET', 'POST'])]

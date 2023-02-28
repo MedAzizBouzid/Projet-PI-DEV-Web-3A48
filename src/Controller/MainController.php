@@ -9,6 +9,18 @@ use Symfony\Component\Routing\Annotation\Route;
 
 class MainController extends AbstractController
 {
+    #[Route('/planning', name: 'app_planning')]
+
+    public function planning(CalendrierRepository $calendrierRepository): Response
+    {
+         
+        return $this->render('calendrier/index.html.twig', [
+            'calendriers' => $calendrierRepository->findAll(),
+ 
+        ]);
+    }
+
+
     #[Route('/main', name: 'app_main')]
     public function index(CalendrierRepository $calendar): Response
     {

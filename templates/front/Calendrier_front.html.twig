@@ -8,8 +8,10 @@
      <style>
         #calendrier{
             margin: auto;
-            width: auto !important;
-			height: auto !important;
+          /*  width: auto !important;
+			height: auto !important;*/
+			 width: 80%;
+			height:auto;
         }
     </style>
 	  
@@ -47,9 +49,11 @@
         </div>
     </section>     
  
-
-	 <div style="position: center;background-color:white;color:red;"id="calendrier"></div>     
-
+ <section style="background-color:black;" class="hero-section">
+	 <div style="position: center;background-color:white;color:red;background-repeat:no-repeat;background-size:cover;
+	 background-image: url('https://st4.depositphotos.com/4259987/21763/i/450/depositphotos_217633412-stock-photo-picture-of-strong-sporty-bodybuilder.jpg');
+	  "id="calendrier"></div>     
+	 </section>
 {# ________________________________________________________Debut__Partie JS___________________________________________________________________ #}
 
 	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" 
@@ -66,36 +70,36 @@
 		    weekends: true,
 
   defaultView: 'dayGridWeek',
- 			    businessHours: {
-				start: '08:00',
-				end: '18:00',
-				dow: [1, 2, 3, 4, 5]
-				},
+ 			    //businessHours: {
+				//start: '08:00',
+				//end: '18:00',
+				//dow: [1, 2, 3, 4, 5]
+				//},
             headerToolbar: {
-                start: 'prev,next today',
+                start: 'today',
                 center: 'title',
-                end: 'dayGridWeek,timeGridWeek'
+                end: 'timeGridWeek,listWeek'
             },
 			
             events:{{data|raw}},
-			editable:true,
-		    eventResizableFromStart:true,
-			 datesSet: function (info) {
+			editable:false,
+		    eventResizableFromStart:false,
+			      // datesSet: function (info) {
       // Récupérer la date de début de la plage d'affichage
-      let start = info.start;
+           //let start = info.start;
       // Récupérer la date de fin de la plage d'affichage
-      let end = info.end;
+            //let end = info.end;
       // Calculer la différence en jours entre les deux dates
-      let diff = end.diff(start, 'days');
+           //let diff = end.diff(start, 'days');
       // Si la plage d'affichage est supérieure à 7 jours
-      if (diff > 7) {
+           //if (diff > 7) {
         // Ajuster la date de fin pour n'afficher qu'une semaine
-        end = start.clone().add(7, 'days');
+             // end = start.clone().add(7, 'days');
         // Définir la plage d'affichage pour n'afficher qu'une semaine
-        calendar.gotoDate(start);
-        calendar.gotoDate(end);
-      }
-    }
+             //calendar.gotoDate(start);
+            //       //calendar.gotoDate(end);
+           // }
+         // }
 		/*		eventDrop :function(event){
 				console.log(event)
 			}*/
@@ -123,10 +127,7 @@
 
  
              }          
-			            let xhr = new XMLHttpRequest 
-						// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ 
- 						 xhr .open("PUT", url)
-           				 xhr.send(JSON.stringify(donnees))
+			           
 			})		
 
                 calendar.render()

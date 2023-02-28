@@ -6,6 +6,7 @@
 {% block body %}
 		<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
 
+
      <style>
         #calendrier{
             margin: auto;
@@ -38,26 +39,29 @@
             locale: 'fr',
             timeZone: 'Afrique/Tunisie',
 		    weekends: true,
+                themeSystem: 'bootstrap5',
+
 
   defaultView: 'dayGridWeek',
  			    businessHours: {
-				start: '08:00',
+				start: '06:00',
 				end: '18:00',
-				dow: [1, 2, 3, 4, 5]
-				},
+				dow: [1, 2, 3, 4, 5],// dow ==> day of week
+               
+				},   
+                // Specifique pour le head du calendrier
             headerToolbar: {
                 start: 'prev,next today',
                 center: 'title',
-                end: 'dayGridWeek,timeGridWeek'
+                end: 'timeGridWeek,listWeek,timeGridDay'
             },
-			
+			    dayMaxEvents: true, // allow "more" link when too many events
+
             events:{{data|raw}},
 			editable:true,
 		    eventResizableFromStart:true,
-		/*		eventDrop :function(event){
-				console.log(event)
-			}*/
-			
+            
+	
 
     })
 

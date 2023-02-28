@@ -145,9 +145,15 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_index");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>Tables Activités</a>
+\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t<a href=";
+        // line 151
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_planning");
+        echo " class=\"nav-item nav-link\">
+\t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>Tables calendrier</a>
 
 \t\t\t\t\t\t<a href=";
-        // line 151
+        // line 154
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_calendrier_index");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>
@@ -156,20 +162,20 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
 
 \t\t\t\t\t\t";
-        // line 159
+        // line 162
         echo "\t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle active\" data-bs-toggle=\"dropdown\">
 \t\t\t\t\t\t\t\t<i class=\"far fa-file-alt me-2\"></i>Pages</a>
 \t\t\t\t\t\t\t<div class=\"dropdown-menu bg-transparent border-0\">
 \t\t\t\t\t\t\t\t<a href=";
-        // line 163
+        // line 166
         echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_calendrier_index");
         echo " class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>
 \t\t\t\t\t\t\t\t\tGestion du Planning
 \t\t\t\t\t\t\t\t</a>
 \t\t\t\t\t\t\t\t";
-        // line 170
+        // line 173
         echo "\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -193,16 +199,16 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t\t</a>
 
 \t\t\t\t\t";
-        // line 193
+        // line 196
         echo "\t\t\t\t\t";
-        // line 199
+        // line 202
         echo "
 
 \t\t\t\t\t<div
 \t\t\t\t\t\tclass=\"navbar-nav align-items-center ms-auto\">
 
 \t\t\t\t\t\t";
-        // line 205
+        // line 208
         echo "
 \t\t\t\t\t\t<div class=\"nav-item dropdown\">
 \t\t\t\t\t\t\t<a href=\"#\" class=\"nav-link dropdown-toggle\" data-bs-toggle=\"dropdown\">
@@ -279,7 +285,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
 \t\t\t\t\t\t\t<div
 \t\t\t\t\t\t\t\tclass=\"dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0\">";
-        // line 283
+        // line 286
         echo "\t\t\t\t\t\t\t</div>
 \t\t\t\t\t\t</div>
 \t\t\t\t\t</div>
@@ -290,14 +296,14 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 \t\t\t\t<!-- Blank Start -->
 \t\t\t\t<div style=\"background-color: black; \"  class=\"container-fluid pt-4 px-4\">
 \t\t\t\t";
-        // line 293
+        // line 296
         echo "\t\t\t\t\t<div>
 \t\t\t\t\t\t<div>";
-        // line 294
+        // line 297
         $this->displayBlock('body', $context, $blocks);
-        // line 298
+        // line 301
         echo "\t\t\t\t\t\t";
-        // line 299
+        // line 302
         echo "\t\t\t\t\t</div>
 \t\t\t\t</div>
 
@@ -305,7 +311,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
 
 \t\t\t";
-        // line 325
+        // line 328
         echo "\t\t\t\t<!-- Footer End -->
 
 
@@ -321,9 +327,9 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
 
 \t\t";
-        // line 339
+        // line 342
         $this->displayBlock('javascripts', $context, $blocks);
-        // line 377
+        // line 380
         echo "\t</body>
 </html></body></html>
 ";
@@ -441,7 +447,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
     }
 
-    // line 294
+    // line 297
     public function block_body($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -451,7 +457,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
-        // line 295
+        // line 298
         echo "
 
 \t\t\t\t\t";
@@ -463,7 +469,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
     }
 
-    // line 339
+    // line 342
     public function block_javascripts($context, array $blocks = [])
     {
         $macros = $this->macros;
@@ -473,61 +479,61 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "javascripts"));
 
-        // line 340
+        // line 343
         echo "
 \t\t\t<!-- JavaScript Libraries -->
 \t\t\t<script src=\"https://code.jquery.com/jquery-3.4.1.min.js\"></script>
 \t\t\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js\"></script>
 \t\t\t<script src=\"";
-        // line 344
+        // line 347
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/chart/chart.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 345
+        // line 348
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/easing/easing.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 346
+        // line 349
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/waypoints/waypoints.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 347
+        // line 350
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/owlcarousel/owl.carousel.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 348
+        // line 351
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/js/moment.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 349
+        // line 352
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/js/moment-timezone.min.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"";
-        // line 350
+        // line 353
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"), "html", null, true);
         echo "\"></script>
 
 \t\t\t";
-        // line 353
+        // line 356
         echo "\t\t\t";
-        // line 355
+        // line 358
         echo "
 \t\t\t";
-        // line 356
+        // line 359
         echo "<script src=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js\" integrity=\"sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=\" crossorigin=\"anonymous\"> </script>
 \t\t\t";
-        // line 358
+        // line 361
         echo "
 \t\t\t<!-- Template Javascript -->
 \t\t\t<script src=\"";
-        // line 360
+        // line 363
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/js/main.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<!-- dataTable -->
 \t\t\t<script src=\"https://code.jquery.com/jquery-3.5.1.slim.min.js\" crossorigin=\"anonymous\"></script>
 \t\t\t<script src=\"https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js\" crossorigin=\"anonymous\"></script>
 \t\t\t<script src=\"";
-        // line 364
+        // line 367
         echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/back/js/scripts.js"), "html", null, true);
         echo "\"></script>
 \t\t\t<script src=\"https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js\" crossorigin=\"anonymous\"></script>
@@ -562,7 +568,7 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
     public function getDebugInfo()
     {
-        return array (  531 => 364,  524 => 360,  520 => 358,  517 => 356,  514 => 355,  512 => 353,  507 => 350,  503 => 349,  499 => 348,  495 => 347,  491 => 346,  487 => 345,  483 => 344,  477 => 340,  467 => 339,  455 => 295,  445 => 294,  395 => 45,  388 => 41,  381 => 37,  376 => 35,  371 => 33,  366 => 31,  349 => 16,  339 => 15,  327 => 377,  325 => 339,  309 => 325,  301 => 299,  299 => 298,  297 => 294,  294 => 293,  283 => 283,  206 => 205,  199 => 199,  197 => 193,  173 => 170,  166 => 163,  160 => 159,  151 => 151,  145 => 148,  139 => 145,  133 => 142,  127 => 139,  119 => 134,  108 => 125,  106 => 124,  104 => 123,  102 => 122,  64 => 85,  62 => 15,  46 => 1,);
+        return array (  537 => 367,  530 => 363,  526 => 361,  523 => 359,  520 => 358,  518 => 356,  513 => 353,  509 => 352,  505 => 351,  501 => 350,  497 => 349,  493 => 348,  489 => 347,  483 => 343,  473 => 342,  461 => 298,  451 => 297,  401 => 45,  394 => 41,  387 => 37,  382 => 35,  377 => 33,  372 => 31,  355 => 16,  345 => 15,  333 => 380,  331 => 342,  315 => 328,  307 => 302,  305 => 301,  303 => 297,  300 => 296,  289 => 286,  212 => 208,  205 => 202,  203 => 196,  179 => 173,  172 => 166,  166 => 162,  157 => 154,  151 => 151,  145 => 148,  139 => 145,  133 => 142,  127 => 139,  119 => 134,  108 => 125,  106 => 124,  104 => 123,  102 => 122,  64 => 85,  62 => 15,  46 => 1,);
     }
 
     public function getSourceContext()
@@ -716,6 +722,9 @@ class __TwigTemplate_e8418873062af70e3c0a7c810f8dd6dd extends Template
 
 \t\t\t\t\t\t<a href={{path('app_activite_index')}} class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>Tables Activités</a>
+\t\t\t\t\t\t\t
+\t\t\t\t\t\t\t<a href={{path('app_planning')}} class=\"nav-item nav-link\">
+\t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>Tables calendrier</a>
 
 \t\t\t\t\t\t<a href={{path('app_calendrier_index')}} class=\"nav-item nav-link\">
 \t\t\t\t\t\t\t<i class=\"fa fa-table me-2\"></i>
