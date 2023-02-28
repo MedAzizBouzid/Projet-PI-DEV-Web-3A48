@@ -2,12 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Notification;
 use App\Entity\RendezVous;
 use App\Form\RendezVousType;
 use App\Entity\Service;
 use App\Repository\CalendrierRepository;
+use App\Repository\NotificationRepository;
 use App\Repository\RendezVousRepository;
 use App\Repository\ServiceRepository;
+use DateTime;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -128,10 +132,17 @@ public function new(Request $request, RendezVousRepository $rendezVousRepository
     }
 
     #[Route('/{id}', name: 'app_rendez_vous_delete', methods: ['POST'])]
-    public function delete(Request $request, RendezVous $rendezVou, RendezVousRepository $rendezVousRepository): Response
+    public function delete(Request $request, RendezVous $rendezVou, RendezVousRepository $rendezVousRepository,NotificationRepository $notificationRepository): Response
     {
+        $datee= new DateTimeImmutable();
+        // $client= $rendezVou->getClient()->getNom();
         if ($this->isCsrfTokenValid('delete'.$rendezVou->getId(), $request->request->get('_token'))) {
             $rendezVousRepository->remove($rendezVou, true);
+            $Notifica=new Notification();
+            $Notifica->setMessage("Appointement has been Canceled ");
+            $Notifica->setDateeAt($datee);
+            $Notifica->setRdv($rendezVou);
+            $notificationRepository->save($Notifica,true);
         }
 
         return $this->redirectToRoute('app_rendez_vous_index', [], Response::HTTP_SEE_OTHER);

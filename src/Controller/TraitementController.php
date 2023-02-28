@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Repository\NotificationRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -30,6 +31,16 @@ class TraitementController extends AbstractController
         // Affichage du résultat dans une vue Twig
         return $this->render('front/BmiCalculator.html.twig', [
             'bmi' => $bmi,
+        ]);
+
+
+    }
+    #[Route('/back', name: 'app_back')]
+    public function back(Request $request,NotificationRepository $notificationRepository): Response
+    {
+       
+        return $this->render('back/base.html.twig', [
+            'notif' => $notificationRepository->findAll(),
         ]);
 
 

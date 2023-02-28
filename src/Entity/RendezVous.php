@@ -27,6 +27,9 @@ class RendezVous
     #[ORM\JoinColumn(nullable: false)]
     private ?Service $service = null;
 
+    #[ORM\OneToOne(mappedBy: 'Rdv', cascade: ['persist', 'remove'])]
+    private ?Notification $notification = null;
+
 
     public function getId(): ?int
     {
@@ -77,6 +80,28 @@ class RendezVous
     public function setService(?Service $service): self
     {
         $this->service = $service;
+
+        return $this;
+    }
+
+    public function getNotification(): ?Notification
+    {
+        return $this->notification;
+    }
+
+    public function setNotification(?Notification $notification): self
+    {
+        // unset the owning side of the relation if necessary
+        if ($notification === null && $this->notification !== null) {
+            $this->notification->setRdv(null);
+        }
+
+        // set the owning side of the relation if necessary
+        if ($notification !== null && $notification->getRdv() !== $this) {
+            $notification->setRdv($this);
+        }
+
+        $this->notification = $notification;
 
         return $this;
     }
