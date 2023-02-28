@@ -249,7 +249,7 @@ form{
                     {% else %}
                     
                     {% endif %}
-<a href="{{ path('app_commentaire_like', {'id': cmt.id}) }}" class="btn btn-link js-like-link">
+<a href="{{ path('app_commentaire_like', {'id': cmt.id, 'id_event': event.id}) }}" class="btn btn-link js-like-link">
     {% if cmt.client is not null and cmt.client.id == 1 and cmt.isLikedByUser() %}
     
     <button type="button" class="btn btn-danger"><i class="fa-solid fa-thumbs-up"></i>
@@ -260,7 +260,8 @@ form{
     <span class="js-label">j'aime</span>
 </button>
 </a>
-
+{# //envoyer l id de le event a la fonction like pour revenir a cette page #}
+{# <input type="hidden" value="{{event.id}}" name="id_event"> #}
                     {# <button type="button" class="btn btn-danger"><i class="fa-solid fa-thumbs-up"></i></button>
                     <button type="button" class="btn btn-danger"><i class="fa-solid fa-thumbs-down"></i></button>
                     <button type="button" class="btn btn-danger"><i class="fa-regular fa-thumbs-down"></i></button> #}

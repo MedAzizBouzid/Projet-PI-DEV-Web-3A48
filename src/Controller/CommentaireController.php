@@ -121,8 +121,8 @@ class CommentaireController extends AbstractController
      * like  unlike cmment
      * Commentaire $commentaire, ObjectManager $mg,CommentLikeRepository $likeRepo
      */
-    #[Route('/comment/{id}/like', name: 'app_commentaire_like')]
-    public function like(ManagerRegistry $manager, Commentaire $commentaire, CommentLikeRepository $likeRepo,UserRepository $userRepo): Response
+    #[Route('/comment/{id}/like/{id_event}', name: 'app_commentaire_like')]
+    public function like(ManagerRegistry $manager, Commentaire $commentaire,$id_event, CommentLikeRepository $likeRepo,UserRepository $userRepo,Request $request): Response
     {
         $like= new CommentLike();
         $em = $manager->getManager();
@@ -136,11 +136,13 @@ class CommentaireController extends AbstractController
             $em->remove($like);
             $em->flush();
 
-            return $this->json([
-                'code'=> 200,
-                'message'=>'like bien supprime',
-                'likes'=>$likeRepo->count(['commentaire'=>$commentaire])
-            ],200);
+            // return $this->json([
+            //     'code'=> 200,
+            //     'message'=>'like bien supprime',
+            //     'likes'=>$likeRepo->count(['commentaire'=>$commentaire])
+            // ],200);
+            // dd($request);
+            return $this->redirectToRoute('app_sponsor_index_front', ['id' => $id_event], Response::HTTP_SEE_OTHER);
 
 
         }
@@ -150,11 +152,13 @@ class CommentaireController extends AbstractController
         $em->persist($like);
         $em->flush();
 
-        return $this->json([
-            'code' => 200,
-            'message' => 'like bien ajoute',
-            'likes' => $likeRepo->count(['commentaire' => $commentaire])
-        ], 200);
+        // return $this->json([
+        //     'code' => 200,
+        //     'message' => 'like bien ajoute',
+        //     'likes' => $likeRepo->count(['commentaire' => $commentaire])
+        // ], 200);
+        return $this->redirectToRoute('app_sponsor_index_front', ['id' => $id_event], Response::HTTP_SEE_OTHER);
+
 
     }
 
