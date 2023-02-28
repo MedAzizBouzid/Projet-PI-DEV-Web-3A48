@@ -51,7 +51,7 @@ background-size: cover;
                   <div>
                     <p class="mb-0"><span class="text-muted">Sort by:</span> 
                    {% if ordre  =='desc' %}
-                    <a href="{{ path('app_cart', {'ordre': 'asc'}) }}" class="text-body">price
+                    <a id="sort-cart-by-price" href="{{ path('app_cart', {'ordre': 'asc'}) }}" class="text-body">price
     <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrow-down" viewBox="0 0 16 16">
         <path fill-rule="evenodd" d="M8 1a.5.5 0 0 1 .5.5v11.793l3.146-3.147a.5.5 0 0 1 .708.708l-4 4a.5.5 0 0 1-.708 0l-4-4a.5.5 0 0 1 .708-.708L7.5 13.293V1.5A.5.5 0 0 1 8 1z"/>
     </svg>
@@ -213,51 +213,50 @@ background-size: cover;
                     
                     //this return sur les a
                     const url=this.href;
+                    const spanCount0=this.parentNode.parentNode.parentNode.parentNode.querySelectorAll('div.js-vide');
+                    console.log(spanCount0);
                     const spanCount = this.parentNode.parentNode.querySelectorAll('h5.js-quantite');
                     const spanCount2 = this.parentNode.parentNode.querySelectorAll('h5.js-totalProduit');
                      const spanCount3 = document.querySelector('p.js-totalP');
                     const spanCount4 = document.querySelector('span.js-totalC');
                     //console.log(spanCount);
                     axios.get(url).then(function(response){
-                  
-                  spanCount[0].textContent=response.data.nbr;
-                  spanCount2[0].textContent=response.data.total +" DT";
+                  if(response.data.nbr !=1 )
+                  {spanCount[0].textContent=response.data.nbr;
+                  spanCount2[0].textContent=response.data.total +" DT";}
+                  else 
+                  {
+                  spanCount0[0].textContent="";
+                  }
                   spanCount3.textContent=response.data.totalP +" DT";
                   spanCount4.textContent=response.data.totalC +" DT";
                  
                     })
 
                 }
-                function onClickBtnDelete(event)
-                { aziz=0;
+                //---------------------------delete produit------------------------
+                 function onClickBtnDelete(event)
+                {
                     event.preventDefault();
                     
                     //this return sur les a
                     const url=this.href;
-                    const spanCount = document.querySelectorAll('div.js-vide');
-                    console.log(spanCount[0])  ;
-                     console.log(spanCount[1]);
-                    const spanCount3 = document.querySelector('p.js-totalP');
+                    const spanCount0=this.parentNode.parentNode.parentNode.parentNode.querySelectorAll('div.js-vide');
+                    console.log(spanCount0);
+                     const spanCount3 = document.querySelector('p.js-totalP');
                     const spanCount4 = document.querySelector('span.js-totalC');
                     //console.log(spanCount);
                     axios.get(url).then(function(response){
-                 
-                                    
-                     
-                        
-                                          spanCount[0].textContent="";
-spanCount[1].textContent="";
-
-                      
-                             
-
-                  spanCount3.textContent=response.data.totalP +" DT";
+                
+                  
+                  spanCount0[0].textContent="";
+                   spanCount3.textContent=response.data.totalP +" DT";
                   spanCount4.textContent=response.data.totalC +" DT";
-                 
+               
                     })
-                    aziz++;
 
                 }
+               
            
              {% for element in LignePaniers %}
               document.querySelectorAll('a.js-add[data-id="{{ element.id }}"]').forEach(function(link) {
@@ -270,13 +269,79 @@ spanCount[1].textContent="";
                     link.addEventListener('click',onClickBtnRemove);
                 })
                
-            {% for element in LignePaniers %}
-                document.querySelectorAll('a.js-delete[data-id="{{ element.id }}"]').forEach(function(link)
+           
+                document.querySelectorAll('a.js-delete').forEach(function(link)
                {
                     link.addEventListener('click',onClickBtnDelete);
                 }
                    )
-                     {% endfor %}
+                     
               
+        </script>
+            <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+        <script type="module">
+       //-----------notification addproduct
+            $(document).ready(function(){
+         
+            let panier=$('a.js-add');
+            panier.each(function(){
+                $(this).on('click',function(e){
+                    e.preventDefault();
+                    let link =$(this);
+                    let target=$(this).attr('href');
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+  
+        Toast.fire({
+            icon: 'success',
+            title: 'Produit ajouté'
+        })
+                        
+                        })
+                    })
+                    
+                })
+                //---------------notif supprimer product
+                 $(document).ready(function(){
+         
+            let panier=$('a.js-remove');
+            panier.each(function(){
+                $(this).on('click',function(e){
+                    e.preventDefault();
+                    let link =$(this);
+                    let target=$(this).attr('href');
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+  
+        Toast.fire({
+            icon: 'success',
+            title: 'Produit supprimé'
+        })
+                        
+                        })
+                    })
+                    
+                })
+
         </script>
      {% endblock %}

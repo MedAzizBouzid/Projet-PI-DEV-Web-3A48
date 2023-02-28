@@ -81,7 +81,7 @@ class CartController extends AbstractController
         //On récupére le panier actuel
         $id = $produit->getId();
         $prix = $produit->getPrix();
-       
+
 
         $lp = new LignePanier();
         $lp = $LPRepository->findByProduitId($id);
@@ -95,18 +95,18 @@ class CartController extends AbstractController
         $LPRepository->save($lp[0], true);
         $repo->save($produit, true);
         $result = $LPRepository->findAll();
-        $totalP=0;
+        $totalP = 0;
         for ($i = 0; $i < count($result); $i++) {
             $totalP += $result[$i]->getProduit()->getPrix() * $result[$i]->getQuantite();
         }
-        $totalC=$totalP+7;
-       return $this->json([
+        $totalC = $totalP + 7;
+        return $this->json([
             'code' => 200,
             ' message' => 'produit est bien ajouté',
             'nbr' =>  $lp[0]->getQuantite(),
             'total' => $lp[0]->getTotalProduit(),
-            'totalP'=>  $totalP,
-            'totalC' =>$totalC
+            'totalP' =>  $totalP,
+            'totalC' => $totalC
         ]);
     }
     //----------------------------AddLignePanier-------------
@@ -160,29 +160,29 @@ class CartController extends AbstractController
                 $produit->setStock($produit->getStock() + 1);
                 $lp[0]->setTotalProduit($lp[0]->getQuantite() * $prix);
                 $LPRepository->save($lp[0], true);
-               
+                $rp->save($produit, true);
             } else if ($lp[0]->getQuantite() == 1) {
                 //supprimer toute la ligne
-
+                $produit->setStock($produit->getStock() + 1);
                 $LPRepository->remove($lp[0], true);
                 $rp->save($produit, true);
             }
         }
 
         $result = $LPRepository->findAll();
-        $totalP=0;
+        $totalP = 0;
         for ($i = 0; $i < count($result); $i++) {
             $totalP += $result[$i]->getProduit()->getPrix() * $result[$i]->getQuantite();
         }
-        $totalC=$totalP+7;
-        
-       return $this->json([
+        $totalC = $totalP + 7;
+
+        return $this->json([
             'code' => 200,
             ' message' => 'produit est bien ajouté',
             'nbr' =>  $lp[0]->getQuantite(),
             'total' => $lp[0]->getTotalProduit(),
-           'totalP' => $totalP, 
-           'totalC' => $totalC
+            'totalP' => $totalP,
+            'totalC' => $totalC
         ]);
     }
     //----------------------------deleteLignePanier-------------
@@ -200,23 +200,21 @@ class CartController extends AbstractController
 
 
         $result = $LPRepository->findAll();
-        $totalP=0;
+        $totalP = 0;
         for ($i = 0; $i < count($result); $i++) {
             $totalP += $result[$i]->getProduit()->getPrix() * $result[$i]->getQuantite();
         }
-        $totalC=$totalP+7;
+        $totalC = $totalP + 7;
 
-
-        //On sauvegarde dans la session les données de panier
 
         return $this->json([
-            'code' => 200,
-            ' message' => 'produit est bien ajouté',
-            'nbr' =>  $lp[0]->getQuantite(),
-            'total' => $lp[0]->getTotalProduit(),
-           'totalP' => $totalP, 
-           'totalC' => $totalC
-        ]);
+                'code' => 200,
+                ' message' => 'produit est bien ajouté',
+                'nbr' =>  $lp[0]->getQuantite(),
+                'total' => $lp[0]->getTotalProduit(),
+                'totalP' => $totalP,
+                'totalC' => $totalC,]);
+       // return $this->redirectToRoute("app_cart");
     }
     //----------------------------deleteAllLignePanier-------------
     #[Route('/delete', name: 'app_cart_delete_all')]
@@ -224,7 +222,7 @@ class CartController extends AbstractController
     {
 
         $LPRepository->deleteAllLignePanier();
-        
+
         return $this->redirectToRoute("app_cart");
     }
 
