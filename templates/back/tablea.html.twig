@@ -68,6 +68,13 @@
 									<a href=" {{ path('app_abonnement_show', {'id': ab.id}) }} ">
 										<i class="bi bi-binoculars"></i>
 									</a>
+									{% if not ab.etatab %}
+									<a href=" {{ path('app_abonnement_enable', {'id': ab.id}) }} ">
+
+										enable
+									</a>
+
+									{% endif %}
 
 								</td>
 

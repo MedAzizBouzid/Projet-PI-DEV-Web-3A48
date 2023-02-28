@@ -199,6 +199,12 @@ function delete(Request $request, Abonnement $abonnement, AbonnementRepository $
 
     return $this->redirectToRoute('app_abonnement_index', [], Response::HTTP_SEE_OTHER);
 }
+#[Route('/enable/{id}', name:'app_abonnement_enable', methods:['GET'])]
+function enable(AbonnementRepository $abonnementRepository,$id): Response
+ {  
+    $abonnementRepository->changeEtat(true,$id);
+    return $this->redirectToRoute('app_abonnement_index');
+}
 private $entityManager;
 
 function __construct(EntityManagerInterface $entityManager)

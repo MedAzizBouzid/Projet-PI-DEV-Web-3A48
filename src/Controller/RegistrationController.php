@@ -207,6 +207,42 @@ class RegistrationController extends AbstractController
             
         ]);
     }
+    #[Route('/renvoiMailVerif', name: 'app_renvoiMailVerif')]
+    public function renvoiMailVerif(Request $request ,UserRepository $userRepository,  SendMailService $mail,JWTService $jwt): Response
+    {
+        $user = new User();
+        $user=$this->getUser() ;
+       
+            $header = [
+            'type' => 'JWT',
+            'alg' => 'HS256',
+        ];
+
+        $payload = [
+            'user_id' => $user->getId(),
+        ];
+
+        $token = $jwt->generate($header, $payload, $this->getParameter('app.jwtsecret'));
+
+        // do anything else you need here, like send an email
+        $mail->send(
+            'pidevsymfony8@gmail.com',
+            $user->getEmail(),
+            'Activation',
+            'email',
+            [
+                'user' => $user,
+                'token' => $token,
+            ]
+        );
+
+
+      
+
+        return $this->render('front/index.html.twig',[
+            
+        ]);
+    }
     #[Route('/resretPwd', name: 'app_resretPwd')]
     public function resretPwd(Request $request ,UserRepository $userRepository,  ForgetPwdRepository $forgetPwdRepository,UserPasswordHasherInterface $userPasswordHasher): Response
     {

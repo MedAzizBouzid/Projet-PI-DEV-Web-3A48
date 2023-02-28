@@ -109,6 +109,7 @@ function update(Produit $produit, $id, SessionInterface $session, ProduitReposit
         'total' => $lp[0]->getTotalProduit(),
         'totalP' => $totalP,
         'totalC' => $totalC,
+        
     ]);
 }
 //----------------------------AddLignePanier-------------

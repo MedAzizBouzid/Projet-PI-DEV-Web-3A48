@@ -92,7 +92,10 @@
     {% if app.user and app.user.isVerified == false %}
    
             <div class="alert alert-warning alert-dismissible fade show" role="alert">
-                    <strong>Your account is not verified !</strong> 
+                    <strong>Your account is not verified !
+                        <a href="{{path('app_renvoiMailVerif')}}">Verification Email</a>
+                    </strong>
+
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                 </button>
@@ -118,11 +121,12 @@
                             <li><a href="{{path('Show_salle_front')}}">GYMs</a></li>
                              <li><a href="{{path('Show_activite_front')}}">Classes</a></li>
 
-                            <li><a href="./services.html">Services</a></li>
+                            {# <li><a href="./services.html">Services</a></li> #}
                             <li><a href="{{path('app_team')}}">Our Team</a></li>
                             <li ><a href="{{path('app_produit_index_front')}}">Shop</a></li>
                             <li ><a href="{{ path('app_evenement_index_front') }}">Events</a></li>
                             <li ><a href="{{ path('app_categorie_index') }}">Offers</a></li>
+                            <li ><a href="{{ path('app_service_index_Front') }}">Care Zone</a></li>
                             {# <li>
                                 <a href="{{ path('app_pass_index_mesPass') }}">My Passes</a>
                             </li> #}

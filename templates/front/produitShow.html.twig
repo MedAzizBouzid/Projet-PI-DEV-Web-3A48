@@ -39,7 +39,7 @@
 							<h2>Best Compliments, For Best Trainers</h2>
 						</div>
 
-						
+
 						<!-- Example single danger button -->
 
 					</div>
@@ -70,9 +70,10 @@
 							TND</h6>
 
 						<span></span>
-						<h6 style="color:white" class="d-inline">Stock Restant:</h6>
-						<h6 style="color:red" class="d-inline">{{ produit.stock }}
-						</h6>
+						{# <h6 style="color:white" class="d-inline">Stock Restant:</h6>
+						<h6 style="color:red " class="d-inline ">{{ produit.stock }} #}
+
+						
 
 						<div class="tt_social">
 							{% if produit.stock  >0  %}
@@ -104,10 +105,13 @@ event.preventDefault();
 // this return sur les a
 const url = this.href;
 const spanCount = this.querySelector('span.js-nbr');
+console.log(spanCount1);
 
 axios.get(url).then(function (response) {
 
 spanCount.textContent = response.data.nbr;
+spanCount1.textContent = response.data.stock;
+
 
 })
 
