@@ -101,13 +101,13 @@ public function new(Request $request, RendezVousRepository $rendezVousRepository
 
 
 
-    #[Route('/{id}', name: 'app_rendez_vous_show', methods:['GET', 'POST'])]
-    public function show(RendezVous $rendezVou): Response
-    {
-        return $this->render('rendez_vous/show.html.twig', [
-            'rendez_vou' => $rendezVou,
-        ]);
-    }
+    // #[Route('/{id}', name: 'app_rendez_vous_show', methods:['GET', 'POST'])]
+    // public function show(RendezVous $rendezVou): Response
+    // {
+    //     return $this->render('rendez_vous/show.html.twig', [
+    //         'rendez_vou' => $rendezVou,
+    //     ]);
+    // }
 
     #[Route('/{id}/edit', name: 'app_rendez_vous_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, RendezVous $rendezVou, RendezVousRepository $rendezVousRepository): Response
@@ -135,5 +135,21 @@ public function new(Request $request, RendezVousRepository $rendezVousRepository
         }
 
         return $this->redirectToRoute('app_rendez_vous_index', [], Response::HTTP_SEE_OTHER);
+    }
+     
+    #[Route('/bmi', name: 'bmi')]
+    public function bmiCalculator(Request $request): Response
+    {
+        // Récupération des données du formulaire
+        $weight = $request->request->get('weight');
+        $height = $request->request->get('height');
+
+        // Calcul du BMI
+        $bmi = $weight / ($height * $height);
+
+        // Affichage du résultat dans une vue Twig
+        return $this->render('front/calculator.html.twig', [
+            'bmi' => $bmi,
+        ]);
     }
 }

@@ -15,7 +15,7 @@
                                             <th>Service</th>
                                             <th>Customer</th>
                                             <th>Date</th>
-                                            <th>Hour</th>
+                                            {# <th>Hour</th> #}
                                         
                                             <th>Actions</th>
                                         </tr>
@@ -27,8 +27,8 @@
                                         <td>{{ rendez.id }}</td>
                                         <td>{{ rendez.service.id }}</td>
                                         <td>{{ rendez.client }}</td>
-                                        <td>{{ rendez.dateAt |date("m/d/Y")}}</td>
-                                        <td>{{ rendez.heure|date("g:ia")}}</td> 
+                                        <td>{{ rendez.dateAt |date("m/d/Y g:ia")}}</td>
+                                        {# <td>{{ rendez.heure|date("g:ia")}}</td>  #}
                                         
                                         <td>
                                            <form method="post" action="{{ path('app_rendez_vous_delete', {'id': rendez.id}) }}" onsubmit="return confirm('Are you sure you want to delete this item?');">
