@@ -39,7 +39,18 @@ class AbonnementRepository extends ServiceEntityRepository
         }
     }
 
-
+    public function findMostPopularOffres(): array
+    {
+        return $this->createQueryBuilder('a')
+            ->select('o.id, o.categ, COUNT(a.id) AS abonnements')
+            ->join('a.offre', 'o')
+            ->groupBy('o.id')
+        
+            
+            ->getQuery()
+            ->getResult();
+    }
+    
   
   
 

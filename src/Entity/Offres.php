@@ -66,7 +66,7 @@ class Offres
 
     private ?string $description = null;
 
-    #[ORM\OneToMany(mappedBy: 'offre', targetEntity: Abonnement::class)]
+    #[ORM\OneToMany(mappedBy: 'offre', targetEntity: Abonnement::class )]
     private Collection $abonnements;
 
     #[ORM\ManyToOne(inversedBy: 'offres')]

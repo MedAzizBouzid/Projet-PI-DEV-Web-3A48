@@ -28,7 +28,7 @@
                                     </thead>
                                    
                                     <tbody> 
-                                     {% for offre in offres %}
+                                     {% for offre in offre %}
                                             <tr>
                                                  <td>{{ offre.id }}</td>
                                                  <td>{{ offre.categ.name}} </td>  
@@ -70,10 +70,7 @@
                                             
                                              </td>
                                          </tr>
-                                          {% else %}
-                                                      <tr>
-                                                     <td colspan="6">no records found</td>
-                                                      </tr>
+                                      
                                           {% endfor %}
                           
                                       </tbody>

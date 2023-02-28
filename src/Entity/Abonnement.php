@@ -122,7 +122,9 @@ class Abonnement
 
         return $this;
     }
- 
+ public function __toDtring(){
+    
+ }
 
 
 }

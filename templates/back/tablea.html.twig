@@ -37,14 +37,11 @@
                                              <td>{{ ab.salle }}</td>
                                                        <td>{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}</td>
                                                   <td>{{ ab.MPayement }}</td>
+                                                      <td>{{ ab.offre.id }}</td>
                                                   
                                                   
-                                                     <td> {% if  ab.offre is not null  %}
             
-            {% else %}
-                pas d'offre a affecte
-            {% endif %}
-        </td>
+    
 
                                                  <td>           
                                             

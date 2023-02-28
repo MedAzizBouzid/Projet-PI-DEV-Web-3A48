@@ -48,6 +48,15 @@
                                 {{ form_widget(form.description) }} 
                                       {{  form_errors(form.description) }}
                               
+                                       {{ form_label(form.promo) }}
+                                {{ form_widget(form.promo) }} 
+                                      {{  form_errors(form.promo) }}^
+
+                                      
+                                       {{ form_label(form.categ) }}
+                                {{ form_widget(form.categ) }} 
+                                      {{  form_errors(form.categ) }}
+                              
                                 
                               
                         </div>
@@ -55,14 +64,15 @@
 
 
 
-                            
+                  <button class="btn">{{ button_label|default('Save') }}</button>                
     
 
 
 {{ form_end(form) }}
-   <button class="btn">{{ button_label|default('Save') }}</button>
+
 <br>
     <a href="{{ path('app_offres_index') }}">back to list</a>
+ 
  
 
                         </div>

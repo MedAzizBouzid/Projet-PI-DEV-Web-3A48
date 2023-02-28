@@ -14,19 +14,69 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\MyEntityRepository;
 use App\Repository\PromotionRepository;
+use ChartJs\Builder\ChartBuilderInterface;
+use ChartJs\ChartJS;
 
 
 
 #[Route('/offres')]
 class OffresController extends AbstractController
 {
+
     #[Route('/', name: 'app_offres_index', methods: ['GET'])]
-    public function index(OffresRepository $offresRepository): Response
+    public function indexx(OffresRepository $offresRepository): Response
     {
         return $this->render('back/tableo.html.twig', [
-            'offres' => $offresRepository->findAll(),
+            'offre' => $offresRepository->findAll(),
         ]);
     }
+   
+
+
+/////////////////statistique/////////
+
+        
+   
+    #[Route('/s', name: 'app_offres_stat', methods: ['GET'])]
+  
+        
+    public function index(OffresRepository $offresRepository): Response
+    {
+        $offres = $offresRepository->getOffresByAbonnements();
+        $ofdate=$offresRepository->getAbonnementsByDate();
+        
+       
+        $labels = [];
+        $data = [];
+        foreach ($offres as $offre) {
+            
+            $labels[] = $offre['id'];
+        
+            $data[] = $offre['nbAbonnements'];
+        }
+        $label = [];
+        $dat = [];
+        foreach ($ofdate as $row) {
+            if ($row['date']!== null) {
+                $label[] = $row['date']->format('d/m/Y');
+            }
+            $dat[] = $row['nb'];
+        }
+        
+        
+        return $this->render('back/offre_abonnements.html.twig', [
+            'offre' => $offres,
+            'chart_labels' => json_encode($labels),
+            'chart_data' => json_encode($data),
+            'la'=> json_encode($label),
+            'da' => json_encode($dat)
+            
+
+        ]);
+    }
+        
+        
+       
 
     #[Route('/new', name: 'app_offres_new', methods: ['GET', 'POST'])]
     public function new(Request $request, OffresRepository $offresRepository): Response

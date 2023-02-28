@@ -54,9 +54,9 @@ class AbonnementController extends AbstractController
 
         if ($form->isSubmitted() && $form->isValid()) {
             $abonnementData = $form->getData();
-            // $session->set('abonnementData', $abonnementData);
-            // $session=$request->getSession();
-            // $session->set('abonnementData',$abonnementData);
+            $session->set('abonnementData', $abonnementData);
+            $session=$request->getSession();
+            $session->set('abonnementData',$abonnementData);
             return $this->redirectToRoute('app_process_payment', [], Response::HTTP_SEE_OTHER);
           
             }
@@ -214,6 +214,8 @@ public function __construct(EntityManagerInterface $entityManager)
 {
     $this->entityManager = $entityManager;
 }
+
+
 
 
 }
