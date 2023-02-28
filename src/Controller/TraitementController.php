@@ -2,7 +2,9 @@
 
 namespace App\Controller;
 
+use App\Form\ChatGptTyp;
 use App\Repository\NotificationRepository;
+use App\Service\OpenAiService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -41,6 +43,23 @@ class TraitementController extends AbstractController
        
         return $this->render('back/base.html.twig', [
             'notif' => $notificationRepository->findAll(),
+        ]);
+
+
+    }
+    #[Route('/chat', name: 'app_chat')]
+    public function chat(Request $request,OpenAiService $openAiService): Response
+    {
+       $form= $this->createForm(ChatGptTyp::class);
+       $form->handleRequest(($request));
+       if($form->isSubmitted() && $form->isValid()){
+        $data=$form->getData();
+        $json=$openAiService->getAnswer($data['question']);
+        dd($json);
+
+       }
+        return $this->renderForm('back/chat.html.twig', [
+            'form'=>$form,
         ]);
 
 

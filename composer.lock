@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "68cc2dc9f61e6f0165e2b33d9d767fb2",
+    "content-hash": "508a4982317d6b69c97fa1cb37f2f25e",
     "packages": [
         {
             "name": "doctrine/annotations",
@@ -1702,6 +1702,65 @@
                 }
             ],
             "time": "2023-02-06T13:46:10+00:00"
+        },
+        {
+            "name": "orhanerday/open-ai",
+            "version": "3.5",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/orhanerday/open-ai.git",
+                "reference": "04abf7a4b651556a6af900475de7bfeab75ec1d5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/orhanerday/open-ai/zipball/04abf7a4b651556a6af900475de7bfeab75ec1d5",
+                "reference": "04abf7a4b651556a6af900475de7bfeab75ec1d5",
+                "shasum": ""
+            },
+            "require": {
+                "ext-curl": "*",
+                "ext-json": "*",
+                "php": ">=7.4"
+            },
+            "require-dev": {
+                "friendsofphp/php-cs-fixer": "^3.0",
+                "pestphp/pest": "^1.20",
+                "spatie/ray": "^1.28"
+            },
+            "type": "library",
+            "autoload": {
+                "psr-4": {
+                    "Orhanerday\\OpenAi\\": "src"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Orhan Erday",
+                    "email": "orhanerday@gmail.com",
+                    "role": "Developer"
+                }
+            ],
+            "description": "OpenAI GPT-3 Api Client in PHP",
+            "homepage": "https://github.com/orhanerday/open-ai",
+            "keywords": [
+                "open-ai",
+                "orhanerday"
+            ],
+            "support": {
+                "issues": "https://github.com/orhanerday/open-ai/issues",
+                "source": "https://github.com/orhanerday/open-ai/tree/3.5"
+            },
+            "funding": [
+                {
+                    "url": "https://github.com/orhanerday",
+                    "type": "github"
+                }
+            ],
+            "time": "2023-02-10T09:15:29+00:00"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -7206,70 +7265,6 @@
                 }
             ],
             "time": "2023-01-10T18:53:53+00:00"
-        },
-        {
-            "name": "tattali/calendar-bundle",
-            "version": "v1.2.3",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/tattali/CalendarBundle.git",
-                "reference": "efb64931ed6343b714fbdc422e121070d29ccdd3"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/tattali/CalendarBundle/zipball/efb64931ed6343b714fbdc422e121070d29ccdd3",
-                "reference": "efb64931ed6343b714fbdc422e121070d29ccdd3",
-                "shasum": ""
-            },
-            "require": {
-                "ext-json": "*",
-                "php": ">=7.1",
-                "symfony/dependency-injection": "^3.4 || ^4.4 || ^5.0 || ^6.0",
-                "symfony/event-dispatcher": "^3.4 || ^4.4 || ^5.0 || ^6.0",
-                "symfony/framework-bundle": "^3.4 || ^4.4 || ^5.0 || ^6.0"
-            },
-            "require-dev": {
-                "phpspec/prophecy": "^1.8",
-                "phpunit/phpunit": "^7.5 | ^9.5",
-                "roave/security-advisories": "dev-latest",
-                "symfony/dotenv": "^4.4 || ^5.0 || ^6.0",
-                "symfony/phpunit-bridge": "^4.4 || ^5.0 || ^6.0",
-                "symfony/yaml": "^4.4 || ^5.0 || ^6.0"
-            },
-            "suggest": {
-                "doctrine/mongodb-odm-bundle": "To support MongoDB.",
-                "symfony/orm-pack": "To support Doctrine ORM and Migration."
-            },
-            "type": "symfony-bundle",
-            "autoload": {
-                "psr-4": {
-                    "CalendarBundle\\": "src/"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Théo Attali",
-                    "email": "theoattali@gmail.com",
-                    "homepage": "https://theoattali.fr"
-                }
-            ],
-            "description": "Provides event calendar for your Symfony 5 project. Compatible with Doctrine ORM & ODM, and API like Google Calendar.",
-            "homepage": "https://github.com/tattali/CalendarBundle",
-            "keywords": [
-                "calendar",
-                "fullcalendar",
-                "symfony",
-                "symfony calendar"
-            ],
-            "support": {
-                "issues": "https://github.com/tattali/CalendarBundle/issues",
-                "source": "https://github.com/tattali/CalendarBundle/tree/v1.2.3"
-            },
-            "time": "2022-01-25T16:55:38+00:00"
         },
         {
             "name": "twig/extra-bundle",
