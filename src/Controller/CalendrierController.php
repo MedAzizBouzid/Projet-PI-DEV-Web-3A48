@@ -69,11 +69,17 @@ class CalendrierController extends AbstractController
  
 // /---------------------------------------------------------------------------------------------------------
 #[Route('/calender_front', name: 'app_calendrier_front', methods: ['GET'])]
-    public function show_front(Request $request,CalendrierRepository $calendrierRepository): Response
+    public function show_front(Request $request,CalendrierRepository $calendrierRepository,SalleRepository $salleRepository): Response
     {
+        $calendrier = new Calendrier();
+        $id_salle = 13; // remplacez 1 par l'ID de la salle que vous voulez récupérer
 
+//   $id_salle = $request->query->get('id_salle');
+
+$salle=$salleRepository->find($id_salle);
           //accéder au repo calendrier
-        $events = $calendrierRepository->findAll();
+        $events = $calendrierRepository->findcalendarBySalle($id_salle);
+        // dd($events);
         // créer un tableau Json a fin de stocker les données 
         $rdvs = [];
         foreach($events as $event){
@@ -92,7 +98,8 @@ class CalendrierController extends AbstractController
 
         }
         $data = json_encode($rdvs);
- 
+        // $find=$calendrierRepository->findCalendarBySalle($salleRepository,$id_salle);
+// dd($find);
         $calendrier = new Calendrier();
         $form = $this->createForm(CalendrierType::class, $calendrier);
         $form->handleRequest($request);
@@ -154,13 +161,13 @@ class CalendrierController extends AbstractController
         ]);
     }
 // *******************************************************
-    #[Route('/{id}', name: 'app_calendrier_show', methods: ['GET'])]
-    public function show(Calendrier $calendrier): Response
-    {
-        return $this->render('calendrier/show.html.twig', [
-            'calendrier' => $calendrier,
-        ]);
-    }
+    // #[Route('/{id}', name: 'app_calendrier_show', methods: ['GET'])]
+    // public function show(Calendrier $calendrier): Response
+    // {
+    //     return $this->render('calendrier/show.html.twig', [
+    //         'calendrier' => $calendrier,
+    //     ]);
+    // }
 // ***********************************************************
     #[Route('/{id}/edit', name: 'app_calendrier_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Calendrier $calendrier, CalendrierRepository $calendrierRepository): Response

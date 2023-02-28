@@ -3,6 +3,7 @@
 namespace App\Repository;
 
 use App\Entity\Calendrier;
+use App\Entity\Salle;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
@@ -39,21 +40,40 @@ class CalendrierRepository extends ServiceEntityRepository
         }
     }
 
+       public function findCalendarBySalle($value): array
+   {
+    //   $salle = $salleRepository->findOneBy(['id' => $value]);
+    
+    //  if (!$salle) {
+    //     return [];
+    // }
+    
+    // Récupérer l'id de la salle
+    // $id_salle = $salle->getId();
+
+    // Requête pour sélectionner les calendriers de la salle
+    return $this->createQueryBuilder('c')
+        ->andWhere('c.salla = :val')
+        ->setParameter('val', $value)
+        ->getQuery()
+        ->getResult()
+    ;
+     }
 //    /**
 //     * @return Calendrier[] Returns an array of Calendrier objects
 //     */
-   public function findByExampleField($value): array
-   {
-    // select * c from app/calendrier c where c.begin
-       return $this->createQueryBuilder('c')
-           ->andWhere('c.exampleField = :val')
-           ->setParameter('val', $value)
-           ->orderBy('c.id', 'ASC')
-           ->setMaxResults(10)
-           ->getQuery()
-           ->getResult()
-       ;
-   }
+//    public function findByExampleField($value): array
+//    {
+//     // select * c from app/calendrier c where c.begin
+//        return $this->createQueryBuilder('c')
+//            ->andWhere('c.exampleField = :val')
+//            ->setParameter('val', $value)
+//            ->orderBy('c.id', 'ASC')
+//            ->setMaxResults(10)
+//            ->getQuery()
+//            ->getResult()
+//        ;
+//    }
 
 //    public function findOneBySomeField($value): ?Calendrier
 //    {

@@ -30,7 +30,6 @@ return [
     'app_calendrier_front' => [[], ['_controller' => 'App\\Controller\\CalendrierController::show_front'], [], [['text', '/calendrier/calender_front']], [], [], []],
     'app_planning_delete' => [['id'], ['_controller' => 'App\\Controller\\CalendrierController::removeStudent'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/calendrier']], [], [], []],
     'app_calendrier_new' => [['id'], ['_controller' => 'App\\Controller\\CalendrierController::new'], [], [['text', '/new'], ['variable', '/', '[^/]++', 'id', true], ['text', '/calendrier']], [], [], []],
-    'app_calendrier_show' => [['id'], ['_controller' => 'App\\Controller\\CalendrierController::show'], [], [['variable', '/', '[^/]++', 'id', true], ['text', '/calendrier']], [], [], []],
     'app_calendrier_edit' => [['id'], ['_controller' => 'App\\Controller\\CalendrierController::edit'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/calendrier']], [], [], []],
     'find_calendar' => [[], ['_controller' => 'App\\Controller\\CalendrierController::find_event'], [], [['text', '/calendrier/find']], [], [], []],
     'api_event_api' => [['id'], ['_controller' => 'App\\Controller\\CalendrierController::MiseAjourEvent'], [], [['text', '/edit'], ['variable', '/', '[^/]++', 'id', true], ['text', '/calendrier/api']], [], [], []],

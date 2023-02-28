@@ -4,6 +4,7 @@ namespace App\Controller;
 
 use App\Entity\Salle;
 use App\Form\SalleType;
+use App\Repository\CalendrierRepository;
 use App\Repository\SalleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -172,12 +173,29 @@ public function chercher_student(EntityManagerInterface $em,Request $request,Sal
             'salle' => $salle,
         ]);
     }
-    
+      // _______________________________________________________________________________
+
     #[Route('/{id}/front', name: 'app_salle_show_front', methods: ['GET'])]
-    public function show_fornt(Salle $salle): Response
+    public function show_fornt(Salle $salle,CalendrierRepository $calendrierRepository): Response
     {
+        $events = $calendrierRepository->findcalendarBySalle($salle->getId());
+        $rdvs = [];
+        foreach($events as $event){
+            $rdvs[] = [
+                'id' => $event->getId(),    
+                'start' => $event->getStart()->format('Y-m-d H:i:s'),   
+                'end' => $event->getEnd()->format('Y-m-d H:i:s'),
+                'title' => $event->getActivite(),
+                'description' => $event->getDescription(),  
+                'backgroundColor' => $event->getBackgroundColor(),
+                'borderColor' => $event->getBorderColor(),
+                'textColor' => $event->getTextColor(),
+             ];
+        }
+        $data = json_encode($rdvs);
         return $this->render('front/class_details.html.twig', [
             'salle' => $salle,
+            'data'=>$data,
         ]);
     }
 // _______________________________________________________________________________
