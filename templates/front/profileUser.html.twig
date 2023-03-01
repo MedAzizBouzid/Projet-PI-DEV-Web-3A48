@@ -162,8 +162,11 @@
 									{# ************************************************** Commande Start pop-up******************************************** #}
 
 									<!-- bouton pour ouvrir la pop-up -->
-										<button style="background-color:red;color:white;" onclick="openPopup()"> Chek orders</button>
+{% if not is_granted('ROLE_ADMIN') %}
 
+
+										<button style="background-color:red;color:white;" onclick="openPopup()"> Chek orders</button>
+{% endif %}
 
 									<!-- pop-up -->
 									<div id="popup" class="popup">
@@ -206,9 +209,12 @@
 									{# ************************************************** Commande end pop-up*********************** #}
 									{# ************************************************** Pass pop-up*********************** #}
 									<!-- bouton pour ouvrir la pop-up -->
+{% if not is_granted('ROLE_ADMIN') %}
+
+
 										<button style="background-color:red;color:white;" onclick="openPopuppass()"> Chek Passes</button>
 
-
+{% endif %}
 									<!-- pop-up -->
 									<div id="popup_passe" class="popup">
 										<div class="popup-content">
@@ -283,8 +289,12 @@
 
 
 {# ***** #}
+{% if not is_granted('ROLE_ADMIN') %}
+
 <button style="background-color:red;color:white;" onclick="openPopup_offre()">
-	Chek Offers</button>
+Subscriptions</button>
+
+	{% endif %}
 
 
 <div id="popup_offre" class="popup">
@@ -330,13 +340,16 @@
 
 
 						<td>
-
+						{% if not ab.etatab %}
+							
 							<a
 								href="{{ path('app_process_payment') }}">
 
 								  <i class="bi bi-pencil-square"></i>  
-								activer
+								Enable
 							</a>
+						{% endif %}
+
 
 
 						</td>
@@ -354,9 +367,8 @@
 
 																																																																											<!-- Pricing Section Begin -->
 																																																																														<section class="pricing-section service-pricing spad">
-																																																																																																																																																																																																																																																																	<td colspan="6">no records found</td>
-																																																																																																																																																																																																																																																																			</tr> #}{# </tbody>
-																																																																																																																																																																																																																																																																			</table> #}{# /******************************************************************************** #}<a href="{{ path('app_profileEdit', {'id': user.id}) }}" class="primary-btn btn-normal appoinment-btn"> Edit</i></a></div> </div></div></div></div></div></div></div></section><!-- Class Details Section End --><!-- Class Timetable Section Begin --><section class="class-timetable-section class-details-timetable spad"><div class="container"><div class="row"><div class="col-lg-12"><div class="class-details-timetable_title"><h5>Classes timetable</h5></div></div></div><div class="row"><div class="col-lg-12"><div class="class-timetable details-timetable"><table><thead> <tr><th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th> </tr></thead><tbody> <tr><td class="class-time">6.00am - 8.00am</td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td><td class="dark-bg blank-td"></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td> </tr> <tr><td class="class-time">10.00am - 12.00am</td><td class="blank-td"></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="blank-td"></td> </tr> <tr><td class="class-time">5.00pm - 7.00pm</td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td><td class="blank-td"></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td> </tr> <tr><td class="class-time">7.00pm - 9.00pm</td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg blank-td"></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td> </tr></tbody></table></div></div></div></div></section><script>// fonction pour ouvrir la pop-up
+																																																																																																																																																																																																																																																																	
+																																																																																																																																																																																																																																																																			</table> {# /******************************************************************************** #}<a href="{{ path('app_profileEdit', {'id': user.id}) }}" class="primary-btn btn-normal appoinment-btn"> Edit</i></a></div> </div></div></div></div></div></div></div></section><!-- Class Details Section End --><!-- Class Timetable Section Begin --><section class="class-timetable-section class-details-timetable spad"><div class="container"><div class="row"><div class="col-lg-12"><div class="class-details-timetable_title"><h5>Classes timetable</h5></div></div></div><div class="row"><div class="col-lg-12"><div class="class-timetable details-timetable"><table><thead> <tr><th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th> </tr></thead><tbody> <tr><td class="class-time">6.00am - 8.00am</td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td><td class="dark-bg blank-td"></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td> </tr> <tr><td class="class-time">10.00am - 12.00am</td><td class="blank-td"></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="blank-td"></td> </tr> <tr><td class="class-time">5.00pm - 7.00pm</td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td><td class="blank-td"></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td> </tr> <tr><td class="class-time">7.00pm - 9.00pm</td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg blank-td"></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td> </tr></tbody></table></div></div></div></div></section><script>// fonction pour ouvrir la pop-up
 
 function openPopuppass() {
 

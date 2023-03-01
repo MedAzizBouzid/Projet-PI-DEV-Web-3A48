@@ -3,8 +3,10 @@
 namespace App\Controller;
 
 use App\Entity\Service;
+use App\Form\ChatGptTyp;
 use App\Form\ServiceType;
 use App\Repository\ServiceRepository;
+use App\Service\OpenAiService;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\BrowserKit\Request as BrowserKitRequest;
 use Symfony\Component\BrowserKit\Response as BrowserKitResponse;
@@ -25,11 +27,26 @@ class ServiceController extends AbstractController
             'services' => $serviceRepository->findAll(),
         ]);
     }
-    #[Route('/S', name: 'app_service_index_Front', methods: ['GET'])]
-    public function Front(ServiceRepository $serviceRepository): Response
+    #[Route('/S', name: 'app_service_index_Front', methods: ['GET','POST'])]
+    public function Front(ServiceRepository $serviceRepository,OpenAiService $openAiService,Request $request): Response
     {
-        return $this->render('front/services.html.twig', [
+        $json="";
+        $form = $this->createForm(ChatGptTyp::class);
+$form->handleRequest(($request));
+// dd($request);
+if ($form->isSubmitted() ) {
+    $data = $form->getData();
+    // dd($data);
+
+    $json = $openAiService->getAnswer($data['question']);
+    
+
+    // dd($json);
+}
+        return $this->renderForm('front/services.html.twig', [
             'services' => $serviceRepository->findAll(),
+            'form'=>$form,
+            'reponse'=>$json
         ]);
     }
 

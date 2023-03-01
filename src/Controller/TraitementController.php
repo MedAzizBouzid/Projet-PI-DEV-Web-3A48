@@ -3,15 +3,20 @@
 namespace App\Controller;
 
 use App\Entity\Commande;
+use App\Entity\Notification;
 use App\Entity\Panier;
+use App\Entity\RendezVous;
 use App\Entity\Salle;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\AbonnementRepository;
 use App\Repository\CommandeRepository;
+use App\Repository\NotificationRepository;
 use App\Repository\PanierRepository;
 use App\Repository\PassRepository;
+use App\Repository\RendezVousRepository;
 use App\Repository\UserRepository;
+use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
 use Sabberworm\CSS\Value\Size;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
@@ -48,10 +53,11 @@ class TraitementController extends AbstractController
         ]);
     }
     #[Route('/administration', name: 'app_back_index')]
-    public function indexB(): Response
+    public function indexB(NotificationRepository $notificationRepository): Response
     {
         return $this->render('back/index.html.twig', [
             'controller_name' => 'TraitementController',
+            'notif' => $notificationRepository->findAll(),
         ]);
     }
     #[Route('/home', name: 'app_home')]
@@ -176,4 +182,20 @@ class TraitementController extends AbstractController
             'controller_name' => 'TraitementController',
         ]);
     }
+    #[Route('/cancel/{id}', name: 'app_rendez_vous_cancel', methods: ['POST'])]
+    public function cancel(Request $request, RendezVous $rendezVou, RendezVousRepository $rendezVousRepository,NotificationRepository $notificationRepository): Response
+    {
+        $datee= new DateTimeImmutable();
+        // $client= $rendezVou->getClient()->getNom();
+        if ($this->isCsrfTokenValid('delete'.$rendezVou->getId(), $request->request->get('_token'))) {
+            $rendezVousRepository->remove($rendezVou, true);
+            $Notifica=new Notification();
+            $Notifica->setMessage("Appointement has been Canceled ");
+            $Notifica->setDateeAt($datee);
+            $Notifica->setRdv($rendezVou);
+            $notificationRepository->save($Notifica,true);
+        }
+
+        return $this->redirectToRoute('app_profil', [], Response::HTTP_SEE_OTHER);
+}
 }

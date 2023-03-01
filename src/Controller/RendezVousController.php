@@ -2,13 +2,16 @@
 
 namespace App\Controller;
 
+use App\Entity\Notification;
 use App\Entity\RendezVous;
 use App\Form\RendezVousType;
 use App\Entity\Service;
 use App\Repository\CalendrierRdvRepository;
+use App\Repository\NotificationRepository;
 use App\Repository\RendezVousRepository;
 use App\Repository\ServiceRepository;
 use App\Repository\UserRepository;
+use DateTimeImmutable;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -23,6 +26,13 @@ class RendezVousController extends AbstractController
     public function index(RendezVousRepository $rendezVousRepository): Response
     {
         return $this->render('back/tableRendezVous.html.twig', [
+            'rendez_vouses' => $rendezVousRepository->findAll(),
+        ]);
+    }
+    #[Route('/listRdv', name: 'app_listRdv', methods: ['GET'])]
+    public function listRdv(RendezVousRepository $rendezVousRepository): Response
+    {
+        return $this->render('back/tableCalendrierRdv.html.twig',[
             'rendez_vouses' => $rendezVousRepository->findAll(),
         ]);
     }
@@ -106,13 +116,13 @@ class RendezVousController extends AbstractController
 
 
 
-    #[Route('/{id}', name: 'app_rendez_vous_show', methods:['GET', 'POST'])]
-    public function show(RendezVous $rendezVou): Response
-    {
-        return $this->render('rendez_vous/show.html.twig', [
-            'rendez_vou' => $rendezVou,
-        ]);
-    }
+    // #[Route('/{id}', name: 'app_rendez_vous_show', methods:['GET', 'POST'])]
+    // public function show(RendezVous $rendezVou): Response
+    // {
+    //     return $this->render('rendez_vous/show.html.twig', [
+    //         'rendez_vou' => $rendezVou,
+    //     ]);
+    // }
 
     #[Route('/{id}/edit', name: 'app_rendez_vous_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, RendezVous $rendezVou, RendezVousRepository $rendezVousRepository): Response
@@ -133,13 +143,23 @@ class RendezVousController extends AbstractController
     }
 
     #[Route('/{id}', name: 'app_rendez_vous_delete', methods: ['POST'])]
-    public function delete(Request $request, RendezVous $rendezVou, RendezVousRepository $rendezVousRepository): Response
+    public function delete(Request $request, RendezVous $rendezVou, RendezVousRepository $rendezVousRepository,NotificationRepository $notificationRepository): Response
     {
-        if ($this->isCsrfTokenValid('delete'.$rendezVou->getId(), $request->request->get('_token'))) {
-            $rendezVousRepository->remove($rendezVou, true);
-        }
+        
+            
+        $datee = new DateTimeImmutable();
+// $client= $rendezVou->getClient()->getNom();
+if ($this->isCsrfTokenValid('delete' . $rendezVou->getId(), $request->request->get('_token'))) {
+    $rendezVousRepository->remove($rendezVou, true);
+    $Notifica = new Notification();
+    $Notifica->setMessage("Appointement has been Canceled ");
+    $Notifica->setDateeAt($datee);
+    $Notifica->setRdv($rendezVou);
+    $notificationRepository->save($Notifica, true);
+}
 
-        return $this->redirectToRoute('app_rendez_vous_index', [], Response::HTTP_SEE_OTHER);
+
+        return $this->redirectToRoute('app_listRdv');
     }
     #[Route('/rdv/{id}', name: 'app_rendez_vousBack_Calender', methods: ['GET','POST'])]
     public function addRdvBack(Request $request,$id, RendezVousRepository $rendezVousRepository,ServiceRepository $serviceRepository,UserRepository $userRepository): Response
@@ -237,4 +257,5 @@ class RendezVousController extends AbstractController
     return $this->redirectToRoute('app_login');
 }
     }
+    
 }

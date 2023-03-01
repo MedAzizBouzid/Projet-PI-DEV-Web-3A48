@@ -3,8 +3,11 @@
 namespace App\Controller;
 
 use App\Entity\Commentaire;
+use App\Entity\CommentLike;
 use App\Form\CommentaireType;
 use App\Repository\CommentaireRepository;
+use App\Repository\CommentLikeRepository;
+use App\Repository\UserRepository;
 use Doctrine\Persistence\ManagerRegistry;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -113,6 +116,49 @@ class CommentaireController extends AbstractController
         return $this->redirectToRoute('app_commentaire_index', [], Response::HTTP_SEE_OTHER);
     }
 
+    /**
+     * like  unlike cmment
+     * Commentaire $commentaire, ObjectManager $mg,CommentLikeRepository $likeRepo
+     */
+    #[Route('/comment/{id}/like/{id_event}', name: 'app_commentaire_like')]
+    public function like(ManagerRegistry $manager, Commentaire $commentaire,$id_event, CommentLikeRepository $likeRepo,Request $request): Response
+    {
+        $like= new CommentLike();
+        $em = $manager->getManager();
 
+        if ($commentaire->isLikedByUser($this->getUser()->getEmail())) {
+            $like= $likeRepo->findOneBy([
+                'comment'=> $commentaire,
+                'userEmail'=> $this->getUser()->getEmail(),
+            ]);
+
+            $em->remove($like);
+            $em->flush();
+
+            // return $this->json([
+            //     'code'=> 200,
+            //     'message'=>'like bien supprime',
+            //     'likes'=>$likeRepo->count(['commentaire'=>$commentaire])
+            // ],200);
+            // dd($request);
+            return $this->redirectToRoute('app_sponsor_index_front', ['id' => $id_event], Response::HTTP_SEE_OTHER);
+
+
+        }
+
+        $like->setComment($commentaire);
+        $like->setUserEmail($this->getUser()->getEmail());
+        $em->persist($like);
+        $em->flush();
+
+        // return $this->json([
+        //     'code' => 200,
+        //     'message' => 'like bien ajoute',
+        //     'likes' => $likeRepo->count(['commentaire' => $commentaire])
+        // ], 200);
+        return $this->redirectToRoute('app_sponsor_index_front', ['id' => $id_event], Response::HTTP_SEE_OTHER);
+
+
+    }
     
 }

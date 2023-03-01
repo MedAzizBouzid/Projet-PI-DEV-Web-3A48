@@ -2,81 +2,100 @@
 
 
 {% block body %}
-      
- <!-- Breadcrumb Section Begin -->
-    <section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12 text-center">
-                    <div class="breadcrumb-text">
-                        <h2>Services</h2>
-                      
-                        <div class="bt-option">
-                            <a href="./index.html">Home</a>
-                            <span>Services</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
 
-    <!-- Services Section Begin -->
-  
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb-text">
+						<h2>Services</h2>
 
+						<div class="bt-option">
+							<a href="./index.html">Home</a>
+							<span>Services</span>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
 
-{# jk #}
-    <!-- Team Section Begin -->
-    <section class="team-section team-page spad">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-12">
-                    <div class="team-title">
-                        <div class="section-title">
-                            <span>What we do?</span>
-                            <h2>PUSH YOUR LIMITS FORWARD</h2>
-                        </div>
-                        {# <a href="#" class="primary-btn btn-normal appoinment-btn">appointment</a> #}
-                    </div>
-                </div>
-            </div>
-
-            <div class="row">
-            {% for service in services %}
- 
-                <div class="col-lg-4 col-sm-6">
-                    <div class="ts-item set-bg" data-setbg="{{asset('uploads/'~ service.image)}}">
-                        <div class="ts_text">
-                            <h4>{{service.nom}}</h4>
-                            <span>{{service.description}}</span>
-                            {# <div class="tt_social">
-                                <a href="#"><i class="fa fa-facebook"></i></a>
-                                <a href="#"><i class="fa fa-twitter"></i></a>
-                                <a href="#"><i class="fa fa-youtube-play"></i></a>
-                                <a href="#"><i class="fa fa-instagram"></i></a>
-                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
-                            </div> #}
-                      
-                            <a href="{{ path('app_rendez_vousFront_Calender', {'id': service.id}) }}" class="primary-btn btn-normal ">RENDEZ-VOUS</a>
-
-                          
-                        </div>
-                    </div>
-                </div>
-  {% endfor %}
-    
-            </div>
+	<!-- Services Section Begin -->
 
 
-        </div>
-    </section>
-    <!-- Team Section End -->
+	{# jk #}
+	<!-- Team Section Begin -->
+		<section
+		class="team-section team-page spad"> {# /******************chat**************************************** #}
+        <div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+			<div id="algin-form" style="color:white; postion:center;">
+				<div class="form-group">
+					<h4 style="color:red;">Need Hepl?</h4>
 
-    <!-- Services Section End -->
+					{{ form(form) }}
+<h4 style="color:white;">Anser:
+
+							{{reponse}}</h4>
 
 
-    
+					</div>
 
-    {% endblock %}
 
+					<div class="form-group">
+						<button type="submit" style="background-color: #DC3545;" id="post" class="btn">Post Comment</button>
+					</div>
+				</div>
+			</div>
+		
+
+			{# /******************chatEnd**************************************** #}
+			<div class="container">
+				<div class="row">
+					<div class="col-lg-12">
+						<div class="team-title">
+							<div class="section-title">
+								<span>What we do?</span>
+								<h2>PUSH YOUR LIMITS FORWARD</h2>
+							</div>
+							{# <a href="#" class="primary-btn btn-normal appoinment-btn">appointment</a> #}
+						</div>
+					</div>
+				</div>
+
+				<div class="row">
+					{% for service in services %}
+
+						<div class="col-lg-4 col-sm-6">
+							<div class="ts-item set-bg" data-setbg="{{asset('uploads/'~ service.image)}}">
+								<div class="ts_text">
+									<h4>{{service.nom}}</h4>
+									<span>{{service.description}}</span>
+									{# <div class="tt_social">
+																		                                <a href="#"><i class="fa fa-facebook"></i></a>
+																		                                <a href="#"><i class="fa fa-twitter"></i></a>
+																		                                <a href="#"><i class="fa fa-youtube-play"></i></a>
+																		                                <a href="#"><i class="fa fa-instagram"></i></a>
+																		                                <a href="#"><i class="fa  fa-envelope-o"></i></a>
+																		                            </div> #}
+
+									<a href="{{ path('app_rendez_vousFront_Calender', {'id': service.id}) }}" class="primary-btn btn-normal ">RENDEZ-VOUS</a>
+
+
+								</div>
+							</div>
+						</div>
+					{% endfor %}
+
+				</div>
+
+
+			</div>
+		</section>
+		<!-- Team Section End -->
+
+		<!-- Services Section End -->
+
+
+	{% endblock %}
