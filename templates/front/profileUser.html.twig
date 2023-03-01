@@ -156,65 +156,7 @@
 												{{user.numTel}}</li>
 										</ul>
 										{# /*************************************abn************************************************************************ #}
-										<table class="table">
-											<thead>
-												<tr>
-
-
-													<th>salle</th>
-													<th>date Debut</th>
-
-													<th>Payement</th>
-
-													<th>Offer
-													</th>
-													<th>State</th>
-													<th>Actions</th>
-												</tr>
-											</thead>
-
-											<tbody>
-												{% for ab in abonnements %}
-
-													<tr>
-
-														<td>{{ ab.salle }}</td>
-														<td>{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}</td>
-														<td>{{ ab.MPayement }}</td>
-														<td>{{ ab.offre.id }}</td>
-														{% if ab.etatab %}
-															<td>
-
-																Active
-															</td>
-														{% else %}
-															<td>
-
-																Not Active
-															</td>
-
-														{% endif %}
-
-
-														<td>
-
-															<a href="{{ path('app_process_payment') }}">
-
-																{# <i class="bi bi-pencil-square"></i> #}
-																activer
-															</a>
-
-
-														</td>
-
-
-													</tr>
-												{% endfor %}
-
-
-											</tbody>
-										</tbody>
-									</table>
+										 
 
 									{# /*************************************abn************************************************************************ #}
 									{# ************************************************** Commande Start pop-up******************************************** #}
@@ -336,8 +278,81 @@
 		</tbody>
 	</tr>
 </td>{% else %}
-<td>this event has been deleted</td>{% endif %}</tr>{% endfor %}</tbody></table><span class="popup-close" onclick="closePopuppass()">&times;</span></div></div>{# ************************************************** Pass pop-up*********************** #}{# 
-																																																																														<!-- Pricing Section Begin -->
+<td>this event has been deleted</td>{% endif %}</tr>{% endfor %}</tbody></table>
+<span class="popup-close" onclick="closePopuppass()">&times;</span></div></div>{# ************************************************** Pass pop-up*********************** #}{# 
+
+
+{# ***** #}
+<button style="background-color:red;color:white;" onclick="openPopup_offre()">
+	Chek Offers</button>
+
+
+<div id="popup_offre" class="popup">
+	<div class="popup-content">
+
+		<table class="table">
+			<thead>
+				<tr>
+
+
+					<th>salle</th>
+					<th>date Debut</th>
+
+					<th>Payement</th>
+
+					<th>Offer
+					</th>
+					<th>State</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for ab in abonnements %}
+
+					<tr>
+						<td>{{ ab.salle }}</td>
+						<td>{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}</td>
+						<td>{{ ab.MPayement }}</td>
+						<td>{{ ab.offre.id }}</td>
+						{% if ab.etatab %}
+							<td>
+
+								Active
+							</td>
+						{% else %}
+							<td>
+
+								Not Active
+							</td>
+
+						{% endif %}
+
+
+						<td>
+
+							<a
+								href="{{ path('app_process_payment') }}">
+
+								  <i class="bi bi-pencil-square"></i>  
+								activer
+							</a>
+
+
+						</td>
+
+
+					</tr>
+				{% endfor %}
+
+
+			</tbody>
+		</tbody>
+	</table>
+	<span class="popup-close" onclick="closePopup_offre()">&times;</span>
+</div></div>
+
+																																																																											<!-- Pricing Section Begin -->
 																																																																														<section class="pricing-section service-pricing spad">
 																																																																																																																																																																																																																																																																	<td colspan="6">no records found</td>
 																																																																																																																																																																																																																																																																			</tr> #}{# </tbody>
@@ -365,4 +380,16 @@ document.getElementById("popup").style.display = "block";
 // fonction pour fermer la pop-up
 function closePopup() {
 document.getElementById("popup").style.display = "none";
+}
+
+// fonction pour ouvrir la pop-up
+function openPopup_offre() {
+document.getElementById("popup_offre").style.display = "block";
+
+}
+
+// fonction pour fermer la pop-up
+function closePopup_offre() {
+document.getElementById("popup_offre").style.display = "none";
+
 }</script><!-- Class Timetable Section End -->{% endblock %}

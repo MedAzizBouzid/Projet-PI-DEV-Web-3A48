@@ -38,6 +38,17 @@ class CalendrierRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
+    public function findCalendarBySalle($value): array
+    {
+
+        // Requête pour sélectionner les calendriers de la salle
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.salla = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    /**
 //     * @return Calendrier[] Returns an array of Calendrier objects

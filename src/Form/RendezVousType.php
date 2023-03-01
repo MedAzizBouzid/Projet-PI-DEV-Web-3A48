@@ -18,12 +18,7 @@ class RendezVousType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options): void
     {
         $builder
-            ->add('dateAt' ,TypeDateTimeType::class,[
-                'widget'=>'choice',
-                'input'=>'datetime',
-                'required'=>'false',
-                'widget'=>'single_text',
-            ])
+            ->add('dateAt' ,TypeDateTimeType::class)
            
             ->add('discription', TextType::class, [
                 'label' => 'Description',
