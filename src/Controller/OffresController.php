@@ -27,7 +27,47 @@ class OffresController extends AbstractController
             'offres' => $offresRepository->findAll(),
         ]);
     }
+/////////////////statistique/////////
 
+        
+   
+    #[Route('/s', name: 'app_offres_stat', methods: ['GET'])]
+  
+        
+    public function stat(OffresRepository $offresRepository): Response
+    {
+        $offres = $offresRepository->getOffresByAbonnements();
+        $ofdate=$offresRepository->getAbonnementsByDate();
+        
+       
+        $labels = [];
+        $data = [];
+        foreach ($offres as $offre) {
+            
+            $labels[] = $offre['id'];
+        
+            $data[] = $offre['nbAbonnements'];
+        }
+        $label = [];
+        $dat = [];
+        foreach ($ofdate as $row) {
+            if ($row['date']!== null) {
+                $label[] = $row['date']->format('d/m/Y');
+            }
+            $dat[] = $row['nb'];
+        }
+        
+        
+        return $this->render('back/offre_abonnements.html.twig', [
+            'offre' => $offres,
+            'chart_labels' => json_encode($labels),
+            'chart_data' => json_encode($data),
+            'la'=> json_encode($label),
+            'da' => json_encode($dat)
+            
+
+        ]);
+    }
     #[Route('/new', name: 'app_offres_new', methods: ['GET', 'POST'])]
     public function new(Request $request, OffresRepository $offresRepository): Response
     {

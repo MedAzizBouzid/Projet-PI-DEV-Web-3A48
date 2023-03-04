@@ -35,6 +35,17 @@ function index_sponsor_event(SponsorRepository $sponsorRepository, $id): Respons
     ]);
 }
 
+
+function badwords($message)
+{
+    // $badwords = array("Bonjour1", "bonsoiree", "tifo");
+    $badwords = BadWordController::badword();
+// dd($badwords);
+    $filter = "*******";
+    $message = str_replace($badwords, $filter, $message);
+    return $message;
+}
+
 //afficher les details d'un event + ses sponsors + ses commentaires avec la possibilite d'ajout d'un commentaire a cet event
 #[Route('/front/{id}', name:'app_sponsor_index_front', methods:['GET', 'POST'])]
 function indexF(SponsorRepository $sponsorRepository, $id, EvenementRepository $eventrepo, Request $request, CommentaireRepository $commentaireRepository, UserRepository $userRepo): Response
@@ -50,15 +61,19 @@ function indexF(SponsorRepository $sponsorRepository, $id, EvenementRepository $
     $form = $this->createForm(CommentaireType::class, $commentaire);
     $form->handleRequest($request);
 
-    if ($form->isSubmitted() && $form->isValid()) {
-        $commentaire->setEvent($event);
-        $commentaire->setClient($user);
-        $commentaireRepository->save($commentaire, true);
+   $message = $request->get('msg');
+if ($message != "") {
+    # code...
+    $commentaire->setEvent($event);
+    $commentaire->setClient($user);
 
-        return $this->redirectToRoute('app_sponsor_index_front', [
-            'id' => $id,
-        ], Response::HTTP_SEE_OTHER);
-    }
+    $filtredMessage = $this->badwords($message);
+
+    $commentaire->setDescription($filtredMessage);
+// dd($commentaire);
+    $commentaireRepository->save($commentaire, true);
+}
+
     if ($user) {
 
         return $this->render('front/detail-event.html.twig', [

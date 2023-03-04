@@ -34,7 +34,8 @@ class Abonnement
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(
-        message: 'Veuillez remplir ce champs',
+        message: 'Veuillez remplir ce champs', 
+        
     )]
   
    

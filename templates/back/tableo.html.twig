@@ -8,6 +8,13 @@
 			<h1>
 				Liste Offres
 			</h1>
+<a href="{{ path('app_offres_stat')}}">
+
+				<button type="button" class="btn btn-light m-2">
+					Stat
+				</button>
+			</a>
+
 			{# <div class="card-body"> #}
 			<div class="table-responsive">
 
@@ -53,36 +60,38 @@
 											<li>{{c.nom}}</li>
 
 										</ul>
-									 
-								{% endfor %}
-							 
-						</td>
+
+									{% endfor %}
+
+								</td>
 
 
-						<td>{{ offre.description }}</td>
-						<td>
-							{% if  offre.promo is  null  %}
-								offre pas en promotion
+								<td>{{ offre.description }}</td>
+								<td>
+									{% if  offre.promo is  null  %}
+										offre pas en promotion
 
-							{% else %}
-								{{ offre.promo.pourcentage }}
-								%
-							{% endif %}
-						</td>
+									{% else %}
+										{{ offre.promo.pourcentage }}
+										%
+									{% endif %}
+								</td>
 
 
-						<td>
-							<a href="{{ path('app_offres_edit', {'id': offre.id}) }}">
-								<i class="bi bi-pencil-square"></i>
-							</a>
+								<td>
+									<a href="{{ path('app_offres_edit', {'id': offre.id}) }}">
+										<i class="bi bi-pencil-square"></i>
+									</a>
 
-							<a href="{{ path('app_offres_delete', {'id': offre.id}) }}">
-								<i class="bi bi-trash-fill"></i>
-							</a>
-							<a href=" {{ path('app_offres_show', {'id': offre.id}) }} ">
-								<i class="bi bi-binoculars"></i>
-							</a>
-							<br></td>
+									<a href="{{ path('app_offres_delete', {'id': offre.id}) }}">
+										<i class="bi bi-trash-fill"></i>
+									</a>
+									<a href=" {{ path('app_offres_show', {'id': offre.id}) }} ">
+										<i class="bi bi-binoculars"></i>
+									</a>
+									<br></td>
+							</tr>
+						</tbody>
 					</tbody>
 				</tr>
 			{% else %}

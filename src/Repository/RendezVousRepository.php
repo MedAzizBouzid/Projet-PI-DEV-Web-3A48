@@ -87,4 +87,13 @@ class RendezVousRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+   public function findRdvByService($value): ?array
+   {
+       return $this->createQueryBuilder('r')
+           ->andWhere('r.service = :val')
+           ->setParameter('val', $value)
+           ->getQuery()
+           ->getResult()
+       ;
+   }
 }

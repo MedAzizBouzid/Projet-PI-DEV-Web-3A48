@@ -1,0 +1,119 @@
+{% extends 'back/base.html.twig' %}
+
+
+{% block body %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+	{# <style>
+		#calendrier {
+			margin: auto;
+			width: 63%;
+			height: 60%;
+		}
+	</style> #}
+
+
+	<!-- Form Start -->
+	<div class="container-fluid pt-4 px-4">
+		<div class="row g-4">
+		
+				<div class="col-sm-12 col-xl-6">
+				
+					<div class="bg-secondary rounded h-100 p-4">
+						<h6 class="mb-4">NEW Appointment</h6>										                               
+						{{ form_start(form) }}
+						{{ form_widget(form) }}
+						<label for="exampleInputEmail1" class="form-label">Email address</label>
+						<input type="email" class="form-control" name="email" aria-describedby="emailHelp">
+
+						<button type="submit" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+						{{ form_end(form) }}
+						<a href="{{ path('app_service_index') }}">back to list</a>
+					</div>
+				</div>
+<div class="col-sm-12 col-xl-6">
+	<section>
+<div style="width:auto; height:auto; background-color: black;" id="calendrier"></div>
+
+	</section>
+</div>
+
+
+		</div>
+	</div>
+	<!-- Form End -->
+
+{# <section>
+<div style="width: 63%;height: 60%;position: center;background-color:black;" id="calendrier"></div>
+
+</section> #}
+
+
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" integrity="sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=" crossorigin="anonymous"></script>
+	<script>
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+timeZone: 'Afrique/Tunisie',
+weekends: true,
+
+
+defaultView: 'month',
+businessHours: {
+start: '08:00',
+end: '18:00',
+dow: [
+1,
+2,
+3,
+ 
+]
+},
+headerToolbar: {
+start: 'prev,next today',
+center: 'title',
+end: 'dayGridMonth,timeGridWeek'
+},
+
+events: {{ data|raw }},
+editable: false,
+			eventResizableFromStart:false,
+/*eventDrop :function(event){
+
+				console.log(event)
+			}*/
+
+
+})
+
+calendar.on('eventChange', (e) => {
+// afficher
+// console.log(e)
+// pour assurer l'injection des données =>
+// Créer une variable URL qui contient la route de l'injection des données
+
+let url = `/api/${
+e.event.id
+}/edit`
+// Créer un tableau JSon pour stocker nos données de la table plannig
+let donnees = {
+"title": e.event.title,
+"description": e.event.description,
+"start": e.event.start,
+"end": e.event.end,
+"backgroundColor": e.event.background_color,
+"borderColor": e.event.border_color,
+"textColor": e.event.text_color,
+"activite": e.event.activite
+
+
+}
+ 
+})
+
+calendar.render()
+}
+	</script>
+
+{% endblock %}

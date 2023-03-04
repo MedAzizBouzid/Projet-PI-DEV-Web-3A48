@@ -2,26 +2,26 @@
 
 namespace App\Repository;
 
-use App\Entity\Calendrier;
+use App\Entity\CommentLike;
 use Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepository;
 use Doctrine\Persistence\ManagerRegistry;
 
 /**
- * @extends ServiceEntityRepository<Calendrier>
+ * @extends ServiceEntityRepository<CommentLike>
  *
- * @method Calendrier|null find($id, $lockMode = null, $lockVersion = null)
- * @method Calendrier|null findOneBy(array $criteria, array $orderBy = null)
- * @method Calendrier[]    findAll()
- * @method Calendrier[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
+ * @method CommentLike|null find($id, $lockMode = null, $lockVersion = null)
+ * @method CommentLike|null findOneBy(array $criteria, array $orderBy = null)
+ * @method CommentLike[]    findAll()
+ * @method CommentLike[]    findBy(array $criteria, array $orderBy = null, $limit = null, $offset = null)
  */
-class CalendrierRepository extends ServiceEntityRepository
+class CommentLikeRepository extends ServiceEntityRepository
 {
     public function __construct(ManagerRegistry $registry)
     {
-        parent::__construct($registry, Calendrier::class);
+        parent::__construct($registry, CommentLike::class);
     }
 
-    public function save(Calendrier $entity, bool $flush = false): void
+    public function save(CommentLike $entity, bool $flush = false): void
     {
         $this->getEntityManager()->persist($entity);
 
@@ -30,7 +30,7 @@ class CalendrierRepository extends ServiceEntityRepository
         }
     }
 
-    public function remove(Calendrier $entity, bool $flush = false): void
+    public function remove(CommentLike $entity, bool $flush = false): void
     {
         $this->getEntityManager()->remove($entity);
 
@@ -38,20 +38,9 @@ class CalendrierRepository extends ServiceEntityRepository
             $this->getEntityManager()->flush();
         }
     }
-    public function findCalendarBySalle($value): array
-    {
-
-        // Requête pour sélectionner les calendriers de la salle
-        return $this->createQueryBuilder('c')
-            ->andWhere('c.salla = :val')
-            ->setParameter('val', $value)
-            ->getQuery()
-            ->getResult()
-        ;
-    }
 
 //    /**
-//     * @return Calendrier[] Returns an array of Calendrier objects
+//     * @return CommentLike[] Returns an array of CommentLike objects
 //     */
 //    public function findByExampleField($value): array
 //    {
@@ -65,7 +54,7 @@ class CalendrierRepository extends ServiceEntityRepository
 //        ;
 //    }
 
-//    public function findOneBySomeField($value): ?Calendrier
+//    public function findOneBySomeField($value): ?CommentLike
 //    {
 //        return $this->createQueryBuilder('c')
 //            ->andWhere('c.exampleField = :val')

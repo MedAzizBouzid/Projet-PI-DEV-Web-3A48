@@ -85,4 +85,32 @@ public function tri()
     ->getResult()
 ;
 }
+//////////////////stat/////////
+public function getOffresByAbonnements(): array
+{
+    $qb = $this->createQueryBuilder('o')
+        ->leftJoin('o.abonnements', 'a')
+        ->leftJoin('o.categ', 'c')
+        ->select('o.id, o.prix, o.duree, o.description, c.name as categ, COUNT(a.id) AS nbAbonnements')
+        ->groupBy('o.id')
+        
+        
+        
+        ->orderBy('nbAbonnements', 'DESC')
+        ->getQuery();
+
+    return $qb->getResult();
+}
+/////////////////stat////////////////
+public function getAbonnementsByDate(): array
+{
+    $qb = $this->createQueryBuilder('o')
+        ->leftJoin('o.abonnements', 'a')
+        ->select('a.DateD as date, COUNT(a.id) AS nb')
+        ->groupBy('a.DateD')
+        ->orderBy('nb', 'DESC')
+        ->getQuery();
+
+    return $qb->getResult();
+}
 }

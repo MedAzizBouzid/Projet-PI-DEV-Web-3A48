@@ -45,6 +45,7 @@ function new (Request $request, AbonnementRepository $abonnementRepository, $id,
     $form->handleRequest($request);
 
     if ($form->isSubmitted() ) {
+        // dd($form);
         $abonnementData = $form->getData();
         $session->set('abonnementData', $abonnementData);
         $session = $request->getSession();
