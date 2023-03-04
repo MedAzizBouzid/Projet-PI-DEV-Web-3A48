@@ -52,16 +52,16 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     #[ORM\Column(type: 'boolean')]
     private $isVerified = false;
 
-    #[ORM\OneToMany(mappedBy: 'Client', targetEntity: Panier::class)]
-    private Collection $paniers;
+    // #[ORM\OneToMany(mappedBy: 'Client', targetEntity: Panier::class)]
+    // private Collection $paniers;
 
-    #[ORM\OneToMany(mappedBy: 'coach', targetEntity: Calendrier::class)]
-    private Collection $calendriers;
+    // #[ORM\OneToMany(mappedBy: 'coach', targetEntity: Calendrier::class)]
+    // private Collection $calendriers;
 
     public function __construct()
     {
-        $this->paniers = new ArrayCollection();
-        $this->calendriers = new ArrayCollection();
+        // $this->paniers = new ArrayCollection();
+        // $this->calendriers = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -218,63 +218,63 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         return $this;
     }
 
-    /**
-     * @return Collection<int, Panier>
-     */
-    public function getPaniers(): Collection
-    {
-        return $this->paniers;
-    }
+    // /**
+    //  * @return Collection<int, Panier>
+    //  */
+    // public function getPaniers(): Collection
+    // {
+    //     return $this->paniers;
+    // }
 
-    public function addPanier(Panier $panier): self
-    {
-        if (!$this->paniers->contains($panier)) {
-            $this->paniers->add($panier);
-            $panier->setClient($this);
-        }
+    // public function addPanier(Panier $panier): self
+    // {
+    //     if (!$this->paniers->contains($panier)) {
+    //         $this->paniers->add($panier);
+    //         $panier->setClient($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removePanier(Panier $panier): self
-    {
-        if ($this->paniers->removeElement($panier)) {
-            // set the owning side to null (unless already changed)
-            if ($panier->getClient() === $this) {
-                $panier->setClient(null);
-            }
-        }
+    // public function removePanier(Panier $panier): self
+    // {
+    //     if ($this->paniers->removeElement($panier)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($panier->getClient() === $this) {
+    //             $panier->setClient(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    /**
-     * @return Collection<int, Calendrier>
-     */
-    public function getCalendriers(): Collection
-    {
-        return $this->calendriers;
-    }
+    // /**
+    //  * @return Collection<int, Calendrier>
+    //  */
+    // public function getCalendriers(): Collection
+    // {
+    //     return $this->calendriers;
+    // }
 
-    public function addCalendrier(Calendrier $calendrier): self
-    {
-        if (!$this->calendriers->contains($calendrier)) {
-            $this->calendriers->add($calendrier);
-            $calendrier->setCoach($this);
-        }
+    // public function addCalendrier(Calendrier $calendrier): self
+    // {
+    //     if (!$this->calendriers->contains($calendrier)) {
+    //         $this->calendriers->add($calendrier);
+    //         $calendrier->setCoach($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeCalendrier(Calendrier $calendrier): self
-    {
-        if ($this->calendriers->removeElement($calendrier)) {
-            // set the owning side to null (unless already changed)
-            if ($calendrier->getCoach() === $this) {
-                $calendrier->setCoach(null);
-            }
-        }
+    // public function removeCalendrier(Calendrier $calendrier): self
+    // {
+    //     if ($this->calendriers->removeElement($calendrier)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($calendrier->getCoach() === $this) {
+    //             $calendrier->setCoach(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }
