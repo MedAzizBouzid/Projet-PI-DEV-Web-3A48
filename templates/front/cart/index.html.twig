@@ -90,7 +90,7 @@
 														<div class="ms-3">
 															<h5>
 																{{element.Produit.nom}}</h5>
-															<p class="small mb-0">{{element.produit.categorie.Type}}</p>
+															{# <p class="small mb-0">{{element.produit.categorie.Type}}</p> #}
 														</div>
 													</div>
 
@@ -110,8 +110,8 @@
 															</i>
 														</a>
 													{% endif %}
-													<a href="{{path('app_cart_remove',{id:element.produit.id})}}" class="btn btn-warning js-remove">
-														<i class="bi bi-cart-plus">
+													<a href="{{path('app_cart_remove',{id:element.produit.id})}}" class=" js-remove">
+														<i class="btn btn-warning bi bi-cart-plus">
 															<svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-cart-dash" viewbox="0 0 16 16"><path d="M6.5 7a.5.5 0 0 0 0 1h4a.5.5 0 0 0 0-1h-4z"/><path d="M.5 1a.5.5 0 0 0 0 1h1.11l.401 1.607 1.498 7.985A.5.5 0 0 0 4 12h1a2 2 0 1 0 0 4 2 2 0 0 0 0-4h7a2 2 0 1 0 0 4 2 2 0 0 0 0-4h1a.5.5 0 0 0 .491-.408l1.5-8A.5.5 0 0 0 14.5 3H2.89l-.405-1.621A.5.5 0 0 0 2 1H.5zm3.915 10L3.102 4h10.796l-1.313 7h-8.17zM6 14a1 1 0 1 1-2 0 1 1 0 0 1 2 0zm7 0a1 1 0 1 1-2 0 1 1 0 0 1 2 0z"/></svg>
 														</i>
 													</a>
@@ -223,65 +223,171 @@ spanCount4.textContent = response.data.totalC + " DT";
 
 }
 // ---------------------------décrementation quantité------------------------
-function onClickBtnRemove(event) {
-event.preventDefault();
-
-// this return sur les a
-const url = this.href;
-const spanCount = this.parentNode.parentNode.querySelectorAll('h5.js-quantite');
-const spanCount2 = this.parentNode.parentNode.querySelectorAll('h5.js-totalProduit');
-const spanCount3 = document.querySelector('p.js-totalP');
-const spanCount4 = document.querySelector('span.js-totalC');
-// console.log(spanCount);
-axios.get(url).then(function (response) {
-
-spanCount[0].textContent = response.data.nbr;
-spanCount2[0].textContent = response.data.total + " DT";
-spanCount3.textContent = response.data.totalP + " DT";
-spanCount4.textContent = response.data.totalC + " DT";
-
-})
-
-}
-{
-# function onClickBtnDelete(event) {
-aziz = 0;
-event.preventDefault();
-
-// this return sur les a
-const url = this.href;
-const spanCount = document.querySelectorAll('div.js-vide');
-console.log(spanCount[0]);
-console.log(spanCount[1]);
-const spanCount3 = document.querySelector('p.js-totalP');
-const spanCount4 = document.querySelector('span.js-totalC');
-// console.log(spanCount);
-axios.get(url).then(function (response) {
-
-
-spanCount[0].textContent = "";
-spanCount[1].textContent = "";
-
-
-spanCount3.textContent = response.data.totalP + " DT";
-spanCount4.textContent = response.data.totalC + " DT";
-
-})
-aziz ++;
+			function onClickBtnRemove(event) {
+   event.preventDefault();
+                    
+                    //this return sur les a
+                    const url=this.href;
+                    const spanCount0=this.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('div.js-vide');
+                   
+             
+                     
+                    const spanCount = this.parentNode.parentNode.querySelectorAll('h5.js-quantite');
+                    const spanCount2 = this.parentNode.parentNode.querySelectorAll('h5.js-totalProduit');
+                     const spanCount3 = document.querySelector('p.js-totalP');
+                    const spanCount4 = document.querySelector('span.js-totalC');
+                    //console.log(spanCount);
+                    axios.get(url).then(function(response){
+                  if(response.data.nbr !=1 )
+                  {
+                  spanCount[0].textContent=response.data.nbr;
+                  spanCount2[0].textContent=response.data.total +" DT";
+                  spanCount3.textContent=response.data.totalP +" DT";
+                  spanCount4.textContent=response.data.totalC +" DT";}
+                  else 
+                   { 
+                  spanCount[0].textContent=response.data.nbr;
+                  spanCount2[0].textContent=response.data.total +" DT";
+                  spanCount3.textContent=response.data.totalP +" DT";
+                  spanCount4.textContent=response.data.totalC +" DT";
+                 }
+                    })
+                   
 
 }
-#
-}
-{% for element in LignePaniers %}document.querySelectorAll('a.js-add[data-id="  {{ element.id }}"]').forEach(function (link) {
+ //---------------------------delete produit------------------------
+                 function onClickBtnDelete(event)
+                {
+                    event.preventDefault();
+                    
+                    //this return sur les a
+                    const url=this.href;
+                    const spanCount0=this.parentNode.parentNode.parentNode.parentNode.querySelectorAll('div.js-vide');
+                    console.log(spanCount0);
+                     const spanCount3 = document.querySelector('p.js-totalP');
+                    const spanCount4 = document.querySelector('span.js-totalC');
+                    //console.log(spanCount);
+                    axios.get(url).then(function(response){
+                
+                  
+                  spanCount0[0].textContent="";
+                   spanCount3.textContent=response.data.totalP +" DT";
+                  spanCount4.textContent=response.data.totalC +" DT";
+               
+                    })
+
+                }
+
+document.querySelectorAll('a.js-add').forEach(function (link) {
 link.addEventListener('click', onClickBtnAdd);
-});{% endfor %}document.querySelectorAll('a.js-remove').forEach(function (link) {
+});
+
+
+document.querySelectorAll('a.js-remove').forEach(function (link) {
 link.addEventListener('click', onClickBtnRemove);
-}) {
-# {% for element in LignePaniers %}document.querySelectorAll('a.js-delete[data-id="  {{ element.id }}"]').forEach(function (link) {
-link.addEventListener('click', onClickBtnDelete);
-}){% endfor %}
-#
-}
+}) 
+
+  document.querySelectorAll('a.js-delete').forEach(function(link)
+               {
+                    link.addEventListener('click',onClickBtnDelete);
+                }
+                   )
 
 
-</script>{% endblock %}
+</script>
+ <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+        <script type="module">
+       //-----------notification addproduct
+            $(document).ready(function(){
+         
+            let panier=$('a.js-add');
+            panier.each(function(){
+                $(this).on('click',function(e){
+                    e.preventDefault();
+                    let link =$(this);
+                    let target=$(this).attr('href');
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+  
+        Toast.fire({
+            icon: 'success',
+            title: 'Produit ajouté'
+        })
+                        
+                        })
+                    })
+                    
+                })
+                //---------------notif decrementation product
+                 $(document).ready(function(){
+         
+            let panier=$('a.js-remove');
+            panier.each(function(){
+                $(this).on('click',function(e){
+                    e.preventDefault();
+                    let link =$(this);
+                    let target=$(this).attr('href');
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+  
+        Toast.fire({
+            icon: 'success',
+            title: 'Produit supprimé'
+        })
+                        
+                        })
+                    })
+                    
+                })
+				 $(document).ready(function(){
+         
+            let panier=$('a.js-delete');
+            panier.each(function(){
+                $(this).on('click',function(e){
+                    e.preventDefault();
+                    let link =$(this);
+                    let target=$(this).attr('href');
+                    const Toast = Swal.mixin({
+                    toast: true,
+                    position: 'top-end',
+                    showConfirmButton: false,
+                    timer: 1000,
+                    timerProgressBar: true,
+                    didOpen: (toast) => {
+                    toast.addEventListener('mouseenter', Swal.stopTimer)
+                    toast.addEventListener('mouseleave', Swal.resumeTimer)
+                    }
+                })
+  
+        Toast.fire({
+            icon: 'success',
+            title: 'Produit supprimé'
+        })
+                        
+                        })
+                    })
+                    
+                })
+
+        </script>
+{% endblock %}

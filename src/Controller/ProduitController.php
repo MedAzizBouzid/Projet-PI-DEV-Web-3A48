@@ -12,6 +12,7 @@ use Symfony\Component\HttpFoundation\File\Exception\FileException;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Component\String\Slugger\SluggerInterface;
 
 #[Route('produit')]
@@ -24,8 +25,27 @@ class ProduitController extends AbstractController
             'produits' => $produitRepository->findAll(),
         ]);
     }
-
-
+    /******************************************MobileAddProd************************************************ */
+    #[Route('/showMobile', name: 'app_produit_index_mobile', methods: ['GET', 'POST'])]
+    public function AffichageMobile(ProduitRepository $produitRepository, SerializerInterface $si)
+    {
+        $result = $produitRepository->findAll();
+        $json = $si->serialize($result, 'json', ['groups' => "produits"]);
+        return new Response($json);
+    }
+    /*******************************************AjoutMobile*********************** */
+    #[Route('/ajoutMobile', name: 'app_produit_ajout_mobile', methods: ['GET', 'POST'])]
+    public function AjoutMobile(Request $req,ProduitRepository $produitRepository, SerializerInterface $si)
+    {   $p=new Produit();
+        $p->setNom($req->get('nom'));
+        $p->setImage($req->get('image'));
+        $p->setPrix($req->get('prix'));
+        $p->setStock($req->get('stock'));
+        
+        $p = $produitRepository->save($p,true);
+        $json = $si->serialize($p, 'json', ['groups' => "produits"]);
+        return new Response($json);
+    }
     #[Route('/new', name: 'app_produit_new', methods: ['GET', 'POST'])]
     public function new(Request $request, ProduitRepository $produitRepository, SluggerInterface $slugger): Response
     {
@@ -110,16 +130,34 @@ class ProduitController extends AbstractController
     #[Route('/show/front', name: 'app_produit_index_front', methods: ['GET'])]
     public function AffichageFrontPaginated(Request $request, ProduitRepository $produitRepository, LignePanierRepository $LPR, CategorieRepository $categorieRepository): Response
     {
-        $nbr[]= $LPR->countAll();
+        $nbr[] = $LPR->countAll();
         //on va chercher le num page dans l'url
         $page = $request->query->getInt('page', 1);
         //on va cherche la liste des produits paginated 
         $produit = $produitRepository->findProductPaginated($page, 3);
-        
+
         //dd($produit);
         return $this->render('front/produitShow.html.twig', [
             'produits' => $produit,
 
         ]);
+    }
+
+    #[Route('/editJson/{id}', name: 'app_produit_user_edit', methods: ['GET'])]
+    public function updatejson(Request $request, Produit $produit, ProduitRepository $produitRepository, SerializerInterface $sr, CategorieRepository $categorieRepository): Response
+    {
+        $produit->setNom($request->get('nom'));
+        $produitRepository->save($produit, true);
+        $json = $sr->serialize($produit, 'json', ['groups' => "produits"]);
+        return new Response($json);
+    }
+    #[Route('/detailJson/{id}', name: 'app_produit_user_detail_mobile', methods: ['GET'])]
+    public function DetailJson($id,Request $request, ProduitRepository $produitRepository, SerializerInterface $sr): Response
+    {
+        $id = $request->get("id");
+        $produit = $produitRepository->find($id);
+        $produitRepository->save($produit, true);
+        $json = $sr->serialize($produit, 'json', ['groups' => "produits"]);
+        return new Response($json);
     }
 }

@@ -6,6 +6,7 @@ use App\Repository\ProduitRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
@@ -14,14 +15,18 @@ class Produit
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("produits")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "Nom doit etre non vide !")]
     #[Assert\Regex(pattern: "/^[\p{L}]+$/u", message: "Nom doit contenir que des alphabets")]
+    #[Groups("produits")]
+
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("produits")]
 
     private ?string $image = null;
 
@@ -29,11 +34,15 @@ class Produit
     #[ORM\Column]
     #[Assert\NotBlank(message: "Prix doit etre non vide !")]
     #[Assert\GreaterThan(value: 0, message: "Prix doit supérieur strict à 0 !")]
+    #[Groups("produits")]
+
     private ?float $prix = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(message: "Stock doit etre non vide !")]
     #[Assert\GreaterThan(value: 0, message: "Stock doit supérieur strict à 0 !")]
+    #[Groups("produits")]
+
     private ?string $stock = null;
 
     #[ORM\ManyToOne(inversedBy: 'produits')]
