@@ -19,6 +19,16 @@ use App\Repository\SalleRepository;
 class TraitementController extends AbstractController
 {
 
+ 
+    #[Route('/heeeeey', name: 'map')]
+    public function map(): Response
+    {
+        return $this->render('back/lefleat.html.twig', [
+            'controller_name' => 'TraitementController',
+        ]);
+    }
+
+
     #[Route('/Show_salle_front', name: 'Show_salle_front')]
     public function Show_salle_front(EntityManagerInterface $am): Response
     {
@@ -165,4 +175,13 @@ class TraitementController extends AbstractController
             'controller_name' => 'TraitementController',
         ]);
     }
+    #[Route('/contact', name: 'contact')]
+    public function contact(): Response
+    {
+        return $this->render('front/contact.html.twig', [
+            'controller_name' => 'TraitementController',
+        ]);
+    }
+
+    
 }

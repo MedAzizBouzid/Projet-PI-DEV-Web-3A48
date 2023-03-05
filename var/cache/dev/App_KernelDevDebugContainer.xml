@@ -351,6 +351,20 @@
         <argument type="service" id=".service_locator.CshazM0.App\Controller\CalendrierController"/>
       </call>
     </service>
+    <service id="App\Controller\JSONActiviteController" class="App\Controller\JSONActiviteController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\Controller\JSONActiviteController"/>
+      </call>
+    </service>
+    <service id="App\Controller\JsonController" class="App\Controller\JsonController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\Controller\JsonController"/>
+      </call>
+    </service>
     <service id="App\Controller\MainController" class="App\Controller\MainController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
@@ -358,11 +372,25 @@
         <argument type="service" id=".service_locator.CshazM0.App\Controller\MainController"/>
       </call>
     </service>
+    <service id="App\Controller\MapController" class="App\Controller\MapController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\Controller\MapController"/>
+      </call>
+    </service>
     <service id="App\Controller\SalleController" class="App\Controller\SalleController" public="true" autowire="true" autoconfigure="true">
       <tag name="controller.service_arguments"/>
       <tag name="container.service_subscriber"/>
       <call method="setContainer">
         <argument type="service" id=".service_locator.CshazM0.App\Controller\SalleController"/>
+      </call>
+    </service>
+    <service id="App\Controller\SalleJSonController" class="App\Controller\SalleJSonController" public="true" autowire="true" autoconfigure="true">
+      <tag name="controller.service_arguments"/>
+      <tag name="container.service_subscriber"/>
+      <call method="setContainer">
+        <argument type="service" id=".service_locator.CshazM0.App\Controller\SalleJSonController"/>
       </call>
     </service>
     <service id="App\Controller\TraitementController" class="App\Controller\TraitementController" public="true" autowire="true" autoconfigure="true">
@@ -376,6 +404,9 @@
       <tag name="form.type"/>
     </service>
     <service id="App\Form\CalendrierType" class="App\Form\CalendrierType" autowire="true" autoconfigure="true">
+      <tag name="form.type"/>
+    </service>
+    <service id="App\Form\MapType" class="App\Form\MapType" autowire="true" autoconfigure="true">
       <tag name="form.type"/>
     </service>
     <service id="App\Form\SalleType" class="App\Form\SalleType" autowire="true" autoconfigure="true">
@@ -397,6 +428,10 @@
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
+    <service id="App\Repository\MapRepository" class="App\Repository\MapRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
     <service id="App\Repository\PanierRepository" class="App\Repository\PanierRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
@@ -406,6 +441,10 @@
       <argument type="service" id="doctrine"/>
     </service>
     <service id="App\Repository\SalleRepository" class="App\Repository\SalleRepository" autowire="true" autoconfigure="true">
+      <tag name="doctrine.repository_service"/>
+      <argument type="service" id="doctrine"/>
+    </service>
+    <service id="App\Repository\TestRepository" class="App\Repository\TestRepository" autowire="true" autoconfigure="true">
       <tag name="doctrine.repository_service"/>
       <argument type="service" id="doctrine"/>
     </service>
@@ -1248,6 +1287,7 @@
       <argument type="collection">
         <argument>App\Form\ActiviteType</argument>
         <argument>App\Form\CalendrierType</argument>
+        <argument>App\Form\MapType</argument>
         <argument>App\Form\SalleType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\FormType</argument>
         <argument>Symfony\Component\Form\Extension\Core\Type\ChoiceType</argument>
@@ -3319,7 +3359,7 @@
       <argument type="service" id="form.registry"/>
     </service>
     <service id="form.extension" class="Symfony\Component\Form\Extension\DependencyInjection\DependencyInjectionExtension">
-      <argument type="service" id=".service_locator..WuqklO"/>
+      <argument type="service" id=".service_locator.3ECvrf6"/>
       <argument type="collection">
         <argument key="Symfony\Component\Form\Extension\Core\Type\FormType" type="iterator">
           <argument type="service" id="form.type_extension.form.transformation_failure_handling"/>
@@ -4220,7 +4260,7 @@
     <service id="doctrine.orm.configuration" class="Doctrine\ORM\Configuration" abstract="true"/>
     <service id="doctrine.orm.entity_manager.abstract" class="Doctrine\ORM\EntityManager" lazy="true" abstract="true"/>
     <service id="doctrine.orm.container_repository_factory" class="Doctrine\Bundle\DoctrineBundle\Repository\ContainerRepositoryFactory">
-      <argument type="service" id=".service_locator.RFGZmuE"/>
+      <argument type="service" id=".service_locator.MZnDR2z"/>
     </service>
     <service id="doctrine.orm.manager_configurator.abstract" class="Doctrine\Bundle\DoctrineBundle\ManagerConfigurator" abstract="true">
       <argument type="collection"/>
@@ -6122,12 +6162,24 @@
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\CalendrierController" class="App\Controller\CalendrierController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\CalendrierController" class="App\Controller\CalendrierController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\CalendrierController" class="App\Controller\CalendrierController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\JSONActiviteController" class="App\Controller\JSONActiviteController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\JSONActiviteController" class="App\Controller\JSONActiviteController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\JSONActiviteController" class="App\Controller\JSONActiviteController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\JsonController" class="App\Controller\JsonController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\JsonController" class="App\Controller\JsonController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\JsonController" class="App\Controller\JsonController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MainController" class="App\Controller\MainController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\MainController" class="App\Controller\MainController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\MapController" class="App\Controller\MapController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\MapController" class="App\Controller\MapController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\MapController" class="App\Controller\MapController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SalleController" class="App\Controller\SalleController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SalleController" class="App\Controller\SalleController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\SalleController" class="App\Controller\SalleController" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\SalleJSonController" class="App\Controller\SalleJSonController" autowire="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\SalleJSonController" class="App\Controller\SalleJSonController" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Controller\SalleJSonController" class="App\Controller\SalleJSonController" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Contracts\Service\ServiceSubscriberInterface.0.App\Controller\TraitementController" class="App\Controller\TraitementController" autowire="true" abstract="true"/>
     <service id=".instanceof.Symfony\Bundle\FrameworkBundle\Controller\AbstractController.0.App\Controller\TraitementController" class="App\Controller\TraitementController" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Controller\TraitementController" class="App\Controller\TraitementController" autowire="true" autoconfigure="true" abstract="true"/>
@@ -6135,6 +6187,8 @@
     <service id=".abstract.instanceof.App\Form\ActiviteType" class="App\Form\ActiviteType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\CalendrierType" class="App\Form\CalendrierType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\CalendrierType" class="App\Form\CalendrierType" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\MapType" class="App\Form\MapType" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Form\MapType" class="App\Form\MapType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Symfony\Component\Form\FormTypeInterface.0.App\Form\SalleType" class="App\Form\SalleType" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Form\SalleType" class="App\Form\SalleType" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ActiviteRepository" class="App\Repository\ActiviteRepository" autowire="true" abstract="true"/>
@@ -6145,12 +6199,16 @@
     <service id=".abstract.instanceof.App\Repository\CalendrierRepository" class="App\Repository\CalendrierRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\CommandeRepository" class="App\Repository\CommandeRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\CommandeRepository" class="App\Repository\CommandeRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\MapRepository" class="App\Repository\MapRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\MapRepository" class="App\Repository\MapRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\PanierRepository" class="App\Repository\PanierRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\PanierRepository" class="App\Repository\PanierRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\ProduitRepository" class="App\Repository\ProduitRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\SalleRepository" class="App\Repository\SalleRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\SalleRepository" class="App\Repository\SalleRepository" autowire="true" autoconfigure="true" abstract="true"/>
+    <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\TestRepository" class="App\Repository\TestRepository" autowire="true" abstract="true"/>
+    <service id=".abstract.instanceof.App\Repository\TestRepository" class="App\Repository\TestRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".instanceof.Doctrine\Bundle\DoctrineBundle\Repository\ServiceEntityRepositoryInterface.0.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" abstract="true"/>
     <service id=".abstract.instanceof.App\Repository\UserRepository" class="App\Repository\UserRepository" autowire="true" autoconfigure="true" abstract="true"/>
     <service id=".service_locator.7nzbL4K" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -6579,6 +6637,85 @@
         <argument key="repo" type="service_closure" id="App\Repository\CalendrierRepository"/>
       </argument>
     </service>
+    <service id=".service_locator.QtPyWR6" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="activiteRepository" type="service_closure" id="App\Repository\ActiviteRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Evt9KOK" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="Normalizer" type="service_closure" id="debug.serializer"/>
+        <argument key="mr" type="service_closure" id="doctrine"/>
+      </argument>
+    </service>
+    <service id=".service_locator.osZchtQ" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="test" type="service_closure" id=".errored..service_locator.osZchtQ.App\Entity\Activite"/>
+      </argument>
+    </service>
+    <service id=".service_locator.DgVI9c3" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="activite" type="service_closure" id=".errored..service_locator.DgVI9c3.App\Entity\Activite"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.I9EJ4YG" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="activiteRepository" type="service_closure" id="App\Repository\TestRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.3aFRrps" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="activite" type="service_closure" id=".errored..service_locator.3aFRrps.App\Entity\Test"/>
+      </argument>
+    </service>
+    <service id=".service_locator.VZRjqOk" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+        <argument key="test" type="service_closure" id=".errored..service_locator.VZRjqOk.App\Entity\Test"/>
+      </argument>
+    </service>
+    <service id=".service_locator.E0DYH7s" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="activite" type="service_closure" id=".errored..service_locator.E0DYH7s.App\Entity\Test"/>
+        <argument key="entityManager" type="service_closure" id="doctrine.orm.default_entity_manager"/>
+      </argument>
+    </service>
+    <service id=".service_locator.wNQnaqj" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="mapRepository" type="service_closure" id="App\Repository\MapRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator..fYv2LC" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="MapRepository" type="service_closure" id="App\Repository\MapRepository"/>
+        <argument key="SalleRe" type="service_closure" id="App\Repository\SalleRepository"/>
+      </argument>
+    </service>
+    <service id=".service_locator.iRuNtE2" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="map" type="service_closure" id=".errored..service_locator.iRuNtE2.App\Entity\Map"/>
+      </argument>
+    </service>
+    <service id=".service_locator.Kjp190A" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="map" type="service_closure" id=".errored..service_locator.Kjp190A.App\Entity\Map"/>
+        <argument key="mapRepository" type="service_closure" id="App\Repository\MapRepository"/>
+      </argument>
+    </service>
     <service id=".service_locator.HClHANl" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
@@ -6607,11 +6744,12 @@
         <argument key="salle" type="service_closure" id=".errored..service_locator.TrSRmLA.App\Entity\Salle"/>
       </argument>
     </service>
-    <service id=".service_locator..fH8f7S" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.UO0XgHu" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
+        <argument key="MapRepository" type="service_closure" id="App\Repository\MapRepository"/>
         <argument key="calendrierRepository" type="service_closure" id="App\Repository\CalendrierRepository"/>
-        <argument key="salle" type="service_closure" id=".errored..service_locator..fH8f7S.App\Entity\Salle"/>
+        <argument key="salle" type="service_closure" id=".errored..service_locator.UO0XgHu.App\Entity\Salle"/>
       </argument>
     </service>
     <service id=".service_locator.IRNJR8u" class="Symfony\Component\DependencyInjection\ServiceLocator">
@@ -6649,7 +6787,14 @@
         <argument key="salleRepository" type="service_closure" id="App\Repository\SalleRepository"/>
       </argument>
     </service>
-    <service id=".service_locator.RF9ZhGq" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.VfSgjHf" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator"/>
+      <argument type="collection">
+        <argument key="repo" type="service_closure" id="App\Repository\SalleRepository"/>
+        <argument key="serializer" type="service_closure" id="messenger.transport.native_php_serializer"/>
+      </argument>
+    </service>
+    <service id=".service_locator.6BJrXGw" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Controller\ActiviteController::Show_activite" type="service_closure" id=".service_locator.HvawtL6"/>
@@ -6670,8 +6815,23 @@
         <argument key="App\Controller\CalendrierController::planning" type="service_closure" id=".service_locator.veElpNM"/>
         <argument key="App\Controller\CalendrierController::removeStudent" type="service_closure" id=".service_locator.QIRdzHr"/>
         <argument key="App\Controller\CalendrierController::show_front" type="service_closure" id=".service_locator.NoSKBvg"/>
+        <argument key="App\Controller\JSONActiviteController::Allmyactivities" type="service_closure" id=".service_locator.QtPyWR6"/>
+        <argument key="App\Controller\JSONActiviteController::addStudentJSON" type="service_closure" id=".service_locator.Evt9KOK"/>
+        <argument key="App\Controller\JSONActiviteController::delete" type="service_closure" id=".service_locator.DgVI9c3"/>
+        <argument key="App\Controller\JSONActiviteController::show" type="service_closure" id=".service_locator.DvuZ952"/>
+        <argument key="App\Controller\JSONActiviteController::update" type="service_closure" id=".service_locator.osZchtQ"/>
+        <argument key="App\Controller\JsonController::Allmyactivities" type="service_closure" id=".service_locator.I9EJ4YG"/>
+        <argument key="App\Controller\JsonController::addStudentJSON" type="service_closure" id=".service_locator.Evt9KOK"/>
+        <argument key="App\Controller\JsonController::delete" type="service_closure" id=".service_locator.E0DYH7s"/>
+        <argument key="App\Controller\JsonController::show" type="service_closure" id=".service_locator.3aFRrps"/>
+        <argument key="App\Controller\JsonController::update" type="service_closure" id=".service_locator.VZRjqOk"/>
         <argument key="App\Controller\MainController::index" type="service_closure" id=".service_locator.L6THD6C"/>
         <argument key="App\Controller\MainController::planning" type="service_closure" id=".service_locator.veElpNM"/>
+        <argument key="App\Controller\MapController::delete" type="service_closure" id=".service_locator.Kjp190A"/>
+        <argument key="App\Controller\MapController::edit" type="service_closure" id=".service_locator.Kjp190A"/>
+        <argument key="App\Controller\MapController::index" type="service_closure" id=".service_locator.wNQnaqj"/>
+        <argument key="App\Controller\MapController::new" type="service_closure" id=".service_locator..fYv2LC"/>
+        <argument key="App\Controller\MapController::show" type="service_closure" id=".service_locator.iRuNtE2"/>
         <argument key="App\Controller\SalleController::addnewsalle" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\SalleController::ajouter_salle" type="service_closure" id=".service_locator.NM2WyYT"/>
         <argument key="App\Controller\SalleController::chercher_student" type="service_closure" id=".service_locator.AgytMX2"/>
@@ -6683,8 +6843,10 @@
         <argument key="App\Controller\SalleController::new" type="service_closure" id=".service_locator.ZvEUv74"/>
         <argument key="App\Controller\SalleController::new1" type="service_closure" id=".service_locator.ZvEUv74"/>
         <argument key="App\Controller\SalleController::show" type="service_closure" id=".service_locator.TrSRmLA"/>
-        <argument key="App\Controller\SalleController::show_fornt" type="service_closure" id=".service_locator..fH8f7S"/>
+        <argument key="App\Controller\SalleController::show_fornt" type="service_closure" id=".service_locator.UO0XgHu"/>
         <argument key="App\Controller\SalleController::showstudent" type="service_closure" id=".service_locator.HvawtL6"/>
+        <argument key="App\Controller\SalleJSonController::addStudentJSON" type="service_closure" id=".service_locator.Evt9KOK"/>
+        <argument key="App\Controller\SalleJSonController::getAllsalle" type="service_closure" id=".service_locator.VfSgjHf"/>
         <argument key="App\Controller\TraitementController::Show_activitefront" type="service_closure" id=".service_locator.HvawtL6"/>
         <argument key="App\Controller\TraitementController::Show_salle_front" type="service_closure" id=".service_locator.HvawtL6"/>
         <argument key="App\Controller\TraitementController::new1" type="service_closure" id=".service_locator.ZvEUv74"/>
@@ -6710,8 +6872,23 @@
         <argument key="App\Controller\CalendrierController:planning" type="service_closure" id=".service_locator.veElpNM"/>
         <argument key="App\Controller\CalendrierController:removeStudent" type="service_closure" id=".service_locator.QIRdzHr"/>
         <argument key="App\Controller\CalendrierController:show_front" type="service_closure" id=".service_locator.NoSKBvg"/>
+        <argument key="App\Controller\JSONActiviteController:Allmyactivities" type="service_closure" id=".service_locator.QtPyWR6"/>
+        <argument key="App\Controller\JSONActiviteController:addStudentJSON" type="service_closure" id=".service_locator.Evt9KOK"/>
+        <argument key="App\Controller\JSONActiviteController:delete" type="service_closure" id=".service_locator.DgVI9c3"/>
+        <argument key="App\Controller\JSONActiviteController:show" type="service_closure" id=".service_locator.DvuZ952"/>
+        <argument key="App\Controller\JSONActiviteController:update" type="service_closure" id=".service_locator.osZchtQ"/>
+        <argument key="App\Controller\JsonController:Allmyactivities" type="service_closure" id=".service_locator.I9EJ4YG"/>
+        <argument key="App\Controller\JsonController:addStudentJSON" type="service_closure" id=".service_locator.Evt9KOK"/>
+        <argument key="App\Controller\JsonController:delete" type="service_closure" id=".service_locator.E0DYH7s"/>
+        <argument key="App\Controller\JsonController:show" type="service_closure" id=".service_locator.3aFRrps"/>
+        <argument key="App\Controller\JsonController:update" type="service_closure" id=".service_locator.VZRjqOk"/>
         <argument key="App\Controller\MainController:index" type="service_closure" id=".service_locator.L6THD6C"/>
         <argument key="App\Controller\MainController:planning" type="service_closure" id=".service_locator.veElpNM"/>
+        <argument key="App\Controller\MapController:delete" type="service_closure" id=".service_locator.Kjp190A"/>
+        <argument key="App\Controller\MapController:edit" type="service_closure" id=".service_locator.Kjp190A"/>
+        <argument key="App\Controller\MapController:index" type="service_closure" id=".service_locator.wNQnaqj"/>
+        <argument key="App\Controller\MapController:new" type="service_closure" id=".service_locator..fYv2LC"/>
+        <argument key="App\Controller\MapController:show" type="service_closure" id=".service_locator.iRuNtE2"/>
         <argument key="App\Controller\SalleController:addnewsalle" type="service_closure" id=".service_locator.CsMkqUa"/>
         <argument key="App\Controller\SalleController:ajouter_salle" type="service_closure" id=".service_locator.NM2WyYT"/>
         <argument key="App\Controller\SalleController:chercher_student" type="service_closure" id=".service_locator.AgytMX2"/>
@@ -6723,8 +6900,10 @@
         <argument key="App\Controller\SalleController:new" type="service_closure" id=".service_locator.ZvEUv74"/>
         <argument key="App\Controller\SalleController:new1" type="service_closure" id=".service_locator.ZvEUv74"/>
         <argument key="App\Controller\SalleController:show" type="service_closure" id=".service_locator.TrSRmLA"/>
-        <argument key="App\Controller\SalleController:show_fornt" type="service_closure" id=".service_locator..fH8f7S"/>
+        <argument key="App\Controller\SalleController:show_fornt" type="service_closure" id=".service_locator.UO0XgHu"/>
         <argument key="App\Controller\SalleController:showstudent" type="service_closure" id=".service_locator.HvawtL6"/>
+        <argument key="App\Controller\SalleJSonController:addStudentJSON" type="service_closure" id=".service_locator.Evt9KOK"/>
+        <argument key="App\Controller\SalleJSonController:getAllsalle" type="service_closure" id=".service_locator.VfSgjHf"/>
         <argument key="App\Controller\TraitementController:Show_activitefront" type="service_closure" id=".service_locator.HvawtL6"/>
         <argument key="App\Controller\TraitementController:Show_salle_front" type="service_closure" id=".service_locator.HvawtL6"/>
         <argument key="App\Controller\TraitementController:new1" type="service_closure" id=".service_locator.ZvEUv74"/>
@@ -6902,11 +7081,12 @@
       <argument type="service" id="debug.argument_resolver.not_tagged_controller.inner"/>
       <argument type="service" id="debug.stopwatch"/>
     </service>
-    <service id=".service_locator..WuqklO" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.3ECvrf6" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Form\ActiviteType" type="service_closure" id="App\Form\ActiviteType"/>
         <argument key="App\Form\CalendrierType" type="service_closure" id="App\Form\CalendrierType"/>
+        <argument key="App\Form\MapType" type="service_closure" id="App\Form\MapType"/>
         <argument key="App\Form\SalleType" type="service_closure" id="App\Form\SalleType"/>
         <argument key="Symfony\Bridge\Doctrine\Form\Type\EntityType" type="service_closure" id="form.type.entity"/>
         <argument key="Symfony\Component\Form\Extension\Core\Type\ChoiceType" type="service_closure" id="form.type.choice"/>
@@ -7001,16 +7181,18 @@
         <argument key="doctrine.orm.messenger.doctrine_schema_subscriber" type="service_closure" id="doctrine.orm.messenger.doctrine_schema_subscriber"/>
       </argument>
     </service>
-    <service id=".service_locator.RFGZmuE" class="Symfony\Component\DependencyInjection\ServiceLocator">
+    <service id=".service_locator.MZnDR2z" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator"/>
       <argument type="collection">
         <argument key="App\Repository\ActiviteRepository" type="service_closure" id="App\Repository\ActiviteRepository"/>
         <argument key="App\Repository\AzizRepository" type="service_closure" id="App\Repository\AzizRepository"/>
         <argument key="App\Repository\CalendrierRepository" type="service_closure" id="App\Repository\CalendrierRepository"/>
         <argument key="App\Repository\CommandeRepository" type="service_closure" id="App\Repository\CommandeRepository"/>
+        <argument key="App\Repository\MapRepository" type="service_closure" id="App\Repository\MapRepository"/>
         <argument key="App\Repository\PanierRepository" type="service_closure" id="App\Repository\PanierRepository"/>
         <argument key="App\Repository\ProduitRepository" type="service_closure" id="App\Repository\ProduitRepository"/>
         <argument key="App\Repository\SalleRepository" type="service_closure" id="App\Repository\SalleRepository"/>
+        <argument key="App\Repository\TestRepository" type="service_closure" id="App\Repository\TestRepository"/>
         <argument key="App\Repository\UserRepository" type="service_closure" id="App\Repository\UserRepository"/>
       </argument>
     </service>
@@ -7288,15 +7470,39 @@
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
+    <service id=".service_locator.CshazM0.App\Controller\JSONActiviteController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\JSONActiviteController"/>
+      <argument>App\Controller\JSONActiviteController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
+    <service id=".service_locator.CshazM0.App\Controller\JsonController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\JsonController"/>
+      <argument>App\Controller\JsonController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
     <service id=".service_locator.CshazM0.App\Controller\MainController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\MainController"/>
       <argument>App\Controller\MainController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
+    <service id=".service_locator.CshazM0.App\Controller\MapController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\MapController"/>
+      <argument>App\Controller\MapController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
     <service id=".service_locator.CshazM0.App\Controller\SalleController" class="Symfony\Component\DependencyInjection\ServiceLocator">
       <tag name="container.service_locator_context" id="App\Controller\SalleController"/>
       <argument>App\Controller\SalleController</argument>
+      <argument type="service" id="service_container"/>
+      <factory service=".service_locator.CshazM0" method="withContext"/>
+    </service>
+    <service id=".service_locator.CshazM0.App\Controller\SalleJSonController" class="Symfony\Component\DependencyInjection\ServiceLocator">
+      <tag name="container.service_locator_context" id="App\Controller\SalleJSonController"/>
+      <argument>App\Controller\SalleJSonController</argument>
       <argument type="service" id="service_container"/>
       <factory service=".service_locator.CshazM0" method="withContext"/>
     </service>
@@ -7583,12 +7789,12 @@
     <service id="debug.argument_resolver.request.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\RequestValueResolver"/>
     <service id="debug.argument_resolver.session.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\SessionValueResolver"/>
     <service id="debug.argument_resolver.service.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\ServiceValueResolver">
-      <argument type="service" id=".service_locator.RF9ZhGq"/>
+      <argument type="service" id=".service_locator.6BJrXGw"/>
     </service>
     <service id="debug.argument_resolver.default.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\DefaultValueResolver"/>
     <service id="debug.argument_resolver.variadic.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\VariadicValueResolver"/>
     <service id="debug.argument_resolver.not_tagged_controller.inner" class="Symfony\Component\HttpKernel\Controller\ArgumentResolver\NotTaggedControllerValueResolver">
-      <argument type="service" id=".service_locator.RF9ZhGq"/>
+      <argument type="service" id=".service_locator.6BJrXGw"/>
     </service>
     <service id="debug.traced.messenger.bus.default.inner" class="Symfony\Component\Messenger\MessageBus">
       <argument type="iterator">
@@ -7612,8 +7818,15 @@
     <service id=".errored..service_locator.wpwJMw2.App\Entity\Activite" class="App\Entity\Activite"/>
     <service id=".errored..service_locator.0EXxDU3.App\Entity\Calendrier" class="App\Entity\Calendrier"/>
     <service id=".errored..service_locator.5vJ9FMk.App\Entity\Calendrier" class="App\Entity\Calendrier"/>
+    <service id=".errored..service_locator.osZchtQ.App\Entity\Activite" class="App\Entity\Activite"/>
+    <service id=".errored..service_locator.DgVI9c3.App\Entity\Activite" class="App\Entity\Activite"/>
+    <service id=".errored..service_locator.3aFRrps.App\Entity\Test" class="App\Entity\Test"/>
+    <service id=".errored..service_locator.VZRjqOk.App\Entity\Test" class="App\Entity\Test"/>
+    <service id=".errored..service_locator.E0DYH7s.App\Entity\Test" class="App\Entity\Test"/>
+    <service id=".errored..service_locator.iRuNtE2.App\Entity\Map" class="App\Entity\Map"/>
+    <service id=".errored..service_locator.Kjp190A.App\Entity\Map" class="App\Entity\Map"/>
     <service id=".errored..service_locator.TrSRmLA.App\Entity\Salle" class="App\Entity\Salle"/>
-    <service id=".errored..service_locator..fH8f7S.App\Entity\Salle" class="App\Entity\Salle"/>
+    <service id=".errored..service_locator.UO0XgHu.App\Entity\Salle" class="App\Entity\Salle"/>
     <service id=".errored..service_locator.IRNJR8u.App\Entity\Salle" class="App\Entity\Salle"/>
     <service id=".errored..service_locator.V1m3Rhe.App\Entity\Salle" class="App\Entity\Salle"/>
     <service id=".console.command.about.lazy" class="Symfony\Component\Console\Command\LazyCommand">
@@ -8561,7 +8774,7 @@
     <service id="sensio_framework_extra.security.expression_language" alias="sensio_framework_extra.security.expression_language.default"/>
     <service id="container.env_var_processors_locator" alias=".service_locator.7nzbL4K" public="true"/>
     <service id="twig.loader.filesystem" alias="twig.loader.native_filesystem"/>
-    <service id="argument_resolver.controller_locator" alias=".service_locator.RF9ZhGq"/>
+    <service id="argument_resolver.controller_locator" alias=".service_locator.6BJrXGw"/>
     <service id="doctrine.id_generator_locator" alias=".service_locator.KLVvNIq"/>
     <service id="twig.loader" alias="twig.loader.native_filesystem"/>
     <service id="Psr\Log\LoggerInterface $requestLogger" alias="monolog.logger.request"/>
@@ -8584,11 +8797,14 @@
     <service id=".service_locator.o.uf2zi" alias=".service_locator.7nzbL4K"/>
     <service id=".service_locator.M_PVH31" alias=".service_locator.wpwJMw2"/>
     <service id=".service_locator.27c_jQX" alias=".service_locator.7.c5n1b"/>
+    <service id=".service_locator.DzQ3Ray" alias=".service_locator.Evt9KOK"/>
+    <service id=".service_locator.pyHsszx" alias=".service_locator.osZchtQ"/>
+    <service id=".service_locator..C45JwD" alias=".service_locator.VZRjqOk"/>
     <service id=".service_locator.wIlSgcI" alias=".service_locator.HClHANl"/>
-    <service id=".service_locator.Kk0okmJ" alias=".service_locator..fH8f7S"/>
-    <service id=".service_locator.ynOoBqX" alias=".service_locator.RF9ZhGq"/>
+    <service id=".service_locator.uIF8x_Y" alias=".service_locator.UO0XgHu"/>
+    <service id=".service_locator.QPSGxDl" alias=".service_locator.6BJrXGw"/>
     <service id=".service_locator.9XMoc9I" alias=".service_locator.kzegaci"/>
-    <service id=".service_locator.vtEQA1N" alias=".service_locator..WuqklO"/>
+    <service id=".service_locator.I_SHKPp" alias=".service_locator.3ECvrf6"/>
     <service id=".service_locator.XW18Svm" alias=".service_locator.TcKhdzh"/>
     <service id=".service_locator.O24_MAy" alias=".service_locator.yY.p4P7"/>
     <service id=".service_locator.VZoQk0z" alias=".service_locator.CshazM0"/>
@@ -8650,16 +8866,29 @@
     <service id=".service_locator.vjX7yrk" alias=".service_locator.0EXxDU3"/>
     <service id=".service_locator.QYwOniw" alias=".service_locator.L6THD6C"/>
     <service id=".service_locator.NxThfWM" alias=".service_locator.5vJ9FMk"/>
+    <service id=".service_locator.X.uAoaJ" alias=".service_locator.QtPyWR6"/>
+    <service id=".service_locator.9QWg_R8" alias=".service_locator.Evt9KOK"/>
+    <service id=".service_locator.OaneKiw" alias=".service_locator.osZchtQ"/>
+    <service id=".service_locator.lD0mDiy" alias=".service_locator.DgVI9c3"/>
+    <service id=".service_locator.QL8KMGU" alias=".service_locator.I9EJ4YG"/>
+    <service id=".service_locator.DjyK2dy" alias=".service_locator.3aFRrps"/>
+    <service id=".service_locator.Vyo1sfD" alias=".service_locator.VZRjqOk"/>
+    <service id=".service_locator.RW5Kdo7" alias=".service_locator.E0DYH7s"/>
+    <service id=".service_locator.2UY752L" alias=".service_locator.wNQnaqj"/>
+    <service id=".service_locator.E5y2JXO" alias=".service_locator..fYv2LC"/>
+    <service id=".service_locator.W.HR7ls" alias=".service_locator.iRuNtE2"/>
+    <service id=".service_locator.uvu6MwN" alias=".service_locator.Kjp190A"/>
     <service id=".service_locator.eQMY6ty" alias=".service_locator.HClHANl"/>
     <service id=".service_locator.lG5lfEB" alias=".service_locator.AgytMX2"/>
     <service id=".service_locator.6pSnQnJ" alias=".service_locator.ZvEUv74"/>
     <service id=".service_locator.6QjvSUp" alias=".service_locator.TrSRmLA"/>
-    <service id=".service_locator.OAVsMyH" alias=".service_locator..fH8f7S"/>
+    <service id=".service_locator.A_cY6e9" alias=".service_locator.UO0XgHu"/>
     <service id=".service_locator.hzBqqji" alias=".service_locator.IRNJR8u"/>
     <service id=".service_locator.LUtyfj2" alias=".service_locator.V1m3Rhe"/>
     <service id=".service_locator.Ppx1abI" alias=".service_locator.LgxktDZ"/>
     <service id=".service_locator.9e2t_lq" alias=".service_locator.CsMkqUa"/>
     <service id=".service_locator.cUsK1gR" alias=".service_locator.NM2WyYT"/>
+    <service id=".service_locator.6j_sGbn" alias=".service_locator.VfSgjHf"/>
     <service id=".service_locator.Kyflpr1" alias=".service_locator.CshazM0"/>
     <service id=".service_locator.u6DWx23" alias=".service_locator.cXsfP3P"/>
     <service id=".service_locator.hnz5ZNh" alias=".service_locator.0TACwl3"/>

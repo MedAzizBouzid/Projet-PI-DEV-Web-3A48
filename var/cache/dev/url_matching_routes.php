@@ -21,12 +21,21 @@ return [
         '/activite/Show_activite' => [[['_route' => 'Show_activite', '_controller' => 'App\\Controller\\ActiviteController::Show_activite'], null, null, null, false, false, null]],
         '/calendrier' => [[['_route' => 'app_calendrier_index', '_controller' => 'App\\Controller\\CalendrierController::index'], null, ['GET' => 0], null, true, false, null]],
         '/calendrier/calender_front' => [[['_route' => 'app_calendrier_front', '_controller' => 'App\\Controller\\CalendrierController::show_front'], null, ['GET' => 0], null, false, false, null]],
+        '/Displayhome' => [[['_route' => 'Display_Activite', '_controller' => 'App\\Controller\\JSONActiviteController::Allmyactivities'], null, ['GET' => 0], null, false, false, null]],
+        '/AddActivite' => [[['_route' => 'Add_Activite', '_controller' => 'App\\Controller\\JSONActiviteController::addStudentJSON'], null, ['GET' => 0], null, false, false, null]],
+        '/Display_test' => [[['_route' => 'activites', '_controller' => 'App\\Controller\\JsonController::Allmyactivities'], null, ['GET' => 0], null, false, false, null]],
+        '/addTestJSON' => [[['_route' => 'addStudentJSON', '_controller' => 'App\\Controller\\JsonController::addStudentJSON'], null, null, null, false, false, null]],
         '/planning' => [[['_route' => 'app_planning', '_controller' => 'App\\Controller\\MainController::planning'], null, null, null, false, false, null]],
         '/main' => [[['_route' => 'app_main', '_controller' => 'App\\Controller\\MainController::index'], null, null, null, false, false, null]],
+        '/map/displayMap' => [[['_route' => 'app_map_index', '_controller' => 'App\\Controller\\MapController::index'], null, ['GET' => 0], null, false, false, null]],
         '/salle' => [[['_route' => 'app_salle_index', '_controller' => 'App\\Controller\\SalleController::index'], null, ['GET' => 0, 'POST' => 1], null, true, false, null]],
         '/salle/chercher_salle' => [[['_route' => 'chercher_salle', '_controller' => 'App\\Controller\\SalleController::chercher_student'], null, null, null, false, false, null]],
         '/salle/new' => [[['_route' => 'app_salle_new', '_controller' => 'App\\Controller\\SalleController::new'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/salle/new1' => [[['_route' => 'app_salle_new_ajax', '_controller' => 'App\\Controller\\SalleController::new1'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        '/salle/j/son' => [[['_route' => 'app_salle_j_son', '_controller' => 'App\\Controller\\SalleJSonController::index'], null, null, null, false, false, null]],
+        '/AllSalle' => [[['_route' => 'All_Salle', '_controller' => 'App\\Controller\\SalleJSonController::getAllsalle'], null, null, null, false, false, null]],
+        '/addSalleJSON' => [[['_route' => 'addSalleJSON', '_controller' => 'App\\Controller\\SalleJSonController::addStudentJSON'], null, null, null, false, false, null]],
+        '/heeeeey' => [[['_route' => 'map', '_controller' => 'App\\Controller\\TraitementController::map'], null, null, null, false, false, null]],
         '/Show_salle_front' => [[['_route' => 'Show_salle_front', '_controller' => 'App\\Controller\\TraitementController::Show_salle_front'], null, null, null, false, false, null]],
         '/back' => [[['_route' => 'back', '_controller' => 'App\\Controller\\TraitementController::index'], null, null, null, false, false, null]],
         '/front' => [[['_route' => 'app_front', '_controller' => 'App\\Controller\\TraitementController::index_front'], null, null, null, false, false, null]],
@@ -39,6 +48,8 @@ return [
         '/service' => [[['_route' => 'service', '_controller' => 'App\\Controller\\TraitementController::Show_activitefront'], null, null, null, false, false, null]],
         '/ajax' => [[['_route' => 'app_salle_new_ajax1', '_controller' => 'App\\Controller\\TraitementController::new1'], null, ['GET' => 0, 'POST' => 1], null, false, false, null]],
         '/details' => [[['_route' => 'details', '_controller' => 'App\\Controller\\TraitementController::details'], null, null, null, false, false, null]],
+        '/contact' => [[['_route' => 'contact', '_controller' => 'App\\Controller\\TraitementController::contact'], null, null, null, false, false, null]],
+        '/carte' => [[['_route' => 'afficher_carte', '_controller' => 'App\\Controller\\MapController::afficherCarte'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -58,44 +69,56 @@ return [
                     .')'
                 .')'
                 .'|/activite(?'
-                    .'|show/([^/]++)(*:194)'
+                    .'|s(?'
+                        .'|how/([^/]++)(*:197)'
+                        .'|/([^/]++)(*:214)'
+                    .')'
                     .'|/(?'
                         .'|([^/]++)(?'
                             .'|/(?'
-                                .'|front(*:226)'
-                                .'|edit(*:238)'
+                                .'|front(*:247)'
+                                .'|edit(*:259)'
                             .')'
-                            .'|(*:247)'
+                            .'|(*:268)'
                         .')'
-                        .'|findActitivité(*:271)'
+                        .'|findActitivité(*:292)'
                     .')'
                 .')'
                 .'|/calendrier/(?'
                     .'|([^/]++)(?'
-                        .'|(*:307)'
+                        .'|(*:328)'
                         .'|/(?'
-                            .'|new(*:322)'
-                            .'|edit(*:334)'
+                            .'|new(*:343)'
+                            .'|edit(*:355)'
                         .')'
                     .')'
-                    .'|find(*:348)'
-                    .'|api/([^/]++)/edit(*:373)'
+                    .'|find(*:369)'
+                    .'|api/([^/]++)/edit(*:394)'
+                .')'
+                .'|/Edit_activites/([^/]++)(*:427)'
+                .'|/Delete_activites/([^/]++)(*:461)'
+                .'|/map/([^/]++)(?'
+                    .'|/(?'
+                        .'|Add_MapToSSalle(*:504)'
+                        .'|edit(*:516)'
+                    .')'
+                    .'|(*:525)'
                 .')'
                 .'|/salle/(?'
                     .'|([^/]++)(?'
-                        .'|(*:403)'
+                        .'|(*:555)'
                         .'|/(?'
-                            .'|front(*:420)'
-                            .'|edit(*:432)'
+                            .'|front(*:572)'
+                            .'|edit(*:584)'
                         .')'
-                        .'|(*:441)'
+                        .'|(*:593)'
                     .')'
-                    .'|Show_salle(*:460)'
-                    .'|delete/([^/]++)(*:483)'
-                    .'|find_Salle(*:501)'
+                    .'|Show_salle(*:612)'
+                    .'|delete/([^/]++)(*:635)'
+                    .'|find_Salle(*:653)'
                     .'|a(?'
-                        .'|ddnew(*:518)'
-                        .'|jouter_salle(*:538)'
+                        .'|ddnew(*:670)'
+                        .'|jouter_salle(*:690)'
                     .')'
                 .')'
             .')/?$}sDu',
@@ -108,25 +131,34 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception_panel::body'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception_panel::stylesheet'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        194 => [[['_route' => 'app_activite_show', '_controller' => 'App\\Controller\\ActiviteController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        226 => [[['_route' => 'app_activite_show_front', '_controller' => 'App\\Controller\\ActiviteController::show_act'], ['id'], ['GET' => 0], null, false, false, null]],
-        238 => [[['_route' => 'app_activite_edit', '_controller' => 'App\\Controller\\ActiviteController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        247 => [[['_route' => 'app_activite_delete', '_controller' => 'App\\Controller\\ActiviteController::removeStudent'], ['id'], null, null, false, true, null]],
-        271 => [[['_route' => 'find_actitivité', '_controller' => 'App\\Controller\\ActiviteController::findSalle'], [], null, null, false, false, null]],
-        307 => [[['_route' => 'app_planning_delete', '_controller' => 'App\\Controller\\CalendrierController::removeStudent'], ['id'], null, null, false, true, null]],
-        322 => [[['_route' => 'app_calendrier_new', '_controller' => 'App\\Controller\\CalendrierController::new'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        334 => [[['_route' => 'app_calendrier_edit', '_controller' => 'App\\Controller\\CalendrierController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        348 => [[['_route' => 'find_calendar', '_controller' => 'App\\Controller\\CalendrierController::find_event'], [], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        373 => [[['_route' => 'api_event_api', '_controller' => 'App\\Controller\\CalendrierController::MiseAjourEvent'], ['id'], ['PUT' => 0], null, false, false, null]],
-        403 => [[['_route' => 'app_salle_show', '_controller' => 'App\\Controller\\SalleController::show'], ['id'], ['GET' => 0], null, false, true, null]],
-        420 => [[['_route' => 'app_salle_show_front', '_controller' => 'App\\Controller\\SalleController::show_fornt'], ['id'], ['GET' => 0], null, false, false, null]],
-        432 => [[['_route' => 'app_salle_edit', '_controller' => 'App\\Controller\\SalleController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
-        441 => [[['_route' => 'app_salle_delete', '_controller' => 'App\\Controller\\SalleController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
-        460 => [[['_route' => 'Show_salle', '_controller' => 'App\\Controller\\SalleController::showstudent'], [], null, null, false, false, null]],
-        483 => [[['_route' => 'deleteevent', '_controller' => 'App\\Controller\\SalleController::deleteevent'], ['id'], null, null, false, true, null]],
-        501 => [[['_route' => 'find_Salle', '_controller' => 'App\\Controller\\SalleController::findSalle'], [], null, null, false, false, null]],
-        518 => [[['_route' => 'addnew_salle', '_controller' => 'App\\Controller\\SalleController::addnewsalle'], [], null, null, false, false, null]],
-        538 => [
+        197 => [[['_route' => 'app_activite_show', '_controller' => 'App\\Controller\\ActiviteController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        214 => [[['_route' => 'show_activite', '_controller' => 'App\\Controller\\JsonController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        247 => [[['_route' => 'app_activite_show_front', '_controller' => 'App\\Controller\\ActiviteController::show_act'], ['id'], ['GET' => 0], null, false, false, null]],
+        259 => [[['_route' => 'app_activite_edit', '_controller' => 'App\\Controller\\ActiviteController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        268 => [[['_route' => 'app_activite_delete', '_controller' => 'App\\Controller\\ActiviteController::removeStudent'], ['id'], null, null, false, true, null]],
+        292 => [[['_route' => 'find_actitivité', '_controller' => 'App\\Controller\\ActiviteController::findSalle'], [], null, null, false, false, null]],
+        328 => [[['_route' => 'app_planning_delete', '_controller' => 'App\\Controller\\CalendrierController::removeStudent'], ['id'], null, null, false, true, null]],
+        343 => [[['_route' => 'app_calendrier_new', '_controller' => 'App\\Controller\\CalendrierController::new'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        355 => [[['_route' => 'app_calendrier_edit', '_controller' => 'App\\Controller\\CalendrierController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        369 => [[['_route' => 'find_calendar', '_controller' => 'App\\Controller\\CalendrierController::find_event'], [], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        394 => [[['_route' => 'api_event_api', '_controller' => 'App\\Controller\\CalendrierController::MiseAjourEvent'], ['id'], ['PUT' => 0], null, false, false, null]],
+        427 => [[['_route' => 'update_activite', '_controller' => 'App\\Controller\\JsonController::update'], ['id'], ['PUT' => 0], null, false, true, null]],
+        461 => [[['_route' => 'delete_activite', '_controller' => 'App\\Controller\\JsonController::delete'], ['id'], ['DELETE' => 0, 'GET' => 1], null, false, true, null]],
+        504 => [[['_route' => 'app_Map_new', '_controller' => 'App\\Controller\\MapController::new'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        516 => [[['_route' => 'app_map_edit', '_controller' => 'App\\Controller\\MapController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        525 => [
+            [['_route' => 'app_map_show', '_controller' => 'App\\Controller\\MapController::show'], ['id'], ['GET' => 0], null, false, true, null],
+            [['_route' => 'app_map_delete', '_controller' => 'App\\Controller\\MapController::delete'], ['id'], ['POST' => 0], null, false, true, null],
+        ],
+        555 => [[['_route' => 'app_salle_show', '_controller' => 'App\\Controller\\SalleController::show'], ['id'], ['GET' => 0], null, false, true, null]],
+        572 => [[['_route' => 'app_salle_show_front', '_controller' => 'App\\Controller\\SalleController::show_fornt'], ['id'], ['GET' => 0], null, false, false, null]],
+        584 => [[['_route' => 'app_salle_edit', '_controller' => 'App\\Controller\\SalleController::edit'], ['id'], ['GET' => 0, 'POST' => 1], null, false, false, null]],
+        593 => [[['_route' => 'app_salle_delete', '_controller' => 'App\\Controller\\SalleController::delete'], ['id'], ['POST' => 0], null, false, true, null]],
+        612 => [[['_route' => 'Show_salle', '_controller' => 'App\\Controller\\SalleController::showstudent'], [], null, null, false, false, null]],
+        635 => [[['_route' => 'deleteevent', '_controller' => 'App\\Controller\\SalleController::deleteevent'], ['id'], null, null, false, true, null]],
+        653 => [[['_route' => 'find_Salle', '_controller' => 'App\\Controller\\SalleController::findSalle'], [], null, null, false, false, null]],
+        670 => [[['_route' => 'addnew_salle', '_controller' => 'App\\Controller\\SalleController::addnewsalle'], [], null, null, false, false, null]],
+        690 => [
             [['_route' => 'app_salle', '_controller' => 'App\\Controller\\SalleController::ajouter_salle'], [], null, null, false, false, null],
             [null, null, null, null, false, false, 0],
         ],

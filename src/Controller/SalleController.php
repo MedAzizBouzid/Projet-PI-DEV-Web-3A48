@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Salle;
 use App\Form\SalleType;
 use App\Repository\CalendrierRepository;
+use App\Repository\MapRepository;
 use App\Repository\SalleRepository;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
@@ -176,9 +177,11 @@ public function chercher_student(EntityManagerInterface $em,Request $request,Sal
       // _______________________________________________________________________________
 
     #[Route('/{id}/front', name: 'app_salle_show_front', methods: ['GET'])]
-    public function show_fornt(Salle $salle,CalendrierRepository $calendrierRepository): Response
+    public function show_fornt(Salle $salle,MapRepository $MapRepository,CalendrierRepository $calendrierRepository): Response
     {
         $events = $calendrierRepository->findcalendarBySalle($salle->getId());
+        $MapData = $MapRepository->findMapBySalle($salle->getId());
+
         $rdvs = [];
         foreach($events as $event){
             $rdvs[] = [
@@ -191,14 +194,46 @@ public function chercher_student(EntityManagerInterface $em,Request $request,Sal
                 'borderColor' => $event->getBorderColor(),
                 'textColor' => $event->getTextColor(),
              ];
+            //  $mapTab = [];
+            //  foreach($mapp as $map){
+            //      $rdvs[] = [
+            //          'id' => $map->getId(),    
+            //          'Latitude' => $map->getLat(),   
+            //          'longitidunale' => $map->getLat(),   
+         
+            //       ];
+            //  }
+            //  $MapData = json_encode($mapTab);
         }
         $data = json_encode($rdvs);
         return $this->render('front/class_details.html.twig', [
             'salle' => $salle,
             'data'=>$data,
+            'MapData'=>$MapData,
+
         ]);
     }
+
 // _______________________________________________________________________________
+// #[Route('/{id}/show_Map_Front', name: 'show_Map_Front', methods: ['GET'])]
+// public function show_Map_Front(Salle $salle,MapRepository $MapRepository): Response
+// {
+//     $mapp = $MapRepository->findMapBySalle($salle->getId());
+//     $mapTab = [];
+//     foreach($mapp as $event){
+//         $rdvs[] = [
+//             'id' => $event->getId(),    
+//             'Latitude' => $event->getLat(),   
+//             'longitidunale' => $event->getLat(),   
+
+//          ];
+//     }
+//     $MapData = json_encode($mapTab);
+//     return $this->render('front/class_details.html.twig', [
+//         'salle' => $salle,
+//         'data'=>$MapData,
+//     ]);
+// }
 
     #[Route('/{id}/edit', name: 'app_salle_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Salle $salle, SalleRepository $salleRepository,SluggerInterface $slugger): Response

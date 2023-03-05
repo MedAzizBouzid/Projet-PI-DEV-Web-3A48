@@ -387,20 +387,9 @@ th{
             // line 235
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["p"], "recomendation", [], "any", false, false, false, 235), "html", null, true);
             echo "</td>
-\t\t\t\t\t\t\t\t\t<td></ul>";
-            // line 236
-            $context['_parent'] = $context;
-            $context['_seq'] = twig_ensure_traversable(twig_get_attribute($this->env, $this->source, $context["p"], "salles", [], "any", false, false, false, 236));
-            foreach ($context['_seq'] as $context["_key"] => $context["c"]) {
-                echo " <li>";
-                echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["c"], "nom", [], "any", false, false, false, 236), "html", null, true);
-                echo "</li>";
-            }
-            $_parent = $context['_parent'];
-            unset($context['_seq'], $context['_iterated'], $context['_key'], $context['c'], $context['_parent'], $context['loop']);
-            $context = array_intersect_key($context, $_parent) + $_parent;
-            echo " <ul></td>
-\t\t\t\t\t\t\t\t\t<td>
+\t\t\t\t\t\t\t\t\t";
+            // line 237
+            echo "\t\t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t<td><a href=\"";
             // line 238
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_activite_delete", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 238)]), "html", null, true);
@@ -546,7 +535,7 @@ btnToggle.addEventListener('click', () => {
 
     public function getDebugInfo()
     {
-        return array (  505 => 363,  458 => 317,  453 => 313,  451 => 296,  447 => 293,  445 => 292,  443 => 291,  441 => 258,  433 => 251,  428 => 247,  415 => 241,  411 => 240,  406 => 238,  392 => 236,  388 => 235,  384 => 234,  380 => 233,  376 => 232,  372 => 231,  368 => 230,  364 => 229,  360 => 228,  354 => 224,  350 => 223,  342 => 217,  328 => 204,  324 => 198,  317 => 192,  311 => 188,  307 => 185,  300 => 179,  296 => 177,  287 => 171,  281 => 168,  277 => 167,  273 => 166,  266 => 162,  262 => 161,  258 => 160,  250 => 155,  246 => 154,  242 => 153,  234 => 148,  230 => 147,  226 => 146,  217 => 140,  213 => 139,  209 => 138,  199 => 131,  195 => 130,  191 => 129,  181 => 122,  177 => 121,  173 => 120,  165 => 115,  161 => 114,  157 => 113,  151 => 109,  148 => 108,  131 => 92,  128 => 90,  121 => 85,  111 => 77,  108 => 71,  99 => 57,  94 => 53,  91 => 49,  87 => 30,  83 => 27,  80 => 25,  77 => 20,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  494 => 363,  447 => 317,  442 => 313,  440 => 296,  436 => 293,  434 => 292,  432 => 291,  430 => 258,  422 => 251,  417 => 247,  404 => 241,  400 => 240,  395 => 238,  392 => 237,  388 => 235,  384 => 234,  380 => 233,  376 => 232,  372 => 231,  368 => 230,  364 => 229,  360 => 228,  354 => 224,  350 => 223,  342 => 217,  328 => 204,  324 => 198,  317 => 192,  311 => 188,  307 => 185,  300 => 179,  296 => 177,  287 => 171,  281 => 168,  277 => 167,  273 => 166,  266 => 162,  262 => 161,  258 => 160,  250 => 155,  246 => 154,  242 => 153,  234 => 148,  230 => 147,  226 => 146,  217 => 140,  213 => 139,  209 => 138,  199 => 131,  195 => 130,  191 => 129,  181 => 122,  177 => 121,  173 => 120,  165 => 115,  161 => 114,  157 => 113,  151 => 109,  148 => 108,  131 => 92,  128 => 90,  121 => 85,  111 => 77,  108 => 71,  99 => 57,  94 => 53,  91 => 49,  87 => 30,  83 => 27,  80 => 25,  77 => 20,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -786,7 +775,7 @@ th{
 \t\t\t\t\t\t\t\t\t<td>{{p.GRPmusculaire}}</td>
 \t\t\t\t\t\t\t\t\t<td>{{p.tenue}}</td>
 \t\t\t\t\t\t\t\t\t<td>{{p.recomendation}}</td>
-\t\t\t\t\t\t\t\t\t<td></ul>{% for c in p.salles %} <li>{{c.nom}}</li>{% endfor %} <ul></td>
+\t\t\t\t\t\t\t\t\t{# <td></ul>{% for c in p.salles %} <li>{{c.nom}}</li>{% endfor %} <ul></td> #}
 \t\t\t\t\t\t\t\t\t<td>
 \t\t\t\t\t\t\t\t\t<td><a href=\"{{path('app_activite_delete',{'id':p.id})}}\"><i class=\"bi bi-trash\"></i></a></td>
 

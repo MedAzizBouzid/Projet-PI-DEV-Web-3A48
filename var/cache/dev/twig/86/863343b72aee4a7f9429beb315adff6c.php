@@ -27,6 +27,7 @@ class __TwigTemplate_020bc9b9557e98b51e34ad8921a0b994 extends Template
         $this->parent = false;
 
         $this->blocks = [
+            'body' => [$this, 'block_body'],
         ];
     }
 
@@ -39,337 +40,238 @@ class __TwigTemplate_020bc9b9557e98b51e34ad8921a0b994 extends Template
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "template", "front/contact.html.twig"));
 
-        // line 1
-        echo "<!DOCTYPE html>
-<html lang=\"zxx\">
-
-<head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"description\" content=\"Gym Template\">
-    <meta name=\"keywords\" content=\"Gym, unica, creative, html\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">
-    <title>Gym | Template</title>
-
-    <!-- Google Font -->
-    <link href=\"https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap\" rel=\"stylesheet\">
-    <link href=\"https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap\" rel=\"stylesheet\">
-
-    <!-- Css Styles -->
-    <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/font-awesome.min.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/flaticon.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/owl.carousel.min.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/barfiller.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/magnific-popup.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/slicknav.min.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/style.css\" type=\"text/css\">
-</head>
-
-<body>
-    <!-- Page Preloder -->
-    <div id=\"preloder\">
-        <div class=\"loader\"></div>
-    </div>
-
-    <!-- Offcanvas Menu Section Begin -->
-    <div class=\"offcanvas-menu-overlay\"></div>
-    <div class=\"offcanvas-menu-wrapper\">
-        <div class=\"canvas-close\">
-            <i class=\"fa fa-close\"></i>
-        </div>
-        <div class=\"canvas-search search-switch\">
-            <i class=\"fa fa-search\"></i>
-        </div>
-        <nav class=\"canvas-menu mobile-menu\">
-            <ul>
-                <li><a href=\"./index.html\">Home</a></li>
-                <li><a href=\"./about-us.html\">About Us</a></li>
-                <li><a href=\"./class-details.html\">Classes</a></li>
-                <li><a href=\"./services.html\">Services</a></li>
-                <li><a href=\"./team.html\">Our Team</a></li>
-                <li><a href=\"#\">Pages</a>
-                    <ul class=\"dropdown\">
-                        <li><a href=\"./about-us.html\">About us</a></li>
-                        <li><a href=\"./class-timetable.html\">Classes timetable</a></li>
-                        <li><a href=\"./bmi-calculator.html\">Bmi calculate</a></li>
-                        <li><a href=\"./team.html\">Our team</a></li>
-                        <li><a href=\"./gallery.html\">Gallery</a></li>
-                        <li><a href=\"./blog.html\">Our blog</a></li>
-                        <li><a href=\"./404.html\">404</a></li>
-                    </ul>
-                </li>
-                <li><a href=\"./contact.html\">Contact</a></li>
-            </ul>
-        </nav>
-        <div id=\"mobile-menu-wrap\"></div>
-        <div class=\"canvas-social\">
-            <a href=\"#\"><i class=\"fa fa-facebook\"></i></a>
-            <a href=\"#\"><i class=\"fa fa-twitter\"></i></a>
-            <a href=\"#\"><i class=\"fa fa-youtube-play\"></i></a>
-            <a href=\"#\"><i class=\"fa fa-instagram\"></i></a>
-        </div>
-    </div>
-    <!-- Offcanvas Menu Section End -->
-
-    <!-- Header Section Begin -->
-    <header class=\"header-section\">
-        <div class=\"container-fluid\">
-            <div class=\"row\">
-                <div class=\"col-lg-3\">
-                    <div class=\"logo\">
-                        <a href=\"./index.html\">
-                            <img src=\"img/logo.png\" alt=\"\">
-                        </a>
-                    </div>
-                </div>
-                <div class=\"col-lg-6\">
-                    <nav class=\"nav-menu\">
-                        <ul>
-                            <li><a href=\"./index.html\">Home</a></li>
-                            <li><a href=\"./about-us.html\">About Us</a></li>
-                            <li><a href=\"./class-details.html\">Classes</a></li>
-                            <li><a href=\"./services.html\">Services</a></li>
-                            <li><a href=\"./team.html\">Our Team</a></li>
-                            <li><a href=\"#\">Pages</a>
-                                <ul class=\"dropdown\">
-                                    <li><a href=\"./about-us.html\">About us</a></li>
-                                    <li><a href=\"./class-timetable.html\">Classes timetable</a></li>
-                                    <li><a href=\"./bmi-calculator.html\">Bmi calculate</a></li>
-                                    <li><a href=\"./team.html\">Our team</a></li>
-                                    <li><a href=\"./gallery.html\">Gallery</a></li>
-                                    <li><a href=\"./blog.html\">Our blog</a></li>
-                                    <li><a href=\"./404.html\">404</a></li>
-                                </ul>
-                            </li>
-                            <li class=\"active\"><a href=\"./contact.html\">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class=\"col-lg-3\">
-                    <div class=\"top-option\">
-                        <div class=\"to-search search-switch\">
-                            <i class=\"fa fa-search\"></i>
-                        </div>
-                        <div class=\"to-social\">
-                            <a href=\"#\"><i class=\"fa fa-facebook\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-twitter\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-youtube-play\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-instagram\"></i></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=\"canvas-open\">
-                <i class=\"fa fa-bars\"></i>
-            </div>
-        </div>
-    </header>
-    <!-- Header End -->
-
-    <!-- Breadcrumb Section Begin -->
-    <section class=\"breadcrumb-section set-bg\" data-setbg=\"img/breadcrumb-bg.jpg\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-lg-12 text-center\">
-                    <div class=\"breadcrumb-text\">
-                        <h2>Contact Us</h2>
-                        <div class=\"bt-option\">
-                            <a href=\"./index.html\">Home</a>
-                            <a href=\"#\">Pages</a>
-                            <span>Contact us</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Breadcrumb Section End -->
-
-    <!-- Contact Section Begin -->
-    <section class=\"contact-section spad\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-lg-6\">
-                    <div class=\"section-title contact-title\">
-                        <span>Contact Us</span>
-                        <h2>GET IN TOUCH</h2>
-                    </div>
-                    <div class=\"contact-widget\">
-                        <div class=\"cw-text\">
-                            <i class=\"fa fa-map-marker\"></i>
-                            <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
-                        </div>
-                        <div class=\"cw-text\">
-                            <i class=\"fa fa-mobile\"></i>
-                            <ul>
-                                <li>125-711-811</li>
-                                <li>125-668-886</li>
-                            </ul>
-                        </div>
-                        <div class=\"cw-text email\">
-                            <i class=\"fa fa-envelope\"></i>
-                            <p>Support.gymcenter@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-                <div class=\"col-lg-6\">
-                    <div class=\"leave-comment\">
-                        <form action=\"#\">
-                            <input type=\"text\" placeholder=\"Name\">
-                            <input type=\"text\" placeholder=\"Email\">
-                            <input type=\"text\" placeholder=\"Website\">
-                            <textarea placeholder=\"Comment\"></textarea>
-                            <button type=\"submit\">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class=\"map\">
-                <iframe
-                    src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12087.069761554938!2d-74.2175599360452!3d40.767139456514954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c254b5958982c3%3A0xb6ab3931055a2612!2sEast%20Orange%2C%20NJ%2C%20USA!5e0!3m2!1sen!2sbd!4v1581710470843!5m2!1sen!2sbd\"
-                    height=\"550\" style=\"border:0;\" allowfullscreen=\"\"></iframe>
-            </div>
-        </div>
-    </section>
-    <!-- Contact Section End -->
-
-    <!-- Get In Touch Section Begin -->
-    <div class=\"gettouch-section\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-md-4\">
-                    <div class=\"gt-text\">
-                        <i class=\"fa fa-map-marker\"></i>
-                        <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
-                    </div>
-                </div>
-                <div class=\"col-md-4\">
-                    <div class=\"gt-text\">
-                        <i class=\"fa fa-mobile\"></i>
-                        <ul>
-                            <li>125-711-811</li>
-                            <li>125-668-886</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-md-4\">
-                    <div class=\"gt-text email\">
-                        <i class=\"fa fa-envelope\"></i>
-                        <p>Support.gymcenter@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Get In Touch Section End -->
-
-    <!-- Footer Section Begin -->
-    <section class=\"footer-section\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-lg-4\">
-                    <div class=\"fs-about\">
-                        <div class=\"fa-logo\">
-                            <a href=\"#\"><img src=\"img/logo.png\" alt=\"\"></a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore dolore magna aliqua endisse ultrices gravida lorem.</p>
-                        <div class=\"fa-social\">
-                            <a href=\"#\"><i class=\"fa fa-facebook\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-twitter\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-youtube-play\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-instagram\"></i></a>
-                            <a href=\"#\"><i class=\"fa  fa-envelope-o\"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=\"col-lg-2 col-md-3 col-sm-6\">
-                    <div class=\"fs-widget\">
-                        <h4>Useful links</h4>
-                        <ul>
-                            <li><a href=\"#\">About</a></li>
-                            <li><a href=\"#\">Blog</a></li>
-                            <li><a href=\"#\">Classes</a></li>
-                            <li><a href=\"#\">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-lg-2 col-md-3 col-sm-6\">
-                    <div class=\"fs-widget\">
-                        <h4>Support</h4>
-                        <ul>
-                            <li><a href=\"#\">Login</a></li>
-                            <li><a href=\"#\">My account</a></li>
-                            <li><a href=\"#\">Subscribe</a></li>
-                            <li><a href=\"#\">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-lg-4 col-md-6\">
-                    <div class=\"fs-widget\">
-                        <h4>Tips & Guides</h4>
-                        <div class=\"fw-recent\">
-                            <h6><a href=\"#\">Physical fitness may help prevent depression, anxiety</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                        <div class=\"fw-recent\">
-                            <h6><a href=\"#\">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=\"row\">
-                <div class=\"col-lg-12 text-center\">
-                    <div class=\"copyright-text\">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class=\"fa fa-heart\" aria-hidden=\"true\"></i> by <a href=\"https://colorlib.com\" target=\"_blank\">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Footer Section End -->
-
-    <!-- Search model Begin -->
-    <div class=\"search-model\">
-        <div class=\"h-100 d-flex align-items-center justify-content-center\">
-            <div class=\"search-close-switch\">+</div>
-            <form class=\"search-model-form\">
-                <input type=\"text\" id=\"search-input\" placeholder=\"Search here.....\">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
-
-    <!-- Js Plugins -->
-    <script src=\"js/jquery-3.3.1.min.js\"></script>
-    <script src=\"js/bootstrap.min.js\"></script>
-    <script src=\"js/jquery.magnific-popup.min.js\"></script>
-    <script src=\"js/masonry.pkgd.min.js\"></script>
-    <script src=\"js/jquery.barfiller.js\"></script>
-    <script src=\"js/jquery.slicknav.js\"></script>
-    <script src=\"js/owl.carousel.min.js\"></script>
-    <script src=\"js/main.js\"></script>
+        // line 2
+        echo "
 
 
+";
+        // line 5
+        $this->displayBlock('body', $context, $blocks);
+        // line 187
+        echo "
+ ";
+        // line 189
+        echo "\t\t  
 
-</body>
-
-</html>";
+";
+        // line 192
+        echo "\t\t\t";
+        // line 272
+        echo "\t\t\t\t\t\t\t\t\t";
+        // line 328
+        echo "\t\t\t\t\t\t\t\t";
         
         $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
         
         $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+    }
+
+    // line 5
+    public function block_body($context, array $blocks = [])
+    {
+        $macros = $this->macros;
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2 = $this->extensions["Symfony\\Bundle\\WebProfilerBundle\\Twig\\WebProfilerExtension"];
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->enter($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f = $this->extensions["Symfony\\Bridge\\Twig\\Extension\\ProfilerExtension"];
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->enter($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
+
+        // line 6
+        echo "\t\t<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css\" integrity=\"sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=\" crossorigin=\"anonymous\">
+
+     <style>
+        #calendrier{
+            margin: auto;
+          /*  width: auto !important;
+\t\t\theight: auto !important;*/
+\t\t\t width: 80%;
+\t\t\theight:auto;
+        }
+
+    * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrapper {
+  width: 75%;
+  max-width: 1000px;
+  background-color: #313131;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+
+.contact {
+  padding: 30px 60px;
+  color: white;
+}
+
+h1 {
+  margin-bottom: 60px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.contact-item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+ion-icon {
+  margin-right: 15px;
+}
+
+#map {
+  height: 400px;
+  flex: 1;
+}
+    </style>
+\t  
+
+     ";
+        // line 82
+        echo "
+       <section class=\"hero-section\">
+        <div class=\"hs-slider owl-carousel\">
+            <div class=\"hs-item set-bg\" data-setbg=\"";
+        // line 85
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/front/img/hero/hero-1.jpg"), "html", null, true);
+        echo "\">
+                <div class=\"container\">
+                    <div class=\"row\">
+                        <div class=\"col-lg-6 offset-lg-6\">
+                            <div class=\"hi-text\">
+                                <span>Shape your body</span>
+                                <h1>Be <strong>strong</strong> traning hard</h1>
+                                <a href=\"#\" class=\"primary-btn\">Get info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class=\"hs-item set-bg\" data-setbg=\"";
+        // line 98
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\AssetExtension']->getAssetUrl("assets/front/img/hero/hero-2.jpg"), "html", null, true);
+        echo "\">
+                <div class=\"container\">
+                    <div class=\"row\">
+                        <div class=\"col-lg-6 offset-lg-6\">
+                            <div class=\"hi-text\">
+                                <span>Shape your body</span>
+                                <h1>Be <strong>strong</strong> traning hard</h1>
+                                <a href=\"#\" class=\"primary-btn\">Get info</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>   
+
+
+   <link rel=\"stylesheet\" href=\"./style.css\" />
+    <link
+      rel=\"stylesheet\"
+      href=\"https://unpkg.com/leaflet@1.7.1/dist/leaflet.css\"
+      integrity=\"sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==\"
+      crossorigin=\"\"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class=\"wrapper\">
+      <div class=\"contact\">
+        <h1>Nous contacter</h1>
+        <div class=\"contact-items\">
+          <div class=\"contact-item\">
+            <a href=\"tel:0388888888\">
+              <ion-icon name=\"call\"></ion-icon>
+              03 88 88 88 88
+            </a>
+          </div>
+          <div class=\"contact-item\">
+            <a href=\"mailto:exemple@test.com\">
+              <ion-icon name=\"mail\"></ion-icon>
+              exemple@test.com
+            </a>
+          </div>
+          <div class=\"contact-item\">
+            <a href=\"www.exemple.com\">
+              <ion-icon name=\"globe\"></ion-icon>
+              www.exemple.com
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <div id=\"map\"></div>
+                            </div>
+
+
+    <script
+      type=\"module\"
+      src=\"https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js\"
+    ></script>
+    <script
+      nomodule
+      src=\"https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js\"
+    ></script>
+    <script
+      src=\"https://unpkg.com/leaflet@1.7.1/dist/leaflet.js\"
+      integrity=\"sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==\"
+      crossorigin=\"\"
+    ></script>
+
+
+    <script src=\"./app.js\"></script>
+     <script>
+var map = L.map(\"map\").setView([48.856614, 2.3522219], 13);
+
+var Stadia_OSMBright = L.tileLayer(
+  \"https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png\",
+  {
+    maxZoom: 20,
+    attribution:
+      '&copy; <a href=\"https://stadiamaps.com/\">Stadia Maps</a>, &copy; <a href=\"https://openmaptiles.org/\">OpenMapTiles</a> &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors',
+  }
+);
+
+Stadia_OSMBright.addTo(map);
+
+var marker = L.marker([48.856614, 2.3522219]).addTo(map);
+    
+     \t\t";
+        
+        $__internal_6f47bbe9983af81f1e7450e9a3e3768f->leave($__internal_6f47bbe9983af81f1e7450e9a3e3768f_prof);
+
+        
+        $__internal_5a27a8ba21ca79b61932376b2fa922d2->leave($__internal_5a27a8ba21ca79b61932376b2fa922d2_prof);
 
     }
 
@@ -380,335 +282,344 @@ class __TwigTemplate_020bc9b9557e98b51e34ad8921a0b994 extends Template
 
     public function getDebugInfo()
     {
-        return array (  43 => 1,);
+        return array (  180 => 98,  164 => 85,  159 => 82,  82 => 6,  72 => 5,  62 => 328,  60 => 272,  58 => 192,  54 => 189,  51 => 187,  49 => 5,  44 => 2,);
     }
 
     public function getSourceContext()
     {
-        return new Source("<!DOCTYPE html>
-<html lang=\"zxx\">
+        return new Source("{# {% extends 'front/baseF.html.twig' %} #}
 
-<head>
-    <meta charset=\"UTF-8\">
-    <meta name=\"description\" content=\"Gym Template\">
-    <meta name=\"keywords\" content=\"Gym, unica, creative, html\">
-    <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\">
-    <meta http-equiv=\"X-UA-Compatible\" content=\"ie=edge\">
-    <title>Gym | Template</title>
 
-    <!-- Google Font -->
-    <link href=\"https://fonts.googleapis.com/css?family=Muli:300,400,500,600,700,800,900&display=swap\" rel=\"stylesheet\">
-    <link href=\"https://fonts.googleapis.com/css?family=Oswald:300,400,500,600,700&display=swap\" rel=\"stylesheet\">
 
-    <!-- Css Styles -->
-    <link rel=\"stylesheet\" href=\"css/bootstrap.min.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/font-awesome.min.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/flaticon.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/owl.carousel.min.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/barfiller.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/magnific-popup.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/slicknav.min.css\" type=\"text/css\">
-    <link rel=\"stylesheet\" href=\"css/style.css\" type=\"text/css\">
-</head>
+{% block body %}
+\t\t<link rel=\"stylesheet\" href=\"https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css\" integrity=\"sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=\" crossorigin=\"anonymous\">
 
-<body>
-    <!-- Page Preloder -->
-    <div id=\"preloder\">
-        <div class=\"loader\"></div>
-    </div>
+     <style>
+        #calendrier{
+            margin: auto;
+          /*  width: auto !important;
+\t\t\theight: auto !important;*/
+\t\t\t width: 80%;
+\t\t\theight:auto;
+        }
 
-    <!-- Offcanvas Menu Section Begin -->
-    <div class=\"offcanvas-menu-overlay\"></div>
-    <div class=\"offcanvas-menu-wrapper\">
-        <div class=\"canvas-close\">
-            <i class=\"fa fa-close\"></i>
-        </div>
-        <div class=\"canvas-search search-switch\">
-            <i class=\"fa fa-search\"></i>
-        </div>
-        <nav class=\"canvas-menu mobile-menu\">
-            <ul>
-                <li><a href=\"./index.html\">Home</a></li>
-                <li><a href=\"./about-us.html\">About Us</a></li>
-                <li><a href=\"./class-details.html\">Classes</a></li>
-                <li><a href=\"./services.html\">Services</a></li>
-                <li><a href=\"./team.html\">Our Team</a></li>
-                <li><a href=\"#\">Pages</a>
-                    <ul class=\"dropdown\">
-                        <li><a href=\"./about-us.html\">About us</a></li>
-                        <li><a href=\"./class-timetable.html\">Classes timetable</a></li>
-                        <li><a href=\"./bmi-calculator.html\">Bmi calculate</a></li>
-                        <li><a href=\"./team.html\">Our team</a></li>
-                        <li><a href=\"./gallery.html\">Gallery</a></li>
-                        <li><a href=\"./blog.html\">Our blog</a></li>
-                        <li><a href=\"./404.html\">404</a></li>
-                    </ul>
-                </li>
-                <li><a href=\"./contact.html\">Contact</a></li>
-            </ul>
-        </nav>
-        <div id=\"mobile-menu-wrap\"></div>
-        <div class=\"canvas-social\">
-            <a href=\"#\"><i class=\"fa fa-facebook\"></i></a>
-            <a href=\"#\"><i class=\"fa fa-twitter\"></i></a>
-            <a href=\"#\"><i class=\"fa fa-youtube-play\"></i></a>
-            <a href=\"#\"><i class=\"fa fa-instagram\"></i></a>
-        </div>
-    </div>
-    <!-- Offcanvas Menu Section End -->
+    * {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-    <!-- Header Section Begin -->
-    <header class=\"header-section\">
-        <div class=\"container-fluid\">
-            <div class=\"row\">
-                <div class=\"col-lg-3\">
-                    <div class=\"logo\">
-                        <a href=\"./index.html\">
-                            <img src=\"img/logo.png\" alt=\"\">
-                        </a>
-                    </div>
-                </div>
-                <div class=\"col-lg-6\">
-                    <nav class=\"nav-menu\">
-                        <ul>
-                            <li><a href=\"./index.html\">Home</a></li>
-                            <li><a href=\"./about-us.html\">About Us</a></li>
-                            <li><a href=\"./class-details.html\">Classes</a></li>
-                            <li><a href=\"./services.html\">Services</a></li>
-                            <li><a href=\"./team.html\">Our Team</a></li>
-                            <li><a href=\"#\">Pages</a>
-                                <ul class=\"dropdown\">
-                                    <li><a href=\"./about-us.html\">About us</a></li>
-                                    <li><a href=\"./class-timetable.html\">Classes timetable</a></li>
-                                    <li><a href=\"./bmi-calculator.html\">Bmi calculate</a></li>
-                                    <li><a href=\"./team.html\">Our team</a></li>
-                                    <li><a href=\"./gallery.html\">Gallery</a></li>
-                                    <li><a href=\"./blog.html\">Our blog</a></li>
-                                    <li><a href=\"./404.html\">404</a></li>
-                                </ul>
-                            </li>
-                            <li class=\"active\"><a href=\"./contact.html\">Contact</a></li>
-                        </ul>
-                    </nav>
-                </div>
-                <div class=\"col-lg-3\">
-                    <div class=\"top-option\">
-                        <div class=\"to-search search-switch\">
-                            <i class=\"fa fa-search\"></i>
-                        </div>
-                        <div class=\"to-social\">
-                            <a href=\"#\"><i class=\"fa fa-facebook\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-twitter\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-youtube-play\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-instagram\"></i></a>
+body {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: sans-serif;
+  background-image: linear-gradient(to right, #43e97b 0%, #38f9d7 100%);
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+.wrapper {
+  width: 75%;
+  max-width: 1000px;
+  background-color: #313131;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3);
+  display: flex;
+}
+
+.contact {
+  padding: 30px 60px;
+  color: white;
+}
+
+h1 {
+  margin-bottom: 60px;
+}
+
+.contact-item {
+  display: flex;
+  align-items: center;
+  font-size: 18px;
+}
+
+.contact-item:not(:last-child) {
+  margin-bottom: 30px;
+}
+
+ion-icon {
+  margin-right: 15px;
+}
+
+#map {
+  height: 400px;
+  flex: 1;
+}
+    </style>
+\t  
+
+     {# dd(\$calendar); #}
+
+       <section class=\"hero-section\">
+        <div class=\"hs-slider owl-carousel\">
+            <div class=\"hs-item set-bg\" data-setbg=\"{{ asset('assets/front/img/hero/hero-1.jpg')}}\">
+                <div class=\"container\">
+                    <div class=\"row\">
+                        <div class=\"col-lg-6 offset-lg-6\">
+                            <div class=\"hi-text\">
+                                <span>Shape your body</span>
+                                <h1>Be <strong>strong</strong> traning hard</h1>
+                                <a href=\"#\" class=\"primary-btn\">Get info</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class=\"canvas-open\">
-                <i class=\"fa fa-bars\"></i>
-            </div>
-        </div>
-    </header>
-    <!-- Header End -->
-
-    <!-- Breadcrumb Section Begin -->
-    <section class=\"breadcrumb-section set-bg\" data-setbg=\"img/breadcrumb-bg.jpg\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-lg-12 text-center\">
-                    <div class=\"breadcrumb-text\">
-                        <h2>Contact Us</h2>
-                        <div class=\"bt-option\">
-                            <a href=\"./index.html\">Home</a>
-                            <a href=\"#\">Pages</a>
-                            <span>Contact us</span>
+            <div class=\"hs-item set-bg\" data-setbg=\"{{ asset('assets/front/img/hero/hero-2.jpg')}}\">
+                <div class=\"container\">
+                    <div class=\"row\">
+                        <div class=\"col-lg-6 offset-lg-6\">
+                            <div class=\"hi-text\">
+                                <span>Shape your body</span>
+                                <h1>Be <strong>strong</strong> traning hard</h1>
+                                <a href=\"#\" class=\"primary-btn\">Get info</a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
-    <!-- Breadcrumb Section End -->
+    </section>   
 
-    <!-- Contact Section Begin -->
-    <section class=\"contact-section spad\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-lg-6\">
-                    <div class=\"section-title contact-title\">
-                        <span>Contact Us</span>
-                        <h2>GET IN TOUCH</h2>
-                    </div>
-                    <div class=\"contact-widget\">
-                        <div class=\"cw-text\">
-                            <i class=\"fa fa-map-marker\"></i>
-                            <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
-                        </div>
-                        <div class=\"cw-text\">
-                            <i class=\"fa fa-mobile\"></i>
-                            <ul>
-                                <li>125-711-811</li>
-                                <li>125-668-886</li>
-                            </ul>
-                        </div>
-                        <div class=\"cw-text email\">
-                            <i class=\"fa fa-envelope\"></i>
-                            <p>Support.gymcenter@gmail.com</p>
-                        </div>
-                    </div>
-                </div>
-                <div class=\"col-lg-6\">
-                    <div class=\"leave-comment\">
-                        <form action=\"#\">
-                            <input type=\"text\" placeholder=\"Name\">
-                            <input type=\"text\" placeholder=\"Email\">
-                            <input type=\"text\" placeholder=\"Website\">
-                            <textarea placeholder=\"Comment\"></textarea>
-                            <button type=\"submit\">Submit</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class=\"map\">
-                <iframe
-                    src=\"https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d12087.069761554938!2d-74.2175599360452!3d40.767139456514954!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x89c254b5958982c3%3A0xb6ab3931055a2612!2sEast%20Orange%2C%20NJ%2C%20USA!5e0!3m2!1sen!2sbd!4v1581710470843!5m2!1sen!2sbd\"
-                    height=\"550\" style=\"border:0;\" allowfullscreen=\"\"></iframe>
-            </div>
+
+   <link rel=\"stylesheet\" href=\"./style.css\" />
+    <link
+      rel=\"stylesheet\"
+      href=\"https://unpkg.com/leaflet@1.7.1/dist/leaflet.css\"
+      integrity=\"sha512-xodZBNTC5n17Xt2atTPuE1HxjVMSvLVW9ocqUKLsCC5CXdbqCmblAshOMAS6/keqq/sMZMZ19scR4PsZChSR7A==\"
+      crossorigin=\"\"
+    />
+    <title>Document</title>
+  </head>
+  <body>
+    <div class=\"wrapper\">
+      <div class=\"contact\">
+        <h1>Nous contacter</h1>
+        <div class=\"contact-items\">
+          <div class=\"contact-item\">
+            <a href=\"tel:0388888888\">
+              <ion-icon name=\"call\"></ion-icon>
+              03 88 88 88 88
+            </a>
+          </div>
+          <div class=\"contact-item\">
+            <a href=\"mailto:exemple@test.com\">
+              <ion-icon name=\"mail\"></ion-icon>
+              exemple@test.com
+            </a>
+          </div>
+          <div class=\"contact-item\">
+            <a href=\"www.exemple.com\">
+              <ion-icon name=\"globe\"></ion-icon>
+              www.exemple.com
+            </a>
+          </div>
         </div>
-    </section>
-    <!-- Contact Section End -->
+      </div>
 
-    <!-- Get In Touch Section Begin -->
-    <div class=\"gettouch-section\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-md-4\">
-                    <div class=\"gt-text\">
-                        <i class=\"fa fa-map-marker\"></i>
-                        <p>333 Middle Winchendon Rd, Rindge,<br/> NH 03461</p>
-                    </div>
-                </div>
-                <div class=\"col-md-4\">
-                    <div class=\"gt-text\">
-                        <i class=\"fa fa-mobile\"></i>
-                        <ul>
-                            <li>125-711-811</li>
-                            <li>125-668-886</li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-md-4\">
-                    <div class=\"gt-text email\">
-                        <i class=\"fa fa-envelope\"></i>
-                        <p>Support.gymcenter@gmail.com</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <!-- Get In Touch Section End -->
-
-    <!-- Footer Section Begin -->
-    <section class=\"footer-section\">
-        <div class=\"container\">
-            <div class=\"row\">
-                <div class=\"col-lg-4\">
-                    <div class=\"fs-about\">
-                        <div class=\"fa-logo\">
-                            <a href=\"#\"><img src=\"img/logo.png\" alt=\"\"></a>
-                        </div>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-                            labore dolore magna aliqua endisse ultrices gravida lorem.</p>
-                        <div class=\"fa-social\">
-                            <a href=\"#\"><i class=\"fa fa-facebook\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-twitter\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-youtube-play\"></i></a>
-                            <a href=\"#\"><i class=\"fa fa-instagram\"></i></a>
-                            <a href=\"#\"><i class=\"fa  fa-envelope-o\"></i></a>
-                        </div>
-                    </div>
-                </div>
-                <div class=\"col-lg-2 col-md-3 col-sm-6\">
-                    <div class=\"fs-widget\">
-                        <h4>Useful links</h4>
-                        <ul>
-                            <li><a href=\"#\">About</a></li>
-                            <li><a href=\"#\">Blog</a></li>
-                            <li><a href=\"#\">Classes</a></li>
-                            <li><a href=\"#\">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-lg-2 col-md-3 col-sm-6\">
-                    <div class=\"fs-widget\">
-                        <h4>Support</h4>
-                        <ul>
-                            <li><a href=\"#\">Login</a></li>
-                            <li><a href=\"#\">My account</a></li>
-                            <li><a href=\"#\">Subscribe</a></li>
-                            <li><a href=\"#\">Contact</a></li>
-                        </ul>
-                    </div>
-                </div>
-                <div class=\"col-lg-4 col-md-6\">
-                    <div class=\"fs-widget\">
-                        <h4>Tips & Guides</h4>
-                        <div class=\"fw-recent\">
-                            <h6><a href=\"#\">Physical fitness may help prevent depression, anxiety</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                        <div class=\"fw-recent\">
-                            <h6><a href=\"#\">Fitness: The best exercise to lose belly fat and tone up...</a></h6>
-                            <ul>
-                                <li>3 min read</li>
-                                <li>20 Comment</li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class=\"row\">
-                <div class=\"col-lg-12 text-center\">
-                    <div class=\"copyright-text\">
-                        <p><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-  Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made with <i class=\"fa fa-heart\" aria-hidden=\"true\"></i> by <a href=\"https://colorlib.com\" target=\"_blank\">Colorlib</a>
-  <!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. --></p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-    <!-- Footer Section End -->
-
-    <!-- Search model Begin -->
-    <div class=\"search-model\">
-        <div class=\"h-100 d-flex align-items-center justify-content-center\">
-            <div class=\"search-close-switch\">+</div>
-            <form class=\"search-model-form\">
-                <input type=\"text\" id=\"search-input\" placeholder=\"Search here.....\">
-            </form>
-        </div>
-    </div>
-    <!-- Search model end -->
-
-    <!-- Js Plugins -->
-    <script src=\"js/jquery-3.3.1.min.js\"></script>
-    <script src=\"js/bootstrap.min.js\"></script>
-    <script src=\"js/jquery.magnific-popup.min.js\"></script>
-    <script src=\"js/masonry.pkgd.min.js\"></script>
-    <script src=\"js/jquery.barfiller.js\"></script>
-    <script src=\"js/jquery.slicknav.js\"></script>
-    <script src=\"js/owl.carousel.min.js\"></script>
-    <script src=\"js/main.js\"></script>
+      <div id=\"map\"></div>
+                            </div>
 
 
+    <script
+      type=\"module\"
+      src=\"https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.esm.js\"
+    ></script>
+    <script
+      nomodule
+      src=\"https://unpkg.com/ionicons@5.5.2/dist/ionicons/ionicons.js\"
+    ></script>
+    <script
+      src=\"https://unpkg.com/leaflet@1.7.1/dist/leaflet.js\"
+      integrity=\"sha512-XQoYMqMTK8LvdxXYG3nZ448hOEQiglfqkJs1NOQV44cWnUrBc8PkAOcXy20w0vlaXaVUearIOBhiXZ5V3ynxwA==\"
+      crossorigin=\"\"
+    ></script>
 
-</body>
 
-</html>", "front/contact.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\front\\contact.html.twig");
+    <script src=\"./app.js\"></script>
+     <script>
+var map = L.map(\"map\").setView([48.856614, 2.3522219], 13);
+
+var Stadia_OSMBright = L.tileLayer(
+  \"https://tiles.stadiamaps.com/tiles/osm_bright/{z}/{x}/{y}{r}.png\",
+  {
+    maxZoom: 20,
+    attribution:
+      '&copy; <a href=\"https://stadiamaps.com/\">Stadia Maps</a>, &copy; <a href=\"https://openmaptiles.org/\">OpenMapTiles</a> &copy; <a href=\"http://openstreetmap.org\">OpenStreetMap</a> contributors',
+  }
+);
+
+Stadia_OSMBright.addTo(map);
+
+var marker = L.marker([48.856614, 2.3522219]).addTo(map);
+    
+     \t\t{% endblock %}
+
+ {# ________________________________________________________Debut__Partie JS___________________________________________________________________ #}
+\t\t  
+
+{# </div> #}
+\t\t\t{# </section><!-- Class Details Section End --><!-- Class Timetable Section Begin --><section class=\"class-timetable-section class-details-timetable spad\">
+\t\t\t<div class=\"container\">
+\t\t\t\t<div class=\"row\">
+\t\t\t\t\t<div class=\"col-lg-12\">
+\t\t\t\t\t\t<div class=\"class-details-timetable_title\">
+\t\t\t\t\t\t\t<h5>Classes timetable</h5>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+
+\t\t\t\t<div class=\"row\">
+\t\t\t\t\t<div class=\"col-lg-12\">
+\t\t\t\t\t\t<div class=\"class-timetable details-timetable\">
+\t\t\t\t\t\t\t<table>
+\t\t\t\t\t\t\t\t<thead>
+\t\t\t\t\t\t\t\t\t<tr>
+\t\t\t\t\t\t\t\t\t\t<th></th>
+\t\t\t\t\t\t\t\t\t\t<th>Monday</th>
+\t\t\t\t\t\t\t\t\t\t<th>Tuesday</th>
+\t\t\t\t\t\t\t\t\t\t<th>Wednesday</th>
+\t\t\t\t\t\t\t\t\t\t<th>Thursday</th>
+\t\t\t\t\t\t\t\t\t\t<th>Friday</th>
+\t\t\t\t\t\t\t\t\t\t<th>Saturday</th>
+\t\t\t\t\t\t\t\t\t\t<th>Sunday</th>
+\t\t\t\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t\t\t</thead>
+\t\t\t\t\t\t\t\t<tbody>
+\t\t\t\t\t\t\t\t\t<tr>
+\t\t\t\t\t\t\t\t\t\t<td class=\"class-time\">6.00am - 8.00am</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"workout\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>WEIGHT LOOSE</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>RLefew D. Loee</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"fitness\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Cardio</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>RLefew D. Loee</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"workout\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Yoga</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Keaf Shen</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"fitness\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Fitness</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Kimberly Stone</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg blank-td\"></td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"motivation\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Boxing</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Rachel Adam</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"workout\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Body Building</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Robert Cage</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t\t\t\t<tr>
+\t\t\t\t\t\t\t\t\t\t<td class=\"class-time\">10.00am - 12.00am</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"blank-td\"></td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"fitness\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Fitness</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Kimberly Stone</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"workout\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>WEIGHT LOOSE</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>RLefew D. Loee</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"motivation\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Cardio</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>RLefew D. Loee</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"workout\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Body Building</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Robert Cage</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"motivation\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Karate</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Donald Grey</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"blank-td\"></td>
+\t\t\t\t\t\t\t\t\t</tr> #}
+\t\t\t\t\t\t\t\t\t{# <tr>
+\t\t\t\t\t\t\t\t\t\t<td class=\"class-time\">5.00pm - 7.00pm</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"fitness\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Boxing</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Rachel Adam</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"motivation\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Karate</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Donald Grey</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"workout\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Body Building</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Robert Cage</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"blank-td\"></td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"workout\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Yoga</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Keaf Shen</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"motivation\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Cardio</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>RLefew D. Loee</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"fitness\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Fitness</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Kimberly Stone</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t</tr>
+\t\t\t\t\t\t\t\t\t<tr>
+\t\t\t\t\t\t\t\t\t\t<td class=\"class-time\">7.00pm - 9.00pm</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"motivation\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Cardio</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>RLefew D. Loee</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg blank-td\"></td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"fitness\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Boxing</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Rachel Adam</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"workout\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Yoga</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Keaf Shen</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"motivation\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Karate</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Donald Grey</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"dark-bg hover-dp ts-meta\" data-tsmeta=\"fitness\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>Boxing</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>Rachel Adam</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t\t<td class=\"hover-dp ts-meta\" data-tsmeta=\"workout\">
+\t\t\t\t\t\t\t\t\t\t\t<h5>WEIGHT LOOSE</h5>
+\t\t\t\t\t\t\t\t\t\t\t<span>RLefew D. Loee</span>
+\t\t\t\t\t\t\t\t\t\t</td>
+\t\t\t\t\t\t\t\t\t</tr> #}
+\t\t\t\t\t\t\t\t{# </tbody>
+\t\t\t\t\t\t\t</table>
+\t\t\t\t\t\t</div>
+\t\t\t\t\t</div>
+\t\t\t\t</div>
+\t\t\t</div></section>    #}
+", "front/contact.html.twig", "C:\\Users\\Admin\\Desktop\\Pidev_Git\\Projet-PI-DEV-Web\\templates\\front\\contact.html.twig");
     }
 }

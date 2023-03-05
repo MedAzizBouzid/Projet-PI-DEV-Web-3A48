@@ -1,0 +1,31 @@
+{% extends 'front/baseF.html.twig' %}
+
+{% block body %}
+
+     <div id="map"></div>
+
+    <!-- 
+      The `defer` attribute causes the callback to execute after the full HTML
+      document has been parsed. For non-blocking uses, avoiding race conditions,
+      and consistent behavior across browsers, consider loading using Promises
+      with https://www.npmjs.com/package/@googlemaps/js-api-loader.
+      -->
+    <script
+      src="https://maps.googleapis.com/maps/api/js?key=AIzaSyC1qY6wrVNilygkIrk1bOP17S8AEMka20Q&callback=initMap&v=weekly" defer
+    ></script>
+    <script>
+
+let map;
+
+function initMap() {
+  map = new google.maps.Map(document.getElementById("map"), {
+    center: { lat: -34.397, lng: 150.644 },
+    zoom: 8,
+  });
+}
+
+window.initMap = initMap;
+    </script>
+        <script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+  {% endblock %}

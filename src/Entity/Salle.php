@@ -7,34 +7,48 @@ use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Doctrine\ORM\Mapping as ORM;
-
+use Symfony\Component\Serializer\Annotation\Groups;
 #[ORM\Entity(repositoryClass: SalleRepository::class)]
 class Salle
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("salles")]
+
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("salles")]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("salles")]
     private ?string $lieu = null;
 
     #[ORM\Column]
+    #[Groups("salles")]
+
     private ?int $telephone = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("salles")]
+
     private ?string $email = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("salles")]
+
     private ?string $superficie = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("salles")]
+
     private ?string $description = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("salles")]
+
     private ?string $image = null;
 
     #[ORM\ManyToMany(targetEntity: Activite::class, inversedBy: 'salles')]

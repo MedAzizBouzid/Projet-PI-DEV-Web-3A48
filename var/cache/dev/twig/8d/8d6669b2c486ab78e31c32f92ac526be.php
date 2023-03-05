@@ -478,6 +478,10 @@ body.dark .btn-toggle {
             // line 297
             echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_calendrier_new", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 297)]), "html", null, true);
             echo "\">Go to plan</a></td>
+\t\t\t\t<td><a href=\"";
+            // line 298
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("app_Map_new", ["id" => twig_get_attribute($this->env, $this->source, $context["p"], "id", [], "any", false, false, false, 298)]), "html", null, true);
+            echo "\">Marker MAP</a></td>
 
 
         
@@ -490,7 +494,7 @@ body.dark .btn-toggle {
         $_parent = $context['_parent'];
         unset($context['_seq'], $context['_iterated'], $context['_key'], $context['p'], $context['_parent'], $context['loop']);
         $context = array_intersect_key($context, $_parent) + $_parent;
-        // line 305
+        // line 306
         echo " 
 \t\t\t 
 
@@ -504,14 +508,14 @@ body.dark .btn-toggle {
 
 <!-- Table End -->
 ";
-        // line 345
+        // line 346
         echo "\t</div>
 
 </body>
 <script>
 
  \t\t\t";
-        // line 351
+        // line 352
         echo "let table = document.getElementById('myTable');
 let rowsPerPage = 5;
 let currentPage = 1;
@@ -598,7 +602,7 @@ btnToggle.addEventListener('click', () => {
 
     public function getDebugInfo()
     {
-        return array (  515 => 351,  508 => 345,  494 => 305,  479 => 297,  475 => 296,  471 => 295,  466 => 293,  463 => 292,  459 => 289,  448 => 284,  445 => 283,  441 => 282,  438 => 281,  434 => 279,  430 => 278,  426 => 277,  422 => 276,  418 => 275,  413 => 274,  408 => 270,  404 => 269,  395 => 262,  391 => 259,  373 => 242,  371 => 241,  358 => 226,  355 => 224,  348 => 218,  344 => 216,  338 => 213,  331 => 209,  327 => 208,  323 => 207,  316 => 203,  312 => 202,  308 => 201,  299 => 195,  295 => 194,  291 => 193,  283 => 188,  279 => 187,  275 => 186,  266 => 180,  262 => 179,  258 => 178,  248 => 171,  244 => 170,  240 => 169,  231 => 163,  227 => 162,  223 => 161,  215 => 156,  211 => 155,  207 => 154,  201 => 150,  198 => 149,  182 => 134,  179 => 132,  172 => 127,  167 => 124,  165 => 123,  161 => 99,  155 => 93,  153 => 89,  149 => 86,  97 => 35,  91 => 30,  78 => 16,  68 => 5,  58 => 4,  35 => 1,);
+        return array (  519 => 352,  512 => 346,  498 => 306,  483 => 298,  479 => 297,  475 => 296,  471 => 295,  466 => 293,  463 => 292,  459 => 289,  448 => 284,  445 => 283,  441 => 282,  438 => 281,  434 => 279,  430 => 278,  426 => 277,  422 => 276,  418 => 275,  413 => 274,  408 => 270,  404 => 269,  395 => 262,  391 => 259,  373 => 242,  371 => 241,  358 => 226,  355 => 224,  348 => 218,  344 => 216,  338 => 213,  331 => 209,  327 => 208,  323 => 207,  316 => 203,  312 => 202,  308 => 201,  299 => 195,  295 => 194,  291 => 193,  283 => 188,  279 => 187,  275 => 186,  266 => 180,  262 => 179,  258 => 178,  248 => 171,  244 => 170,  240 => 169,  231 => 163,  227 => 162,  223 => 161,  215 => 156,  211 => 155,  207 => 154,  201 => 150,  198 => 149,  182 => 134,  179 => 132,  172 => 127,  167 => 124,  165 => 123,  161 => 99,  155 => 93,  153 => 89,  149 => 86,  97 => 35,  91 => 30,  78 => 16,  68 => 5,  58 => 4,  35 => 1,);
     }
 
     public function getSourceContext()
@@ -900,6 +904,7 @@ body.dark .btn-toggle {
 \t\t\t\t<td><a href=\"{{path('app_salle_edit',{'id':p.id})}}\"><span class=\"bi bi-cart-fill\"></a></td>
 \t\t\t\t<td><a href=\"{{path('app_salle_show',{'id':p.id})}}\"><i class=\"bi bi-book\"></i></a></td>
 \t\t\t\t<td><a href=\"{{path('app_calendrier_new',{'id':p.id})}}\">Go to plan</a></td>
+\t\t\t\t<td><a href=\"{{path('app_Map_new',{'id':p.id})}}\">Marker MAP</a></td>
 
 
         

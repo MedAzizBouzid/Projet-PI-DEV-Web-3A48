@@ -6,6 +6,7 @@ use App\Repository\ActiviteRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: ActiviteRepository::class)]
 class Activite
@@ -13,39 +14,51 @@ class Activite
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("Activite")]
+
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("Activite")]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("Activite")]
     private ?string $categorie = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("Activite")]
     private ?string $materiel = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("Activite")]
     private ?string $intensite = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("Activite")]
     private ?string $GRPmusculaire = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("Activite")]
     private ?string $tenue = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("Activite")]
+
     private ?string $recomendation = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("Activite")]
     private ?string $image = null;
 
-    #[ORM\ManyToMany(targetEntity: Salle::class, mappedBy: 'cours')]
-    private Collection $salles;
+    // #[ORM\ManyToMany(targetEntity: Salle::class, mappedBy: 'cours')]
+    // #[Groups("Activite")]
+    // private Collection $salles;
 
-    public function __construct()
-    {
-        $this->salles = new ArrayCollection();
-    }
+    // public function __construct()
+    // {
+    //     $this->salles = new ArrayCollection();
+    // }
 
    
 
@@ -113,6 +126,7 @@ class Activite
 
         return $this;
     }
+    
 
     public function getTenue(): ?string
     {
@@ -150,32 +164,32 @@ class Activite
         return $this;
     }
 
-    /**
-     * @return Collection<int, Salle>
-     */
-    public function getSalles(): Collection
-    {
-        return $this->salles;
-    }
+    // /**
+    //  * @return Collection<int, Salle>
+    //  */
+    // public function getSalles(): Collection
+    // {
+    //     return $this->salles;
+    // }
 
-    public function addSalle(Salle $salle): self
-    {
-        if (!$this->salles->contains($salle)) {
-            $this->salles->add($salle);
-            $salle->addCour($this);
-        }
+    // public function addSalle(Salle $salle): self
+    // {
+    //     if (!$this->salles->contains($salle)) {
+    //         $this->salles->add($salle);
+    //         $salle->addCour($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeSalle(Salle $salle): self
-    {
-        if ($this->salles->removeElement($salle)) {
-            $salle->removeCour($this);
-        }
+    // public function removeSalle(Salle $salle): self
+    // {
+    //     if ($this->salles->removeElement($salle)) {
+    //         $salle->removeCour($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
  
 }
