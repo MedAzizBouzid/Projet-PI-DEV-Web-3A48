@@ -2,10 +2,12 @@
 
 namespace App\Entity;
 
-use App\Repository\TypeEventRepository;
-use Doctrine\Common\Collections\ArrayCollection;
-use Doctrine\Common\Collections\Collection;
+use App\Entity\Evenement;
 use Doctrine\ORM\Mapping as ORM;
+use App\Repository\TypeEventRepository;
+use Doctrine\Common\Collections\Collection;
+use Doctrine\Common\Collections\ArrayCollection;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: TypeEventRepository::class)]
 class TypeEvent
@@ -13,9 +15,11 @@ class TypeEvent
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("events_list")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("events_list")]
     private ?string $typeE = null;
 
     #[ORM\OneToMany(mappedBy: 'type', targetEntity: Evenement::class)]

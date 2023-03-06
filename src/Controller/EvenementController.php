@@ -58,6 +58,17 @@ class EvenementController extends AbstractController
             'form' => $form,
         ]);
     }
+    #[Route('/facebook/{id}', name: 'app_evenement_show_fb', methods: ['GET'])]
+    public function show_fb(Evenement $evenement): Response
+    {
+      
+        $content = "OUR EVENT WILL TAKE PLACE IN" . $evenement->getLieu() ; 
+
+        $response = new Response();
+        $response->setContent($content);
+
+        return $response;
+    }
 
     #[Route('/{id}', name: 'app_evenement_show', methods: ['GET'])]
     public function show(Evenement $evenement): Response

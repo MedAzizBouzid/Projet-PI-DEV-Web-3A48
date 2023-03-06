@@ -323,7 +323,8 @@
                             <a href="{{ path('app_pass_event', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-arrow-up-square"></i></button></a> &nbsp;
                             <a href="{{ path('app_commentaire_event', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-chat"></i></button></a> &nbsp;
                             <a href="{{ path('app_sponsor_event', {'id': evenement.id}) }}"><button class="btn btn-danger">sponsors</button></a> &nbsp;
-                            
+                            <a href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url ( path ('app_evenement_show_fb',{id: evenement.id}) ) }}"><button class="btn btn-danger"><i class="bi bi-facebook"></i></button></a>
+                            &nbsp;
                             
                             {# <a href="{{ path('app_evenement_delete', {'id': evenement.id}) }}">delete</a> #}
                             {{ include('back/evenement/_delete_form.html.twig') }}</p>

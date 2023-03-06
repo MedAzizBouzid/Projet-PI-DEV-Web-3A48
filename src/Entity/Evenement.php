@@ -8,6 +8,7 @@ use Doctrine\Common\Collections\Collection;
 use Doctrine\DBAL\Types\Types;
 use Symfony\Component\Validator\Constraints as Assert;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
 
 #[ORM\Entity(repositoryClass: EvenementRepository::class)]
 class Evenement
@@ -15,38 +16,47 @@ class Evenement
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("events_list")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
     #[Assert\NotBlank(
         message: 'remplissez',
         )]
+    #[Groups("events_list")]
     private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("events_list")]
     private ?string $lieu = null;
 
     #[ORM\Column]
+    #[Groups("events_list")]
     private ?\DateTimeImmutable $beginAt = null;
 
     #[ORM\Column]
+    #[Groups("events_list")]
     private ?\DateTimeImmutable $finishAt = null;
 
     #[ORM\Column(type: Types::TEXT)]
+    #[Groups("events_list")]
     private ?string $description = null;
 
 
 
     #[ORM\Column]
+    #[Groups("events_list")]
     private ?int $capacite = null;
 
     #[ORM\ManyToOne(inversedBy: 'evenements')]
+    #[Groups("events_list")]
     private ?TypeEvent $type = null;
 
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Sponsor::class)]
     private Collection $sponsors;
 
     #[ORM\Column(nullable: true)]
+    #[Groups("events_list")]
     private ?float $prix = null;
 
     #[ORM\OneToMany(mappedBy: 'event', targetEntity: Pass::class)]
