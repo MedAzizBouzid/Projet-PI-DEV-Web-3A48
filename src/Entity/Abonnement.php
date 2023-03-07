@@ -13,13 +13,17 @@ class Abonnement
 {
     #[ORM\Id]
     #[ORM\GeneratedValue]
-    #[ORM\Column]
+    #[ORM\Column] 
+    #[Groups("offress")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("offress")]
     private ?string $salle = null;
-
+ 
+    
     #[ORM\Column(type: Types::DATE_MUTABLE)]
+    #[Groups("offress")]
     private ?\DateTimeInterface $DateD = null;
 
     #[ORM\Column(length: 255)]
@@ -41,7 +45,7 @@ class Abonnement
     private ?string $Name = null;
 
     #[ORM\ManyToOne(inversedBy: 'abonnements')]
-    #[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
+    //#[ORM\JoinColumn(nullable: true, onDelete: 'SET NULL')]
     private ?Offres $offre = null;
 
  
@@ -122,8 +126,9 @@ class Abonnement
 
         return $this;
     }
- public function __toDtring(){
-    
+ public function __tString($offre){
+    $this->offre=$offre;
+
  }
 
 

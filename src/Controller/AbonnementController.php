@@ -18,6 +18,9 @@ use Symfony\Component\Routing\Annotation\Route;
 use App\Entity\Mailer;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Doctrine\ORM\EntityManagerInterface;
+use Knp\Component\Pager\PaginatorInterface;
+
+
 use Symfony\Component\HttpFoundation\Session\SessionInterface;
 
 
@@ -28,12 +31,38 @@ use Symfony\Component\HttpFoundation\Session\SessionInterface;
 #[Route('/abonnement')]
 class AbonnementController extends AbstractController
 
-{
+{  /////////affichage avec pagin//////////
     #[Route('/', name: 'app_abonnement_index', methods: ['GET'])]
-    public function index(AbonnementRepository $abonnementRepository): Response
+  
+    public function indexx(AbonnementRepository $AbonnementRepository, Request $request, PaginatorInterface $paginator): Response
     {
+        $offre = $AbonnementRepository->findAll();
+        $offre = $paginator->paginate(
+            $offre, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3/*limit per page*/
+        );
+
+return $this->render('back/tablea.html.twig', [
+    'abonnements' => $offre,
+]);
+    }
+
+    /////////////tri////////////
+    #[Route('/tri', name: 'app_abbonement_trier', methods: ['GET'])]
+    public function afftri(AbonnementRepository $AbonnementRepository,Request $request, PaginatorInterface $paginator): Response
+    {
+       
+        $ab = $AbonnementRepository->tri();
+        $ab = $paginator->paginate(
+            $ab, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3/*limit per page*/
+        );
+
+        // Passer les résultats à la vue Twig pour les afficher
         return $this->render('back/tablea.html.twig', [
-            'abonnements' => $abonnementRepository->findAll(),
+            'abonnements' => $ab,
         ]);
     }
    

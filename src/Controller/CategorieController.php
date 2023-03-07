@@ -9,7 +9,9 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Serializer\SerializerInterface;
 
+use Knp\Component\Pager\PaginatorInterface;
 #[Route('/categorie')]
 class CategorieController extends AbstractController
 {
@@ -20,13 +22,34 @@ class CategorieController extends AbstractController
             'categorie' => $categorieRepository->findAll(),
         ]);
     }
+
+
+    ////////////////affichage avec pagination/////////////////////
     #[Route('/afficher', name: 'app_categorie_index2', methods: ['GET'])]
-    public function index2(CategorieRepository $categorieRepository): Response
+    public function index2(CategorieRepository $categorieRepository, Request $request, PaginatorInterface $paginator): Response
     {
-        return $this->render('back/tablec.html.twig', [
-            'categories' => $categorieRepository->findAll(),
-        ]);
+        
+        $offre = $categorieRepository->findAll();
+        $offre = $paginator->paginate(
+            $offre, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3/*limit per page*/
+        );
+
+return $this->render('back/tablec.html.twig', [
+    'categories' => $offre,
+]);
     }
+     ///////////////////////////MOBILe/////////////////////////////////////
+    
+
+     #[Route('/mobileCat', name: 'app_cat_index_mobile', methods: ['GET','POST'])]
+     public function indexmobile(CategorieRepository $categorieRepository,SerializerInterface $si)
+     { $result=$categorieRepository->findAll();
+         // dd($result)
+         $json =$si->serialize($result, 'json');
+         return new Response($json);
+     }
 
     #[Route('/new', name: 'app_categorie_new', methods: ['GET', 'POST'])]
     public function new(Request $request, CategorieRepository $categorieRepository): Response

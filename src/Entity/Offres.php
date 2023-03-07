@@ -15,16 +15,8 @@ class Offres
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
-   
-   
-    private ?int $id = null;
-    
-
-   
-   
-
-
-
+  // #[Groups("offress")]
+    private ?int $id = null; 
 
     #[ORM\Column]
     #[Assert\NotBlank(
@@ -34,7 +26,7 @@ class Offres
     message:"le prix ne peut pas etre 0 dt"
         
     )]
-   
+   //  #[Groups("offress")]
     private ?float $prix = null;
   
   
@@ -51,23 +43,22 @@ class Offres
     message:"le duree maximale d'un offre est 8 mois"
         
     )]
+     #[Groups("offress")]
     private ?int $duree = null;
 
     #[ORM\Column(type: Types::TEXT)]
     #[Assert\NotBlank(
         message :"veuillez remplir ce champs"
     )]
-    #[Assert\Length(
-        min:'5',
-        max:'20',
-        minMessage:'la longuer minimale est  5 caratére ',
-        maxMessage:'la longuer maximale est 20 cartére',
-    )]
 
+  //  #[Groups("offress")]
     private ?string $description = null;
 
-    #[ORM\OneToMany(mappedBy: 'offre', targetEntity: Abonnement::class )]
-    private Collection $abonnements;
+
+   // #[ORM\OneToMany(mappedBy: 'offre', targetEntity: Abonnement::class )]
+ //   #[Groups("offress")]
+  //  private Collection $abonnements;
+ 
 
     #[ORM\ManyToOne(inversedBy: 'offres')]
     private ?Promotion $promo = null;
@@ -85,7 +76,7 @@ class Offres
 
     public function __construct()
     {
-        $this->abonnements = new ArrayCollection();
+        // $this->abonnements = new ArrayCollection();
     }
 
      
@@ -139,35 +130,35 @@ class Offres
         return $this;
     }
 
-    /**
-     * @return Collection<int, Abonnement>
-     */
-    public function getAbonnements(): Collection
-    {
-        return $this->abonnements;
-    }
+    // /**
+    //  * @return Collection<int, Abonnement>
+    //  */
+    // public function getAbonnements(): Collection
+    // {
+    //     return $this->abonnements;
+    // }
 
-    public function addAbonnement(Abonnement $abonnement): self
-    {
-        if (!$this->abonnements->contains($abonnement)) {
-            $this->abonnements->add($abonnement);
-            $abonnement->setOffre($this);
-        }
+    // public function addAbonnement(Abonnement $abonnement): self
+    // {
+    //     if (!$this->abonnements->contains($abonnement)) {
+    //         $this->abonnements->add($abonnement);
+    //         $abonnement->setOffre($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeAbonnement(Abonnement $abonnement): self
-    {
-        if ($this->abonnements->removeElement($abonnement)) {
-            // set the owning side to null (unless already changed)
-            if ($abonnement->getOffre() === $this) {
-                $abonnement->setOffre(null);
-            }
-        }
+    // public function removeAbonnement(Abonnement $abonnement): self
+    // {
+    //     if ($this->abonnements->removeElement($abonnement)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($abonnement->getOffre() === $this) {
+    //             $abonnement->setOffre(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getPromo(): ?Promotion
     {
@@ -181,17 +172,7 @@ class Offres
         return $this;
     }
 
-    public function getNvPrix(): ?float
-    {
-        return $this->nv_prix;
-    }
-
-    public function setNvPrix(?float $nv_prix): self
-    {
-        $this->nv_prix = $nv_prix;
-
-        return $this;
-    }
+  
 
     public function getCateg(): ?categorie
     {

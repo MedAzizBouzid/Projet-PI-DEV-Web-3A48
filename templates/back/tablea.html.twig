@@ -1,81 +1,58 @@
-{% extends 'back/base.html.twig' %}
 
+
+
+    {% extends 'back/base.html.twig' %}
 
 {% block body %}
-            <!-- Table Start -->
-            <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-            <div class="container-fluid pt-4 px-4" style="bottom:0;">
-           <h1> Liste Abonnement </h1>
-                {# <div class="card-body"> #}
-                                <div class="table-responsive">
-                        
-                                    <table class="table">
-                                    <thead>
-                                        <tr>
-                                           <th>Id</th>
-                                              <th> Subscriber Name</th>
-                                             
-                                           <th>Email</th>
-                                    
-                                               <th>salle</th>
-                                                 <th>date Debut</th>
-                                                
-                                               <th>Payement</th>
-                                               
-                                               <th>type d'offre</th>
-                                                    <th>Actions</th>
-                                                 </tr>
-                                    </thead>
-                                   
-                                    <tbody> 
-                                     {% for ab in abonnements %}
-                                            <tr>
-                                                 <td>{{ ab.id }}</td>
-                                             
-                                                 <td>{{ ab.Name   }}  </td>   
-                                              <td>{{ ab.Email }}   </td> 
-                                             <td>{{ ab.salle }}</td>
-                                                       <td>{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}</td>
-                                                  <td>{{ ab.MPayement }}</td>
-                                                      <td>{{ ab.offre.id }}</td>
+<div class="row my-4">
+  <div class="text-center">
+    <h1>subscription</h1>
+  </div>
+
+  {% for ab in abonnements %}
+    <div class="col-md-6 col-lg-4 mb-4">
+      <div class="card bg-secondary">
+   
                                                   
-                                                  
-            
-    
+        <div class="card-body">
+         <p class="card-title">{{ ab.id }}</p>
+          <h5 class="card-title">{{ab.name }}</h5>
+          <p class="card-text">{{ ab.salle }}</p>
+        </div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item">Email : {{ ab.Email }}  mois</li>
+              <li class="list-group-item">Payment method : {{ ab.MPayement }} </li>
+            <li class="list-group-item">start date : {{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }} </li>
+        <li class="list-group-item">offer ID :     {{ ab.offre.id }} </li>
+         
+        <div class="card-body">
+      
+          <a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}" class="card-link"><i class="bi bi-pencil-square"></i> edit</a>
+          <a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}" class="card-link"><i class="bi bi-binoculars"></i> Détails</a>
 
-                                                 <td>           
-                                            
-                                               <a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}"><i class="bi bi-pencil-square"></i></a>
+                                              
+        </div>
+  
+      </div>
+  
 
-                                               <a href=" {{ path('app_abonnement_show', {'id': ab.id}) }} "><i class="bi bi-binoculars"></i></a>
-                                                  
-</td>
-                                                         
-                                               
-                                             </tr>
-                                                       
-                                          {% else %}
-                                                      <tr>
-                                                     <td colspan="6">no records found</td>
-                                                      </tr>
-                                          {% endfor %}
-                          
-                                      </tbody>
-                                 </table>
-                                               <a href="{{ path('app_abonnement_new_inback') }}">Ajouter Nouveau Abonnement</a> 
-                                               <br>
-                                                 
-                                            
-                                         
+    </div>
+  
+  {% endfor %}
+           <div class="col-12">
+    <a href="{{ path('app_abonnement_new_inback') }}" class="btn btn-primary mb-3">ADD New subscription</a> <br>
+<a href="{{ path('app_abbonement_trier') }}" class="btn btn-secondary">
+    <i class="fas fa-sort-amount-up"></i> Sort by ascending price
+</a>
 
-    
-                                
-                                 
-                                      
-                            </div>
-                            </div>
-            <!-- Table End -->
+        <div class="card-body">
+        
+       
+        </div>
+  </div>
+</div>
 
-            
-    {% endblock %}
+	
 
+
+{% endblock %}

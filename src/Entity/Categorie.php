@@ -14,9 +14,13 @@ class Categorie
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("cat")]
+
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
+    #[Groups("cat")]
+
     private ?string $name = null;
 
     #[ORM\OneToMany(mappedBy: 'categ', targetEntity: Offres::class)]
@@ -29,7 +33,7 @@ class Categorie
 
     public function __construct()
     {
-        $this->offres = new ArrayCollection();
+        // $this->offres = new ArrayCollection();
     }
 
     public function getId(): ?int
@@ -51,45 +55,45 @@ class Categorie
 
     /**
      * @return Collection<int, Offres>
-     */
-    public function getOffres(): Collection
-    {
-        return $this->offres;
-    }
+      */
+     public function getOffres(): Collection
+     {
+         return $this->offres;
+     }
 
-    public function addOffre(Offres $offre): self
-    {
-        if (!$this->offres->contains($offre)) {
-            $this->offres->add($offre);
-            $offre->setCateg($this);
-        }
+    // public function addOffre(Offres $offre): self
+    // {
+    //     if (!$this->offres->contains($offre)) {
+    //         $this->offres->add($offre);
+    //         $offre->setCateg($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeOffre(Offres $offre): self
-    {
-        if ($this->offres->removeElement($offre)) {
-            // set the owning side to null (unless already changed)
-            if ($offre->getCateg() === $this) {
-                $offre->setCateg(null);
-            }
-        }
+    // public function removeOffre(Offres $offre): self
+    // {
+    //     if ($this->offres->removeElement($offre)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($offre->getCateg() === $this) {
+    //             $offre->setCateg(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function getDecription(): ?string
-    {
-        return $this->decription;
-    }
+    // public function getDecription(): ?string
+    // {
+    //     return $this->decription;
+    // }
 
-    public function setDecription(string $decription): self
-    {
-        $this->decription = $decription;
+    // public function setDecription(string $decription): self
+    // {
+    //     $this->decription = $decription;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
     public function getDescription(): ?string
     {

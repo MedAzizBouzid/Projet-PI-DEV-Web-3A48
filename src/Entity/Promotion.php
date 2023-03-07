@@ -36,12 +36,12 @@ class Promotion
     #[ORM\Column(type: Types::DATE_MUTABLE)]
     private ?\DateTimeInterface $date_fin = null;
 
-    #[ORM\OneToMany(mappedBy: 'promo', targetEntity: Offres::class)]
-    private Collection $offres;
+    // #[ORM\OneToMany(mappedBy: 'promo', targetEntity: Offres::class)]
+    // private Collection $offres;
 
     public function __construct()
     {
-        $this->offres = new ArrayCollection();
+        // $this->offres = new ArrayCollection();
     }
 
    
@@ -82,35 +82,35 @@ class Promotion
         return $this;
     }
 
-    /**
-     * @return Collection<int, Offres>
-     */
-    public function getOffres(): Collection
-    {
-        return $this->offres;
-    }
+    // /**
+    //  * @return Collection<int, Offres>
+    //  */
+    // public function getOffres(): Collection
+    // {
+    //     return $this->offres;
+    // }
 
-    public function addOffre(Offres $offre): self
-    {
-        if (!$this->offres->contains($offre)) {
-            $this->offres->add($offre);
-            $offre->setPromo($this);
-        }
+    // public function addOffre(Offres $offre): self
+    // {
+    //     if (!$this->offres->contains($offre)) {
+    //         $this->offres->add($offre);
+    //         $offre->setPromo($this);
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
 
-    public function removeOffre(Offres $offre): self
-    {
-        if ($this->offres->removeElement($offre)) {
-            // set the owning side to null (unless already changed)
-            if ($offre->getPromo() === $this) {
-                $offre->setPromo(null);
-            }
-        }
+    // public function removeOffre(Offres $offre): self
+    // {
+    //     if ($this->offres->removeElement($offre)) {
+    //         // set the owning side to null (unless already changed)
+    //         if ($offre->getPromo() === $this) {
+    //             $offre->setPromo(null);
+    //         }
+    //     }
 
-        return $this;
-    }
+    //     return $this;
+    // }
        
 
  

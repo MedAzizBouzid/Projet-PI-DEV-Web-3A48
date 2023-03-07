@@ -80,7 +80,7 @@ public function findAllData()
 public function tri()
 {
     return $this->createQueryBuilder('e')
-    ->orderBy('e.prix','ASC')
+    ->orderBy('e.prix','DESC')
     ->getQuery()
     ->getResult()
 ;
@@ -113,5 +113,7 @@ public function getAbonnementsByDate(): array
 
     return $qb->getResult();
 }
+
+
 
 }

@@ -6,7 +6,7 @@ use App\Entity\Offres;
 use App\Form\OffresType;
 use App\Repository\OffresRepository;
 use App\Repository\CategorieRepository;
-
+use Symfony\Component\Serializer\SerializerInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -17,20 +17,59 @@ use App\Repository\PromotionRepository;
 use ChartJs\Builder\ChartBuilderInterface;
 use ChartJs\ChartJS;
 
+use Knp\Component\Pager\PaginatorInterface;
+ 
 
 
 #[Route('/offres')]
 class OffresController extends AbstractController
 {
+    ///////////////////////////MOBILe/////////////////////////////////////
+    
+
+    #[Route('/mobile', name: 'app_offres_index_mobile', methods: ['GET','POST'])]
+    public function indexmobile(OffresRepository $offresRepository,SerializerInterface $si)
+    { $result=$offresRepository->findAll();
+        // dd($result)
+        $json =$si->serialize($result, 'json');
+        return new Response($json);
+    }
+
+//////////////////tri et pagination/////////////////////////////
 
     #[Route('/', name: 'app_offres_index', methods: ['GET'])]
-    public function indexx(OffresRepository $offresRepository): Response
+    
+        public function indexx(OffresRepository $offresRepository, Request $request, PaginatorInterface $paginator): Response
+        {
+            
+            $offre = $offresRepository->findAll();
+            $offre = $paginator->paginate(
+                $offre, /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                3/*limit per page*/
+            );
+
+    return $this->render('back/tableo.html.twig', [
+        'offre' => $offre,
+    ]);
+        }
+
+    #[Route('/tri', name: 'app_offres_trier', methods: ['GET'])]
+    public function afftri(OffresRepository $offresRepository, Request $request, PaginatorInterface $paginator): Response
     {
+       
+        $offres = $offresRepository->tri();
+        $offres = $paginator->paginate(
+            $offres, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3/*limit per page*/
+        );
+
+        // Passer les résultats à la vue Twig pour les afficher
         return $this->render('back/tableo.html.twig', [
-            'offre' => $offresRepository->findAll(),
+            'offre' => $offres,
         ]);
     }
-   
 
 
 /////////////////statistique/////////
@@ -74,7 +113,27 @@ class OffresController extends AbstractController
 
         ]);
     }
+    //////////////////mobile///////////////////////
+    #[Route('/newjson', name: 'app_offres_newjson', methods: ['GET', 'POST'])]
+    public function newj(Request $req, OffresRepository $offresRepository,ManagerRegistry $mr,SerializerInterface $sr): Response
+    { 
+        $em=$mr->getManager();
+        $offre = new Offres();
+        $offre->setPrix($req->get('prix'));
+        $offre->setDescription($req->get('description'));
+        $offre->setDuree($req->get('durree'));
         
+        $offre->setPromo($req->get('Promo'));
+        $offre-> setCateg($req->get('categ'));
+        $em->persist($offre);
+        $em->flush();
+
+        $json = $sr->serialize($offre, 'json');
+        return new Response($json);
+        
+    }
+        
+    ////////////////////////////////
         
        
 
@@ -188,4 +247,19 @@ public function edit(Request $request, Offres $offre, OffresRepository $offresRe
               ]);
           }
 
+
+
+
+          ///////////////////mobileeee///////////////
+          #[Route('/{id}/mobile', name: 'app_edit_offres_mob', methods: ['GET'])]
+          public function editoffmob(Request $request, $id, Offres $offre,SerializerInterface $sr ,OffresRepository $or): Response
+          {
+            $offre->setduree($request->get('duree')); 
+            $or->save($offre, true);
+            $json = $sr->serialize($offre, 'json');
+            return new Response($json);
+
+
+          }
+          
 }
