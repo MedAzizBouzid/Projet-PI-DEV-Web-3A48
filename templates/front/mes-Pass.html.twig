@@ -67,8 +67,15 @@
                         {% else %}
                         <span>this event has been deleted</span>                           
                         {% endif %}
+                        {% if pass.event is not null %}
+                        <a href="{{ path('app_qr_code', {'id': pass.id}) }}"><button class="btn btn-danger">qr code</button></a>
+                        &nbsp;
+                        
+                        {% else %}
                         
                         
+                        {% endif %}
+                           
                         
                        
                     </div>

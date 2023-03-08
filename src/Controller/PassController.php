@@ -18,6 +18,20 @@ use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
+use Endroid\QrCode\Builder\Builder;
+use Endroid\QrCode\Color\Color;
+use Endroid\QrCode\Encoding\Encoding;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
+use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelLow;
+use Endroid\QrCode\Label\Alignment\LabelAlignmentCenter;
+use Endroid\QrCode\Label\Font\NotoSans;
+use Endroid\QrCode\Label\Label;
+use Endroid\QrCode\Logo\Logo;
+use Endroid\QrCode\QrCode;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeMargin;
+use Endroid\QrCode\Writer\PngWriter;
+use Endroid\QrCodeBundle\Response\QrCodeResponse;
+
 
 #[Route('/pass')]
 class PassController extends AbstractController
@@ -74,6 +88,24 @@ class PassController extends AbstractController
             'form' => $form,
         ]);
     }
+    #[Route('/generate-qr-code/{id}', name: 'app_qr_code')]
+    public function generateQrCodeAction(Pass $pass): Response
+    {
+        // Récupérer les informations de l'objet Pass
+        $nom_client = $pass->getClient()->getNom();
+        $nom_event = $pass->getEvent()->getNom();
+        $createdAt = $pass->getEvent()->getBeginAt();
+
+       
+                $qrCodeContent = $nom_client . ' ' . $nom_event . ' ' . $createdAt->format('Y-m-d H:i:s');
+
+       
+
+        return $this->render('front/qr_code.html.twig', [
+            'qrCodeImage' =>  $qrCodeContent,
+        ]);
+    }
+
 
 //confirmer reservation== ajout d'un pass a partir du front
     #[Route('/new_front/{id_event}/{date}', name: 'app_pass_new_front', methods: ['GET', 'POST'])]
