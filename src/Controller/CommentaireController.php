@@ -121,10 +121,13 @@ class CommentaireController extends AbstractController
      * Commentaire $commentaire, ObjectManager $mg,CommentLikeRepository $likeRepo
      */
     #[Route('/comment/{id}/like/{id_event}', name: 'app_commentaire_like')]
-    public function like(ManagerRegistry $manager, Commentaire $commentaire,$id_event, CommentLikeRepository $likeRepo,Request $request): Response
+    public function like(ManagerRegistry $manager, $id,$id_event, CommentLikeRepository $likeRepo,Request $request,CommentaireRepository $commentRepo): Response
     {
+         $commentaire = new Commentaire();
+         $commentaire = $commentRepo->find($id);
         $like= new CommentLike();
         $em = $manager->getManager();
+        // dd($commentaire->isLikedByUser($this->getUser()->getEmail()));
 
         if ($commentaire->isLikedByUser($this->getUser()->getEmail())) {
             $like= $likeRepo->findOneBy([

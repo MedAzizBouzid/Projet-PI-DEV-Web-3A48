@@ -77,14 +77,7 @@ public function findAllData()
     ;
 }
 
-public function tri()
-{
-    return $this->createQueryBuilder('e')
-    ->orderBy('e.prix','ASC')
-    ->getQuery()
-    ->getResult()
-;
-}
+
 //////////////////stat/////////
 public function getOffresByAbonnements(): array
 {
@@ -112,5 +105,13 @@ public function getAbonnementsByDate(): array
         ->getQuery();
 
     return $qb->getResult();
+}
+public function tri()
+{
+    return $this->createQueryBuilder('e')
+    ->orderBy('e.prix','DESC')
+    ->getQuery()
+    ->getResult()
+;
 }
 }

@@ -10,6 +10,7 @@ use App\Repository\AbonnementRepository;
 use App\Repository\OffresRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
+use Knp\Component\Pager\PaginatorInterface;
 use Stripe\Charge;
 use Stripe\Stripe;
 use Stripe\Token;
@@ -23,14 +24,38 @@ use Symfony\Component\Routing\Annotation\Route;
 #[Route('/abonnement')]
 class AbonnementController extends AbstractController
 {
-    #[Route('/', name:'app_abonnement_index', methods:['GET'])]
-function index(AbonnementRepository $abonnementRepository): Response
+    #[Route('/', name: 'app_abonnement_index', methods: ['GET'])]
+  
+    public function indexx(AbonnementRepository $AbonnementRepository, Request $request, PaginatorInterface $paginator): Response
     {
-    return $this->render('back/tablea.html.twig', [
-        'abonnements' => $abonnementRepository->findAll(),
-    ]);
-}
+        $offre = $AbonnementRepository->findAll();
+        $offre = $paginator->paginate(
+            $offre, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3/*limit per page*/
+        );
 
+return $this->render('back/tablea.html.twig', [
+    'abonnements' => $offre,
+]);
+    }
+/////////////tri////////////
+    #[Route('/tri', name: 'app_abbonement_trier', methods: ['GET'])]
+    public function afftri(AbonnementRepository $AbonnementRepository,Request $request, PaginatorInterface $paginator): Response
+    {
+       
+        $ab = $AbonnementRepository->tri();
+        $ab = $paginator->paginate(
+            $ab, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3/*limit per page*/
+        );
+
+        // Passer les résultats à la vue Twig pour les afficher
+        return $this->render('back/tablea.html.twig', [
+            'abonnements' => $ab,
+        ]);
+    }
 #[Route('/new/{id}', name:'app_abonnement_new', methods:['GET', 'POST'])]
 function new (Request $request, AbonnementRepository $abonnementRepository, $id, OffresRepository $offRepository, SessionInterface $session): Response {
     $abonnement = new Abonnement();

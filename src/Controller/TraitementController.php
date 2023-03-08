@@ -2,6 +2,7 @@
 
 namespace App\Controller;
 
+use App\Entity\Activite;
 use App\Entity\Commande;
 use App\Entity\Notification;
 use App\Entity\Panier;
@@ -10,11 +11,15 @@ use App\Entity\Salle;
 use App\Entity\User;
 use App\Form\RegistrationFormType;
 use App\Repository\AbonnementRepository;
+use App\Repository\ActiviteRepository;
+use App\Repository\CalendrierRepository;
 use App\Repository\CommandeRepository;
 use App\Repository\NotificationRepository;
+use App\Repository\OffresRepository;
 use App\Repository\PanierRepository;
 use App\Repository\PassRepository;
 use App\Repository\RendezVousRepository;
+use App\Repository\ServiceRepository;
 use App\Repository\UserRepository;
 use DateTimeImmutable;
 use Doctrine\ORM\EntityManagerInterface;
@@ -30,13 +35,25 @@ use Symfony\Component\Validator\Constraints\Length;
 
 class TraitementController extends AbstractController
 {
+    // ***************------------------Home page-------------************************
+
     #[Route('/home', name: 'app_Front_index')]
-    public function index(): Response
+    public function index(ActiviteRepository $activiteRepository,UserRepository $userRepository
+    ,OffresRepository $offresRepository,ServiceRepository $serviceRepository): Response
     {
+
+        $activite=$activiteRepository->findAll();
+        $offres=$offresRepository->findAll();
+        $service=$serviceRepository->findAll();
+        $coach=$userRepository->findAllUser('["ROLE_COACH"]');
         return $this->render('front/index.html.twig', [
-            'controller_name' => 'TraitementController',
+            'activite' => $activite,
+            'offres' => $offres,
+            'service' => $service,
+            'coach' => $coach,
         ]);
     }
+    // ***************------------------Home page-------------************************
     #[Route('/random', name: 'app_random')]
     public function random(): Response
     {
@@ -85,13 +102,39 @@ class TraitementController extends AbstractController
 //   *************************************
     #[Route('/profile/{id}', name: 'app_profile')]
     public function profile(User $user,PassRepository $passRepository,PanierRepository $panierRepository,
-    CommandeRepository $commandeRepository,AbonnementRepository $abonnementRepository): Response
+    CommandeRepository $commandeRepository,AbonnementRepository $abonnementRepository,CalendrierRepository $calendrierRepository): Response
     {
         $panier = new Panier();
         $panier=$panierRepository->findByClientId($user->getId());
         $PanierId=[];
         $commande=[];
         $cmd=[];
+        // realtion usser coach 
+        $calendar=$calendrierRepository->findCalendarByCoach($user->getId());
+//°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°°
+  //accéder au repo calendrier
+   // créer un tableau Json a fin de stocker les données 
+   
+  $rdvs = [];
+  foreach($calendar as $event){
+       $rdvs[] = [
+          'id' => $event->getId(),    
+          'start' => $event->getStart()->format('Y-m-d H:i:s'),
+          'end' => $event->getEnd()->format('Y-m-d H:i:s'),
+          'title' =>$event->getSalla()->getNom()."\n". $event->getActivite(),
+          'description' => $event->getDescription(),
+          // 'activite' => $event->getActivite(),
+
+          'backgroundColor' => $event->getBackgroundColor(),
+          'borderColor' => $event->getBorderColor(),
+          'textColor' => $event->getTextColor(),
+
+       ];
+
+  }
+  $data = json_encode($rdvs);
+
+        //********************************** */
         // $commande = new Commande();
          foreach($panier as $p){
            $PanierId[] = $p->getId();
@@ -107,6 +150,7 @@ class TraitementController extends AbstractController
         // dd($cmd);
         return $this->render('front/profileUser.html.twig', [
             'user' => $user,
+            'data' => $data,
             'commandes'=>$cmd,
             'passes' => $passRepository->findPassByIdClient($user->getId()),
             'abonnements'=>$abonnementRepository->findByEmail($user->getEmail())

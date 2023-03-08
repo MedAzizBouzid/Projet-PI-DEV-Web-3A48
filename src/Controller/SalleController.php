@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\Salle;
 use App\Form\SalleType;
 use App\Repository\CalendrierRepository;
+use App\Repository\MapRepository;
 use App\Repository\SalleRepository;
 use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\Persistence\ManagerRegistry;
@@ -173,10 +174,12 @@ function show(Salle $salle): Response
 // _________Start___Details Calendrier In front ___________________________________________________________________
 
 #[Route('/{id}/front', name:'app_salle_show_front', methods:['GET'])]
-function show_fornt(Salle $salle, CalendrierRepository $calendrierRepository): Response
+function show_fornt(Salle $salle, MapRepository $MapRepository,CalendrierRepository $calendrierRepository): Response
     {
     $events = $calendrierRepository->findcalendarBySalle($salle->getId());
-    $rdvs = [];
+    $MapData = $MapRepository->findMapBySalle($salle->getId());
+    $name=$salle->getNom();
+     $rdvs = [];
     foreach ($events as $event) {
         $rdvs[] = [
             'id' => $event->getId(),
@@ -193,6 +196,10 @@ function show_fornt(Salle $salle, CalendrierRepository $calendrierRepository): R
     return $this->render('front/class_details.html.twig', [
         'salle' => $salle,
         'data' => $data,
+        'MapData'=>$MapData,
+        'name'=>$name,
+
+
     ]);
 }
 // _________End___Details Calendrier In front ___________________________________________________________________

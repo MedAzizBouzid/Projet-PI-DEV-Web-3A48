@@ -2,13 +2,21 @@
 {% block body %}
 
 	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+	{# partie Map maker #}
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+	{# partie Map maker #}
 
 	<style>
 		#calendrier {
 			margin: auto;
-
-			width: 90%;
-			height: 90%;
+			/*  width: auto !important;
+			height: auto !important;*/
+			width: 80%;
+			height: auto;
 		}
 	</style>
 	<style>
@@ -31,76 +39,13 @@
 			background-color: #000;
 			color: #fff;
 		}
-	</style>
-	<style>
-		/* style pour la pop-up */
-
-		.popup {
-			position: fixed;
-			top: 0;
-			left: 0;
-			width: 100%;
+		#map {
 			height: 100%;
-			display: none;
-
-
 		}
-
-		{
-			# position: absolute; /* positionnement absolu */
-			top: 50%; /* positionné à 50% de la hauteur de la fenêtre */
-			left: 50%; /* positionné à 50% de la largeur de la fenêtre */
-			transform: translate(-50%, -50%); /* centrer horizontalement et verticalement */
-			width: 300px; /* largeur de la pop-up */
-			padding: 20px; /* marge intérieure */
-			background-color: #fff; /* couleur de fond */
-			** border-radius: 5px; /* arrondi des coins */
-			** box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* ombre portée */
-			text-align: center; /* alignement centré */ #
-		}
-		.popup-content {
-			background-color: white;
-			width: 70%;
-
-
-			height: 80%;
-			transform: translate(-50%, -50%); /* centrer horizontalement et verticalement */
-			padding: 20px;
-			position: absolute;
-			top: 50%; /* positionné à 50% de la hauteur de la fenêtre */
-			left: 50%; /* positionné à 50% de la largeur de la fenêtre */
-			text-align: center;
-
-		}
-
-		.popup-content h2 {
-			font-size: 24px;
-			margin-top: 0;
-		}
-
-		.popup-content #calendrier {
-			margin-top: 10px;
-
-
-		}
-
-		.popup-close {
-			position: absolute;
-			top: 10px;
-			right: 10px;
-			cursor: pointer;
-			font-size: 28px;
-			color: #aaa;
-		}
-
-		.popup-close:hover {
-			color: #666;
-		}
-
 	</style>
-
 
 	<section class="class-details-section spad">
+
 		<div class="container">
 			<div class="cd-text">
 				<div class="cd-single-item">
@@ -116,7 +61,9 @@
 
 
 				<div class="col-lg-8">
+				
 					<div class="class-details-text">
+					
 						<div
 							class="cd-pic">{# <img src="{{ asset('uploads/'~ salle.image)}}" alt=""> #}
 						</div>
@@ -128,6 +75,11 @@
 
 									<div class="cd-trainer-pic">
 										<img src="{{ asset('uploads/'~ salle.image)}}" alt="">
+									</div>
+									<div class="col-lg-8">
+
+									<div id="map" style="height:300px;width:350px"></div>
+   									 <button onclick="window.location.reload();">Actualiser</button>
 									</div>
 								</div>
 								<div class="col-md-6">
@@ -171,95 +123,93 @@
 										</ul>
 
 
-										{# {% for c in salle.cours %}
-																																									<ul>
-																																										<li style="color:white;">
-																																											<td>{{c.nom}}</td>
-																																										</li>
-																																									</ul>
-																																								{% endfor %} #}
-
-
-									{# ____________________________ #}
-
-
-										{# <div class="col-lg-4 col-md-8">
-																																			<div class="sidebar-option">
-														 																					</ul>
-																																				</div> #}
-										{# <div class="so-latest">
-																																										                                                    <h5 class="title">Latest posts</h5>
-												 						</div>
-										
-																			{# {% endfor %} #}
-<button style="background-color:red;color:white;" onclick="openPopuppass()">
-	Planning</button>
-
 									</div>
 
-									{# <table  > #}
-									{# <thead  >
-																												<tr>
-																													<th>Activite</th>
-																													<th>Categorie</th>
-																													<th> Materiel</th>
-																													<th> Tenu</th>
-																									
-																												</tr>
-																											</thead>
-																									                		{% for p in salle.cours %}
-																									
-																											<tbody>
-																												<tr>
-																													<td>{{p.nom}} </td>
-																													<td>{{p.categorie}} </td>
-																													<td>{{p.materiel}} </td>
-																												</tr>
-																											 
-																											</tbody>
-																									        						  {% endfor %} 
-																									
-																										</table>
-																									</div> #}
-								</section>
-
-								<!-- bouton pour ouvrir la pop-up -->
-
-
-
-
-								<!-- pop-up -->
-								<div id="popup_passe" class="popup">
-									<div
-										style="position: center;background-color:white;color:red;background-repeat:no-repeat;background-size:cover;background-image: url('https://st4.depositphotos.com/4259987/21763/i/450/depositphotos_217633412-stock-photo-picture-of-strong-sporty-bodybuilder.jpg');" class="popup-content">
-
-
-										{# <div id="calendrier"></div> #}
-										<div style="position: center;background-color:white;color:red;background-repeat:no-repeat;background-size:cover;
-												 ;
-												  " id="calendrier"></div>
-										<span class="popup-close" onclick="closePopuppass()">&times;</span>
-									</div>
 								</div>
 
-								{# <button style="background-color:red;color:white;" onclick="openPopup()">Chek orders</button>
-															<div id="popup" class="popup">
-															
-																<div class="popup-content">
-															
-																   <section style="background-color:black;" class="hero-section">
-																		<div id="calendrier"></div>
-																  </section>
-															</div>
-															<span id="popup"  class="popup-close" onclick="closePopup()">&times;</span>
-															
-															</div> #}
 
-								{# ________________________________________________________Debut__Partie JS___________________________________________________________________ #}
+							</div>
 
-								<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" integrity="sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=" crossorigin="anonymous"></script>
-								<script>
-									window.onload = () => {
+
+						</section>
+
+
+						<section style="background-color:black;" class="hero-section">
+							<div style="position: center;background-color:white;color:red;background-repeat:no-repeat;background-size:cover;
+																	 background-image: url('https://st4.depositphotos.com/4259987/21763/i/450/depositphotos_217633412-stock-photo-picture-of-strong-sporty-bodybuilder.jpg');
+																	  " id="calendrier"></div>
+							{# // Div MAp  \\ #}
+							<div id="map"></div>
+
+						</section>
+<div>
+						{# ________________________________________________________Debut__Partie JS___________________________________________________________________ #}
+
+      {# MAP MAKER AFFICHAGE PERSO***************************************************** #}
+  <script>
+  {# console.log(name); #}
+    // Initialise la carte
+    var map = L.map('map').setView([36.8123591, 10.14065], 13);
+   
+
+
+
+    {% for mydata in MapData %}
+
+	var popup = L.popup()
+    .setLatLng([{{ mydata.lat }}, {{ mydata.longt }}])
+    .setContent("<b>{{ name }}</b>")
+    .openOn(map);
+	    {% endfor %}
+
+
+var circle = L.circle([36.8123591, 10.14065], {
+    color: 'red',
+    fillColor: 'black',
+    fillOpacity: 0.5,
+    radius: 5000
+}).addTo(map);
+    // Ajoute une couche de tuiles de la carte
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+    }).addTo(map);
+
+    // Boucle à travers les données de la table "map" et ajoute un marqueur pour chaque élément
+    {% for mydata in MapData %}
+        L.marker([{{ mydata.lat }}, {{ mydata.longt }}]).addTo(map);
+        
+    {% endfor %}
+    </script>
+
+	{# ************************** #}
+
+<script>
+{# 	
+// Initialise la carte
+var map = L.map('map').setView([36.8123591, 10.14065], 13);
+
+// Ajoute une couche de tuiles de la carte
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+    maxZoom: 18,
+}).addTo(map);
+
+// Ecoute l'événement d'ajout
+map.on('click', function(e) {
+    // Envoie une requête Ajax pour ajouter l'élément à la base de données
+    $.post('/ajouter-element', {lat: e.latlng.lat, lng: e.latlng.lng}, function(data) {
+        // Ajoute un marqueur pour l'élément
+        L.marker([data.lat, data.lng]).addTo(map);
+    });
+}); #}
+</script>
+
+      {# MAP MAKER AFFICHAGE PERSO***************************************************** #}
+
+						<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" integrity="sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=" crossorigin="anonymous"></script>
+						<script>
+							window.onload = () => {
 let calendarElt = document.querySelector("#calendrier")
 let calendar = new FullCalendar.Calendar(calendarElt, {
 
@@ -333,22 +283,28 @@ let donnees = {
 
 calendar.render()
 }
-								</script>
-								<script>
+						</script>
 
-									function openPopuppass() {
+						<script>
+							src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC1qY6wrVNilygkIrk1bOP17S8AEMka20Q&callback=initMap&v=weekly"
+defer >
+						</script>
 
-document.getElementById("popup_passe").style.display = "block";
+						<script>
+{# function initMap() {
+const myLatLng = {
+lat: 48.8588897,
+lng: 2.320041
+};
+const map = new google.maps.Map(document.getElementById("map"), {
+zoom: 4,
+center: myLatLng
+});
 
+new google.maps.Marker({position: myLatLng, map, title: "Hello World!"});
 }
 
-// fonction pour fermer la pop-up
-function closePopuppass() {
+window.initMap = initMap;
+						</script> #}
 
-document.getElementById("popup_passe").style.display = "none";
-
-}
-								</script>
-
-
-							{% endblock %}
+					{% endblock %}

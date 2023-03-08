@@ -14,17 +14,41 @@ use Symfony\Component\Routing\Annotation\Route;
 use Doctrine\Persistence\ManagerRegistry;
 use App\Repository\MyEntityRepository;
 use App\Repository\PromotionRepository;
-
-
+use Knp\Component\Pager\PaginatorInterface;
 
 #[Route('/offres')]
 class OffresController extends AbstractController
 {
-    #[Route('/', name: 'app_offres_index', methods: ['GET'])]
-    public function index(OffresRepository $offresRepository): Response
+   #[Route('/', name: 'app_offres_index', methods: ['GET'])]
+    
+        public function indexx(OffresRepository $offresRepository, Request $request, PaginatorInterface $paginator): Response
+        {
+            
+            $offre = $offresRepository->findAll();
+            $offre = $paginator->paginate(
+                $offre, /* query NOT result */
+                $request->query->getInt('page', 1), /*page number*/
+                3/*limit per page*/
+            );
+
+    return $this->render('back/tableo.html.twig', [
+        'offre' => $offre,
+    ]);
+        }
+        #[Route('/tri', name: 'app_offres_trier', methods: ['GET'])]
+    public function afftri(OffresRepository $offresRepository, Request $request, PaginatorInterface $paginator): Response
     {
+       
+        $offres = $offresRepository->tri();
+        $offres = $paginator->paginate(
+            $offres, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3/*limit per page*/
+        );
+
+        // Passer les résultats à la vue Twig pour les afficher
         return $this->render('back/tableo.html.twig', [
-            'offres' => $offresRepository->findAll(),
+            'offre' => $offres,
         ]);
     }
 /////////////////statistique/////////

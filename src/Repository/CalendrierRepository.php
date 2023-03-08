@@ -49,6 +49,15 @@ class CalendrierRepository extends ServiceEntityRepository
             ->getResult()
         ;
     }
+    public function findCalendarByCoach($value): array
+    {
+        return $this->createQueryBuilder('c')
+            ->andWhere('c.coach = :val')
+            ->setParameter('val', $value)
+            ->getQuery()
+            ->getResult()
+        ;
+    }
 
 //    /**
 //     * @return Calendrier[] Returns an array of Calendrier objects

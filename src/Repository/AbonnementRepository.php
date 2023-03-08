@@ -88,5 +88,13 @@ public function changeEtat($value,$id): void
            ->getResult()
        ;
    }
+   public function tri()
+{
+    return $this->createQueryBuilder('e')
+    ->orderBy('e.DateD','DESC')
+    ->getQuery()
+    ->getResult()
+;
+}
 
 }

@@ -1,101 +1,90 @@
 {% extends 'back/base.html.twig' %}
 
-
 {% block body %}
-	<!-- Table Start -->
-	<div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
-		<div class="container-fluid pt-4 px-4" style="bottom:0;">
-			<h1>
-				Liste Abonnement
-			</h1>
-			{# <div class="card-body"> #}
-			<div class="table-responsive">
+	<div class="row my-4">
+		<div class="text-center">
+			<h1>subscription</h1>
+		</div>
 
-				<table class="table">
-					<thead>
-						<tr>
-							<th>Id</th>
-							<th>
-								Subscriber Name</th>
-
-							<th>Email</th>
-
-							<th>salle</th>
-							<th>date Debut</th>
-
-							<th>Payement</th>
-
-							<th>Offer
-							</th>
-							<th>State</th>
-							<th>Actions</th>
-						</tr>
-					</thead>
-
-					<tbody>
-						{% for ab in abonnements %}
-							<tr>
-								<td>{{ ab.id }}</td>
-
-								<td>{{ ab.Name   }}
-								</td>
-								<td>{{ ab.Email }}
-								</td>
-								<td>{{ ab.salle }}</td>
-								<td>{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}</td>
-								<td>{{ ab.MPayement }}</td>
-								<td>{{ ab.offre.id }}</td>
-								{% if ab.etatab %}
-									<td>
-
-										Active
-									</td>
-								{% else %}
-									<td>
-
-										Not Active
-									</td>
-
-								{% endif %}
+		{% for ab in abonnements %}
+			<div class="col-md-6 col-lg-4 mb-4">
+				<div class="card bg-secondary">
 
 
-								<td>
+					<div class="card-body">
+						<h5 class="card-title">{{ab.name }}</h5>
+						<p class="card-text">{{ ab.salle }}</p>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">Email :
+							{{ ab.Email }}
+							mois</li>
+						<li class="list-group-item">Payment method :
+							{{ ab.MPayement }}
+						</li>
+						<li class="list-group-item">start date :
+							{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}
+						</li>
+						<li class="list-group-item">offer ID :
+							{{ ab.offre.id }}
+						</li>
+						{% if ab.etatab %}
+						<li class="list-group-item">State :
+							Actif
 
-									<a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}">
-										<i class="bi bi-pencil-square"></i>
-									</a>
-
-									<a href=" {{ path('app_abonnement_show', {'id': ab.id}) }} ">
-										<i class="bi bi-binoculars"></i>
-									</a>
-									{% if not ab.etatab %}
-									<a href=" {{ path('app_abonnement_enable', {'id': ab.id}) }} ">
-
-										enable
-									</a>
-
-									{% endif %}
-
-								</td>
-
-
-							</tr>
-
+						</li>
 						{% else %}
-							<tr>
-								<td colspan="6">no records found</td>
-							</tr>
-						{% endfor %}
+<li class="list-group-item">State :
+	Not Actif
 
-					</tbody>
-				</table>
-				<a href="{{ path('app_abonnement_new_inback') }}">Ajouter Nouveau Abonnement</a>
+</li>
+
+{% endif %}
+
+
+						<div class="card-body">
+
+							<a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}" class="card-link">
+								<i class="bi bi-pencil-square"></i>
+								edit</a>
+							<a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}" class="card-link">
+								<i class="bi bi-binoculars"></i>
+								Détails</a>
+
+							{% if not ab.etatab %}
+								<a href=" {{ path('app_abonnement_enable', {'id': ab.id}) }} ">
+
+									enable
+								</a>
+
+							{% endif %}
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+			{% endfor %}
+			<div class="col-12">
+				<a href="{{ path('app_abonnement_new_inback') }}" class="btn btn-primary mb-3">ADD New subscription</a>
 				<br>
+				<a href="{{ path('app_abbonement_trier') }}" class="btn btn-secondary">
+					<i class="fas fa-sort-amount-up"></i>
+					Sort by ascending price
+				</a>
 
-
+				<div class="card-body"></div>
 			</div>
 		</div>
-		<!-- Table End -->
 
+<div
+	class="navigation">
+	{# {{ knp_pagination_render(categories) }} #}
+{{ knp_pagination_render(abonnements, '', {'pagination': abonnements, 'classes': {'pagination': 'pagination', 'disabled': 'disabled', 'active': 'active', 'prev': 'prev', 'next': 'next'}})|raw }}
+
+
+</div>
 
 	{% endblock %}

@@ -73,6 +73,25 @@ class PassController extends AbstractController
         ]);
     }
 
+    #[Route('/generate-qr-code/{id}', name: 'app_qr_code')]
+    public function generateQrCodeAction(Pass $pass): Response
+    {
+        // Récupérer les informations de l'objet Pass
+        $nom_client = $pass->getClient()->getNom();
+        $nom_event = $pass->getEvent()->getNom();
+        $createdAt = $pass->getEvent()->getBeginAt();
+
+       
+                $qrCodeContent = $nom_client . ' ' . $nom_event . ' ' . $createdAt->format('Y-m-d H:i:s');
+
+      
+
+        return $this->render('front/qr_code.html.twig', [
+            'qrCodeImage' =>  $qrCodeContent,
+        ]);
+    }
+
+
 //confirmer reservation== ajout d'un pass a partir du front
     #[Route('/new_front/{id_event}', name: 'app_pass_new_front', methods: ['GET', 'POST'])]
     public function newF(PassRepository $passRepository,$id_event,Request $request, EvenementRepository $eventRepo, UserRepository $userRepo): Response

@@ -2,6 +2,18 @@
 
 
 {% block body %}
+	<style>
+		#calendrier {
+			margin: auto;
+			/*  width: auto !important;
+			height: auto !important;*/
+			width: 1000px;
+			height: 500px;
+		}
+	</style>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
 	{# ***********************style POP UP**************** #}
 	<style>
 		/* style pour la pop-up */
@@ -96,7 +108,7 @@
 
 			<div class="row">
 				<div class="col-lg-8">
-					<div class="class-details-text">
+					<div class="class-details-text" style="width:900px;">
 						<div class="cd-pic">
 							<img src="img/classes/class-details/class-detailsl.jpg" alt="">
 						</div>
@@ -105,7 +117,7 @@
 							<div class="row">
 								<div class="col-md-6">
 									<div class="cd-trainer-pic">
-										{% if "download" in user.image %}
+										{% if ".jpg" in user.image %}
 
 											<img src="{{asset('uploads/'~ user.image )}}" alt="">
 										{% else %}
@@ -162,6 +174,7 @@
 									{# ************************************************** Commande Start pop-up******************************************** #}
 
 									<!-- bouton pour ouvrir la pop-up -->
+									
 {% if not is_granted('ROLE_ADMIN') %}
 
 
@@ -235,7 +248,8 @@
 													<th scope="col">End
 													</th>
 													<th scope="col">description</th>
-
+													<th scope="col">Generate Qr</th>
+													
 
 												</tr>
 											</thead>
@@ -267,6 +281,8 @@
 														<td>event finish at:
 															{{ pass.event.finishAt ? pass.event.finishAt|date('Y-m-d H:i:s') : '' }}</td>
 														<td>{{ pass.event.description }}</td>
+														
+ 							<td><a href="{{ path('app_qr_code', {'id': pass.id}) }}">qr code</a></td>
 
 													</tr>
 												</td>
@@ -362,14 +378,88 @@ Subscriptions</button>
 			</tbody>
 		</tbody>
 	</table>
+	
 	<span class="popup-close" onclick="closePopup_offre()">&times;</span>
-</div></div>
+	
+</div>
+</div>
 
-																																																																											<!-- Pricing Section Begin -->
-																																																																														<section class="pricing-section service-pricing spad">
+		{# ******Calendar*********************#}
+		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" integrity="sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=" crossorigin="anonymous"></script>
+	<script>
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+timeZone: 'Afrique/Tunisie',
+weekends: true,
+
+
+defaultView: 'month',
+businessHours: {
+start: '08:00',
+end: '18:00',
+dow: [
+1,
+2,
+3,
+4,
+5
+]
+},
+headerToolbar: {
+start: 'prev,next today',
+center: 'title',
+end: 'dayGridMonth,timeGridWeek'
+},
+
+events: {{ data|raw }},
+editable: true,
+/*			eventResizableFromStart:true,
+			eventDrop :function(event){
+				console.log(event)
+			}*/
+
+
+})
+
+calendar.on('eventChange', (e) => {
+// afficher
+// console.log(e)
+// pour assurer l'injection des données =>
+// Créer une variable URL qui contient la route de l'injection des données
+
+let url = `/api/${
+e.event.id
+}/edit`
+// Créer un tableau JSon pour stocker nos données de la table plannig
+let donnees = {
+"title": e.event.title,
+"description": e.event.description,
+"start": e.event.start,
+"end": e.event.end,
+"backgroundColor": e.event.background_color,
+"borderColor": e.event.border_color,
+"textColor": e.event.text_color,
+"activite": e.event.activite
+
+
+}
+let xhr = new XMLHttpRequest
+// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ
+xhr.open("PUT", url)
+xhr.send(JSON.stringify(donnees))
+})
+
+calendar.render()
+}
+						</script>
+																																																																								<!-- Pricing Section Begin --> #}
 																																																																																																																																																																																																																																																																	
-																																																																																																																																																																																																																																																																			</table> {# /******************************************************************************** #}<a href="{{ path('app_profileEdit', {'id': user.id}) }}" class="primary-btn btn-normal appoinment-btn"> Edit</i></a></div> </div></div></div></div></div></div></div></section><!-- Class Details Section End --><!-- Class Timetable Section Begin --><section class="class-timetable-section class-details-timetable spad"><div class="container"><div class="row"><div class="col-lg-12"><div class="class-details-timetable_title"><h5>Classes timetable</h5></div></div></div><div class="row"><div class="col-lg-12"><div class="class-timetable details-timetable"><table><thead> <tr><th></th><th>Monday</th><th>Tuesday</th><th>Wednesday</th><th>Thursday</th><th>Friday</th><th>Saturday</th><th>Sunday</th> </tr></thead><tbody> <tr><td class="class-time">6.00am - 8.00am</td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td><td class="dark-bg blank-td"></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td> </tr> <tr><td class="class-time">10.00am - 12.00am</td><td class="blank-td"></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="blank-td"></td> </tr> <tr><td class="class-time">5.00pm - 7.00pm</td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Body Building</h5><span>Robert Cage</span></td><td class="blank-td"></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Fitness</h5><span>Kimberly Stone</span></td> </tr> <tr><td class="class-time">7.00pm - 9.00pm</td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Cardio</h5><span>RLefew D. Loee</span></td><td class="dark-bg blank-td"></td><td class="hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="workout"><h5>Yoga</h5><span>Keaf Shen</span></td><td class="hover-dp ts-meta" data-tsmeta="motivation"><h5>Karate</h5><span>Donald Grey</span></td><td class="dark-bg hover-dp ts-meta" data-tsmeta="fitness"><h5>Boxing</h5><span>Rachel Adam</span></td><td class="hover-dp ts-meta" data-tsmeta="workout"><h5>WEIGHT LOOSE</h5><span>RLefew D. Loee</span></td> </tr></tbody></table></div></div></div></div></section><script>// fonction pour ouvrir la pop-up
-
+																																																																																																																																																																																																																																																																			</table> {# /******************************************************************************** #}<a href="{{ path('app_profileEdit', {'id': user.id}) }}" class="primary-btn btn-normal appoinment-btn"> Edit</i></a></div> </div></div></div></div></div></div></div></section><!-- Class Details Section End --><!-- Class Timetable Section Begin -->
+	{# //**********************************																																																																																																																																																																																																																																																																		<script>// fonction pour ouvrir la pop-up #}
+<script>
 function openPopuppass() {
 
 document.getElementById("popup_passe").style.display = "block";
@@ -404,4 +494,23 @@ document.getElementById("popup_offre").style.display = "block";
 function closePopup_offre() {
 document.getElementById("popup_offre").style.display = "none";
 
-}</script><!-- Class Timetable Section End -->{% endblock %}
+}</script><!-- Class Timetable Section End -->
+
+<section style="background-color:#151515;" class="hero-section">
+{# <h2> MY PLANNIG <h2> #}
+							<div style="position: center;background-color:black;color:red;
+															 " id="calendrier"></div>		;
+																	 
+  
+<br>
+						<br>
+						<br>
+						<br><br>
+						<br>
+						<br>
+						<br><br>
+						
+						</section>
+						
+
+{% endblock %}

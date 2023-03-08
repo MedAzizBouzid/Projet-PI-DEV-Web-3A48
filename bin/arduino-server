@@ -1,0 +1,18 @@
+#!/usr/bin/env php
+<?php
+
+require dirname(__DIR__) . '/vendor/autoload.php';
+
+use App\ArduinoHandler;
+use React\EventLoop\Factory;
+use React\Socket\Server;
+
+$loop = Factory::create();
+$handler = new ArduinoHandler($loop);
+$socket = new Server('127.0.0.1:8001', $loop);
+
+$socket->on('connection', $handler);
+
+echo "Arduino server started\n";
+
+$loop->run();

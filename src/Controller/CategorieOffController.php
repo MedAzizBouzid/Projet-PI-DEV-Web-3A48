@@ -5,6 +5,7 @@ namespace App\Controller;
 use App\Entity\CategorieOff;
 use App\Form\CategorieOffType;
 use App\Repository\CategorieOffRepository;
+use Knp\Component\Pager\PaginatorInterface;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -21,11 +22,19 @@ class CategorieOffController extends AbstractController
         ]);
     }
     #[Route('/afficher', name: 'app_categorie_index2', methods: ['GET'])]
-    public function index2(CategorieOffRepository $categorieRepository): Response
+    public function index2(CategorieOffRepository $categorieRepository, Request $request, PaginatorInterface $paginator): Response
     {
-        return $this->render('back/tablec.html.twig', [
-            'categories' => $categorieRepository->findAll(),
-        ]);
+        
+        $offre = $categorieRepository->findAll();
+        $offre = $paginator->paginate(
+            $offre, /* query NOT result */
+            $request->query->getInt('page', 1), /*page number*/
+            3/*limit per page*/
+        );
+
+return $this->render('back/tablec.html.twig', [
+    'categories' => $offre,
+]);
     }
 
     #[Route('/new', name: 'app_categorie_new', methods: ['GET', 'POST'])]
