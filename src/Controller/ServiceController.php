@@ -30,6 +30,18 @@ class ServiceController extends AbstractController
     #[Route('/S', name: 'app_service_index_Front', methods: ['GET','POST'])]
     public function Front(ServiceRepository $serviceRepository,OpenAiService $openAiService,Request $request): Response
     {
+        $weight = $request->request->get('weight');
+$height = $request->request->get('height');
+
+if ($height) {
+
+    // Calcul du BMI
+    $bmi = ($weight / ($height * $height)) * 10000;
+} else {
+
+    $bmi = 0;
+}
+
         $json="";
         $form = $this->createForm(ChatGptTyp::class);
 $form->handleRequest(($request));
@@ -43,10 +55,13 @@ if ($form->isSubmitted() ) {
 
     // dd($json);
 }
+$bmi = number_format($bmi, 2);
+
         return $this->renderForm('front/services.html.twig', [
             'services' => $serviceRepository->findAll(),
             'form'=>$form,
-            'reponse'=>$json
+            'reponse'=>$json,
+            'bmi' => $bmi,
         ]);
     }
 

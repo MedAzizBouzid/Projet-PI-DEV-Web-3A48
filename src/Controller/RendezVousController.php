@@ -214,7 +214,7 @@ if ($this->isCsrfTokenValid('delete' . $rendezVou->getId(), $request->request->g
         $rdv=$rendezVousRepository->findRdvByService($id);
         $email = $request->get('email');
         $client = $this->getUser();
-
+$rdvs=[] ;
         foreach ($rdv as $event) {
             $rdvs[] = [
 
@@ -242,9 +242,9 @@ if ($this->isCsrfTokenValid('delete' . $rendezVou->getId(), $request->request->g
             $rendezVou->setClient($client);
             $rendezVou->setService($service);
             $rendezVousRepository->save($rendezVou, true);
-            dd($data);
+            // dd($data);
 
-            return $this->redirectToRoute('app_profil');
+            return $this->redirectToRoute('app_service_index_Front');
         }
 
 

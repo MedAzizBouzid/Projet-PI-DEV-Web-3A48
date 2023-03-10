@@ -219,7 +219,7 @@
 														                            <p>Support.gymcenter@gmail.com</p>
 														                        </div> #}
 
-						{% if event.capacite > 0 %}
+						{% if event.capacite > 0  %}
 							<a href="{{ path('app_pass_reservation', {'id_event': event.id}) }}"> <button class="btn btn-danger">reservez votre place</button>
 						</a>
 					{% else %}
@@ -315,7 +315,7 @@
 						{% endif %}
 						{# /***********************like***********************/ #}
 						<a href="{{ path('app_commentaire_like', {'id': cmt.id, 'id_event': event.id}) }}" class="btn btn-link js-like-link">
-																			  {% if cmt.client is not null and cmt.client.id == app.user.id and cmt.isLikedByUser(app.user.email) %}
+																			  {% if cmt.client is not null  and cmt.isLikedByUser(app.user.email) %}
 												
 																				<button type="button" class="btn btn-danger">
 																					<i class="fa-solid fa-thumbs-up"></i>

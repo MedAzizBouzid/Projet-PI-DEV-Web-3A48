@@ -80,15 +80,17 @@ class UserMobileController extends AbstractController
     public function editUserMobile(Request $request, UserPasswordHasherInterface $userPasswordHasher, UserRepository $userRepository): Response
     {
         $id=$request->get("id");
-        if($request->files->get("photo")!= null){
-            $file =$request->files->get("photo");
-            $fileName=$file->getClientOriginalName();
-            $file->move($fileName);
-            $user->setImage($fileName);
-
-        }
         $user = $userRepository->find($id);
-       
+
+        // if($request->files->get("photo")!= null){
+        //     $file =$request->files->get("photo");
+        //     $fileName=$file->getClientOriginalName();
+        //     $file->move($fileName);
+        //     $user->setImage($fileName);
+
+        // }
+    //    $user->setImage($fileName);
+
             $user->setPassword(
                 $userPasswordHasher->hashPassword(
                     $user,
@@ -110,10 +112,23 @@ class UserMobileController extends AbstractController
            }catch (Exception $ex){
             return new Response("fail ".$ex->getMessage());
            }
-    
+   
+    }
+     #[Route('/deleteAccount', name: 'app_user_deleteAccount')]
+    public function deleteAccount(Request $request, UserRepository $userRepository): Response
+    {
+        $id=$request->get("id");
+        $user=$userRepository->find($id);
+            try {
 
-       
-        
+                $userRepository->remove($user, true);
+
+                return new JsonResponse("Account deleted successfuly", 200);
+            } catch (Exception $ex) {
+                return new Response("fail " . $ex->getMessage());
+            }
+
+
     }
  }
 

@@ -1,7 +1,7 @@
 {% extends 'front/baseF.html.twig' %}
 {% block title %}
-<title>
-	Your Cart
+	<title>
+		Your Cart
 	</title>
 
 {% endblock %}
@@ -25,7 +25,7 @@
 	</section>
 
 
-<section class="team-section team-page spad" >
+	<section class="team-section team-page spad">
 
 
 		<div></div>
@@ -36,7 +36,7 @@
 				<div class="col">
 					<div class="card">
 						<div class="card-body p-4">
-<a href="{{path('app_panier_show', {'id': app.user.id}) }}">
+							<a href="{{path('app_panier_show', {'id': app.user.id}) }}">
 
 								<span class="badge badge-dark">Historique Panier</span>
 							</a>
@@ -135,7 +135,13 @@
 									<div class="card-body">
 										<div class="d-flex justify-content-between align-items-center mb-4">
 											<h5 class="mb-0">Card details</h5>
-<img src="{{ asset('uploads/'~ app.user.image)}}" class="img-fluid rounded-3" style="width: 45px;" alt="Avatar">
+											{% if "jpg" in app.user.image %}
+
+												<img src="{{asset('uploads/'~ app.user.image )}}" alt="" class="img-thumbnail" style=" width:80px;">
+											{% else %}
+												<img src="{{app.user.image }}" alt="" class="img-thumbnail" style=" width:80px;">
+
+											{% endif %}
 
 										</div>
 
@@ -158,7 +164,7 @@
 
 										</div>
 										{%  if LignePaniers != null %}
-                          <a href="{{path('app_panier_add', {'id': app.user.id}) }}">
+											<a href="{{path('app_panier_add', {'id': app.user.id}) }}">
 
 
 												<button type="button" class="btn btn-info btn-block btn-lg">
@@ -223,60 +229,56 @@ spanCount4.textContent = response.data.totalC + " DT";
 
 }
 // ---------------------------décrementation quantité------------------------
-			function onClickBtnRemove(event) {
-   event.preventDefault();
-                    
-                    //this return sur les a
-                    const url=this.href;
-                    const spanCount0=this.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('div.js-vide');
-                   
-             
-                     
-                    const spanCount = this.parentNode.parentNode.querySelectorAll('h5.js-quantite');
-                    const spanCount2 = this.parentNode.parentNode.querySelectorAll('h5.js-totalProduit');
-                     const spanCount3 = document.querySelector('p.js-totalP');
-                    const spanCount4 = document.querySelector('span.js-totalC');
-                    //console.log(spanCount);
-                    axios.get(url).then(function(response){
-                  if(response.data.nbr !=1 )
-                  {
-                  spanCount[0].textContent=response.data.nbr;
-                  spanCount2[0].textContent=response.data.total +" DT";
-                  spanCount3.textContent=response.data.totalP +" DT";
-                  spanCount4.textContent=response.data.totalC +" DT";}
-                  else 
-                   { 
-                  spanCount[0].textContent=response.data.nbr;
-                  spanCount2[0].textContent=response.data.total +" DT";
-                  spanCount3.textContent=response.data.totalP +" DT";
-                  spanCount4.textContent=response.data.totalC +" DT";
-                 }
-                    })
-                   
+function onClickBtnRemove(event) {
+event.preventDefault();
+
+// this return sur les a
+const url = this.href;
+const spanCount0 = this.parentNode.parentNode.parentNode.parentNode.parentNode.querySelectorAll('div.js-vide');
+
+
+const spanCount = this.parentNode.parentNode.querySelectorAll('h5.js-quantite');
+const spanCount2 = this.parentNode.parentNode.querySelectorAll('h5.js-totalProduit');
+const spanCount3 = document.querySelector('p.js-totalP');
+const spanCount4 = document.querySelector('span.js-totalC');
+// console.log(spanCount);
+axios.get(url).then(function (response) {
+if (response.data.nbr != 1) {
+spanCount[0].textContent = response.data.nbr;
+spanCount2[0].textContent = response.data.total + " DT";
+spanCount3.textContent = response.data.totalP + " DT";
+spanCount4.textContent = response.data.totalC + " DT";
+} else {
+spanCount[0].textContent = response.data.nbr;
+spanCount2[0].textContent = response.data.total + " DT";
+spanCount3.textContent = response.data.totalP + " DT";
+spanCount4.textContent = response.data.totalC + " DT";
+}
+})
+
 
 }
- //---------------------------delete produit------------------------
-                 function onClickBtnDelete(event)
-                {
-                    event.preventDefault();
-                    
-                    //this return sur les a
-                    const url=this.href;
-                    const spanCount0=this.parentNode.parentNode.parentNode.parentNode.querySelectorAll('div.js-vide');
-                    console.log(spanCount0);
-                     const spanCount3 = document.querySelector('p.js-totalP');
-                    const spanCount4 = document.querySelector('span.js-totalC');
-                    //console.log(spanCount);
-                    axios.get(url).then(function(response){
-                
-                  
-                  spanCount0[0].textContent="";
-                   spanCount3.textContent=response.data.totalP +" DT";
-                  spanCount4.textContent=response.data.totalC +" DT";
-               
-                    })
+// ---------------------------delete produit------------------------
+function onClickBtnDelete(event) {
+event.preventDefault();
 
-                }
+// this return sur les a
+const url = this.href;
+const spanCount0 = this.parentNode.parentNode.parentNode.parentNode.querySelectorAll('div.js-vide');
+console.log(spanCount0);
+const spanCount3 = document.querySelector('p.js-totalP');
+const spanCount4 = document.querySelector('span.js-totalC');
+// console.log(spanCount);
+axios.get(url).then(function (response) {
+
+
+spanCount0[0].textContent = "";
+spanCount3.textContent = response.data.totalP + " DT";
+spanCount4.textContent = response.data.totalC + " DT";
+
+})
+
+}
 
 document.querySelectorAll('a.js-add').forEach(function (link) {
 link.addEventListener('click', onClickBtnAdd);
@@ -285,109 +287,96 @@ link.addEventListener('click', onClickBtnAdd);
 
 document.querySelectorAll('a.js-remove').forEach(function (link) {
 link.addEventListener('click', onClickBtnRemove);
-}) 
+})
 
-  document.querySelectorAll('a.js-delete').forEach(function(link)
-               {
-                    link.addEventListener('click',onClickBtnDelete);
-                }
-                   )
+document.querySelectorAll('a.js-delete').forEach(function (link) {
+link.addEventListener('click', onClickBtnDelete);
+})
 
 
 </script>
- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
 
-        <script type="module">
-       //-----------notification addproduct
-            $(document).ready(function(){
-         
-            let panier=$('a.js-add');
-            panier.each(function(){
-                $(this).on('click',function(e){
-                    e.preventDefault();
-                    let link =$(this);
-                    let target=$(this).attr('href');
-                    const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-  
-        Toast.fire({
-            icon: 'success',
-            title: 'Produit ajouté'
-        })
-                        
-                        })
-                    })
-                    
-                })
-                //---------------notif decrementation product
-                 $(document).ready(function(){
-         
-            let panier=$('a.js-remove');
-            panier.each(function(){
-                $(this).on('click',function(e){
-                    e.preventDefault();
-                    let link =$(this);
-                    let target=$(this).attr('href');
-                    const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-  
-        Toast.fire({
-            icon: 'success',
-            title: 'Produit supprimé'
-        })
-                        
-                        })
-                    })
-                    
-                })
-				 $(document).ready(function(){
-         
-            let panier=$('a.js-delete');
-            panier.each(function(){
-                $(this).on('click',function(e){
-                    e.preventDefault();
-                    let link =$(this);
-                    let target=$(this).attr('href');
-                    const Toast = Swal.mixin({
-                    toast: true,
-                    position: 'top-end',
-                    showConfirmButton: false,
-                    timer: 1000,
-                    timerProgressBar: true,
-                    didOpen: (toast) => {
-                    toast.addEventListener('mouseenter', Swal.stopTimer)
-                    toast.addEventListener('mouseleave', Swal.resumeTimer)
-                    }
-                })
-  
-        Toast.fire({
-            icon: 'success',
-            title: 'Produit supprimé'
-        })
-                        
-                        })
-                    })
-                    
-                })
+<script type="module">
+	// -----------notification addproduct
+$(document).ready(function () {
 
-        </script>
-{% endblock %}
+let panier = $('a.js-add');
+panier.each(function () {
+$(this).on('click', function (e) {
+e.preventDefault();
+let link = $(this);
+let target = $(this).attr('href');
+const Toast = Swal.mixin({
+toast: true,
+position: 'top-end',
+showConfirmButton: false,
+timer: 1000,
+timerProgressBar: true,
+didOpen: (toast) => {
+toast.addEventListener('mouseenter', Swal.stopTimer)
+toast.addEventListener('mouseleave', Swal.resumeTimer)
+}
+})
+
+Toast.fire({icon: 'success', title: 'Produit ajouté'})
+
+})
+})
+
+})
+// ---------------notif decrementation product
+$(document).ready(function () {
+
+let panier = $('a.js-remove');
+panier.each(function () {
+$(this).on('click', function (e) {
+e.preventDefault();
+let link = $(this);
+let target = $(this).attr('href');
+const Toast = Swal.mixin({
+toast: true,
+position: 'top-end',
+showConfirmButton: false,
+timer: 1000,
+timerProgressBar: true,
+didOpen: (toast) => {
+toast.addEventListener('mouseenter', Swal.stopTimer)
+toast.addEventListener('mouseleave', Swal.resumeTimer)
+}
+})
+
+Toast.fire({icon: 'success', title: 'Produit supprimé'})
+
+})
+})
+
+})
+$(document).ready(function () {
+
+let panier = $('a.js-delete');
+panier.each(function () {
+$(this).on('click', function (e) {
+e.preventDefault();
+let link = $(this);
+let target = $(this).attr('href');
+const Toast = Swal.mixin({
+toast: true,
+position: 'top-end',
+showConfirmButton: false,
+timer: 1000,
+timerProgressBar: true,
+didOpen: (toast) => {
+toast.addEventListener('mouseenter', Swal.stopTimer)
+toast.addEventListener('mouseleave', Swal.resumeTimer)
+}
+})
+
+Toast.fire({icon: 'success', title: 'Produit supprimé'})
+
+})
+})
+
+})
+</script>{% endblock %}

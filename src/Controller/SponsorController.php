@@ -79,7 +79,7 @@ if ($message != "") {
         return $this->render('front/detail-event.html.twig', [
             'sponsors' => $sponsors,
             'event' => $event,
-            'commentaires' => $commentaireRepository->findAll(),
+            'commentaires' => $commentaireRepository->findCommentByEvent($id),
             'form' => $form,
             'id_client' => $user->getId(),
         ]);
@@ -87,7 +87,7 @@ if ($message != "") {
         return $this->render('front/detail-event.html.twig', [
             'sponsors' => $sponsors,
             'event' => $event,
-            'commentaires' => $commentaireRepository->findAll(),
+            'commentaires' => $commentaireRepository->findCommentByEvent($id),
             'form' => $form,
             'id_client' => null,
             
