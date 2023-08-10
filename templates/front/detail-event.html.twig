@@ -1,0 +1,626 @@
+{% extends 'front/baseF.html.twig' %}
+
+
+{% block body %}
+	{# *********** debut style comments ********** #}
+	<style>
+		.navbar-nav {
+			width: 100%;
+		}
+
+		@media(min-width:568px) {
+			.end {
+				margin-left: auto;
+			}
+		}
+
+		@media(max-width:768px) {
+			#post {
+				width: 100%;
+			}
+		}
+		#clicked {
+			padding-top: 1px;
+			padding-bottom: 1px;
+			text-align: center;
+			width: 100%;
+			background-color: #ecb21f;
+			border-color: #a88734 #9c7e31 #846a29;
+			color: black;
+			border-width: 1px;
+			border-style: solid;
+			border-radius: 13px;
+		}
+
+		#profile {
+			background-color: unset;
+
+		}
+
+		#post {
+			margin: 10px;
+			padding: 2px 6px;
+			text-align: center;
+			background-color: #ecb21f;
+			border-color: #a88734 #9c7e31 #846a29;
+			color: black;
+			border-width: 1px;
+			border-style: solid;
+			border-radius: 13px;
+			width: 50%;
+		}
+
+		body {
+			background-color: #151515;
+		}
+
+		#nav-items li a,
+		#profile {
+			text-decoration: none;
+			color: rgb(224, 219, 219);
+			background-color: black;
+		}
+
+
+		.comments {
+			margin-top: 5%;
+			margin-left: 20px;
+		}
+
+		.darker {
+			border: 1px solid #ecb21f;
+			background-color: black;
+			float: right;
+			border-radius: 5px;
+			padding-left: 40px;
+			padding-right: 30px;
+			padding-top: 10px;
+		}
+
+		.comment {
+			border: 1px solid #AA0000;
+			background-color: rgba(16, 46, 46, 0.973);
+			float: left;
+			border-radius: 5px;
+			padding-left: 40px;
+			padding-right: 30px;
+			padding-top: 10px;
+
+		}
+		.comment h4,
+		.comment span,
+		.darker h4,
+		.darker span {
+			display: inline;
+		}
+
+		.comment p,
+		.comment span,
+		.darker p,
+		.darker span {
+			color: rgb(184, 183, 183);
+		}
+
+		h1,
+		h4 {
+			color: white;
+			font-weight: bold;
+		}
+		label {
+			color: rgb(212, 208, 208);
+		}
+
+		#align-form {
+			margin-top: 20px;
+		}
+		.form-group p a {
+			color: white;
+		}
+
+		#checkbx {
+			background-color: black;
+		}
+
+		#darker img {
+			margin-right: 15px;
+			position: static;
+		}
+
+		.form-group input,
+		.form-group textarea {
+			background-color: black;
+			border: 1px solid #AA0000;
+			border-radius: 12px;
+		}
+
+		form {
+			border: 1px solid rgba(16, 46, 46, 1);
+			background-color: rgba(16, 46, 46, 0.973);
+			border-radius: 5px;
+			padding: 20px;
+		}
+	</style>
+
+	{# *********** fin style comments ********** #}
+
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb-text">
+						<h2>{{event.nom}}</h2>
+						{# <div class="bt-option" >
+																	                <h2 style="color:red;"><i class="fa fa-map-marker"></i>
+																	                <p>{{event.lieu}}</p> </h2>
+																	
+																	              </div> #}
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
+	<!-- Get In Touch Section Begin -->
+	<br><br><br><br>
+
+	<div class="container">
+		<div class="row">
+			<div class="col-md-4">
+				<div class="gt-text">
+					<i class="fa fa-map-marker"></i>
+					<p>{{event.lieu}}</p>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="gt-text">
+					<i class="fa fa-calendar"></i>
+					<ul>
+						<li>begin At:
+							{{event.beginAt ? event.beginAt|date('Y-m-d H:i:s') : ''}}
+						</li>
+						<li>finish At:
+							{{event.finishAt ? event.finishAt|date('Y-m-d H:i:s') : ''}}</li>
+					</ul>
+				</div>
+			</div>
+			<div class="col-md-4">
+				<div class="gt-text email">
+					<i class="fa fa-id-badge"></i>
+					<p>Available seats:
+						{{event.capacite}}</p>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- acheter pass Section Begin -->
+	<section class="contact-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					{# <div class="section-title contact-title">
+														                        <span>Our event</span>
+														                        <h2>{{event.nom}}</h2>
+														                    </div> #}
+					{# <div class="contact-widget">
+														                        <div class="cw-text">
+														                            <i class="fa fa-map-marker"></i>
+														                            <p>{{event.lieu}}</p>
+														                        </div>
+														                        <div class="cw-text">
+														                            <i class="fa fa-mobile"></i>
+														                            <ul>
+														                                <li>125-711-811</li>
+														                                <li>125-668-886</li>
+														                            </ul>
+														                        </div>
+														                        <div class="cw-text email">
+														                            <i class="fa fa-envelope"></i>
+														                            <p>Support.gymcenter@gmail.com</p>
+														                        </div> #}
+
+						{% if event.capacite > 0  %}
+							<a href="{{ path('app_pass_reservation', {'id_event': event.id}) }}"> <button class="btn btn-danger">reservez votre place</button>
+						</a>
+					{% else %}
+						<a href="">
+							<button class="btn btn-danger">pas de places disponibles</button>
+						</a>
+					{% endif %}
+
+				</div>
+			</div>
+
+		</div>
+
+	</div>
+</section>
+<!-- acheter pass Section End -->
+
+
+<!-- acheter pass Section Begin -->
+{# <section class="contact-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-6">
+					<div class="section-title contact-title">
+						<span>Our event</span>
+						<h2>{{event.nom}}</h2>
+					</div>
+					<div class="contact-widget">
+						<div class="cw-text">
+							<i class="fa fa-map-marker"></i>
+							<p>{{event.lieu}}</p>
+						</div>
+						<div class="cw-text">
+							<i class="fa fa-mobile"></i>
+							<ul>
+								<li>125-711-811</li>
+								<li>125-668-886</li>
+							</ul>
+						</div>
+						<div class="cw-text email">
+							<i class="fa fa-envelope"></i>
+							<p>Support.gymcenter@gmail.com</p>
+						</div>
+						{% if event.capacite > 0 %}
+							<a href="{{ path('app_pass_reservation', {'id_event': event.id}) }}">
+								<button class="btn btn-danger">reservez votre place</button>
+							</a>
+						{% else %}
+							<a href="">
+								<button class="btn btn-danger">pas de places disponibles</button>
+							</a>
+						{% endif %}
+
+					</div>
+				</div>
+
+			</div>
+
+		</div>
+	</section> #}
+<!-- acheter pass Section End -->
+
+<!-- comments Section Begin new -->
+
+
+	<section>
+		<div class="container"> <div class="row">
+			<div class="col-sm-5 col-md-6 col-12 pb-4">
+				<h1>Comments</h1>
+				{% for cmt in commentaires %}
+					<div style="width: 600px; border-color: red;" class="text-justify darker mt-4 float-right">
+						{# dhia :<img src="https://i.imgur.com/CFpa3nK.jpg" alt="" class="rounded-circle" width="40" height="40"> #}
+						{% if cmt.client is not null %}
+							<h4>{{cmt.client.nom}}</h4>
+							<p class="small mb-0 ms-2">{{cmt.client.nom}}</p>
+
+						{% else %}
+							<p class="small mb-0 ms-2">ce client a ete supprime</p>
+
+						{% endif %}
+
+						<span>- 20 October, 2018</span>
+						<br>
+						<p>{{cmt.description}}</p>
+						{% if cmt.client is not null and cmt.client.id == id_client %}
+							<a href="{{ path('app_commentaire_delete_front', {'id': cmt.id,'id_event':event.id}) }}">
+								<button class="btn btn-danger">delete</button>
+							</a>
+							&nbsp;
+							{# <a href=""><button class="btn btn-danger">modify</button></a> #}
+							{% else %}
+
+						{% endif %}
+						{# /***********************like***********************/ #}
+						<a href="{{ path('app_commentaire_like', {'id': cmt.id, 'id_event': event.id}) }}" class="btn btn-link js-like-link">
+																			  {% if cmt.client is not null  and cmt.isLikedByUser(app.user.email) %}
+												
+																				<button type="button" class="btn btn-danger">
+																					<i class="fa-solid fa-thumbs-up"></i>
+																				{% else %}
+																					<button type="button" class="btn btn-danger">
+																						<i class="fa-regular fa-thumbs-up"></i>
+																					{% endif %}
+																					<span class="js-likes">{{cmt.commentLikes | length }}</span>
+																					<span class="js-label">j'aime</span>
+																				</button>
+																			</a>
+
+
+					</div>
+				{% endfor  %}
+			</div>
+			<br>
+			<br>
+
+
+			{% if app.user %}
+
+				<div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+					<form id="algin-form" method="post" action="{{path('app_sponsor_index_front',{'id':event.id})}}">
+						<div class="form-group">
+							<h4>Leave a comment</h4>
+							<label for="message">Message</label>
+							<textarea name="msg" id="" msg cols="30" rows="5" class="form-control" style="background-color: black;"></textarea>
+						</div>
+
+
+						<div class="form-group">
+							<button type="submit" style="background-color: #DC3545;" id="post" class="btn">Post Comment</button>
+						</div>
+					</form>
+				</div>
+			{% else %}
+
+				<div class="col-lg-4 col-md-5 col-sm-4 offset-md-1 offset-sm-1 col-12 mt-4">
+					<form id="algin-form" method="post" action="{{path('app_sponsor_index_front',{'id':event.id})}}">
+						<div class="form-group">
+
+
+							<a href="{{path('app_login')}}">
+								<h3>You have to login to add comment</h3>
+							</a>
+
+
+						</div>
+					</form>
+				</div>
+
+
+			{% endif %}
+
+		</div>
+	</div>
+</section>
+<!-- comments Section end -->
+
+
+<!-- comments Section Begin -->
+{# <section class="pricing-section service-pricing spad">
+	<div class="container">
+		<div class="col-lg-12">
+			<div class="section-title">
+				<span>Testimonial</span>
+				<h2>Our cilent say</h2>
+			</div>
+		</div>
+		<div class="row d-flex justify-content-center ">
+			<div class="col-md-8 col-lg-6">
+				<div class="card shadow-0 border" style="background-color: #8d1414;">
+					<div class="card-body p-4 ">
+						{% if app.user %}
+
+							<div class="form-outline mb-4">
+
+								<label class="form-label" for="addANote">+ Add a note</label>
+
+								{{ form_start(form) }}
+								{{ form_widget(form) }}
+								<button class="btn">
+									{{ button_label|default('Save') }}</button>
+								{{ form_end(form) }}
+
+							</div>
+						{% else %}
+
+							<div class="form-outline mb-4">
+
+
+								<a href="{{path('app_login')}}">
+									<h3>You have to login to add comment</h3>
+								</a>
+
+
+							</div>
+
+
+						{% endif %}
+						{% for cmt in commentaires %}
+
+							<div class="card mb-4">
+								<div class="card-body">
+									<p>{{cmt.description}}</p>
+
+									<div class="d-flex justify-content-between">
+										<div class="d-flex flex-row align-items-center">
+											<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25" height="25"/>
+											{% if cmt.client is not null %}
+												<p class="small mb-0 ms-2">{{cmt.client.nom}}</p>
+											{% else %}
+												<p class="small mb-0 ms-2">ce client a ete supprime</p>
+											{% endif %}
+										</div>
+										<div class="d-flex flex-row align-items-center">
+
+											{% if cmt.client is not null and cmt.client.id == id_client %}
+												<a href="{{ path('app_commentaire_delete_front', {'id': cmt.id,'id_event':event.id}) }}">
+													<button class="btn btn-danger">delete</button>
+												</a>
+												&nbsp;
+												<a href="">
+													<button class="btn btn-danger">modify</button>
+												</a>
+												{% else %}
+
+											{% endif %}
+										</div>
+
+									</div>
+								</div>
+							</div>
+
+						{% endfor %}
+
+
+						<div class="card-body">
+							<p>Type your note, and hit enter to add it</p>
+
+							<div class="d-flex justify-content-between">
+								<div class="d-flex flex-row align-items-center">
+									<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25" height="25"/>
+									<p class="small mb-0 ms-2">Johny</p>
+								</div>
+								<div class="d-flex flex-row align-items-center">
+									<p class="small text-muted mb-0">Upvote?</p>
+									<i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+									<p class="small text-muted mb-0">4</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-4">
+						<div class="card-body">
+							<p>Type your note, and hit enter to add it</p>
+
+							<div class="d-flex justify-content-between">
+								<div class="d-flex flex-row align-items-center">
+									<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25" height="25"/>
+									<p class="small mb-0 ms-2">Johny</p>
+								</div>
+								<div class="d-flex flex-row align-items-center">
+									<p class="small text-muted mb-0">Upvote?</p>
+									<i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+									<p class="small text-muted mb-0">4</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-4">
+						<div class="card-body">
+							<p>Type your note, and hit enter to add it</p>
+
+							<div class="d-flex justify-content-between">
+								<div class="d-flex flex-row align-items-center">
+									<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25" height="25"/>
+									<p class="small mb-0 ms-2">Johny</p>
+								</div>
+								<div class="d-flex flex-row align-items-center">
+									<p class="small text-muted mb-0">Upvote?</p>
+									<i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+									<p class="small text-muted mb-0">4</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-4">
+						<div class="card-body">
+							<p>Type your note, and hit enter to add it</p>
+
+							<div class="d-flex justify-content-between">
+								<div class="d-flex flex-row align-items-center">
+									<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25" height="25"/>
+									<p class="small mb-0 ms-2">Johny</p>
+								</div>
+								<div class="d-flex flex-row align-items-center">
+									<p class="small text-muted mb-0">Upvote?</p>
+									<i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+									<p class="small text-muted mb-0">4</p>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="card mb-4">
+						<div class="card-body">
+							<p>Type your note, and hit enter to add it</p>
+
+							<div class="d-flex justify-content-between">
+								<div class="d-flex flex-row align-items-center">
+									<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25" height="25"/>
+									<p class="small mb-0 ms-2">Johny</p>
+								</div>
+								<div class="d-flex flex-row align-items-center">
+									<p class="small text-muted mb-0">Upvote?</p>
+									<i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+									<p class="small text-muted mb-0">4</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card mb-4">
+						<div class="card-body">
+							<p>Type your note, and hit enter to add it</p>
+
+							<div class="d-flex justify-content-between">
+								<div class="d-flex flex-row align-items-center">
+									<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="25" height="25"/>
+									<p class="small mb-0 ms-2">Mary Kate</p>
+								</div>
+								<div class="d-flex flex-row align-items-center text-primary">
+									<p class="small mb-0">Upvoted</p>
+									<i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
+									<p class="small mb-0">2</p>
+								</div>
+							</div>
+						</div>
+					</div>
+
+					<div class="card">
+						<div class="card-body">
+							<p>Type your note, and hit enter to add it</p>
+
+							<div class="d-flex justify-content-between">
+								<div class="d-flex flex-row align-items-center">
+									<img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25" height="25"/>
+									<p class="small mb-0 ms-2">Johny</p>
+								</div>
+								<div class="d-flex flex-row align-items-center">
+									<p class="small text-muted mb-0">Upvote?</p>
+									<i class="far fa-thumbs-up ms-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+								</div>
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div></section> #}
+<!-- comments Section end --><!-- sponsor Section Begin --><section class="testimonial-section spad">
+<div class="container">
+	<div class="row">
+		<div class="col-lg-12">
+			<div class="section-title">
+				<span>Testimonial</span>
+				<h2>Our sponsors</h2>
+			</div>
+		</div>
+	</div>
+	<div class="ts_slider owl-carousel">
+
+
+		{% for sponsor in sponsors %}
+
+
+			<div class="ts_item">
+				<div class="row">
+					<div class="col-lg-12 text-center">
+						<div class="ti_pic">
+							<img src="{{ sponsor.logo}}" alt="">
+						</div>
+						<div class="ti_text">
+							<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor
+																																																								                                    incididunt<br/>
+								ut labore et dolore magna aliqua. Quis ipsum suspendisse ultrices
+																																																								                                    gravida. Risus commodo<br/>
+								viverra maecenas accumsan lacus vel facilisis.</p>
+							<h5>Marshmello Gomez</h5>
+							<div class="tt-rating">
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+								<i class="fa fa-star"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		{% endfor %}
+
+
+	</div>
+</div></section><!-- Testimonial Section End -->{% endblock %}{% block ajax %}{% endblock %}

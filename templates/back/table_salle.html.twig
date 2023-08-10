@@ -1,0 +1,465 @@
+{% extends 'back/base.html.twig' %}
+
+
+{% block body %}
+
+
+<style>
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+{# thead {
+  background-color:#C0C0C0;
+} #}
+
+th, td {
+  text-align: left;
+  padding: 8px;
+  
+}
+
+tr:nth-child(even) {
+  background-color: #D3D3D3;
+}
+
+{# tr:hover {
+  background-color: #D3D3D3;
+} #}
+Ce code crée un tableau avec trois colonnes et trois rangées, et chaque rangée a une couleur de fond différente. Lorsque l'utilisateur passe la souris sur une rangée, sa couleur de fond change pour une autre couleur.
+
+
+
+{# -------------------------------------------------------- #}
+
+		 
+body {
+    /* background: var(--fond); */
+}
+hr {
+    width: 200px;
+}
+h1 {
+    text-align: center;
+    padding-top: 70px;
+    /* color: var(--ecriture); */
+}
+.contenu {
+    padding: 50px 10%;
+    text-align: justify;
+    /* color: var(--ecriture); */
+
+}
+.btn-toggle {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: #333;
+    color: #fff;
+    border: 1px solid #333;
+    display: flex;
+    justify-content: center;
+    align-items: center;    
+    cursor: pointer;
+}
+
+body.dark {
+    color: #fff!important;
+    background: #333!important;
+}
+body.dark .btn-toggle {
+    background: #f1f1f1;
+    color: #333;
+}
+
+
+
+</style>
+ 
+	<!-- Table Start -->
+ 
+	{# _______________________________________Partie ajax rechargement d'un page web______________________________ #}
+  
+
+	{# <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0"> #}
+		{# <form class="d-flex" action="chercher_salle" method="GET">
+			<input class="form-control me-2" name="dhia" type="search" placeholder="Search" aria-label="Search">
+			<button class="btn btn-outline-success" type="submit">Search</button>
+	    </form> #}
+
+		<div class="container-fluid pt-4 px-4" style="bottom:0;">
+ 
+
+    {#_________________________________ Partie pop-up ____________________________________________________#}
+{# <button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter une salle</button> #}
+
+<!-- Modal -->
+{# <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Ajouter une salle</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+ 
+    				
+					<div class="form-group" style="position: center;">
+															
+			{{ form_start(form) }}
+			{{ form_widget(form) }}
+			<button type="submit">Save</button>
+			{{ form_end(form) }}
+		    </div>
+
+      </div>
+    </div>
+  </div>
+</div> #}
+ {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
+<div class="table-responsive"> 
+			 
+          <div class="bg-secondary text-center rounded p-4">
+					{# <a href={{path('app_activite_new')}} <button style="width:25%;height:35%"
+			 type="button"   class="btn btn-light m-2"> Ajouter une nouvelle Salle
+			  </button> </a>   #}
+
+			  {# <button type="button"   class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal"> Ajouter une salle</button> #}
+
+  {# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
+<button id="openBtn"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Add new Gym</button>
+
+<!-- La pop-up -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Add new Gym</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+ 
+    				
+					<div class="form-group" style="position: center;">
+   {# --------------------------------------FORM START-------------------------------------- #}
+      {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}
+					) }}
+
+ 					<div class="row g-3 align-items-center ">
+
+						{{form_label(form.nom)}}
+						{{form_widget(form.nom, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.nom)}}
+
+					</div>
+
+					<div class="row g-3 align-items-center">
+						{{form_label(form.lieu)}}
+						{{form_widget(form.lieu, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.lieu)}}
+
+					</div>
+ 
+					<div class="row g-3 align-items-center">
+
+						{{form_label(form.telephone)}}
+						{{form_widget(form.telephone, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.telephone) }}
+
+					</div>
+
+
+					<div class="row g-3 align-items-center">
+
+						{{form_label(form.email)}}
+						{{form_widget(form.email, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.email) }}
+
+					</div>
+
+					<div class="row g-3 align-items-center">
+ 
+						{{form_label(form.superficie)}}
+						{{form_widget(form.superficie, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.superficie) }}
+
+					</div>
+
+					<div class="row g-3 align-items-center">
+						{{form_label(form.description)}}
+						{{form_widget(form.description, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.description) }}
+
+					</div>
+
+					 
+					<div class="row g-3 align-items-center ">
+						{{form_label(form.image)}}
+						{{form_widget(form.image, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{form_errors(form.image)}}
+
+					</div>
+		 	<div class="row g-3 align-items-center">
+						{{form_label(form.cours)}}
+						{{form_widget(form.cours, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+						{{ form_errors(form.cours) }}
+
+					</div>
+		    </div>
+<button style="width: 90px;padding: 5px;" class="btn btn-primary">{{ button_label|default('Save') }}</button>
+
+
+						{{ form_end(form) }}
+               {# --------------------------------------FORM END-------------------------------------- #}
+
+      </div>
+    </div>
+  </div>
+</div>
+  {# <!-- Modal-----------------------------------FIN DU POP UP--------- ---------- #}
+
+    {#_________________________________ Partie pop-up ____________________________________________________#}
+
+
+
+
+
+
+
+	<div>
+	 
+
+ 
+			{# <a href={{path('app_salle_new')}} <button style="width:25%;height:35%"
+			 type="button"   class="btn btn-light m-2"> Ajouter un une nouvelle salle
+			  </button> </a>  
+			  #}
+			{# _________PARTIE POP-UP__________________________________________________________ #}
+
+			<div class="table-responsive"> 
+      
+      <div id="pagination">
+					<a href="#" class="previous">&laquo; Previous</a>
+					<a href="#" class="next">Next &raquo;</a>
+			</div>
+			<table class="table table-bordered" id="myTable" width="100%" cellspacing="0"> 
+			<thead>
+			  <tr>
+			  		<th style ="color:#FF0000">#</th>
+					<th style ="color:#FF0000">Name</th>
+					<th style ="color:#FF0000">Place</th>
+					<th style ="color:#FF0000">Phone</th>
+				    <th style ="color:#FF0000">Email</th>
+ 			  		{# <th style ="color:#FF0000">Description</th> #}
+ 			  		<th style ="color:#FF0000">Area</th>
+ 			  		<th style ="color:#FF0000">Activities</th>
+
+					{# <th style ="color:#FF0000">Image</th> #}
+
+					<th style ="color:#FF0000">Action</th>
+
+
+			  </tr>
+			</thead>
+
+			{% for p in salles %}
+			<tbody>
+								
+			<tr>
+				{# <th scope="row">1</th> #}
+				<td style="font-family: Arial, sans-serif;" >{{p.id}}</td>
+				<td   >{{p.nom}}</td>
+				<td  >{{p.lieu}}</td>
+				<td  >{{p.telephone}}</td>
+				<td  >{{p.email}}</td>
+				<td  >{{p.superficie}}</td>
+				{# <td  >{{p.description}}</td> #}
+				<td>
+				{% for c in p.cours %}
+				<ul>
+				<li>{{c.nom}}</li>
+				
+				</ul>
+							</td>
+
+				{% endfor %}
+				</td> 
+
+				{# <td> <img class="img-thumbnail" src="{{asset('uploads/'~ p.image)}}" alt="" ></td> #}
+
+				<td><a href="{{path('deleteevent',{'id':p.id})}}"><i class="bi bi-trash"></i></a></td>
+
+				<td><a href="{{path('app_salle_edit',{'id':p.id})}}"><span class="bi bi-cart-fill"></a></td>
+				<td><a href="{{path('app_salle_show',{'id':p.id})}}"><i class="bi bi-book"></i></a></td>
+<td>
+	<a href="{{path('app_calendrier_new',{'id':p.id})}}">
+		<button style="background-color:red;color:white;" onclick="openPopup()">Go to plan</button>
+
+</a></td>
+				<td><a href="{{path('app_Map_new',{'id':p.id})}}">Marker MAP</a></td>
+
+
+
+
+        
+
+			</tr>
+										
+		</tbody>
+			{% endfor %} 
+			 
+
+ 
+				</table>
+				 
+				</div>
+				
+		</div>
+</div>
+
+<!-- Table End -->
+{# <title>AJAX avec Symfony</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script>
+      $(document).ready(function() {
+        // Lorsque l'utilisateur clique sur le bouton "Ajouter"
+        $("#btn-ajouter").click(function() {
+          // Envoie une requête AJAX pour récupérer la vue d'ajout
+          $.ajax({
+            url: "{{ path('app_salle_new_ajax') }}",
+            type: "GET",
+            success: function(data) {
+              // Affiche la vue d'ajout dans la div "zone-ajout"
+              $("#zone-ajout").html(data);
+            }
+          });
+        });
+      });
+    </script>
+  </head>
+  <body>
+    <h1>Liste des éléments</h1>
+    <ul>
+      <li>Elément 1</li>
+      <li>Elément 2</li>
+      <li>Elément 3</li>
+    </ul>
+    <button id="btn-ajouter">Ajouter une salle</button>
+    <div id="zone-ajout"><h2>Liste des éléments</h2></div> #}
+	</div>
+
+</body>
+<script>
+
+ 			{# script pagination #}
+let table = document.getElementById('myTable');
+let rowsPerPage = 5;
+let currentPage = 1;
+
+function showPage(page) {
+  let startIndex = (page - 1) * rowsPerPage;
+  let endIndex = startIndex + rowsPerPage;
+
+  let rows = table.rows;
+  for (let i = 1; i < rows.length; i++) {
+    let row = rows[i];
+    if (i < startIndex || i >= endIndex) {
+      row.style.display = 'none';
+    } else {
+      row.style.display = '';
+    }
+  }
+}
+
+function nextPage() {
+  if (currentPage < numPages()) {
+    currentPage++;
+    showPage(currentPage);
+  }
+}
+
+function previousPage() {
+  if (currentPage > 1) {
+    currentPage--;
+    showPage(currentPage);
+  }
+}
+
+function numPages() {
+  return Math.ceil((table.rows.length - 1) / rowsPerPage);
+}
+
+document.querySelector('.previous').addEventListener('click', previousPage);
+document.querySelector('.next').addEventListener('click', nextPage);
+
+showPage(currentPage);
+
+
+const btnToggle = document.querySelector('.btn-toggle');
+
+btnToggle.addEventListener('click', () => {
+
+    const body = document.body;
+
+    if(body.classList.contains('dark')){
+
+        body.classList.add('light')
+        body.classList.remove('dark')
+        btnToggle.innerHTML = "Go Dark"
+
+    } else if(body.classList.contains('light')){
+
+        body.classList.add('dark')
+        body.classList.remove('light')
+        btnToggle.innerHTML = "Go Light"
+
+    }
+
+})
+</script>
+{% endblock %}
+
+
+
+ {# <form action="ajouter_salle" method="GET">
+            
+			<div class="mb-3">
+                <label for="exampleInputEmail1" class="form-label">nom</label>
+                <input name="nom" placeholder="Nom" type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+                <div id="emailHelp" class="form-text"> 
+                </div>
+            </div>
+
+            <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">lieu</label>
+                <input name="lieu" placeholder="lieu" type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+
+             <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">telephone</label>
+                <input name="telephone" placeholder="lieu" type="telephone" class="form-control" id="exampleInputPassword1">
+            </div>
+
+
+			 <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">email</label>
+                <input name="email"  placeholder="Email" type="email" class="form-control" id="exampleInputPassword1">
+            </div>
+
+			 <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">superficie</label>
+                <input name="superficie" placeholder="Superficie" type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+			 <div class="mb-3">
+                <label for="exampleInputPassword1" class="form-label">description</label>
+                <input name="description" placeholder="Déscription" type="text" class="form-control" id="exampleInputPassword1">
+            </div>
+
+            <button type="submit" href={{path('new1')}} class="btn btn-primary">Ajouter
+            </button>
+        </form>   #}
+ 											

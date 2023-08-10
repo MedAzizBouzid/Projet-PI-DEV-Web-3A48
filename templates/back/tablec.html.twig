@@ -1,0 +1,60 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+	<div class="row my-4">
+		<div class="text-center">
+			<h1>subscription</h1>
+		</div>
+		{% for promotion in categories %}
+
+
+			<div class="col-md-6 col-lg-4 mb-4">
+				<div class="card bg-secondary">
+
+
+					<div class="card-body">
+						<p class="card-title">
+							{{ promotion.id }}</p>
+						<h5 class="card-title">
+							{{ promotion.name }}</h5>
+
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">
+							{{ promotion.description }}</li>
+
+
+						<div class="card-body">
+
+							<a href="{{ path('app_categorie_edit', {'id': promotion.id}) }}" class="card-link">
+								<i class="bi bi-pencil-square"></i>
+								edit</a>
+							<a href="{{ path('app_categorie_delete', {'id': promotion.id}) }}" class="card-link">
+								<i class="bi bi-trash-fill"></i>
+								delete</a>
+
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+			{% endfor %}
+			<div class="col-12">
+				<a href="{{ path('app_abonnement_new_inback') }}" class="btn btn-primary mb-3">ADD New subscription</a>
+				<br>
+
+
+				<div class="card-body"></div>
+			</div>
+		</div>
+
+		<div
+			class="navigation">
+			{# {{ knp_pagination_render(categories) }} #}
+			{{ knp_pagination_render(categories, '', {'pagination': categories, 'classes': {'pagination': 'pagination', 'disabled': 'disabled', 'active': 'active', 'prev': 'prev', 'next': 'next'}})|raw }}
+		</div>
+
+	{% endblock %}

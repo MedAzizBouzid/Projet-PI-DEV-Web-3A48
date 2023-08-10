@@ -1,0 +1,58 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}Sponsor index{% endblock %}
+
+{% block body %}
+    <h1>Sponsor index</h1>
+
+
+    <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+        <div class="container-fluid pt-4 px-4" style="bottom:0;">
+
+            {# <div class="card-body"> #}
+                <a href="{{ path('app_sponsor_new') }}" class="btn-danger">Create new</a>
+                    <div class="table-responsive">
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Logo</th>
+                <th>Email</th>
+                <th>type de contrat</th>
+                <th>evenement</th>
+                <th>actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for sponsor in sponsors %}
+            <tr>
+                <td>{{ sponsor.id }}</td>
+                <td>{{ sponsor.nom }}</td>
+                <td><img src="{{ sponsor.logo }}" alt="Image"></td>
+                <td>{{ sponsor.email }}</td>
+                <td>{{ sponsor.type.typeC }}</td>
+                <td> {% if  sponsor.event is not null  %}
+                {{ sponsor.event.nom }}
+            {% else %}
+                pas d'event affecte a ce sponsor
+            {% endif %}
+        </td>
+                <td>
+                    <a href="{{ path('app_sponsor_show', {'id': sponsor.id}) }}">show</a>
+                    <a href="{{ path('app_sponsor_edit', {'id': sponsor.id}) }}">edit</a>
+                    {{ include('back/sponsor/_delete_form.html.twig') }}
+                </td>
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="5">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+</div>
+</div>
+</div>
+
+{% endblock %}

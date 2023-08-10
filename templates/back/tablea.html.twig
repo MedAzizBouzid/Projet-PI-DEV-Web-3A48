@@ -1,0 +1,90 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+	<div class="row my-4">
+		<div class="text-center">
+			<h1>subscription</h1>
+		</div>
+
+		{% for ab in abonnements %}
+			<div class="col-md-6 col-lg-4 mb-4">
+				<div class="card bg-secondary">
+
+
+					<div class="card-body">
+						<h5 class="card-title">{{ab.name }}</h5>
+						<p class="card-text">{{ ab.salle }}</p>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">Email :
+							{{ ab.Email }}
+							mois</li>
+						<li class="list-group-item">Payment method :
+							{{ ab.MPayement }}
+						</li>
+						<li class="list-group-item">start date :
+							{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}
+						</li>
+						<li class="list-group-item">offer ID :
+							{{ ab.offre.id }}
+						</li>
+						{% if ab.etatab %}
+						<li class="list-group-item">State :
+							Actif
+
+						</li>
+						{% else %}
+<li class="list-group-item">State :
+	Not Actif
+
+</li>
+
+{% endif %}
+
+
+						<div class="card-body">
+
+							<a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}" class="card-link">
+								<i class="bi bi-pencil-square"></i>
+								edit</a>
+							<a href="{{ path('app_abonnement_edit', {'id': ab.id}) }}" class="card-link">
+								<i class="bi bi-binoculars"></i>
+								Détails</a>
+
+							{% if not ab.etatab %}
+								<a href=" {{ path('app_abonnement_enable', {'id': ab.id}) }} ">
+
+									enable
+								</a>
+
+							{% endif %}
+
+						</div>
+
+					</div>
+
+
+				</div>
+
+			{% endfor %}
+			<div class="col-12">
+				<a href="{{ path('app_abonnement_new_inback') }}" class="btn btn-primary mb-3">ADD New subscription</a>
+				<br>
+				<a href="{{ path('app_abbonement_trier') }}" class="btn btn-secondary">
+					<i class="fas fa-sort-amount-up"></i>
+					Sort by ascending price
+				</a>
+
+				<div class="card-body"></div>
+			</div>
+		</div>
+
+<div
+	class="navigation">
+	{# {{ knp_pagination_render(categories) }} #}
+{{ knp_pagination_render(abonnements, '', {'pagination': abonnements, 'classes': {'pagination': 'pagination', 'disabled': 'disabled', 'active': 'active', 'prev': 'prev', 'next': 'next'}})|raw }}
+
+
+</div>
+
+	{% endblock %}

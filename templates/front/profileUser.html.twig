@@ -1,0 +1,516 @@
+{% extends 'front/baseF.html.twig' %}
+
+
+{% block body %}
+	<style>
+		#calendrier {
+			margin: auto;
+			/*  width: auto !important;
+			height: auto !important;*/
+			width: 1000px;
+			height: 500px;
+		}
+	</style>
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+	{# ***********************style POP UP**************** #}
+	<style>
+		/* style pour la pop-up */
+		.popup {
+			position: fixed; /* positionnement fixe */
+			top: 0; /* positionné en haut */
+			left: 0; /* positionné à gauche */
+			width: 100%; /* largeur à 100% */
+			height: 100%; /* hauteur à 100% */
+			background-color: rgba(0, 0, 0, 0.5); /* couleur de fond semi-transparente */
+			display: none; /* cacher la pop-up par défaut */
+		}
+		.popup-content {
+			position: absolute; /* positionnement absolu */
+			top: 50%; /* positionné à 50% de la hauteur de la fenêtre */
+			left: 50%; /* positionné à 50% de la largeur de la fenêtre */
+			transform: translate(-50%, -50%); /* centrer horizontalement et verticalement */
+			width: 300px; /* largeur de la pop-up */
+			padding: 20px; /* marge intérieure */
+			background-color: #fff; /* couleur de fond */
+			border-radius: 5px; /* arrondi des coins */
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* ombre portée */
+			text-align: center; /* alignement centré */
+		}
+		.popup-content h2 {
+			margin-top: 0; /* supprimer la marge en haut du titre */
+		}
+		.popup-close {
+			position: absolute; /* positionnement absolu */
+			top: 10px; /* positionné à 10px du haut */
+			right: 10px; /* positionné à 10px de la droite */
+			font-size: 20px; /* taille de police */
+			color: #888; /* couleur du texte */
+			cursor: pointer; /* curseur de la souris en forme de main */
+		}
+
+		.popup-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 80%;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+			text-align: center;
+		}
+
+		.table {
+			width: 100%;
+			margin-top: 20px;
+			border-collapse: collapse;
+
+		}
+
+		.table th,
+		.table td {
+			padding: 12px 15px;
+			text-align: center;
+			border: 1px solid #ddd;
+		}
+
+		.table th {
+			background-color: red;
+			color: #fff;
+		}
+
+		.table tbody tr:hover {
+			background-color: silver;
+		}
+	</style>
+
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb-text">
+						<h2>account detail</h2>
+
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<!-- Breadcrumb Section End -->
+
+	<!-- Class Details Section Begin -->
+	<section class="class-details-section spad">
+		<div class="container">
+
+			<div class="row">
+				<div class="col-lg-8">
+					<div class="class-details-text" style="width:900px;">
+						<div class="cd-pic">
+							<img src="img/classes/class-details/class-detailsl.jpg" alt="">
+						</div>
+
+						<div class="cd-trainer">
+							<div class="row">
+								<div class="col-md-6">
+									<div class="cd-trainer-pic">
+										{% if ".jpg" in user.image %}
+
+											<img src="{{asset('uploads/'~ user.image )}}" alt="">
+										{% else %}
+											<img src="{{user.image }}" alt="">
+										{% endif %}
+
+
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="cd-trainer-text">
+										<div class="trainer-title">
+											<h4>{{user.username}}</h4>
+											{# <span>Gym Trainer</span> #}
+										</div>
+										<div class="trainer-social">
+											<a href="#">
+												<i class="fa fa-facebook"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-twitter"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-youtube-play"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-instagram"></i>
+											</a>
+											<a href="#">
+												<i class="fa  fa-envelope-o"></i>
+											</a>
+										</div>
+										{# <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
+																																																																																																																																																																																																																																																																																																																																																													                                            tempor incididunt ut labore et dolore magna aliqua viverra maecenas lacus
+																																																																																																																																																																																																																																																																																																																																																													                                            vel facilisis.</p> #}
+										<ul class="trainer-info">
+											<li>
+												<span>Name</span>
+												{{user.nom}}</li>
+											<li>
+												<span>Last Name</span>
+												{{user.prenom}}</li>
+											<li>
+												<span>Email</span>
+												{{user.email}}</li>
+											<li>
+												<span>Tel</span>
+												{{user.numTel}}</li>
+										</ul>
+										{# /*************************************abn************************************************************************ #}
+										 
+
+									{# /*************************************abn************************************************************************ #}
+									{# ************************************************** Commande Start pop-up******************************************** #}
+
+									<!-- bouton pour ouvrir la pop-up -->
+									
+{% if not is_granted('ROLE_ADMIN') %}
+
+
+										<button style="background-color:red;color:white;" onclick="openPopup()"> Chek orders</button>
+{% endif %}
+
+									<!-- pop-up -->
+									<div id="popup" class="popup">
+										<div class="popup-content">
+											<h2>My orders</h2>
+											<table class="table">
+												<thead>
+													<tr>
+														<th scope="col">#</th>
+														<th scope="col">Article Number</th>
+														<th scope="col">Total Commande</th>
+														<th scope="col">State</th>
+														<th scope="col">Action</th>
+
+
+													</tr>
+												</thead>
+												<tbody>
+													{% for commande in commandes %}
+														<tr>
+															<td>{{ commande.id }}</td>
+															<td>{{ commande.NbArticles }}</td>
+															<td>{{ commande.TotalCommande }}</td>
+															<td>{{ commande.etat }}</td>
+															<td>
+																<a
+																	href="{{path('delete_commande',{'id':commande.id})}}">
+																	{# <i class="bi bi-book"></i> #}
+																	Cancel
+																</a>
+															</td>
+
+														</tr>
+													{% endfor %}
+												</tbody>
+											</table>
+											<span class="popup-close" onclick="closePopup()">&times;</span>
+										</div>
+									</div>
+									{# ************************************************** Commande end pop-up*********************** #}
+									{# ************************************************** Pass pop-up*********************** #}
+									<!-- bouton pour ouvrir la pop-up -->
+{% if not is_granted('ROLE_ADMIN') %}
+
+
+										<button style="background-color:red;color:white;" onclick="openPopuppass()"> Chek Passes</button>
+
+{% endif %}
+									<!-- pop-up -->
+									<div id="popup_passe" class="popup">
+										<div class="popup-content">
+											<h2>My Passes</h2>
+
+											<table class="table">
+
+												<thead style="background-color:red;"></thead>
+
+												<tr>
+													<th scope="col">#</th>
+													<th scope="col">Client Number</th>
+													<th scope="col">createdAt</th>
+
+													<th scope="col">Event name</th>
+													<th scope="col">Begin
+													</th>
+													<th scope="col">End
+													</th>
+													<th scope="col">description</th>
+													<th scope="col">Generate Qr</th>
+													
+
+												</tr>
+											</thead>
+											<tbody>
+												{% for pass in passes %}
+
+
+													<tr>
+														<td>id Pass:{{ pass.id }}</td>
+														<td>{{ pass.client.nom }}</td>
+														<td>created At:{{ pass.createdAt ? pass.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+
+														{% if pass.event is not null %}
+															<td>event name:{{ pass.event.nom }}</td>
+
+														{% else %}
+															<td>this event has been deleted</td>
+
+														{% endif %}
+
+														{% if pass.event is not null %}
+
+															<td>event begin at:{{ pass.event.beginAt ? pass.event.beginAt|date('Y-m-d H:i:s') : '' }}
+															</td>
+
+
+														</td>
+
+														<td>event finish at:
+															{{ pass.event.finishAt ? pass.event.finishAt|date('Y-m-d H:i:s') : '' }}</td>
+														<td>{{ pass.event.description }}</td>
+														
+ 							<td><a href="{{ path('app_qr_code', {'id': pass.id}) }}">qr code</a></td>
+
+													</tr>
+												</td>
+											</tbody>
+										</tr>
+									</li>
+								</tbody>
+							</td>
+
+
+						</tbody>
+					</td>
+				</tr>
+			</ul>
+		</tbody>
+	</tr>
+</td>{% else %}
+<td>this event has been deleted</td>{% endif %}</tr>{% endfor %}</tbody></table>
+<span class="popup-close" onclick="closePopuppass()">&times;</span></div></div>{# ************************************************** Pass pop-up*********************** #}{# 
+
+
+{# ***** #}
+{% if not is_granted('ROLE_ADMIN') %}
+
+<button style="background-color:red;color:white;" onclick="openPopup_offre()">
+Subscriptions</button>
+
+	{% endif %}
+
+
+<div id="popup_offre" class="popup">
+	<div class="popup-content">
+
+		<table class="table">
+			<thead>
+				<tr>
+
+
+					<th>salle</th>
+					<th>date Debut</th>
+
+					<th>Payement</th>
+
+					<th>Offer
+					</th>
+					<th>State</th>
+					<th>Actions</th>
+				</tr>
+			</thead>
+
+			<tbody>
+				{% for ab in abonnements %}
+
+					<tr>
+						<td>{{ ab.salle }}</td>
+						<td>{{ ab.DateD ? ab.DateD|date('Y-m-d') : '' }}</td>
+						<td>{{ ab.MPayement }}</td>
+						<td>{{ ab.offre.id }}</td>
+						{% if ab.etatab %}
+							<td>
+
+								Active
+							</td>
+						{% else %}
+							<td>
+
+								Not Active
+							</td>
+
+						{% endif %}
+
+
+						<td>
+						{% if not ab.etatab %}
+							
+							<a
+								href="{{ path('app_process_payment') }}">
+
+								  <i class="bi bi-pencil-square"></i>  
+								Enable
+							</a>
+						{% endif %}
+
+
+
+						</td>
+
+
+					</tr>
+				{% endfor %}
+
+
+			</tbody>
+		</tbody>
+	</table>
+	
+	<span class="popup-close" onclick="closePopup_offre()">&times;</span>
+	
+</div>
+</div>
+
+		{# ******Calendar*********************#}
+		<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" integrity="sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=" crossorigin="anonymous"></script>
+	<script>
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+timeZone: 'Afrique/Tunisie',
+weekends: true,
+
+
+defaultView: 'month',
+businessHours: {
+start: '08:00',
+end: '18:00',
+dow: [
+1,
+2,
+3,
+4,
+5
+]
+},
+headerToolbar: {
+start: 'prev,next today',
+center: 'title',
+end: 'dayGridMonth,timeGridWeek'
+},
+
+events: {{ data|raw }},
+editable: true,
+/*			eventResizableFromStart:true,
+			eventDrop :function(event){
+				console.log(event)
+			}*/
+
+
+})
+
+calendar.on('eventChange', (e) => {
+// afficher
+// console.log(e)
+// pour assurer l'injection des données =>
+// Créer une variable URL qui contient la route de l'injection des données
+
+let url = `/api/${
+e.event.id
+}/edit`
+// Créer un tableau JSon pour stocker nos données de la table plannig
+let donnees = {
+"title": e.event.title,
+"description": e.event.description,
+"start": e.event.start,
+"end": e.event.end,
+"backgroundColor": e.event.background_color,
+"borderColor": e.event.border_color,
+"textColor": e.event.text_color,
+"activite": e.event.activite
+
+
+}
+let xhr = new XMLHttpRequest
+// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ
+xhr.open("PUT", url)
+xhr.send(JSON.stringify(donnees))
+})
+
+calendar.render()
+}
+						</script>
+																																																																								<!-- Pricing Section Begin --> #}
+																																																																																																																																																																																																																																																																	
+																																																																																																																																																																																																																																																																			</table> {# /******************************************************************************** #}<a href="{{ path('app_profileEdit', {'id': user.id}) }}" class="primary-btn btn-normal appoinment-btn"> Edit</i></a></div> </div></div></div></div></div></div></div></section><!-- Class Details Section End --><!-- Class Timetable Section Begin -->
+	{# //**********************************																																																																																																																																																																																																																																																																		<script>// fonction pour ouvrir la pop-up #}
+<script>
+function openPopuppass() {
+
+document.getElementById("popup_passe").style.display = "block";
+
+}
+
+// fonction pour fermer la pop-up
+function closePopuppass() {
+
+document.getElementById("popup_passe").style.display = "none";
+
+}
+
+
+// fonction pour ouvrir la pop-up
+function openPopup() {
+document.getElementById("popup").style.display = "block";
+}
+
+// fonction pour fermer la pop-up
+function closePopup() {
+document.getElementById("popup").style.display = "none";
+}
+
+// fonction pour ouvrir la pop-up
+function openPopup_offre() {
+document.getElementById("popup_offre").style.display = "block";
+
+}
+
+// fonction pour fermer la pop-up
+function closePopup_offre() {
+document.getElementById("popup_offre").style.display = "none";
+
+}</script><!-- Class Timetable Section End -->
+
+<section style="background-color:#151515;" class="hero-section">
+{# <h2> MY PLANNIG <h2> #}
+							<div style="position: center;background-color:black;color:red;
+															 " id="calendrier"></div>		;
+																	 
+  
+<br>
+						<br>
+						<br>
+						<br><br>
+						<br>
+						<br>
+						<br><br>
+						
+						</section>
+						
+
+{% endblock %}

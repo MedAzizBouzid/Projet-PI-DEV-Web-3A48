@@ -63,4 +63,19 @@ class CommandeRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function findCommandeById(int $id): ?Commande
+{
+    return $this->findOneBy(['id' => $id]);
+}
+
+
+// ****************************
+public function findByPanierId(int $PanierId): array
+{
+    return $this->createQueryBuilder('c')
+        ->andWhere('c.Panier = :PanierId')
+        ->setParameter('PanierId', $PanierId)
+        ->getQuery()
+        ->getResult();
+}
 }

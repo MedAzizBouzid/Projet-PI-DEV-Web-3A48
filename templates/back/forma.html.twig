@@ -1,0 +1,108 @@
+{% extends 'back/base.html.twig' %}
+
+
+{% block body %}
+            <!-- Form Start -->
+         
+             <h1>   create a new subscription</h1>
+         
+   
+            <div class="container-fluid pt-4 px-4">
+                <div class="row g-4">
+                    <div class="col-sm-12 col-xl-6">
+                    
+                 
+                        <div class="bg-secondary rounded h-10 p-1">
+                                     <div class="text-center">
+                                     <br>
+                        <h6 class="mb-4">subscription Form</h6>
+                    
+
+                          <div class="text-center">
+    <div class="mx-auto" style="max-width: 400px;">
+                         
+                                  {{ form_start(form  ,{'attr': {'novalidate': 'novalidate'}} )}}
+                                   
+                      
+                      
+                                
+                                          
+                      
+                           <table>
+                            <div class="text-center">
+                           
+                             
+                           <tr>
+                                 
+                                   <div class="row justify-content-center">
+                                       <td> {{ form_label(form.Name) }}</td>
+                                <td> {{ form_widget(form.Name) }}    <br></td>
+                                  <span   <td>   {{ form_start(form .Name ,{'attr': {'novalidate': 'novalidate'}} )}}</td>
+                                        <td> {{ form_errors(form.Name) }}    <br></td>
+                              
+                                
+
+                              
+
+                                </tr>
+                            
+
+                                 <tr>
+                                
+                                   <div class="row justify-content-center">
+                                       <td> {{ form_label(form.Email )  }}</td>
+                                <td> {{ form_widget(form.Email) }}    <br> </td>
+                                   <span   <td>   {{ form_start(form .Email ,{'attr': {'novalidate': 'novalidate'}} )}}</td>
+                                        <td> {{ form_errors(form.Email) }}    <br></td>
+                              
+                                </tr>
+                                
+                                 <tr>
+                                   <div class="row justify-content-center">
+                                       <td> {{ form_label(form.salle) }} </td>
+                                <td>    {{ form_widget(form.salle) }}   <br></td>
+                      
+                                
+                                 <tr>
+                                   <div class="row justify-content-center">
+                              
+                                       <td> {{ form_label(form.MPayement) }}</td>
+                                <td> {{ form_widget(form.MPayement) }} <br></td>
+                                </tr> 
+                                
+
+                                   <tr>
+                                   <div class="row justify-content-center">
+                              
+                                       <td> {{ form_label(form.DateD) }}</td>
+                                <td> {{ form_widget(form.DateD) }}  <br></td>
+                                </tr>
+                           
+                                  <tr>
+                                   <div class="row justify-content-center">
+                              
+                                       <td> {{ form_label(form.offre) }}</td>
+                                <td> {{ form_widget(form.offre) }} <br></td>
+                                </tr>
+                                
+                        </div>
+                    
+</table>
+    <button class="btn">{{ button_label|default('Save') }}</button>
+    <br>
+      <a href="{{ path('app_abonnement_index') }}">back to list</a>
+{{ form_end(form) }}
+  
+ 
+
+   
+
+  
+
+                        </div>
+                    </div>
+                    </div>
+   </div>                
+  
+            <!-- Form End -->
+{% endblock %}

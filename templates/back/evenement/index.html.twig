@@ -1,0 +1,397 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}
+<title>
+Evenement index
+</title>
+
+
+{% endblock %}
+
+{% block body %}
+    <h1>Evenement index</h1>
+    <a href="{{ path('app_evenement_new') }}" class="btn-danger">Create new</a>
+    {# <section style="background-color: #700e07;">
+        <div class="container my-5 py-5">
+          <div class="row d-flex justify-content-center">
+            <div class="col-md-12 col-lg-10">
+              <div class="card text-dark">
+                <div class="card-body p-4">
+                  <h4 class="mb-0">Recent comments</h4>
+                  <p class="fw-light mb-4 pb-2">Latest Comments section by users</p>
+                  
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(23).webp" alt="avatar" width="60"
+                      height="60" />
+                    <div>
+                      <h6 class="fw-bold mb-1">Maggie Marsh</h6>
+                      <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">
+                          March 07, 2021
+                          <span class="badge bg-primary">Pending</span>
+                        </p>
+                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                        <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                        <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                      </div>
+                      <p class="mb-0">
+                        Lorem Ipsum is simply dummy text of the printing and typesetting
+                        industry. Lorem Ipsum has been the industry's standard dummy text ever
+                        since the 1500s, when an unknown printer took a galley of type and
+                        scrambled it.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+      
+                <hr class="my-0" />
+      
+                <div class="card-body p-4">
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(26).webp" alt="avatar" width="60"
+                      height="60" />
+                    <div>
+                      <h6 class="fw-bold mb-1">Lara Stewart</h6>
+                      <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">
+                          March 15, 2021
+                          <span class="badge bg-success">Approved</span>
+                        </p>
+                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                        <a href="#!" class="text-success"><i class="fas fa-redo-alt ms-2"></i></a>
+                        <a href="#!" class="link-danger"><i class="fas fa-heart ms-2"></i></a>
+                      </div>
+                      <p class="mb-0">
+                        Contrary to popular belief, Lorem Ipsum is not simply random text. It
+                        has roots in a piece of classical Latin literature from 45 BC, making it
+                        over 2000 years old. Richard McClintock, a Latin professor at
+                        Hampden-Sydney College in Virginia, looked up one of the more obscure
+                        Latin words, consectetur, from a Lorem Ipsum passage, and going through
+                        the cites.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+      
+                <hr class="my-0" style="height: 1px;" />
+      
+                <div class="card-body p-4">
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(33).webp" alt="avatar" width="60"
+                      height="60" />
+                    <div>
+                      <h6 class="fw-bold mb-1">Alexa Bennett</h6>
+                      <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">
+                          March 24, 2021
+                          <span class="badge bg-danger">Rejected</span>
+                        </p>
+                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                        <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                        <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                      </div>
+                      <p class="mb-0">
+                        There are many variations of passages of Lorem Ipsum available, but the
+                        majority have suffered alteration in some form, by injected humour, or
+                        randomised words which don't look even slightly believable. If you are
+                        going to use a passage of Lorem Ipsum, you need to be sure.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+      
+                <hr class="my-0" />
+      
+                <div class="card-body p-4">
+                  <div class="d-flex flex-start">
+                    <img class="rounded-circle shadow-1-strong me-3"
+                      src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(24).webp" alt="avatar" width="60"
+                      height="60" />
+                    <div>
+                      <h6 class="fw-bold mb-1">Betty Walker</h6>
+                      <div class="d-flex align-items-center mb-3">
+                        <p class="mb-0">
+                          March 30, 2021
+                          <span class="badge bg-primary">Pending</span>
+                        </p>
+                        <a href="#!" class="link-muted"><i class="fas fa-pencil-alt ms-2"></i></a>
+                        <a href="#!" class="link-muted"><i class="fas fa-redo-alt ms-2"></i></a>
+                        <a href="#!" class="link-muted"><i class="fas fa-heart ms-2"></i></a>
+                      </div>
+                      <p class="mb-0">
+                        It uses a dictionary of over 200 Latin words, combined with a handful of
+                        model sentence structures, to generate Lorem Ipsum which looks
+                        reasonable. The generated Lorem Ipsum is therefore always free from
+                        repetition, injected humour, or non-characteristic words etc.
+                      </p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section> #}
+
+      {# <div class="row d-flex justify-content-center">
+        <div class="col-md-8 col-lg-6">
+          <div class="card shadow-0 border" style="background-color: #8d1414;">
+            <div class="card-body p-4">
+              <div class="form-outline mb-4">
+                <input type="text" id="addANote" class="form-control" placeholder="Type comment..." />
+                <label class="form-label" for="addANote">+ Add a note</label>
+              </div>
+      
+              <div class="card mb-4">
+                <div class="card-body">
+                  <p>Type your note, and hit enter to add it</p>
+      
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(4).webp" alt="avatar" width="25"
+                        height="25" />
+                      <p class="small mb-0 ms-2">Martha</p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                      <p class="small text-muted mb-0">Upvote?</p>
+                      <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                      <p class="small text-muted mb-0">3</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="card mb-4">
+                <div class="card-body">
+                  <p>Type your note, and hit enter to add it</p>
+      
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                        height="25" />
+                      <p class="small mb-0 ms-2">Johny</p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                      <p class="small text-muted mb-0">Upvote?</p>
+                      <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                      <p class="small text-muted mb-0">4</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-4">
+                <div class="card-body">
+                  <p>Type your note, and hit enter to add it</p>
+      
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                        height="25" />
+                      <p class="small mb-0 ms-2">Johny</p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                      <p class="small text-muted mb-0">Upvote?</p>
+                      <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                      <p class="small text-muted mb-0">4</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-4">
+                <div class="card-body">
+                  <p>Type your note, and hit enter to add it</p>
+      
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                        height="25" />
+                      <p class="small mb-0 ms-2">Johny</p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                      <p class="small text-muted mb-0">Upvote?</p>
+                      <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                      <p class="small text-muted mb-0">4</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-4">
+                <div class="card-body">
+                  <p>Type your note, and hit enter to add it</p>
+      
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                        height="25" />
+                      <p class="small mb-0 ms-2">Johny</p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                      <p class="small text-muted mb-0">Upvote?</p>
+                      <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                      <p class="small text-muted mb-0">4</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="card mb-4">
+                <div class="card-body">
+                  <p>Type your note, and hit enter to add it</p>
+      
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                        height="25" />
+                      <p class="small mb-0 ms-2">Johny</p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                      <p class="small text-muted mb-0">Upvote?</p>
+                      <i class="far fa-thumbs-up mx-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                      <p class="small text-muted mb-0">4</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="card mb-4">
+                <div class="card-body">
+                  <p>Type your note, and hit enter to add it</p>
+      
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(31).webp" alt="avatar" width="25"
+                        height="25" />
+                      <p class="small mb-0 ms-2">Mary Kate</p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center text-primary">
+                      <p class="small mb-0">Upvoted</p>
+                      <i class="fas fa-thumbs-up mx-2 fa-xs" style="margin-top: -0.16rem;"></i>
+                      <p class="small mb-0">2</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+      
+              <div class="card">
+                <div class="card-body">
+                  <p>Type your note, and hit enter to add it</p>
+      
+                  <div class="d-flex justify-content-between">
+                    <div class="d-flex flex-row align-items-center">
+                      <img src="https://mdbcdn.b-cdn.net/img/Photos/Avatars/img%20(32).webp" alt="avatar" width="25"
+                        height="25" />
+                      <p class="small mb-0 ms-2">Johny</p>
+                    </div>
+                    <div class="d-flex flex-row align-items-center">
+                      <p class="small text-muted mb-0">Upvote?</p>
+                      <i class="far fa-thumbs-up ms-2 fa-xs text-black" style="margin-top: -0.16rem;"></i>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div> #}
+    {# dfhgh #}
+    <div class="row my-4">
+        {% for evenement in evenements %}
+        <div class="col-xl-6 mb-4">
+            <div class="bg-secondary rounded h-100 p-4">
+                <h6 class="mb-4">{{ evenement.nom }}</h6>
+                <div class="owl-carousel testimonial-carousel">
+                    <div class="testimonial-item text-center">
+                        {# <img class="img-fluid rounded-circle mx-auto mb-4" src="img/testimonial-1.jpg" style="width: 100px; height: 100px;"> #}
+                        <h5 class="mb-1">{{ evenement.nom }}</h5>
+                        <p>lieu :{{ evenement.lieu }}</p>
+                        <p>begin at: {{ evenement.beginAt ? evenement.beginAt|date('Y-m-d H:i:s') : '' }}</p>
+                        <p>finish at: {{ evenement.finishAt ? evenement.finishAt|date('Y-m-d H:i:s') : '' }}</p>
+                        <p>{{ evenement.prix }} DT</p>
+                        <p>{{ evenement.capacite }} places disponibles</p>
+                        <p>{% if  evenement.type is not null  %}
+                            {{ evenement.type.typeE }}
+                        {% else %}
+                            pas de type affecte
+                        {% endif %}</p>
+
+                        <p class="mb-0">{{ evenement.description }}</p>
+                        
+
+
+                            <a href="{{ path('app_evenement_show', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-info-circle"></i></button></a> &nbsp;
+                            <a href="{{ path('app_evenement_edit', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-pen"></i></button></a> &nbsp;
+                            <a href="{{ path('app_pass_event', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-arrow-up-square"></i></button></a> &nbsp;
+                            <a href="{{ path('app_commentaire_event', {'id': evenement.id}) }}"><button class="btn btn-danger"><i class="bi bi-chat"></i></button></a> &nbsp;
+                            <a href="{{ path('app_sponsor_event', {'id': evenement.id}) }}"><button class="btn btn-danger">sponsors</button></a> &nbsp;
+                             <a href="https://www.facebook.com/sharer/sharer.php?u={{ absolute_url ( path ('app_sponsor_index_front',{id: evenement.id}) ) }}"><button class="btn btn-danger"><i class="bi bi-facebook"></i></button></a>
+                            
+                            {# <a href="{{ path('app_evenement_delete', {'id': evenement.id}) }}">delete</a> #}
+                            {{ include('back/evenement/_delete_form.html.twig') }}</p>
+
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        {% endfor %} 
+    </div>
+<br><br><br><br>
+    {# fdfgg #}
+    <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+        <div class="container-fluid pt-4 px-4" style="bottom:0;">
+
+            {# <div class="card-body"> #}
+                    <div class="table-responsive">
+                        <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>Id</th>
+                                            <th>Nom</th>
+                                            <th>Lieu</th>
+                                            <th>BeginAt</th>
+                                            <th>FinishAt</th>
+                                            <th>Description</th>
+                                            <th>Capacite</th>
+                                            <th>type</th>
+                                            <th>actions</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {% for evenement in evenements %}
+                                                <tr>
+                                                    <td>{{ evenement.id }}</td>
+                                                    <td>{{ evenement.nom }}</td>
+                                                    <td>{{ evenement.lieu }}</td>
+                                                    <td>{{ evenement.beginAt ? evenement.beginAt|date('Y-m-d H:i:s') : '' }}</td>
+                                                    <td>{{ evenement.finishAt ? evenement.finishAt|date('Y-m-d H:i:s') : '' }}</td>
+                                                    <td>{{ evenement.description }}</td>
+                                                    <td>{{ evenement.capacite }}</td>
+                                                    <td>
+                                                    {% if  evenement.type is not null  %}
+                                                        {{ evenement.type.typeE }}
+                                                    {% else %}
+                                                        pas de type affecte
+                                                    {% endif %}
+                                                    </td>
+                                                    <td>
+                                                        <a href="{{ path('app_evenement_show', {'id': evenement.id}) }}">show</a> &nbsp;
+                                                        <a href="{{ path('app_evenement_edit', {'id': evenement.id}) }}">edit</a> &nbsp;
+                                                        {# <a href="{{ path('app_evenement_delete', {'id': evenement.id}) }}">delete</a> #}
+                                                        {{ include('back/evenement/_delete_form.html.twig') }}
+                                                    </td>
+                                                </tr>
+                                        {% else %}
+                                                <tr>
+                                                    <td colspan="8">no records found</td>
+                                                </tr>
+                                        {% endfor %}
+                                    </tbody>
+                        </table>
+                    </div>
+        </div>
+    </div>
+{% endblock %}
+

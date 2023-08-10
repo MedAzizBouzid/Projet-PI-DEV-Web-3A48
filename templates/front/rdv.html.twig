@@ -1,0 +1,158 @@
+{% extends 'front/baseF.html.twig' %}
+
+
+{% block body %}
+	<link
+	rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+
+
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg" data-setbg="{{asset('uploads/'~ service.image)}}">
+
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb-text">
+						<h2>{{service.nom}}</h2>
+
+						<div class="bt-option">
+
+							<span>{{service.tarif}}
+								DT</span>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+	<!-- Breadcrumb Section End -->
+
+	<!-- Contact Section Begin -->
+	<section class="contact-section spad">
+		<div class="container">
+
+
+			<div class="row">
+
+
+				<div style="width:auto; height:auto;color:white;" class="col-sm-12 col-xl-6">
+
+
+					<div class="col-lg-6">
+						<div class="leave-comment">
+
+							{{ form_start(form, {attr: {'novalidate': 'novalidate', 'id': 'my-form'}}) }}
+							{{ form_start(form, {attr: {'novalidate': 'novalidate', 'id': 'my-form', 'action': path('app_rendez_vousFront_Calender', {'id': service.id}) }}) }}
+
+
+							<div class="form-floating mb-3">
+								{{form_label(form.discription,"description")}}
+								<div style="background-color:white;">
+
+									{{form_widget(form.discription)}}
+								</div>
+
+
+								{{form_errors(form.discription)}}
+								<div class="invalid-feedback">You must fill description</div>
+							</div>
+
+							<div class="form-floating mb-3">
+								{{form_label(form.dateAt,"date")}}
+								{{form_widget(form.dateAt)}}
+								{{form_errors(form.dateAt)}}
+								<div class="invalid-feedback">You must fill Date</div>
+							</div>
+
+
+							<button class="btn" id="save-btn">{{ button_label|default('Save') }}</button>
+							{{ form_end(form) }}
+
+						</div>
+					</div>
+				</div>
+
+
+				{# ******************** #}
+				<div class="col-sm-12 col-xl-6">
+
+					<section>
+						<div style="width:120%; height:100%; background-color: black;color:red" id="calendrier"></div>
+
+
+					</section>
+				</div>
+
+			</div>
+
+		</div>
+	</section>
+
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" integrity="sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=" crossorigin="anonymous"></script>
+	<script>
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+timeZone: 'Afrique/Tunisie',
+weekends: true,
+
+
+defaultView: 'month',
+businessHours: {
+start: '08:00',
+end: '18:00',
+dow: [1, 2, 3,]
+},
+headerToolbar: {
+start: 'prev,next today',
+center: 'title',
+end: 'dayGridMonth,timeGridWeek'
+},
+
+events: {{ data|raw }},
+editable: false,
+eventResizableFromStart: false,
+/*eventDrop :function(event){
+
+				console.log(event)
+			}*/
+
+
+})
+
+calendar.on('eventChange', (e) => {
+// afficher
+// console.log(e)
+// pour assurer l'injection des données =>
+// Créer une variable URL qui contient la route de l'injection des données
+
+let url = `/api/${
+e.event.id
+}/edit`
+// Créer un tableau JSon pour stocker nos données de la table plannig
+let donnees = {
+"title": e.event.title,
+"description": e.event.description,
+"start": e.event.start,
+"end": e.event.end,
+"backgroundColor": e.event.background_color,
+"borderColor": e.event.border_color,
+"textColor": e.event.text_color,
+"activite": e.event.activite
+
+
+}
+
+})
+
+calendar.render()
+}
+	</script>
+
+
+	<!-- Contact Section End -->
+{% endblock %}

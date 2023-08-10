@@ -1,0 +1,66 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+	<div class="row my-4">
+		<div class="text-center">
+			<h1>Offres</h1>
+		</div>
+
+		{% for offre in offre %}
+			<div class="col-md-6 col-lg-4 mb-4">
+				<div class="card bg-secondary">
+
+					<div class="card-body">
+						<h5 class="card-title">{{ offre.categ.name }}</h5>
+						<p class="card-text">{{ offre.description }}</p>
+					</div>
+					<ul class="list-group list-group-flush">
+						<li class="list-group-item">duration :
+							{{ offre.duree }}
+							mois</li>
+						<li class="list-group-item">Price :
+							{{ offre.prix }}
+							DT</li>
+						{% if offre.promo is not null %}
+							<li class="list-group-item">Promotion :
+								{{ offre.promo.pourcentage }}% de réduction</li>
+						{% endif %}
+					</ul>
+					<div class="card-body">
+						<a href="{{ path('app_offres_edit', {'id': offre.id}) }}" class="card-link">
+							<i class="bi bi-pencil-square"></i>
+							edit</a>
+						<a href="{{ path('app_offres_delete', {'id': offre.id}) }}" class="card-link">
+							<i class="bi bi-trash-fill"></i>
+							delete</a>
+						<a href="{{ path('app_offres_show', {'id': offre.id}) }}" class="card-link">
+							<i class="bi bi-binoculars"></i>
+							Détails</a>
+					</div>
+
+				</div>
+
+
+			</div>
+
+		{% endfor %}
+
+		<div class="col-12">
+			<a href="{{ path('app_offres_new') }}" class="btn btn-primary mb-3">ADD New offer</a>
+			<br>
+			<a href="{{ path('app_offres_trier') }}" class="btn btn-secondary">
+				<i class="fas fa-sort-amount-up"></i>
+				Sort by ascending price
+			</a>
+
+			<div class="card-body"></div>
+		</div>
+	</div>
+
+	<div
+		class="navigation">
+		{# {{ knp_pagination_render(offre) }} #}
+		{{ knp_pagination_render(offre, '', {'pagination': offre, 'classes': {'pagination': 'pagination', 'disabled': 'disabled', 'active': 'active', 'prev': 'prev', 'next': 'next'}})|raw }}
+	</div>
+
+{% endblock %}

@@ -16,74 +16,94 @@ class Panier
     private ?int $id = null;
 
     #[ORM\Column]
-    private ?int $quantite = null;
+    private ?float $TotalPanier = null;
 
-    #[ORM\Column]
-    private ?float $totalePanier = null;
+    #[ORM\OneToMany(mappedBy: 'panier', targetEntity: LignePanier::class)]
+    private Collection $lignesPanier;
 
-    #[ORM\OneToMany(mappedBy: 'panier', targetEntity: Produit::class)]
-    private Collection $produits;
+    
+
+    #[ORM\Column(nullable: true)]
+    private ?int $nombreArticles = null;
+
+    #[ORM\ManyToOne(inversedBy: 'paniers')]
+    private ?User $Client = null;
 
     public function __construct()
     {
-        $this->produits = new ArrayCollection();
+        $this->lignesPanier = new ArrayCollection();
     }
+// Register Magic Method to Print the name of the State e.g California
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getQuantite(): ?int
+    public function getTotalPanier(): ?float
     {
-        return $this->quantite;
+        return $this->TotalPanier;
     }
 
-    public function setQuantite(int $quantite): self
+    public function setTotalPanier(float $TotalPanier): self
     {
-        $this->quantite = $quantite;
-
-        return $this;
-    }
-
-    public function getTotalePanier(): ?float
-    {
-        return $this->totalePanier;
-    }
-
-    public function setTotalePanier(float $totalePanier): self
-    {
-        $this->totalePanier = $totalePanier;
+        $this->TotalPanier = $TotalPanier;
 
         return $this;
     }
 
     /**
-     * @return Collection<int, Produit>
+     * @return Collection<int, lignePanier>
      */
-    public function getProduits(): Collection
+    public function getLignesPanier(): Collection
     {
-        return $this->produits;
+        return $this->lignesPanier;
     }
 
-    public function addProduit(Produit $produit): self
+    public function addLignesPanier(lignePanier $lignesPanier): self
     {
-        if (!$this->produits->contains($produit)) {
-            $this->produits->add($produit);
-            $produit->setPanier($this);
+        if (!$this->lignesPanier->contains($lignesPanier)) {
+            $this->lignesPanier->add($lignesPanier);
+            $lignesPanier->setPanier($this);
         }
 
         return $this;
     }
 
-    public function removeProduit(Produit $produit): self
+    public function removeLignesPanier(lignePanier $lignesPanier): self
     {
-        if ($this->produits->removeElement($produit)) {
+        if ($this->lignesPanier->removeElement($lignesPanier)) {
             // set the owning side to null (unless already changed)
-            if ($produit->getPanier() === $this) {
-                $produit->setPanier(null);
+            if ($lignesPanier->getPanier() === $this) {
+                $lignesPanier->setPanier(null);
             }
         }
+
+        return $this;
+    }
+
+    
+
+    public function getNombreArticles(): ?int
+    {
+        return $this->nombreArticles;
+    }
+
+    public function setNombreArticles(?int $nombreArticles): self
+    {
+        $this->nombreArticles = $nombreArticles;
+
+        return $this;
+    }
+
+    public function getClient(): ?User
+    {
+        return $this->Client;
+    }
+
+    public function setClient(?User $Client): self
+    {
+        $this->Client = $Client;
 
         return $this;
     }

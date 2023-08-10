@@ -1,0 +1,310 @@
+{% extends 'front/baseF.html.twig' %}
+{% block body %}
+
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+	<script src="https://polyfill.io/v3/polyfill.min.js?features=default"></script>
+
+
+	{# partie Map maker #}
+	<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css" integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI=" crossorigin=""/>
+	<script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js" integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM=" crossorigin=""></script>
+	{# partie Map maker #}
+
+	<style>
+		#calendrier {
+			margin: auto;
+			/*  width: auto !important;
+			height: auto !important;*/
+			width: 80%;
+			height: auto;
+		}
+	</style>
+	<style>
+		table {
+			border-collapse: collapse;
+			width: 100%;
+			max-width: 800px;
+			margin: 0 auto;
+			background-color: white;
+		}
+
+		th,
+		td {
+			padding: 10px;
+			text-align: left;
+			border: 1px solid #white;
+		}
+
+		tr:hover {
+			background-color: #000;
+			color: #fff;
+		}
+		#map {
+			height: 100%;
+		}
+	</style>
+
+	<section class="class-details-section spad">
+
+		<div class="container">
+			<div class="cd-text">
+				<div class="cd-single-item">
+					<h3 style="color:red;">{{salle.nom}}</h3>
+					<p style="color:smoke-white;">{{salle.description}}</p>
+				</div>
+				<div class="cd-single-item">
+					<h3>{{salle.lieu}}</h3>
+
+				</div>
+			</div>
+			<div class="row">
+
+
+				<div class="col-lg-8">
+				
+					<div class="class-details-text">
+					
+						<div
+							class="cd-pic">{# <img src="{{ asset('uploads/'~ salle.image)}}" alt=""> #}
+						</div>
+
+
+						<div class="cd-trainer" style="background-color: white-smoke">
+							<div class="row">
+								<div class="col-md-6">
+
+									<div class="cd-trainer-pic">
+										<img src="{{ asset('uploads/'~ salle.image)}}" alt="">
+									</div>
+									<div class="col-lg-8">
+
+									<div id="map" style="height:300px;width:350px"></div>
+   									 <button onclick="window.location.reload();">Actualiser</button>
+									</div>
+								</div>
+								<div class="col-md-6">
+									<div class="cd-trainer-text">
+										<div class="trainer-title">
+											<h4>Notre salle</h4>
+
+											<h4 style="color:red;">{{salle.nom | upper }}</h4>
+										</div>
+										<div class="trainer-social">
+											<a href="#">
+												<i class="fa fa-facebook"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-twitter"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-youtube-play"></i>
+											</a>
+											<a href="#">
+												<i class="fa fa-instagram"></i>
+											</a>
+											<a href="#">
+												<i class="fa  fa-envelope-o"></i>
+											</a>
+										</div>
+										<p>{{salle.description | upper}}</p>
+										<ul class="trainer-info">
+											<li>
+												<span style="color:red;">Superficie</span>
+												{{salle.superficie | upper}}</li>
+											<li>
+												<span style="color:red;">Lieu</span>
+												{{salle.lieu}}</li>
+											<li>
+												<span style="color:red;">Telephone</span>
+												{{salle.telephone}}</li>
+											<li>
+												<span style="color:red;">Email</span>
+												{{salle.email}}</li>
+										</ul>
+
+
+									</div>
+
+								</div>
+
+
+							</div>
+
+
+						</section>
+
+
+						<section style="background-color:black;" class="hero-section">
+							<div style="position: center;background-color:white;color:red;background-repeat:no-repeat;background-size:cover;
+																	 background-image: url('https://st4.depositphotos.com/4259987/21763/i/450/depositphotos_217633412-stock-photo-picture-of-strong-sporty-bodybuilder.jpg');
+																	  " id="calendrier"></div>
+							{# // Div MAp  \\ #}
+							<div id="map"></div>
+
+						</section>
+<div>
+						{# ________________________________________________________Debut__Partie JS___________________________________________________________________ #}
+
+      {# MAP MAKER AFFICHAGE PERSO***************************************************** #}
+  <script>
+  {# console.log(name); #}
+    // Initialise la carte
+    var map = L.map('map').setView([36.8123591, 10.14065], 13);
+   
+
+
+
+    {% for mydata in MapData %}
+
+	var popup = L.popup()
+    .setLatLng([{{ mydata.lat }}, {{ mydata.longt }}])
+    .setContent("<b>{{ name }}</b>")
+    .openOn(map);
+	    {% endfor %}
+
+
+var circle = L.circle([36.8123591, 10.14065], {
+    color: 'red',
+    fillColor: 'black',
+    fillOpacity: 0.5,
+    radius: 5000
+}).addTo(map);
+    // Ajoute une couche de tuiles de la carte
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+    }).addTo(map);
+
+    // Boucle à travers les données de la table "map" et ajoute un marqueur pour chaque élément
+    {% for mydata in MapData %}
+        L.marker([{{ mydata.lat }}, {{ mydata.longt }}]).addTo(map);
+        
+    {% endfor %}
+    </script>
+
+	{# ************************** #}
+
+<script>
+{# 	
+// Initialise la carte
+var map = L.map('map').setView([36.8123591, 10.14065], 13);
+
+// Ajoute une couche de tuiles de la carte
+L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+    attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+    maxZoom: 18,
+}).addTo(map);
+
+// Ecoute l'événement d'ajout
+map.on('click', function(e) {
+    // Envoie une requête Ajax pour ajouter l'élément à la base de données
+    $.post('/ajouter-element', {lat: e.latlng.lat, lng: e.latlng.lng}, function(data) {
+        // Ajoute un marqueur pour l'élément
+        L.marker([data.lat, data.lng]).addTo(map);
+    });
+}); #}
+</script>
+
+      {# MAP MAKER AFFICHAGE PERSO***************************************************** #}
+
+						<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" integrity="sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=" crossorigin="anonymous"></script>
+						<script>
+							window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+let calendar = new FullCalendar.Calendar(calendarElt, {
+
+initialView: 'timeGridWeek',
+locale: 'fr',
+timeZone: 'Afrique/Tunisie',
+weekends: true,
+
+defaultView: 'dayGridWeek',
+// businessHours: {
+// start: '08:00',
+// end: '18:00',
+// dow: [1, 2, 3, 4, 5]
+// },
+headerToolbar: {
+start: 'today',
+center: 'title',
+end: 'timeGridWeek,listWeek'
+},
+
+events: {{ data|raw }},
+editable: false,
+eventResizableFromStart: false,
+// datesSet: function (info) {
+// Récupérer la date de début de la plage d'affichage
+// let start = info.start;
+// Récupérer la date de fin de la plage d'affichage
+// let end = info.end;
+// Calculer la différence en jours entre les deux dates
+// let diff = end.diff(start, 'days');
+// Si la plage d'affichage est supérieure à 7 jours
+// if (diff > 7) {
+// Ajuster la date de fin pour n'afficher qu'une semaine
+// end = start.clone().add(7, 'days');
+// Définir la plage d'affichage pour n'afficher qu'une semaine
+// calendar.gotoDate(start);
+//       //calendar.gotoDate(end);
+// }
+// }
+/*		eventDrop :function(event){
+				console.log(event)
+			}*/
+
+
+})
+
+calendar.on('eventChange', (e) => {
+// afficher
+// console.log(e)
+// pour assurer l'injection des données =>
+// Créer une variable URL qui contient la route de l'injection des données
+
+let url = `/api/${
+e.event.id
+}/edit`
+// Créer un tableau JSon pour stocker nos données de la table plannig
+let donnees = {
+"title": e.event.title,
+"description": e.event.description,
+"start": e.event.start,
+"end": e.event.end,
+"backgroundColor": e.event.background_color,
+"borderColor": e.event.border_color,
+"textColor": e.event.text_color,
+"activite": e.event.activite
+
+
+}
+
+})
+
+calendar.render()
+}
+						</script>
+
+						<script>
+							src = "https://maps.googleapis.com/maps/api/js?key=AIzaSyC1qY6wrVNilygkIrk1bOP17S8AEMka20Q&callback=initMap&v=weekly"
+defer >
+						</script>
+
+						<script>
+{# function initMap() {
+const myLatLng = {
+lat: 48.8588897,
+lng: 2.320041
+};
+const map = new google.maps.Map(document.getElementById("map"), {
+zoom: 4,
+center: myLatLng
+});
+
+new google.maps.Marker({position: myLatLng, map, title: "Hello World!"});
+}
+
+window.initMap = initMap;
+						</script> #}
+
+					{% endblock %}

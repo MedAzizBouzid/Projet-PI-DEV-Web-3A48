@@ -1,0 +1,54 @@
+{% extends 'front/baseF.html.twig' %}
+
+{% block body %}
+
+	<!-- Breadcrumb Section Begin -->
+	<section class="breadcrumb-section set-bg" data-setbg="{{ asset('assets/front/img/breadcrumb-bg.jpg')}}">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12 text-center">
+					<div class="breadcrumb-text">
+						<h2>Offers</h2>
+						<div class="bt-option">
+							<a href="./index.html">Home</a>
+							<span>Offers</span>
+
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+
+
+	<section class="services-section spad">
+		<div class="container">
+			<div class="row">
+				<div class="col-lg-12">
+					<div class="section-title">
+						<span>What we do?</span>
+						<h2>PUSH YOUR LIMITS FORWARD</h2>
+					</div>
+				</div>
+			</div>
+
+			<div class="row">
+				{% for cat in categorie %}
+					<div style="heigth:210px;" class="col-md-6 col-lg-4 mb-4">
+						<div class="card">
+							<div class="card-body">
+								<h5 class="card-title">{{ cat.name }}</h5>
+								<p class="card-text">{{ cat.description }}</p>
+                                
+								<a href="{{ path('app_categorie_offres', {'id': cat.id} ) }}" class="btn btn-outline-warning">Explore</a>
+							</div>
+						</div>
+					</div>
+				{% endfor %}
+			</div>
+
+		</div>
+	</section>
+
+	<!-- Pricing Section End -->
+{% endblock %}

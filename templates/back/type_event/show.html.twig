@@ -1,0 +1,26 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}TypeEvent{% endblock %}
+
+{% block body %}
+    <h1>TypeEvent</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ type_event.id }}</td>
+            </tr>
+            <tr>
+                <th>TypeE</th>
+                <td>{{ type_event.typeE }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_type_event_index') }}">back to list</a>
+
+    <a href="{{ path('app_type_event_edit', {'id': type_event.id}) }}">edit</a>
+
+    {{ include('back/type_event/_delete_form.html.twig') }}
+{% endblock %}

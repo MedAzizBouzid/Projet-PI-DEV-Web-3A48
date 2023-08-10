@@ -1,0 +1,54 @@
+
+
+
+
+
+{% extends 'back/base.html.twig' %}
+ {% block title %}
+   Gestion des Catégories
+    {% endblock %}
+    {% block CatActive %}active{% endblock %}
+
+{% block body %}
+            <!-- Table Start -->
+            <div class="row vh-100 bg-secondary rounded align-items-center justify-content-center mx-0">
+            <div class="container-fluid pt-4 px-4" style="bottom:0;">
+          <a href="{{path ('app_categorie_newCat')}}"> <button type="button" class="btn btn-danger m-2">Add New</button></a> 
+                {# <div class="card-body"> #}
+                                <div class="table-responsive">
+                                    <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                        <tr>
+                                        <tr>
+                                        <th>#</th>
+                                        <th>Type</th>
+                                        <th>actions</th>
+                                        </tr>
+                                        </tr>
+                                    </thead>
+                                   
+                                    <tbody>
+                                    {% for categorie in categories %}
+                                    <tr>
+                                        <td>{{ categorie.id }}</td>
+                                        <td>{{ categorie.Type }}</td>
+                                        <td>
+                                            <a href="{{ path('app_categorie_show', {'id': categorie.id}) }}"><button class="btn btn-warning m-2"> Detail</button> </a>
+                                            <a href="{{ path('app_categorie_edit', {'id': categorie.id}) }}"><button class="btn btn-light ">Modifier</button></a>
+                                            
+                                         
+                                        </td>
+                                    </tr>
+                                    {% else %}
+                                    <tr>
+                                        <td colspan="3">no records found</td>
+                                    </tr>
+                                    {% endfor %}
+                                    </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                            </div>
+            <!-- Table End -->
+            {% endblock %}
+

@@ -1,0 +1,47 @@
+{% extends 'back/base.html.twig' %}
+
+{% block body %}
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.3/dist/leaflet.css"
+     integrity="sha256-kLaT2GOSpHechhsozzB+flnD+zUyjE2LlfWPgU04xyI="
+     crossorigin=""/>
+ <script src="https://unpkg.com/leaflet@1.9.3/dist/leaflet.js"
+     integrity="sha256-WBkoXOwTeyKclOHuWtc+i2uENFpDZ9YPdf5Hf+D7ewM="
+     crossorigin=""></script>
+
+
+<div id="map" style="height: 740px;widht:60px"></div>
+
+    <script>
+    // Initialise la carte
+    
+    var map = L.map('map').setView([36.8123591, 10.14065], 13);
+    {# var popup = L.popup()
+    .setLatLng([36.8123591,10.14065])
+    .setContent("Body Rock Bardo")
+    .openOn(map); #}
+{# var circle = L.circle([36.8123591, 10.14065], {
+    color: 'red',
+    fillColor: '#f03',
+    fillOpacity: 0.5,
+    radius: 200
+}).addTo(map); #}
+    // Ajoute une couche de tuiles de la carte
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: 'Map data © <a href="https://openstreetmap.org">OpenStreetMap</a> contributors',
+        maxZoom: 18,
+    }).addTo(map);
+
+    // Boucle à travers les données de la table "map" et ajoute un marqueur pour chaque élément
+    {% for data in mydata %}
+        L.marker([{{ data.lat }}, {{ data.longt }}]).addTo(map);
+ 
+    {% endfor %}
+    </script>
+ 
+
+{% endblock %}
+ 
+
+
+
+

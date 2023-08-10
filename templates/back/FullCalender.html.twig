@@ -1,0 +1,385 @@
+{% extends 'back/base.html.twig' %}
+
+
+{% block body %}
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.css" integrity="sha256-uq9PNlMzB+1h01Ij9cx7zeE2OR2pLAfRw3uUUOOPKdA=" crossorigin="anonymous">
+
+	<style>
+		#calendrier {
+			margin: auto;
+			width: 63%;
+			height: 60%;
+		}
+		.popup {
+			position: fixed; /* positionnement fixe */
+			top: 0; /* positionné en haut */
+			left: 0; /* positionné à gauche */
+			width: 100%; /* largeur à 100% */
+			height: 100%; /* hauteur à 100% */
+			background-color: rgba(0, 0, 0, 0.5); /* couleur de fond semi-transparente */
+			display: none; /* cacher la pop-up par défaut */
+		}
+		.popup-content {
+			position: absolute; /* positionnement absolu */
+			top: 50%; /* positionné à 50% de la hauteur de la fenêtre */
+			left: 50%; /* positionné à 50% de la largeur de la fenêtre */
+			transform: translate(-50%, -50%); /* centrer horizontalement et verticalement */
+			width: 300px; /* largeur de la pop-up */
+			padding: 20px; /* marge intérieure */
+			background-color: #fff; /* couleur de fond */
+			border-radius: 5px; /* arrondi des coins */
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5); /* ombre portée */
+			text-align: center; /* alignement centré */
+		}
+		.popup-content h2 {
+			margin-top: 0; /* supprimer la marge en haut du titre */
+		}
+		.popup-close {
+			position: absolute; /* positionnement absolu */
+			top: 10px; /* positionné à 10px du haut */
+			right: 10px; /* positionné à 10px de la droite */
+			font-size: 20px; /* taille de police */
+			color: #888; /* couleur du texte */
+			cursor: pointer; /* curseur de la souris en forme de main */
+		}
+
+		.popup-content {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+			width: 80%;
+			padding: 20px;
+			background-color: #fff;
+			border-radius: 5px;
+			box-shadow: 0 0 10px 0 rgba(0, 0, 0, 0.5);
+			text-align: center;
+		}
+	</style>
+	{# <!-- Modal-----------------------------------DEBUT  POP UP--------- ---------- #}
+	<!-- La pop-up -->
+	{# <button  style=" width: 20%;"id="openBtn"  class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">Ajouter une nouvelle activité</button>  #}
+
+	{# 
+		<div  class="modal fade" id="exampleModal" tabindex="1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		  <div   class="modal-dialog">
+		    <div class="modal-content">
+		      <div class="modal-header" style="background-color:red;border: 2px solid black;">
+		        <h5 class="modal-title" id="exampleModalLabel" >________________Ajouter un plannig____________</h5>
+		        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+		      </div>
+		      <div class="modal-body" style="background-color:white;" >
+		 
+		    				
+							<div  class="form-group"   position: center;">  #}
+	{# --------------------------------------FORM START-------------------------------------- #}
+	{#   {{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+		
+		 					
+		                    <div>
+								{{form_label(form.title)}}
+								{{form_widget(form.title, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{form_errors(form.title)}}
+		
+							</div>
+		
+							<div  >
+								{{form_label(form.start)}}
+								{{form_widget(form.start, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{form_errors(form.start)}}
+		
+							</div>
+		
+		
+							<div >
+		
+								{{form_label(form.end)}}
+								{{form_widget(form.end, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{ form_errors(form.end) }}
+		
+							</div>
+		
+		
+							<div>
+		
+								{{form_label(form.description)}}
+								{{form_widget(form.description, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{ form_errors(form.description) }}
+		
+							</div>
+		{#  
+							<div >
+		 
+								{{form_label(form.all_day)}}
+								{{form_widget(form.all_day, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{ form_errors(form.all_day) }}
+		
+							</div> #}
+
+	{# <div  >
+								{{form_label(form.background_color)}}
+								{{form_widget(form.background_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{ form_errors(form.background_color) }}
+		
+							</div>
+		
+							<div  >
+								{{form_label(form.border_color)}}
+								{{form_widget(form.border_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{form_errors(form.border_color)}}
+		
+							</div>
+							<div  >
+								{{form_label(form.text_color)}}
+								{{form_widget(form.text_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{form_errors(form.text_color)}}
+		
+							</div>
+				 <button   class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+		
+</div>
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+
+
+<div>
+	{{form_label(form.title)}}
+	{{form_widget(form.title, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+	{{form_errors(form.title)}}
+
+</div>
+
+<div>
+	{{form_label(form.start)}}
+	{{form_widget(form.start, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+	{{form_errors(form.start)}}
+
+</div>
+
+
+<div>
+
+	{{form_label(form.end)}}
+	{{form_widget(form.end, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+	{{ form_errors(form.end) }}
+
+</div>
+
+
+<div>
+
+	{{form_label(form.description)}}
+	{{form_widget(form.description, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+	{{ form_errors(form.description) }}
+
+</div>
+{#  
+							<div >
+		 
+								{{form_label(form.all_day)}}
+								{{form_widget(form.all_day, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{ form_errors(form.all_day) }}
+		
+							</div> #}
+
+{# <div  >
+								{{form_label(form.background_color)}}
+								{{form_widget(form.background_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{ form_errors(form.background_color) }}
+		
+							</div>
+		
+							<div  >
+								{{form_label(form.border_color)}}
+								{{form_widget(form.border_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{form_errors(form.border_color)}}
+		
+							</div>
+							<div  >
+								{{form_label(form.text_color)}}
+								{{form_widget(form.text_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{form_errors(form.text_color)}}
+		
+							</div>
+				 <button   class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+		
+				    </div>
+{{ form_start(form,{'attr': {'novalidate': 'novalidate'}}) }}
+
+
+<div>
+	{{form_label(form.title)}}
+	{{form_widget(form.title, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+	{{form_errors(form.title)}}
+
+</div>
+
+<div>
+	{{form_label(form.start)}}
+	{{form_widget(form.start, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+	{{form_errors(form.start)}}
+
+</div>
+
+
+<div>
+
+	{{form_label(form.end)}}
+	{{form_widget(form.end, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+	{{ form_errors(form.end) }}
+
+</div>
+
+
+<div>
+
+	{{form_label(form.description)}}
+	{{form_widget(form.description, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+	{{ form_errors(form.description) }}
+
+</div>
+{#  
+							<div >
+		 
+								{{form_label(form.all_day)}}
+								{{form_widget(form.all_day, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{ form_errors(form.all_day) }}
+		
+							</div> #}
+
+{# <div  >
+								{{form_label(form.background_color)}}
+								{{form_widget(form.background_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{ form_errors(form.background_color) }}
+		
+							</div>
+		
+							<div  >
+								{{form_label(form.border_color)}}
+								{{form_widget(form.border_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{form_errors(form.border_color)}}
+		
+							</div>
+							<div  >
+								{{form_label(form.text_color)}}
+								{{form_widget(form.text_color, {'attr': {'class': 'form-control', 'style': 'width: 450px; padding: 5px;'}})}}
+								{{form_errors(form.text_color)}}
+		
+							</div>
+				 <button   class="btn btn-primary">{{ button_label|default('Enregistrer') }}</button>
+		
+				    </div>
+
+	{# --------------------------------------FORM END-------------------------------------- #}
+
+	{# </div>
+		    </div>
+		  </div>   
+		</div>   #}
+
+	<!-- bouton pour ouvrir la pop-up -->
+		<button style="background-color:red;color:white;" onclick="openPopup()"> Chek orders</button>
+
+
+	<!-- pop-up -->
+	<div id="popup" class="popup">
+		<div class="popup-content">
+			<h2>My orders</h2>
+
+			<span class="popup-close" onclick="closePopup()">&times;</span>
+		</div>
+	</div>
+
+	{# <!-- Modal-----------------------------------FIN DU POP UP--------- ----------   #}
+
+	{# {{dump(data)}} #}
+
+	<div style="position: center;background-color:black;" id="calendrier"></div>
+	{# dd($calendar); #}
+
+
+	{# ________________________________________________________Debut__Partie JS___________________________________________________________________ #}
+
+	<script src="https://cdn.jsdelivr.net/npm/fullcalendar@5.3.1/main.min.js" integrity="sha256-aZcQFPL6+lsgcL5uMWS2B/cf6WplQQOEhLKi88tYh6A=" crossorigin="anonymous"></script>
+	<script>
+		window.onload = () => {
+let calendarElt = document.querySelector("#calendrier")
+let calendar = new FullCalendar.Calendar(calendarElt, {
+initialView: 'timeGridWeek',
+locale: 'fr',
+timeZone: 'Afrique/Tunisie',
+weekends: true,
+
+
+defaultView: 'month',
+businessHours: {
+start: '08:00',
+end: '18:00',
+dow: [
+1,
+2,
+3,
+4,
+5
+]
+},
+headerToolbar: {
+start: 'prev,next today',
+center: 'title',
+end: 'dayGridMonth,timeGridWeek'
+},
+
+events: {{ data|raw }},
+editable: true,
+/*			eventResizableFromStart:true,
+			eventDrop :function(event){
+				console.log(event)
+			}*/
+
+
+})
+
+calendar.on('eventChange', (e) => {
+// afficher
+// console.log(e)
+// pour assurer l'injection des données =>
+// Créer une variable URL qui contient la route de l'injection des données
+
+let url = `/api/${
+e.event.id
+}/edit`
+// Créer un tableau JSon pour stocker nos données de la table plannig
+let donnees = {
+"title": e.event.title,
+"description": e.event.description,
+"start": e.event.start,
+"end": e.event.end,
+"backgroundColor": e.event.background_color,
+"borderColor": e.event.border_color,
+"textColor": e.event.text_color,
+"activite": e.event.activite
+
+
+}
+let xhr = new XMLHttpRequest
+// !!!Remarque on n'utilise que la methode PUT  car on autorise que la MAJ
+xhr.open("PUT", url)
+xhr.send(JSON.stringify(donnees))
+})
+
+calendar.render()
+}
+
+// fonction pour ouvrir la pop-up
+function openPopup() {
+document.getElementById("popup").style.display = "block";
+}
+
+// fonction pour fermer la pop-up
+function closePopup() {
+document.getElementById("popup").style.display = "none";
+}
+	</script>
+	{# __________________________Fin__Partie JS________________________________________________ #}
+
+
+{% endblock %}

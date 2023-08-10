@@ -63,4 +63,16 @@ class PanierRepository extends ServiceEntityRepository
 //            ->getOneOrNullResult()
 //        ;
 //    }
+public function findByClientId(int $clientId): array
+{
+    return $this->createQueryBuilder('p')
+        ->andWhere('p.Client = :clientId')
+        ->setParameter('clientId', $clientId)
+        ->getQuery()
+        ->getResult();
+}
+public function findPanierById(int $id): ?Panier
+{
+    return $this->findOneBy(['id' => $id]);
+}
 }

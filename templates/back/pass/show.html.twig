@@ -1,0 +1,26 @@
+{% extends 'back/base.html.twig' %}
+
+{% block title %}Pass{% endblock %}
+
+{% block body %}
+    <h1>Pass</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ pass.id }}</td>
+            </tr>
+            <tr>
+                <th>CreatedAt</th>
+                <td>{{ pass.createdAt ? pass.createdAt|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_pass_index') }}">back to list</a>
+
+    {# <a href="{{ path('app_pass_edit', {'id': pass.id}) }}">edit</a> #}
+
+    {# {{ include('back/pass/_delete_form.html.twig') }} #}
+{% endblock %}

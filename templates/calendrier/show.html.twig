@@ -1,0 +1,54 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Calendrier{% endblock %}
+
+{% block body %}
+    <h1>Calendrier</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ calendrier.id }}</td>
+            </tr>
+            <tr>
+                <th>Title</th>
+                <td>{{ calendrier.title }}</td>
+            </tr>
+            <tr>
+                <th>Start</th>
+                <td>{{ calendrier.start ? calendrier.start|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>End</th>
+                <td>{{ calendrier.end ? calendrier.end|date('Y-m-d H:i:s') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ calendrier.description }}</td>
+            </tr>
+            <tr>
+                <th>All_day</th>
+                <td>{{ calendrier.allDay ? 'Yes' : 'No' }}</td>
+            </tr>
+            <tr>
+                <th>Background_color</th>
+                <td>{{ calendrier.backgroundColor }}</td>
+            </tr>
+            <tr>
+                <th>Border_color</th>
+                <td>{{ calendrier.borderColor }}</td>
+            </tr>
+            <tr>
+                <th>Text_color</th>
+                <td>{{ calendrier.textColor }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('app_calendrier_index') }}">back to list</a>
+
+    <a href="{{ path('app_calendrier_edit', {'id': calendrier.id}) }}">edit</a>
+
+    {{ include('calendrier/_delete_form.html.twig') }}
+{% endblock %}

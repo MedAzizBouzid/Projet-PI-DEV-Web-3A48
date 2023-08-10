@@ -3,7 +3,11 @@
 namespace App\Entity;
 
 use App\Repository\ProduitRepository;
+use Doctrine\Common\Collections\ArrayCollection;
+use Doctrine\Common\Collections\Collection;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\Serializer\Annotation\Groups;
+use Symfony\Component\Validator\Constraints as Assert;
 
 #[ORM\Entity(repositoryClass: ProduitRepository::class)]
 class Produit
@@ -11,51 +15,70 @@ class Produit
     #[ORM\Id]
     #[ORM\GeneratedValue]
     #[ORM\Column]
+    #[Groups("produits")]
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $nomP = null;
+    #[Assert\NotBlank(message: "Nom doit etre non vide !")]
+    #[Assert\Regex(pattern: "/^[\p{L}]+$/u", message: "Nom doit contenir que des alphabets")]
+    #[Groups("produits")]
+
+    private ?string $nom = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $typeP = null;
+    #[Groups("produits")]
 
-    #[ORM\Column]
-    private ?float $prix = null;
-
-    #[ORM\Column]
-    private ?int $stock = null;
-
-    #[ORM\Column(length: 255)]
     private ?string $image = null;
 
+
+    #[ORM\Column]
+    #[Assert\NotBlank(message: "Prix doit etre non vide !")]
+    #[Assert\GreaterThan(value: 0, message: "Prix doit supérieur strict à 0 !")]
+    #[Groups("produits")]
+
+    private ?float $prix = null;
+
+    #[ORM\Column(length: 255)]
+    #[Assert\NotBlank(message: "Stock doit etre non vide !")]
+    #[Assert\GreaterThan(value: 0, message: "Stock doit supérieur strict à 0 !")]
+    #[Groups("produits")]
+
+    private ?string $stock = null;
+
     #[ORM\ManyToOne(inversedBy: 'produits')]
-    private ?Panier $panier = null;
+    #[ORM\JoinColumn(name: "categorie_id", referencedColumnName: "id", onDelete: "SET NULL")]
+    #[Assert\NotBlank(message: "Catégorie doit etre non vide !")]
+    private ?Categorie $categorie = null;
+
+
+
+
 
     public function getId(): ?int
     {
         return $this->id;
     }
 
-    public function getNomP(): ?string
+    public function getNom(): ?string
     {
-        return $this->nomP;
+        return $this->nom;
     }
 
-    public function setNomP(string $nomP): self
+    public function setNom(string $nom): self
     {
-        $this->nomP = $nomP;
+        $this->nom = $nom;
 
         return $this;
     }
 
-    public function getTypeP(): ?string
+    public function getImage()
     {
-        return $this->typeP;
+        return $this->image;
     }
 
-    public function setTypeP(string $typeP): self
+    public function setImage($image)
     {
-        $this->typeP = $typeP;
+        $this->image = $image;
 
         return $this;
     }
@@ -72,38 +95,26 @@ class Produit
         return $this;
     }
 
-    public function getStock(): ?int
+    public function getStock(): ?string
     {
         return $this->stock;
     }
 
-    public function setStock(int $stock): self
+    public function setStock(string $stock): self
     {
         $this->stock = $stock;
 
         return $this;
     }
 
-    public function getImage(): ?string
+    public function getCategorie(): ?categorie
     {
-        return $this->image;
+        return $this->categorie;
     }
 
-    public function setImage(string $image): self
+    public function setCategorie(?categorie $categorie): self
     {
-        $this->image = $image;
-
-        return $this;
-    }
-
-    public function getPanier(): ?Panier
-    {
-        return $this->panier;
-    }
-
-    public function setPanier(?Panier $panier): self
-    {
-        $this->panier = $panier;
+        $this->categorie = $categorie;
 
         return $this;
     }
